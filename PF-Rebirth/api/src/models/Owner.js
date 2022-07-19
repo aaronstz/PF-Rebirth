@@ -16,9 +16,5 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        gatito: {
-            type: DataTypes.STRING,
-            defaultValue: 'gatito'
-        }
     })
 }
