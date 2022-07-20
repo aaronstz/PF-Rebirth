@@ -11,6 +11,6 @@ module.exports = (sequelize) => {
             allowNull: false,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
-        }
+        },
     })
 }
