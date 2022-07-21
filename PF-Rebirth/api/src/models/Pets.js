@@ -4,12 +4,12 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("pets", {
-    id: { 
+    id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
-      primaryKey: true
-     },
+      primaryKey: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,42 +18,41 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isNumeric: true
-      }
+        isNumeric: true,
+      },
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
     },
-    image:{ 
+    image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    size:{
+    size: {
       type: DataTypes.ENUM("small", "medium", "big"),
       allowNull: false,
     },
-    gender:{
-      type: DataTypes.ENUM("female" , "male"),
+    gender: {
+      type: DataTypes.ENUM("female", "male"),
       allowNull: false,
       validate: {
-        isIn: [['female', 'male']]
-      }
+        isIn: [["female", "male"]],
+      },
     },
     active: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true
+      defaultValue: true,
     },
     type: {
       type: DataTypes.ENUM("dog", "cat"),
       allowNull: false,
       validate: {
-        isIn: [['dog', 'cat']]
-      }
+        isIn: [["dog", "cat"]],
+      },
     },
     race: {
-      type: DataTypes.STRING
-    }
-    
+      type: DataTypes.STRING,
+    },
   });
 };
