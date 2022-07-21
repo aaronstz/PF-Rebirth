@@ -20,7 +20,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path = '/' element = {<LandingPage/>}/>
-          {/* <Route path = '/home' element = {<Home/>}/>
+          <Route path = '/home' element = {<Home/>}/>
           <Route path = '/home/:id' element = {<Details/>}/>
           <Route path = '/about' element = {<About/>}/>
           <Route path = '/login' element = {<Login/>}/>
@@ -28,7 +28,7 @@ function App() {
           <Route path = '/support' element = {<Support/>}/>
           <Route path = '/terms' element = {<Terms/>}/>
           <Route path = '/privacy' element = {<Privacy/>}/>
-          <Route path = '*' element = {<NotFound/>}/> */}
+          <Route path = '*' element = {<NotFound/>}/>
       </Routes>
     </Router>
   );
