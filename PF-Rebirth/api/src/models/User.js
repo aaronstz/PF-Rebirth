@@ -30,14 +30,14 @@ module.exports = (sequelize) => {
         },
         age: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
             validate: {
                 isNumeric: true
             }
         },
         mail: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
             validate: {
                 isEmail: true
             }
@@ -48,12 +48,12 @@ module.exports = (sequelize) => {
         },
         active:{
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: false,
             defaultValue: true
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
             validate: {
                len: { 
                   args: [7, 42],

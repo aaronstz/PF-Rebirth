@@ -15,6 +15,7 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey : true,
+        allowNull : false
     },
     name: {
         type: DataTypes.STRING,
@@ -32,6 +33,7 @@ module.exports = (sequelize) => {
     },
     description :{
         type : DataTypes.STRING,
+        allowNull : false
     },
     show : {
         type : DataTypes.BOOLEAN,
