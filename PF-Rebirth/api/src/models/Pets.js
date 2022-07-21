@@ -15,7 +15,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     age: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      validate: {
+        isNumeric: true
+      }
     },
     description: {
       type: DataTypes.TEXT,
@@ -28,16 +31,25 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM("small", "medium", "big")
     },
     gender:{
-      type: DataTypes.STRING
+      type: DataTypes.ENUM("female" , "male"),
+      validate: {
+        isIn: [['female', 'male']]
+      }
     },
     active: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
     type: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.ENUM("dog", "cat"),
+      allowNull: false,
+      validate: {
+        isIn: [['dog', 'cat']]
+      }
     },
+    race: {
+      type: DataTypes.STRING
+    }
     
   });
 };
