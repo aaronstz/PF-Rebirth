@@ -9,43 +9,51 @@ module.exports = (sequelize) => {
             defaultValue: DataTypes.UUIDV4
         },
         userName: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
         lastName:{
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
         gender:{
             type: DataTypes.ENUM("man", "woman"),
             allowNull: false
         },
         address: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
         age: {
             type: DataTypes.INTEGER,
+            allowNull: false
             validate: {
                 isNumeric: true
             }
         },
         mail: {
             type: DataTypes.STRING,
+            allowNull: false
             validate: {
                 isEmail: true
             }
         },
         phone: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: false
         },
         active:{
             type: DataTypes.BOOLEAN,
+            allowNull: false
             defaultValue: true
         },
         password: {
             type: DataTypes.STRING,
+            allowNull: false
             validate: {
                len: { 
                   args: [7, 42],
@@ -54,7 +62,8 @@ module.exports = (sequelize) => {
             }
          },
         image: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         }
     })
 }
