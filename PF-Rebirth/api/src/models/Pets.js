@@ -16,6 +16,7 @@ module.exports = (sequelize) => {
     },
     age: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       validate: {
         isNumeric: true
       }
@@ -24,14 +25,17 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    img:{ 
-      type: DataTypes.STRING
+    image:{ 
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     size:{
-      type: DataTypes.ENUM("small", "medium", "big")
+      type: DataTypes.ENUM("small", "medium", "big"),
+      allowNull: false,
     },
     gender:{
       type: DataTypes.ENUM("female" , "male"),
+      allowNull: false,
       validate: {
         isIn: [['female', 'male']]
       }
