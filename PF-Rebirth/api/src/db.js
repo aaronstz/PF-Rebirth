@@ -30,7 +30,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Pets, Owner, Chat, Request , SuccessStories, User } = sequelize.models;
+const { Pets, Admin, Owner, Chat, Request , SuccessStories, User } = sequelize.models;
 
 //    1:1  --->>> hasOne a belongsTo
 //    1:n  --->>> hasMany a benlongsTo
