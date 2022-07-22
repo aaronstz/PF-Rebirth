@@ -1,0 +1,32 @@
+.page-link {
+  position: relative;
+  display: block;
+  color: var(--white);
+  background-color: var(--pink);
+  border: var(--pink);
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: var(--white);
+  background-color: var(--pink);
+}
+
+.page-link:focus {
+  z-index: 3;
+  color: var(--white);
+  background-color: var(--pink);
+  box-shadow: var(--pink);
+}
+
+.page-link:active {
+  z-index: 3;
+  color: var(--white);
+}
+
+.page-link.disabled {
+  color: var(--white);
+  pointer-events: none;
+  background-color: var(--pink);
+  border-color: var(--pink);
+}
