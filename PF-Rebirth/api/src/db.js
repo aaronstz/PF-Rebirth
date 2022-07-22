@@ -30,7 +30,56 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Pets } = sequelize.models;
+const { Pets, Owner, Chat, Request , SuccessStories, User } = sequelize.models;
+
+//    1:1  --->>> hasOne a belongsTo
+//    1:n  --->>> hasMany a benlongsTo
+//    n:n  --->>> belongsToMany
+
+
+User.hasMany(Request);        // un usuario puede hacer o tener diferentes solicitudes y una solicitud pertenece a un usuario
+Request.belongsTo(User);
+
+Owner.hasMany(Request);        // el dueño puede hacer o tener diferentes solicitudes y una solicitud pertenece a el dueño
+Request.belongsTo(Owner);
+
+//----------------------------//
+
+Owner.hasMany(Pets);                   //el dueño puede adoptar diferentes mascotas y una mascota pertenece a el dueño
+Pets.belongsTo(Owner);
+
+//----------------------------//
+
+User.hasMany(SuccessStories);         // un usuario puede tener distintos casos de exito y un caso de exito pertenece a un usuario
+SuccessStories.belongsTo(User);
+
+Owner.hasMany(SuccessStories);         // el dueño puede tener distintos casos de exito y un caso de exito pertenece a el dueño
+SuccessStories.belongsTo(Owner);
+
+//---------------------------//
+
+User.hasMany(Chat);                   //un usuario puede tener distintos chat y un chat pertenece a un usuario 
+Chat.belongsTo(User);
+
+Owner.hasMany(Chat);                   // el dueño puede tener distintos chat y un chat pertenece a el dueño
+Chat.belongsTo(Owner);
+
+
+
+
+
+
+
+// siendo adoptante
+//  user --> muchas --> pets
+//  pets --> un --> user
+
+// siendo dador de mascota 
+//  user --> muchas --> pets
+//  pets --> un --> user
+
+
+
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
