@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("adoptionrequest", {
+  sequelize.define("request", {
     idMP: {
       type: DataTypes.STRING,
       allowNull: true,
