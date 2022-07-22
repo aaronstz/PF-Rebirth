@@ -1,11 +1,11 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./Card.css";
-// import foto from "../../Assets/fotoPet1.png";
+import foto from "../../Assets/fotoPet1.png";
 function Cards() {
   return (
     <Card className="lcard">
-      {/* <Card.Img variant="top" src={foto} /> */}
+      <Card.Img variant="top" src={foto} />
       <Card.Body>
         <div className="txtCont">
           <div className="txtLeft">
