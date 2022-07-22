@@ -3,10 +3,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Cards from "../Components/Card/Card";
 import Paginations from "../Components/Pagination/Pagination";
+import Navbar from "../Components/Navbar/Navbar";
 
 function Home() {
   return (
     <Container>
+      <Navbar/>
       <Row>
         <Col>
           <Cards />
