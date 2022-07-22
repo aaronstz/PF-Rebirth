@@ -68,7 +68,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
       <div class="lower">
         <h3 class="rights">All Rights Reserved @ Team 13</h3>
         <ul class="footer-bottom">
@@ -83,6 +82,7 @@ export default function Footer() {
             </a>
           </li>
         </ul>
+      </div>
       </div>
     </footer>
   );
