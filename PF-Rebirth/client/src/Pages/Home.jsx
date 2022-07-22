@@ -4,26 +4,26 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Cards from "../Components/Card/Card";
 import Paginations from "../Components/Pagination/Pagination";
+import Navbar from "../Components/Navbar/Navbar";
 
 function Home() {
   return (
-    <>
-      <Container>
-        <Row>
-          <Col>
-            <Cards />
-          </Col>
-          <Col>
-            <Cards />
-          </Col>
-          <Col>
-            <Cards />
-          </Col>
-        </Row>
-        <br />
-        <Paginations />
-      </Container>
-    </>
+    <Container>
+      <Navbar/>
+      <Row>
+        <Col>
+          <Cards />
+        </Col>
+        <Col>
+          <Cards />
+        </Col>
+        <Col>
+          <Cards />
+        </Col>
+      </Row>
+      <br />
+      <Paginations />
+    </Container>
   );
 }
 
