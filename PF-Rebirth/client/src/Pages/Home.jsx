@@ -5,13 +5,14 @@ import Col from "react-bootstrap/Col";
 import Cards from "../Components/Card/Card";
 import Paginations from "../Components/Pagination/Pagination";
 import Navbar from "../Components/Navbar/Navbar";
-import Footer from '../Components/Footer/Footer'
-
+import Footer from '../Components/Footer/Footer';
+import Header from '../Components/Header/Header';
 
 function Home() {
   return (
     <Container>
       <Navbar/>
+      <Header/>
       <Row>
         <Col>
           <Cards />
