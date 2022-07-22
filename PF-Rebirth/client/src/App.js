@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route exact path = '/' element = {<LandingPage/>}/>
         <Route path = '/home' element = {<Home/>}/>
+        <Route path = '/faqs' element = {<FAQs/>}/>
           {/* 
           <Route path = '/home/:id' element = {<Details/>}/>
         <Route exact path="/" element={<LandingPage />} />
@@ -25,7 +26,7 @@ function App() {
          {/* <Route path = '/home/:id' element = {<Details/>}/>
           <Route path = '/about' element = {<About/>}/>
           <Route path = '/login' element = {<Login/>}/>
-          <Route path = '/faqs' element = {<FAQs/>}/>
+          
           <Route path = '/support' element = {<Support/>}/>
           <Route path = '/terms' element = {<Terms/>}/>
           <Route path = '/privacy' element = {<Privacy/>}/>
