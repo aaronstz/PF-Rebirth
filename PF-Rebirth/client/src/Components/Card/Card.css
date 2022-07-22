@@ -15,6 +15,26 @@
   font-family: 'Red Hat Display';
 }
 
+.btnFav {
+  position: absolute;
+  left: 81.63%;
+  top: 2%;
+  width: 45px;
+  height: 43px;
+  cursor: pointer;
+  background: url(../../Assets/boton\ FAV_inactive.png);
+}
+
+.btnFav:hover {
+  position: absolute;
+  left: 81.63%;
+  top: 2%;
+  width: 45px;
+  height: 43px;
+  cursor: pointer;
+  background: url(../../Assets/boton\ FAV_active.png);
+}
+
 .lcard .txtCont {
   display: flex;
   flex-direction: row;

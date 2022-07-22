@@ -5,6 +5,7 @@ import foto from "../../Assets/fotoPet1.png";
 function Cards() {
   return (
     <Card className="lcard">
+      <div className="btnFav"></div>
       <Card.Img variant="top" src={foto} />
       <Card.Body>
         <div className="txtCont">
