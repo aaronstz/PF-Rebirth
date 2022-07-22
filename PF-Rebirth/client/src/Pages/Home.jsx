@@ -11,8 +11,8 @@ import Header from '../Components/Header/Header';
 
 function Home() {
   return (
+    <div>
     <Container>
-
       <Navbar/>
       <Header/>
       <FiltersBar />
@@ -29,8 +29,12 @@ function Home() {
       </Row>
       <br />
       <Paginations />
-      <Footer/>
     </Container>
+    <div>
+      <Footer/>
+
+    </div>
+    </div>
   );
 }
 

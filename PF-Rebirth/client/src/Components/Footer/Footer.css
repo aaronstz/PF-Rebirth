@@ -5,6 +5,7 @@
 -------------------------------------------------- */
 html {
   position: relative;
+  
 }
 body {
   /* Margin bottom by footer height */
@@ -24,6 +25,7 @@ margin-bottom: 200px;
     }
     .footer {
       height: 500px;
+
     }
 }
 
@@ -38,6 +40,7 @@ footer {
 
 .row{
     flex:none;
+    display:inline-block;
     position: relative;
 }
 
@@ -47,7 +50,8 @@ footer {
 
 .body{
     height: 50%;
-    width: 100%;
+    /* width: 100%; */
+
     display:flex;
     position: relative;
     justify-content: center;
@@ -74,7 +78,7 @@ footer a:hover, footer a:focus {
     margin-top: 40px;
     bottom:0;
     height: 100%;
-
+    
 }
 
 
@@ -117,6 +121,11 @@ footer .form-control {
 
 .paragraph{
     font-weight:normal;
+    margin: 0;
+}
+
+.sub-title{
+  margin-top: 5px;
 }
 
 .list-unstyled{

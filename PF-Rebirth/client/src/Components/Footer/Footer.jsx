@@ -10,8 +10,10 @@ export default function Footer() {
           <div class="col-md-5">
               <i class="fa fa-road"></i>
               <img src={logo} alt="Rebirth"></img>
-            <p>Pet adoption network, to give</p>
-            <p>them a new life opportunity.</p>
+            <div class ="sub-title">
+              <p>Pet adoption network, to give 
+              <br/> them a new life opportunity.</p>
+            </div>
             <div class="row-lists">
               <div class="col-6">
                 <ul class="list-unstyled">
