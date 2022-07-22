@@ -1,25 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
 
-body {
-    font-family: 'Alegreya Sans', sans-serif;
-}
+
 
 /* Sticky footer position and size
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 100%;
 }
 body {
   /* Margin bottom by footer height */
 margin-bottom: 200px;
 }
 .footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 300px;
+  height: 400px;
 }
 
 /* Taller footer on small screens */
@@ -35,30 +30,51 @@ margin-bottom: 200px;
 /* Sticky footer style and color
 -------------------------------------------------- */
 footer {
-  padding-top: 20px;
+  padding-top: 25px;
   background-color: #46424a;
   color: #bbb;
   
 }
 
-.footer{
-    bottom:50px;
+.row{
+    flex:none;
+    position: relative;
 }
+
+.col-md-5{
+  margin-left: 40px;
+}
+
+.body{
+    height: 50%;
+    width: 100%;
+    display:flex;
+    position: relative;
+    justify-content: center;
+    margin-top:80px;
+    bottom:0;
+}
+
 
 footer a {
   color: #999;
   text-decoration:none;
+  height: 0rem;
+  
 }
 
 footer a:hover, footer a:focus {
   color: #aaa;
   text-decoration:none;
   border-bottom:1px dotted #999;
+  
 }
 
 .container{
     margin-top: 40px;
-    
+    bottom:0;
+    height: 100%;
+
 }
 
 
@@ -77,6 +93,9 @@ footer .form-control {
 
 .row-lists{
     transform: translateY(-170px) translateX(350px);
+    height: 200px;
+    width: 100%;
+
 }
 
 
@@ -86,35 +105,38 @@ footer .form-control {
     position: relative;
     justify-content: center;
     margin-top:20px;
+    
 }
 
 
-
-.nav{
+.newsletter{
     display: inline-block;
-    position: relative;
-    justify-content: center;
-    margin-top:20px;
-    bottom: 21rem;
-    left: 60rem;
-    font-size:large;
+    margin-top:0px;
+    transform: translateY(-195px) translateX(35rem);
+}
+
+.paragraph{
+    font-weight:normal;
 }
 
 .list-unstyled{
     margin: 10px;
     font-size:large;
     font-weight: bold;
+    
 }
 
 .nav-heading{
     margin:10px;
     font-size:large;
     margin-top:-35px;
+    
 }
 
 .nav-item{
     list-style: none;
     margin-top:10px;
+    
 }
 
 
@@ -122,15 +144,20 @@ footer .form-control {
 .socials{
     max-width: 140px;
     max-height: 100px;
+    display:flex;
 }
 
 .lower{
-    border-top: 1px solid rgb(130, 130, 130);
+    border-top: 3px solid rgb(96, 96, 96);
+    margin-left: 50px;
+    margin-right: 50px;
+
 }
 
 .rights{
     margin-left:50px;
     font-size: small;
+    
 }
 
 
