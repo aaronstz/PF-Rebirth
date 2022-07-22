@@ -11,6 +11,7 @@ import Header from '../Components/Header/Header';
 function Home() {
   return (
     <Container>
+
       <Navbar/>
       <Header/>
       <Row>

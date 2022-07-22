@@ -4,7 +4,7 @@ import socials from "../../Social.png";
 
 export default function Footer() {
   return (
-    <footer class="footer">
+    <footer class="body">
       <div class="container">
         <div class="row">
           <div class="col-md-5">
@@ -51,20 +51,20 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-            </div>
-            <div>
-              <ul class="nav">
-                <h3 class="nav-heading">Get in Touch</h3>
-                <p class="paragraph">Subscribe to our weekly</p>
-                <p class="paragraph">Newsletter and receive</p>
-                <p class="paragraph">updates via email.</p>
+            <div class ="newsletter">
+              <ul class="list-unstyled">
+                {" "}
+                Get in Touch
+                <li class ="nav-item"><p class ="paragraph">Subscribe to our weekly</p></li>
+                <li class ="nav-item"><p class ="paragraph">Newsletter and receive</p></li>
+                <li class ="nav-item"><p class ="paragraph">updates via email.</p></li>
                 <li class="nav-item">
                   <a href=" " class="nav-link pl-0">
-                    <i class="fa fa-facebook fa-lg"></i>
                     <img src={socials} alt="Socials" class="socials" />
                   </a>
                 </li>
               </ul>
+            </div>
             </div>
           </div>
         </div>

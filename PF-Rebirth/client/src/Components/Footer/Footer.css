@@ -1,25 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
 
-body {
-    font-family: 'Alegreya Sans', sans-serif;
-}
+
 
 /* Sticky footer position and size
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 100%;
 }
 body {
   /* Margin bottom by footer height */
 margin-bottom: 200px;
 }
 .footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 300px;
+  height: 400px;
 }
 
 /* Taller footer on small screens */
@@ -35,15 +30,20 @@ margin-bottom: 200px;
 /* Sticky footer style and color
 -------------------------------------------------- */
 footer {
-  padding-top: 20px;
+  padding-top: 25px;
   background-color: #46424a;
   color: #bbb;
-  
 }
 
-.footer{
-    bottom:50px;
+.body{
+    height: 100%;
+    width: 100%;
+    display:flex;
+    position: relative;
+    justify-content: center;
+    margin: 0 0 auto 0;
 }
+
 
 footer a {
   color: #999;
@@ -58,7 +58,6 @@ footer a:hover, footer a:focus {
 
 .container{
     margin-top: 40px;
-    
 }
 
 
@@ -89,15 +88,14 @@ footer .form-control {
 }
 
 
-
-.nav{
+.newsletter{
     display: inline-block;
-    position: relative;
-    justify-content: center;
-    margin-top:20px;
-    bottom: 21rem;
-    left: 60rem;
-    font-size:large;
+    margin-top:0px;
+    transform: translateY(-195px) translateX(35rem);
+}
+
+.paragraph{
+    font-weight:normal;
 }
 
 .list-unstyled{
@@ -122,6 +120,7 @@ footer .form-control {
 .socials{
     max-width: 140px;
     max-height: 100px;
+    display:flex;
 }
 
 .lower{
