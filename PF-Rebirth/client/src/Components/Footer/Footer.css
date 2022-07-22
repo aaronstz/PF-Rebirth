@@ -41,6 +41,10 @@ footer {
   
 }
 
+.footer{
+    bottom:50px;
+}
+
 footer a {
   color: #999;
   text-decoration:none;
@@ -53,7 +57,7 @@ footer a:hover, footer a:focus {
 }
 
 .container{
-    margin: 0 10px auto 50px;
+    margin-top: 40px;
     
 }
 
@@ -69,39 +73,30 @@ footer .form-control {
     
 }
 
-.col-md-5{
-    margin-top: 10px;
-    
-}
+
 
 .row-lists{
-    margin-top: -170px;
-    margin-left:15rem;
+    transform: translateY(-170px) translateX(350px);
 }
 
-.paragraph {
-    margin: 20px;
-}
+
 
 .col-6 {
-    margin: 10px 10px 0px 13rem;
     display: inline-block;
     position: relative;
     justify-content: center;
-    
+    margin-top:20px;
 }
 
-.row{
-    margin:15px;
-    
-}
+
 
 .nav{
-    margin: 10px ;
     display: inline-block;
     position: relative;
-    bottom: 11rem;
-    left: 75rem;
+    justify-content: center;
+    margin-top:20px;
+    bottom: 21rem;
+    left: 60rem;
     font-size:large;
 }
 
@@ -119,8 +114,7 @@ footer .form-control {
 
 .nav-item{
     list-style: none;
-    margin: 10px;
-    margin-top:20px;
+    margin-top:10px;
 }
 
 
@@ -136,6 +130,7 @@ footer .form-control {
 
 .rights{
     margin-left:50px;
+    font-size: small;
 }
 
 
@@ -143,7 +138,6 @@ footer .form-control {
 .footer-bottom{
     display:flex;
     justify-content: flex-end;
-    height:0px;
 
 }
 
@@ -154,7 +148,5 @@ footer .form-control {
  .a-bottom{
    position: relative;
    margin: 0 4rem auto 0;
-   bottom:3rem;
-   right:5rem;
    
 } 

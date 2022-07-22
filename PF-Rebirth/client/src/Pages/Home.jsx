@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col";
 import Cards from "../Components/Card/Card";
 import Paginations from "../Components/Pagination/Pagination";
 import Navbar from "../Components/Navbar/Navbar";
+import Footer from '../Components/Footer/Footer'
+
 
 function Home() {
   return (
@@ -23,6 +25,7 @@ function Home() {
       </Row>
       <br />
       <Paginations />
+      <Footer/>
     </Container>
   );
 }
