@@ -1,5 +1,7 @@
 
 import { Link } from 'react-router-dom'
+import Footer from '../Components/Footer/Footer'
+
 
 export default function LandingPage(){
 
@@ -10,6 +12,7 @@ export default function LandingPage(){
             <Link to ='/home'>
                 <button>Enter</button>
             </Link>
+            <Footer/>
         </div>
     )
 }
