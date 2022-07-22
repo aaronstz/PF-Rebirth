@@ -1,13 +1,22 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Red+Hat+Display&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Red Hat Display', 'Mochiy Pop One', sans-serif;
+  scroll-behavior: smooth;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --black: #1D1E22;
+  --blackOver: #2B1E38;
+  --white: #fafafa;
+  --blackTransp: #1d1e22ae;
+  --pink: #FF8AE5;
+  --greylight: #B4A8B9;
+  --grey: #5A5A70;
+  --green: #87E2D2;
+  --border: #3c3d4197;
+  --shadow: #000000ac;
 }
