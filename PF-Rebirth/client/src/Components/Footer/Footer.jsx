@@ -8,10 +8,8 @@ export default function Footer() {
       <div class="container">
         <div class="row">
           <div class="col-md-5">
-            <h5>
               <i class="fa fa-road"></i>
               <img src={logo} alt="Rebirth"></img>
-            </h5>
             <p>Pet adoption network, to give</p>
             <p>them a new life opportunity.</p>
             <div class="row-lists">
@@ -38,7 +36,7 @@ export default function Footer() {
                   {" "}
                   Services
                   <li class="nav-item">
-                    <a href=" ">F. A. Q.</a>
+                    <a href=" ">F. A. Q. s</a>
                   </li>
                   <li class="nav-item">
                     <a href=" ">My Favorites</a>
