@@ -1,10 +1,22 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("owner", {
-    id: { type: DataTypes.UUID },
-    otherpets: { type: DataTypes.STRING },
-    requestdate: { type: DataTypes.DATE, defaultValue: DataTypes.DATE },
-    state: { type: DataTypes.BOOLEAN, defaultValue: false },
+  sequelize.define("adoptionrequest", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+    },
+    otherpets: { type: DataTypes.STRING, allowNull: false },
+    requestdate: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.DATE,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.ENUM("fulfilled", "rejected", "pending"),
+      defaultValue: "pending",
+      allowNull:false
+    },
   });
 };
