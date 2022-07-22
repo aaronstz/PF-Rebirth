@@ -65,7 +65,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    favorites: { type: DataTypes.ARRAY, defaultValue: [] },
+    // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
     
     isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
   });
