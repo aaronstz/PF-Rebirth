@@ -1,6 +1,8 @@
 import React from 'react'
 import CarouselFade from '../Carousel/Carousel'
 import {NavLink} from 'react-router-dom'
+import headerImageTeam from "../../Assets/Header-images/botCat.png"
+import headerImageDonation from "../../Assets/Header-images/btnDonate.png"
 import './Header.css'
 function Header() {
   return (
@@ -11,10 +13,10 @@ function Header() {
             </div>
             <div className='header-buttons'>
                 <div className='header-team'>
-                <NavLink to={'/Home'}><img src={"./Header-images/botCat.png"} alt="botonTeam" /></NavLink> 
+                <NavLink to={'/Home'}><img src={headerImageTeam} alt="botonTeam" /></NavLink> 
                 </div>
                 <div className='header-donations'>
-                <NavLink to={'/Home'}><img src={"./Header-images/btnDonate.png"} alt="botonTeam" /></NavLink>
+                <NavLink to={'/Home'}><img src={headerImageDonation} alt="botonTeam" /></NavLink>
                 </div>
             </div>
         </div>
