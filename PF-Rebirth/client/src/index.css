@@ -8,15 +8,57 @@
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: var(--background) !important;
+  background: url("./Assets/mainBK.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 :root {
   --black: #1D1E22;
-  --blackOver: #2B1E38;
   --white: #fafafa;
   --blackTransp: #1d1e22ae;
   --pink: #FF8AE5;
   --greylight: #B4A8B9;
   --grey: #5A5A70;
+  --grey2: #3c3d4197;
+  --grey3: #3c37376a;
   --green: #87E2D2;
-  --border: #3c3d4197;
-  --shadow: #000000ac;
+  --background: #fafafa;
+}
+
+body.light {
+  --border: var(--grey2);
+  --text-color: var(--greylight);
+  --text-color-sec: var(--white);
+  --background: var(--white);
+  --background-sec: var(--grey);
+  --backgroundFooter: var(--grey);
+  --backgroundBttn: var(--pink);
+  --shadow: var(--grey3);
+}
+
+body.dark {
+  --border: var(--grey2);
+  --text-color: var(--white);
+  --text-color-sec: var(--greylight);
+  --background: var(--grey);
+  --background-sec: var(--pink);
+  --backgroundFooter: var(--green);
+  --backgroundBttn: var(--grey);
+  --shadow: var(--grey3);
+}
+
+.boxWrap {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  height: fit-content;
 }

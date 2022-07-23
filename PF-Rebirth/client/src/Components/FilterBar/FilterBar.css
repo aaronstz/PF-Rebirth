@@ -4,9 +4,19 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
+  margin: 10px 0 20px 0px;
 }
 
 .btn-pink {
-  background-color: var(--pink);
+  background-color: var(--pink) !important;
+  border: 1px solid var(--pink) !important;
   color: var(--white);
+  cursor: pointer;
+}
+
+.btn-pink:hover {
+  background-color: var(--greylight) !important;
+  border: 1px solid var(--pink) !important;
+  color: var(--white);
+  cursor: pointer;
 }

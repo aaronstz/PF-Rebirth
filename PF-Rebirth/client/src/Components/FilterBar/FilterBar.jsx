@@ -42,9 +42,7 @@ function FiltersBar() {
           aria-label="Search by name"
           aria-describedby="basic-addon2"
         />
-        <Button variant="pink" id="button-addon2">
-          Search
-        </Button>
+        <Button className="btn-pink">Search</Button>
       </InputGroup>
 
       <DropdownButton

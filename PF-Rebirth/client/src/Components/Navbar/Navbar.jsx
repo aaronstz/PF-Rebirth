@@ -3,9 +3,9 @@ import React from "react";
 import logo from "../../Assets/Navbar/logo.png";
 import es from "../../Assets/Navbar/ES.png";
 import vector from "../../Assets/Navbar/Vector.png";
-import vector1 from "../../Assets/Navbar/Vector-1.png";
 import vector2 from "../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../Assets/Navbar/Vector-3.png";
+import DarkMode from "../../Components/Switch/SwitchMode";
 
 function Navbar() {
   return (
@@ -21,7 +21,7 @@ function Navbar() {
           <span>My favorites</span>
         </div>
         <div className="item">
-          <img src={vector1} alt="vector1" className="icons" />
+          <DarkMode />
           <span>Mode</span>
         </div>
         <div className="item">
