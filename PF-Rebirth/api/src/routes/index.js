@@ -1,6 +1,6 @@
 const { Router } = require("express");
 // const ownersRoute = require("./owners.js");
-// const petsRoute = require("./pets.js");
+const petsRoute = require("./pets.js");
 const userRoute = require("./user.js");
 // const chatRoute = require("./chat.js");
 // const requestRoute = require("./request.js");
@@ -13,7 +13,7 @@ const router = Router();
 router.use(cors());
 
 // router.use("/owners", ownersRoute);
-// router.use("/pets", petsRoute);
+router.use("/pets", petsRoute);
 router.use("/user", userRoute);
 // router.use("/chat", chatRoute);
 // router.use("/c/:idhat", chatRoIdute);
