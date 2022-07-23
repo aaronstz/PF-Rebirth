@@ -11,19 +11,22 @@ export default function LandingPage(){
     return(
         <body>
         <div class ="container">
-            <img src = {logo} alt = "Rebirth" class = "logo-ld"/>
+            <div class = "logo-ld">
+                <img src = {logo} alt = "Rebirth" />
+            </div>
             <div class ="title-ld">
-            <h2>A NEW LIFE OPPORTUNITY</h2>
+                <h2>A   NEW   LIFE   OPPORTUNITY </h2>
             </div>
             <Link to ='/home'>
-            <img src = {dog} alt ="Dog Team" class ="pet-ld"/>
-            <img src = {cat} alt ="Cat Team" class ="pet-ld"/>
+                <div class ="pet-ld">
+                        <img src = {dog} alt ="Dog Team" />
+                        <img src = {cat} alt ="Cat Team" />
+                </div>
             </Link>
             <div class ="sub-ld">
-            <br/>
-            <h3>PLEASE CHOOSE YOUR TEAM</h3>
+                <br/>
+                    <h3>PLEASE   CHOOSE   YOUR   TEAM</h3>
             </div>
-
         </div>
         </body>
     )

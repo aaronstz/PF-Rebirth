@@ -1,5 +1,30 @@
+
+
 .logo-ld{
-    margin-top:5px;
-    display:inline-block;
-    position:relative;
+    display:flex;
+    justify-content:center;
 }
+
+.title-ld{
+    display:flex;
+    justify-content:center;
+    margin-top: 20px;
+    color:rgb(180, 180, 180);
+    white-space: pre;
+    font-family: monospace;
+}
+
+.pet-ld{
+    display:flex;
+    justify-content:center;
+    margin-top: 20px;
+}
+
+.sub-ld{
+    display:flex;
+    justify-content:center;
+    margin-top: 20px;
+    color:rgb(180, 180, 180);
+    white-space: pre;
+
+} 
