@@ -19,8 +19,8 @@
 }
 
 .pagination li {
-  background-color: var(--white);
-  border: solid 1px var(--greylight);
+  background-color: var(--background);
+  border: solid 1px var(--border);
   margin: .5rem;
   border-radius: .5rem;
   position: relative;
@@ -33,12 +33,12 @@
   opacity: 1;
   background-color: var(--pink);
   color: var(--white);
-  box-shadow: 0px 2px 4px 0px var(--greylight);
+  box-shadow: 0px 2px 4px 0px var(--shadow);
 }
 
 .pagination a {
   text-decoration: none;
-  color: var(--greylight);
+  color: var(--text-color);
   display: block;
   padding: 1rem 1.6rem;
   font-size: 1rem;

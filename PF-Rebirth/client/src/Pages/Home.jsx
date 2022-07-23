@@ -7,13 +7,11 @@ import FiltersBar from "../Components/FilterBar/FilterBar";
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import "../index.css";
-import DarkMode from "../Components/Switch/SwitchMode";
 
 function Home() {
   return (
     <>
       <Navbar />
-      <DarkMode />
       <Container>
         <Header />
         <FiltersBar />

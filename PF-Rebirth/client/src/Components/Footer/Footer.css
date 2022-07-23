@@ -32,7 +32,7 @@ body {
 footer {
   padding-top: 25px;
   background-color: var(--backgroundFooter);
-  color: var(--greylight);
+  color: var(--text-color);
 }
 
 .row {
@@ -56,7 +56,7 @@ footer {
 
 
 footer a {
-  color: var(--greylight);
+  color: var(--text-color);
   text-decoration: none;
   height: 0rem;
 
@@ -66,7 +66,7 @@ footer a:hover,
 footer a:focus {
   color: #aaa;
   text-decoration: none;
-  border-bottom: 1px solid var(--greylight);
+  border-bottom: 1px solid var(--text-color);
 
 }
 
@@ -149,7 +149,7 @@ footer .form-control {
 }
 
 .lower {
-  border-top: 3px solid rgb(96, 96, 96);
+  border-top: 1px solid var(--text-color);
   margin-left: 50px;
   margin-right: 50px;
 

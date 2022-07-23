@@ -1,6 +1,6 @@
 import "./Footer.css";
-import logo from "../../logo.png";
-import socials from "../../Social.png";
+import logo from "../../Assets/logo.png";
+import socials from "../../Assets/Social.png";
 
 export default function Footer() {
   return (
@@ -17,7 +17,6 @@ export default function Footer() {
             <div class="row-lists">
               <div class="col-6">
                 <ul class="list-unstyled">
-                  {" "}
                   Company
                   <li class="nav-item">
                     <a href=" ">About us</a>

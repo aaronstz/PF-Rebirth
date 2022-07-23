@@ -24,30 +24,32 @@ body {
   --pink: #FF8AE5;
   --greylight: #B4A8B9;
   --grey: #5A5A70;
+  --grey2: #3c3d4197;
+  --grey3: #3c37376a;
   --green: #87E2D2;
-  --border: #3c3d4197;
-  --sombra: #3c37376a;
   --background: #fafafa;
 }
 
 body.light {
-  --border: var(--border);
+  --border: var(--grey2);
   --text-color: var(--greylight);
-  --text-color-sec: var(--greylight);
+  --text-color-sec: var(--white);
   --background: var(--white);
-  --background-color-sec: var(--grey);
+  --background-sec: var(--grey);
   --backgroundFooter: var(--grey);
-  --shadow: var(--sombra);
+  --backgroundBttn: var(--pink);
+  --shadow: var(--grey3);
 }
 
 body.dark {
-  --border: var(--border);
-  --text-color: var(--greylight);
-  --text-color-sec: var(--white);
+  --border: var(--grey2);
+  --text-color: var(--white);
+  --text-color-sec: var(--greylight);
   --background: var(--grey);
   --background-sec: var(--pink);
   --backgroundFooter: var(--green);
-  --shadow: var(--sombra);
+  --backgroundBttn: var(--grey);
+  --shadow: var(--grey3);
 }
 
 .boxWrap {
