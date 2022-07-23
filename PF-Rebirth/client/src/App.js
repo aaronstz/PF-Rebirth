@@ -4,7 +4,7 @@ import LandingPage from "./Pages/LandingPage";
 import Home from "./Pages/Home";
 import FAQs from "./Pages/FAQs";
 import Login from "./Pages/Login";
-// import Details from "./Pages/Details";
+import Details from "./Pages/Details";
 // import About from "./Pages/About";
 import Support from "./Pages/Support";
 // import Terms from "./Pages/Terms";
@@ -21,8 +21,9 @@ function App() {
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/login" element={<Login />} />
         <Route path = '/support' element = {<Support/>}/>
+        <Route path = '/details' element = {<Details/>}/> 
         {/*
-          <Route path = '/home/:id' element = {<Details/>}/>
+          cambiar /details a -> home/:id una vez terminado
           <Route exact path="/" element={<LandingPage />} />
           <Route path = '/about' element = {<About/>}/>
           
