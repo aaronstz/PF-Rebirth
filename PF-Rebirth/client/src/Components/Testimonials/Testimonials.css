@@ -1,0 +1,28 @@
+.profile{
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.item1{
+    display: flex;
+}
+
+.containerItems{
+    display: flex;
+    height: 70vh;
+    width: 80vw;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.carousel, .slide{
+    margin: 0 auto;
+    height: 70vh;
+}
+
+.infoTestimonial{
+    height: 20vh;
+
+}
