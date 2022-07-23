@@ -22,7 +22,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path = '/details' element = {<Details/>}/> 
         {/*
+
+        
           cambiar /details a -> home/:id una vez terminado
+
+
           <Route exact path="/" element={<LandingPage />} />
           <Route path = '/about' element = {<About/>}/>
           <Route path = '/support' element = {<Support/>}/>
