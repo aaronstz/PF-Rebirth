@@ -1,21 +1,23 @@
-
-.containerNavbar{
+.containerNavbar {
     display: flex;
+    padding-left: 11%;
+    padding-right: 11%;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: var(--background);
     height: fit-content;
+    box-shadow: 0px 3px 33px 0px var(--shadow);
 }
 
-.iconsContainer{
+.iconsContainer {
     display: flex;
     justify-content: space-around;
     align-items: center;
     font-size: 14px;
-    color: gray;
+    color: var(--background-sec);
 }
 
-.item{
+.item {
     width: fit-content;
     display: flex;
     justify-content: flex-start;
@@ -24,18 +26,18 @@
     margin: 0 15px;
 }
 
-.bandera{
+.bandera {
     border-radius: 5px;
     width: 26px;
     height: 22px;
     margin-left: 8px;
 }
 
-.icons{
+.icons {
     width: 25px;
     margin-right: 8px;
 }
 
-.logo{
+.logo {
     margin: 12px;
 }
