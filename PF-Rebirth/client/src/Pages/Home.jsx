@@ -16,9 +16,11 @@ function Home() {
         <Header />
         <FiltersBar />
         <div className="boxWrap">
+
           <Cards />
           <Cards />
           <Cards />
+
         </div>
         <Paginations />
       </Container>

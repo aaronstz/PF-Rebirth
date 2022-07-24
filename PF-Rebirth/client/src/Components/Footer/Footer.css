@@ -2,6 +2,7 @@
 -------------------------------------------------- */
 html {
   position: relative;
+  
 }
 
 body {
@@ -18,13 +19,15 @@ body {
 
 /* Taller footer on small screens */
 @media (max-width: 567em) {
-  body {
-    margin-bottom: 700px;
-  }
 
-  .footer {
-    height: 500px;
-  }
+    body {
+      margin-bottom: 700px;
+    }
+    .footer {
+      height: 500px;
+
+    }
+
 }
 
 /* Sticky footer style and color
@@ -35,23 +38,29 @@ footer {
   color: var(--text-color);
 }
 
-.row {
-  flex: none;
-  position: relative;
+
+.row{
+    flex:none;
+    display:inline-block;
+    position: relative;
+
 }
 
 .col-md-5 {
   margin-left: 40px;
 }
 
-.body {
-  height: 50%;
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  margin-top: 80px;
-  bottom: 0;
+
+.body{
+    height: 50%;
+    /* width: 100%; */
+
+    display:flex;
+    position: relative;
+    justify-content: center;
+    margin-top:80px;
+    bottom:0;
+
 }
 
 
@@ -70,10 +79,12 @@ footer a:focus {
 
 }
 
-.container {
-  margin-top: 40px;
-  bottom: 0;
-  height: 100%;
+
+.container{
+    margin-top: 40px;
+    bottom:0;
+    height: 100%;
+    
 
 }
 
@@ -115,9 +126,15 @@ footer .form-control {
   transform: translateY(-195px) translateX(35rem);
 }
 
-.paragraph {
-  font-weight: normal;
-  line-height: 1.4;
+
+.paragraph{
+    font-weight:normal;
+    margin: 0;
+}
+
+.sub-title{
+  margin-top: 5px;
+
 }
 
 .list-unstyled {
