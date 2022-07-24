@@ -65,6 +65,7 @@ function Home() {
         actual={page}
       />
       <Testimonials />
+
       <Footer />
     </div>
   );

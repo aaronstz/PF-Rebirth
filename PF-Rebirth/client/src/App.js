@@ -18,10 +18,10 @@ function App() {
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
+        <Route path = '/home/:id' element = {<Details/>}/> 
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/login" element={<Login />} />
         <Route path = '/support' element = {<Support/>}/>
-        <Route path = '/details' element = {<Details/>}/> 
         <Route path = '/terms' element = {<Terms/>}/>
         <Route path = '/privacy' element = {<Privacy/>}/>
         {/*
