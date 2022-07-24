@@ -11,7 +11,7 @@ export default function Footer() {
           <div class="col-md-5">
 
               <i class="fa fa-road"></i>
-              <img src={logo} alt="Rebirth"></img>
+              <NavLink to={"/home"} className={"footer-link"} ><img src={logo} alt="Rebirth"></img></NavLink>
             <div class ="sub-title">
               <p>Pet adoption network, to give 
               <br/> them a new life opportunity.</p>
