@@ -17,12 +17,14 @@ export default function LandingPage(){
             <div class ="title-ld">
                 <h2>A   NEW   LIFE   OPPORTUNITY </h2>
             </div>
-            <Link to ='/home'>
-                <div class ="pet-ld">
+            <div class ="pet-ld">
+            <Link to ='/home?type=dogs'>
                         <img src = {dog} alt ="Dog Team" />
-                        <img src = {cat} alt ="Cat Team" />
-                </div>
             </Link>
+            <Link to ='/home?type=cats'>
+                        <img src = {cat} alt ="Cat Team" />
+            </Link>
+            </div>
             <div class ="sub-ld">
                 <br/>
                     <h3>PLEASE   CHOOSE   YOUR   TEAM</h3>
