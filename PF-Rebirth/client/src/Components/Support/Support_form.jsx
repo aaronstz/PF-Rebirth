@@ -29,7 +29,7 @@ function handleChange(event){
     switch (field){
 case "email":
     if (!regexEmail.test(value)){
-     setSFormError({...sFormError,emailError:"Email invalid"})
+     setSFormError({...sFormError,emailError:"Email is invalid"})
     }else{
         setSFormError({...sFormError,emailError:""})
     }
