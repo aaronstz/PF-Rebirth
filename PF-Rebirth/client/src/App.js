@@ -20,11 +20,18 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/login" element={<Login />} />
+        <Route path = '/support' element = {<Support/>}/>
+        <Route path = '/details' element = {<Details/>}/> 
         {/*
-          <Route path = '/home/:id' element = {<Details/>}/>
+
+        
+          cambiar /details a -> home/:id una vez terminado
+
+
           <Route exact path="/" element={<LandingPage />} />
           <Route path = '/about' element = {<About/>}/>
-          <Route path = '/support' element = {<Support/>}/>
+          
+
           <Route path = '/terms' element = {<Terms/>}/>
           <Route path = '/privacy' element = {<Privacy/>}/>
           <Route path = '*' element = {<NotFound/>}/> */}

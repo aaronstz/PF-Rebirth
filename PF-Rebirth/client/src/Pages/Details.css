@@ -1,0 +1,203 @@
+*{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.dtl-card{  
+    left:50%;
+    margin-top:-20%;
+    height:450px;
+} 
+
+.dtl-card .title{
+    font-size: 1.5rem;
+    color: rgb(181, 181, 181);
+    text-align: left;
+    vertical-align: text-bottom;
+    margin-bottom: 8px;
+    font-weight: bold;
+    letter-spacing:3px;
+}
+
+.dtl-card .breed{
+    font-size: 1rem;
+    color: rgb(181, 181, 181);
+    text-align: left;
+    line-height: 0.9;
+    margin-bottom: 10pt;
+    vertical-align: text-bottom;
+    font-weight:bold;
+    letter-spacing: 1px;
+}
+
+.dtl-card .age {
+    font-size: .8rem;
+  color: rgb(181, 181, 181);
+  text-align: left;
+  line-height: 0.9;
+  margin-bottom: 10pt;
+  vertical-align: text-bottom;
+}
+
+.dtl-card .location{
+    font-size: .9rem;
+  color: rgb(143, 143, 143);
+  text-align: left;
+  line-height: 0.9;
+  margin-bottom: 10pt;
+  vertical-align: text-bottom;
+}
+
+.attributes {
+    font-size: 2rem;
+    color: rgb(143, 143, 143);
+    text-align: left;
+    line-height: 0.9;
+    vertical-align: text-bottom;
+    letter-spacing: 3px;
+  }
+
+  .story-dtl{
+    font-size: .9rem;
+    color: rgb(181, 181, 181);
+    text-align: left;
+    line-height: 0.9;
+    vertical-align: text-bottom;
+    letter-spacing: 2px;
+  }
+  
+
+  .img-dtl{
+    transition: all 0.3s;
+    display:flex;
+    justify-content: flex-start;
+    position:relative;
+    top:-43rem;
+    left:25rem;
+    margin:auto;
+    overflow:hidden;
+    width:60%;
+    transform:scale(1)
+}
+
+.img-dtl img{
+    max-width: 100%;
+    transition: all 0.3s;
+    display:block;
+    border-radius:20px;
+    width: 80%;
+    height:100%;
+  }
+
+  /* .img-dtl:hover img{
+    transform: scale(1.1);
+  } */
+
+.btnFav {
+    position: absolute;
+    left: 3%;
+    top: 2%;
+    width: 45px;
+    height: 43px;
+    cursor: pointer;
+    background: url(../Assets/botonFAV_inactive.png);
+  }
+
+  .btnFav:hover {
+    position: absolute;
+    left: 3%;
+    top: 2%;
+    width: 45px;
+    height: 43px;
+    cursor: pointer;
+    background: url(../Assets/botonFAV_active.png);
+  }
+
+
+
+
+
+  .right-card{
+    position: relative;
+    top:-21rem;
+    left:25rem;
+    flex-direction: column;
+    width: 13rem;
+    height: 250px;
+    color: black;
+    word-wrap: break-word;
+    text-align: center;
+    background-color: transparent;
+    backdrop-filter: blur(1rem);
+    /* border:1px solid black; */
+  }
+
+  .disp{
+    color: rgb(87, 237, 160);
+    font-size:20px;
+    letter-spacing: 2px;
+  }
+
+  .txt-description{
+    color: grey;
+    border-bottom: 1px solid rgb(180, 180, 180);
+    margin-left:15px;
+    margin-right:15px;
+
+  }
+  .txt-description-last{
+    color: grey;
+    margin: 18px;
+  }
+
+  .btn-dtl{
+    display:flex;
+    position: relative;
+    justify-content:left;
+    top:-300px;
+    left:40px;
+  }
+
+  .lbutton{
+    width: 120px;
+    height: 25px;
+    padding-top: 5px;
+    margin-left: 25rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-family: 'Mochiy Pop One';
+    background: var(--backgroundBttn);
+    border: 1px solid transparent;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+  }
+
+  .text{
+    display:flex;
+    position:relative;
+    justify-content:center;
+    top:-15%;
+    color: white;
+    font-size:10px;
+    letter-spacing:2px;
+    font-weight: bold;
+  }
+
+  .lbutton:hover {
+    background: var(--text-color);
+    border: 1px solid var(--border);
+  }
+  
+  .lbutton:focus {
+    background: var(--text-color);
+    border: 1px solid var(--border);
+  }
+  
+  .lbutton:active {
+    background: var(--text-color);
+    border: 1px solid var(--border);
+  }
