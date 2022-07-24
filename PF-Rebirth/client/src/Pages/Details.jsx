@@ -9,6 +9,12 @@ import Footer from '../Components/Footer/Footer';
 import Header from '../Components/Header/Header';
 import pic from '../Assets/fotoPet1.png'
 import './Details.css'
+import female from '../Assets/Female_ico_big.png';
+import dogIco from '../Assets/dog_ico_big.png';
+import weight from '../Assets/weight_ico_big.png';
+
+
+
 
 function Details() {
   return (
@@ -37,18 +43,21 @@ function Details() {
             <br/>fringilla accumsan, risus sem</h5>
           </div>
           <div class ="right-card">
-            <h3 class ="disp">STATE</h3>
+            <h3 class ="disp">AVAILABLE</h3>
             <div class ="txt-description">
-            <span >Sex</span>
+            <span >Female</span>
+            <img src ={female}/>
             </div>
             <br />
             <div class ="txt-description">
-            <span >Size</span>
+            <span >Medium</span>
+              <img src = {dogIco}/>
 
             </div>
             <br />
             <div>
-            <span class ="txt-description-last">Weight</span>
+            <span class ="txt-description-last">3.4kg</span>
+              <img src={weight} alt ="weight"/>
 
             </div>
 
