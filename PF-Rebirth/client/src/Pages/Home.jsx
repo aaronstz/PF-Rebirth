@@ -53,7 +53,9 @@ function Home() {
             return(
               <div>
             <div className="boxWrap">
-            <Cards image = {p.image} name ={p.name} breed ={p.race} age ={p.age} gender ={p.gender} size ={p.size} description ={p.description} />
+              <Link to={'/home/' + p.id}>
+              <Cards image = {p.image} name ={p.name} breed ={p.race} age ={p.age} gender ={p.gender} size ={p.size} description ={p.description} />
+              </Link>
             </div>
             </div>
               )
