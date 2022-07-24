@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from '../Components/Footer/Footer';
 import Header from '../Components/Header/Header';
-import Support_form from '../Components/Support/Support_form'
+import SupportForm from '../Components/Support/Support_form'
 
 function Support() {
   return (
@@ -15,7 +15,7 @@ function Support() {
       <Row>
         <Col>
 
-        <Support_form/>
+        <SupportForm/>
         
         </Col>
       </Row>
