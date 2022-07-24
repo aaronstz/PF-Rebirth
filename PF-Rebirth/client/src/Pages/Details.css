@@ -7,6 +7,7 @@
 
 .dtl-card{  
     left:50%;
+    margin-top:-20%;
     height:450px;
 } 
 
@@ -148,7 +149,7 @@
   }
   .txt-description-last{
     color: grey;
-
+    margin: 18px;
   }
 
   .btn-dtl{
