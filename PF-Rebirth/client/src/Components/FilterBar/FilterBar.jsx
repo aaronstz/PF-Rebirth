@@ -29,11 +29,15 @@ function FiltersBar() {
         title="AGE"
         className="ms-2"
       >
-        <Dropdown.Item href="#/action-1" active>
-          1 year
+        <Dropdown.Item value="age" href="#/action-1" active>
+          all
         </Dropdown.Item>
-        <Dropdown.Item href="#/action-2">2 years</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">3 years</Dropdown.Item>
+        <Dropdown.Item value="young" href="#/action-2">
+          young
+        </Dropdown.Item>
+        <Dropdown.Item value="old" href="#/action-3">
+          old
+        </Dropdown.Item>
       </DropdownButton>
 
       <InputGroup className="ms-2 w-50">
