@@ -1,6 +1,6 @@
 import "./Card.css";
 import foto from "../../Assets/fotoPet1.png";
-function Cards({ id, image, name, race, age }) {
+function Cards() {
   return (
     <div className="lcard">
       <div className="btnFav"></div>

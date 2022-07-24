@@ -70,7 +70,7 @@ export function getPets(){
 export function getPetNames(name){
     return async function(dispatch){
         try {
-            const json = await axios(`http://localhost:3001/pokemons?name=${name}`);
+            const json = await axios(`http://localhost:3001/pets?name=${name}`);
             return dispatch({
                 type: 'GET_NAMES',
                 payload: json.data
@@ -126,14 +126,14 @@ export function resetDetails(){
 
 export function orderBySex(payload) {
     return {
-        type: 'ORDER_BY_SEX',
+        type: 'FILTER_BY_SEX',
         payload
     }
 }
 
 export function orderBySize(payload) {
     return {
-        type: 'ORDER_BY_SIZE',
+        type: 'FILTER_BY_SIZE',
         payload
     }
 }
@@ -147,7 +147,7 @@ export function orderByAge(payload) {
 
 export function orderByLocation(payload) {
     return {
-        type: 'ORDER_BY_LOCATION',
+        type: 'FILTER_BY_LOCATION',
         payload
     }
 }

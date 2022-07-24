@@ -1,0 +1,14 @@
+export const GET_USER = "GET_USER";
+export const GET_USER_ID = "GET_USER_ID";
+export const DELETE_USER = "DELETE_USER";
+export const GET_NAMES = "GET_NAMES";
+export const GET_DETAILS = "GET_DETAILS";
+export const GET_PETS = "GET_PETS";
+export const DELETE_PET = "DELETE_PET";
+export const RESET_DETAILS = "RESET_DETAILS";
+export const POST_PET = "POST_PET";
+export const POST_USER = "POST_USER";
+export const ORDER_BY_AGE = "ORDER_BY_AGE";
+export const FILTER_BY_SIZE = "ORDER_BY_SIZE";
+export const FILTER_BY_LOCATION = "ORDER_BY_LOCATION";
+export const FILTER_BY_SEX = "FILTER_BY_SEX";
