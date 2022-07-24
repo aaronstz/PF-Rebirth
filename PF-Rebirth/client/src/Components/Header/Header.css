@@ -1,0 +1,37 @@
+.header-container{
+    display: flex;
+    flex-direction: row;
+  }
+
+
+.header-carousel{
+    width: 860px;
+   
+}
+.header-buttons{
+    margin:14px;
+    display: flex;
+    flex-direction: column;
+}
+.heaeder-team{
+
+    width: 420px;
+    height: 210px;  
+}
+.header-donations{
+    margin-top: 12px;
+    width: 420px;
+    height: 160px;
+}
+@media (max-width: 1400px) {
+    .header-container{
+        flex-direction: column;
+    }
+    .header-buttons{
+     flex-direction:row;
+     align-items: flex-end;
+     }
+     .header-donations{
+        margin-bottom: 6px;
+     }
+}
