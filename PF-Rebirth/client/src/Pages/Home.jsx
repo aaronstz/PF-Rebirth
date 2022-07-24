@@ -23,8 +23,8 @@ function Home() {
           <Cards />
 
         </div>
-        <Testimonials/>
         <Paginations />
+        <Testimonials/>
       </Container>
       <Footer />
     </>
