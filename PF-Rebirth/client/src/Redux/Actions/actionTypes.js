@@ -12,3 +12,5 @@ export const ORDER_BY_AGE = "ORDER_BY_AGE";
 export const FILTER_BY_SIZE = "ORDER_BY_SIZE";
 export const FILTER_BY_LOCATION = "ORDER_BY_LOCATION";
 export const FILTER_BY_SEX = "FILTER_BY_SEX";
+export const GET_TYPES = 'GET_TYPES'
+export const GET_CATS = 'GET_CATS'

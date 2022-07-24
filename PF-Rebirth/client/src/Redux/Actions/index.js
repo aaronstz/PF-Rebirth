@@ -55,7 +55,7 @@ export function deleteUser(id){
 export function getPets(){
     return async function(dispatch){
         try {
-            const json = await axios('http://localhost:3001/pets');
+            const json = await axios(`http://localhost:3001/pets`);
             return dispatch({
                 type: 'GET_PETS',
                 payload: json.data
@@ -66,6 +66,28 @@ export function getPets(){
         }
     }
 }
+
+export function getTypes(type){
+    return async function(dispatch){
+        try {
+            const json = await axios(`http://localhost:3001/pets?type=${type}`);
+            return dispatch({
+                type: 'GET_TYPES',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+    // export function getTypes(payload){
+    //     return {
+    //         type: 'GET_TYPES',
+    //         payload
+    //     }
+    // }
+
 
 export function getPetNames(name){
     return async function(dispatch){

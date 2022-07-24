@@ -8,7 +8,7 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
-import { getPets, getPetNames } from '../Redux/Actions/index.js'
+import { getPets, getTypes } from '../Redux/Actions/index.js'
 import { useDispatch, useSelector} from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -16,10 +16,11 @@ import { Link } from 'react-router-dom';
 
 
 
-function Home() {
+function Home({type}) {
 
   const dispatch = useDispatch();
   const pets = useSelector(store => store.pets)
+  const types = useSelector(store => store.type)
   // const loading = useSelector(store => store.loading)
   
 
@@ -36,9 +37,11 @@ function Home() {
     setPage(pageNum)
   }
 
+  // const dog = "dog"
+
   useEffect(()=>{
     dispatch(getPets());
-
+    
   }, [dispatch])
 
 

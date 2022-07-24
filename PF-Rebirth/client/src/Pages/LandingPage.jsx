@@ -4,9 +4,24 @@ import logo from '../Assets/logoLanding.png';
 import cat from '../Assets/catTeam.png';
 import dog from '../Assets/dogTeam.png';
 import './LandingPage.css'
-
+import { getTypes } from '../Redux/Actions/index'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 export default function LandingPage(){
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+
+    function handleClick(e){
+        e.preventDefault()
+        dispatch(getTypes(e.target.value))
+        navigate('/home')
+    }
+
+
 
     return(
         <body>
@@ -18,12 +33,15 @@ export default function LandingPage(){
                 <h2>A   NEW   LIFE   OPPORTUNITY </h2>
             </div>
             <div class ="pet-ld">
-            <Link to ='/home?type=dogs'>
-                        <img src = {dog} alt ="Dog Team" />
-            </Link>
-            <Link to ='/home?type=cats'>
-                        <img src = {cat} alt ="Cat Team" />
-            </Link>
+                        <div>
+                            <button value = "dog" onClick={(e)=>handleClick(e)}>
+                                <img  src = {dog} alt ="Dog Team" />
+                            </button>
+                            <button value = "cat" onClick={(e)=>handleClick(e)} >
+                            <img src = {cat} alt ="Cat Team" />
+                            </button>
+
+                        </div>
             </div>
             <div class ="sub-ld">
                 <br/>
