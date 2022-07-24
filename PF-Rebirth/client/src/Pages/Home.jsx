@@ -6,6 +6,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import FiltersBar from "../Components/FilterBar/FilterBar";
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
+import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
 
 function Home() {
@@ -22,6 +23,7 @@ function Home() {
           <Cards />
 
         </div>
+        <Testimonials/>
         <Paginations />
       </Container>
       <Footer />
