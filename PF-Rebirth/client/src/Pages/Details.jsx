@@ -24,11 +24,13 @@ function Details() {
         <Header/>
         <br/>
         <div class ="dtl-card">
+          <div class ="info">
           <h3 class ="title">Lolita</h3>
           <h4 class = "breed">Border Collie</h4>
           <h5 class ="age">2 years</h5>
           <h6 class ="location">Mexico City</h6>
           <br/>
+          </div>
           <div class ="attributes">
           <h5>PLAYFUL, FRIENDLY, 
           <br/>OBEDIENT, LOVELY</h5>
@@ -62,9 +64,10 @@ function Details() {
             </div>
 
           </div>
-          <div class ="btn-dtl"><button class ="lbutton"><span class ="text">Adopt me!</span></button></div>
+          <div class ="btn-dtl"><button class ="a-btn"><span class ="text">Adopt me!</span></button></div>
         <div class ="img-dtl">
-          <div class ="btnFav"></div>
+          <div class ="a-btnFav">
+          </div>
           <img src = {pic} alt ="Pet" class ="img"/>
         </div>
       </div>
