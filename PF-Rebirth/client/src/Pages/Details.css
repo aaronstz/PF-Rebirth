@@ -11,6 +11,10 @@
     height:450px;
 } 
 
+.info{
+  display:inline-block;
+}
+
 .dtl-card .title{
     font-size: 1.5rem;
     color: rgb(181, 181, 181);
@@ -42,10 +46,9 @@
 }
 
 .dtl-card .location{
-    font-size: .9rem;
+  font-size: .9rem;
   color: rgb(143, 143, 143);
   text-align: left;
-  line-height: 0.9;
   margin-bottom: 10pt;
   vertical-align: text-bottom;
 }
@@ -95,7 +98,7 @@
     transform: scale(1.1);
   } */
 
-.btnFav {
+.a-btnFav {
     position: absolute;
     left: 3%;
     top: 2%;
@@ -105,7 +108,7 @@
     background: url(../Assets/botonFAV_inactive.png);
   }
 
-  .btnFav:hover {
+  .a-btnFav:hover {
     position: absolute;
     left: 3%;
     top: 2%;
@@ -160,7 +163,7 @@
     left:40px;
   }
 
-  .lbutton{
+  .a-btn{
     width: 120px;
     height: 25px;
     padding-top: 5px;
@@ -187,17 +190,17 @@
     font-weight: bold;
   }
 
-  .lbutton:hover {
+  .a-btn:hover {
     background: var(--text-color);
     border: 1px solid var(--border);
   }
   
-  .lbutton:focus {
+  .a-btn:focus {
     background: var(--text-color);
     border: 1px solid var(--border);
   }
   
-  .lbutton:active {
+  .a-btn:active {
     background: var(--text-color);
     border: 1px solid var(--border);
   }
