@@ -1,16 +1,60 @@
 import React from "react";
 import "./Pagination.css";
 
-const Paginations = () => {
+const Paginations = ({cantPets, pets, paginado, actual}) => {
+  const pageNumbers = [];
+
+
+  for(let i = 1; i<= Math.ceil(pets / cantPets); i++) {
+    pageNumbers.push(i)
+  }
+
   return (
     <div>
       <div className="pagination">
-        <ul className="previous">
+
+        
+        {/* {
+          pageNumbers.includes(actual -1 ) &&
+          <ul className="previous">
+            <li>
+            <span onClick={()=> paginado(actual - 1 )} >Prev</span>
+            </li>
+          </ul>
+        } */}
+
+        { pageNumbers && pageNumbers.map(e=>(
+          <ul className="next">
+            <li>
+            <span onClick={()=> paginado(e)}>{e}</span>
+            </li>
+          </ul>
+        ))
+        }
+        
+        {/* {
+          pageNumbers.includes(actual + 1) &&
+          <ul className="next">
+            <li>
+          <span onClick={()=> paginado(actual + 1)}>{actual + 1}</span>
+            </li>
+          <li>
+          <span onClick={()=> paginado(actual + 1)}>Next</span>
+          </li>
+          </ul>
+
+
+
+        } */}
+
+
+
+        {/* <ul className="previous">
           <li>
             <a href=" ">Prev</a>
           </li>
-        </ul>
-        <ul className="pages">
+        </ul> */}
+        {/* [<ul className="pages">
           <li>
             <a href=" ">1</a>
           </li>
@@ -46,7 +90,7 @@ const Paginations = () => {
           <li>
             <a href=" ">Next</a>
           </li>
-        </ul>
+        </ul>] */}
       </div>
     </div>
   );
