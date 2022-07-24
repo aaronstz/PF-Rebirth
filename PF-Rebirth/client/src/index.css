@@ -38,6 +38,7 @@ body.light {
   --background-sec: var(--grey);
   --backgroundFooter: var(--grey);
   --backgroundBttn: var(--pink);
+  --backgroundBttn2: var(--green);
   --shadow: var(--grey3);
 }
 
@@ -49,6 +50,7 @@ body.dark {
   --background-sec: var(--pink);
   --backgroundFooter: var(--green);
   --backgroundBttn: var(--grey);
+  --backgroundBttn2: var(--green);
   --shadow: var(--grey3);
 }
 
@@ -56,6 +58,7 @@ body.dark {
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
