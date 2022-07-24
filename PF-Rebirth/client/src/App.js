@@ -8,7 +8,7 @@ import Details from "./Pages/Details";
 // import About from "./Pages/About";
 import Support from "./Pages/Support";
  import Terms from "./Pages/Terms";
-// import Privacy from "./Pages/Privacy";
+ import Privacy from "./Pages/Privacy";
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -23,6 +23,7 @@ function App() {
         <Route path = '/support' element = {<Support/>}/>
         <Route path = '/details' element = {<Details/>}/> 
         <Route path = '/terms' element = {<Terms/>}/>
+        <Route path = '/privacy' element = {<Privacy/>}/>
         {/*
 
         
@@ -34,7 +35,7 @@ function App() {
           
 
           
-          <Route path = '/privacy' element = {<Privacy/>}/>
+          
           <Route path = '*' element = {<NotFound/>}/> */}
       </Routes>
     </Router>
