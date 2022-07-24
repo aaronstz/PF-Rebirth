@@ -54,8 +54,8 @@ module.exports = (sequelize) => {
     race: {
       type: DataTypes.STRING,
     },
-    location: {
-      type: DataTypes.STRING,
-    },
+    // location: {
+    //   type: DataTypes.STRING,
+    // },
   });
 };
