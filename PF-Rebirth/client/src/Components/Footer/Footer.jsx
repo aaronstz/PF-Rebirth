@@ -1,6 +1,7 @@
 import "./Footer.css";
 import logo from "../../Assets/logo.png";
 import socials from "../../Assets/Social.png";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -27,7 +28,7 @@ export default function Footer() {
                     <a href=" ">Testimonials</a>
                   </li>
                   <li class="nav-item">
-                    <a href=" ">Contact Us</a>
+                  <NavLink to={"/support"}>Contact Us</NavLink>
                   </li>
                   <li class="nav-item">
                     <a href=" ">Donate</a>
@@ -39,7 +40,7 @@ export default function Footer() {
                   {" "}
                   Services
                   <li class="nav-item">
-                    <a href=" ">F. A. Q. s</a>
+                    <NavLink to={"/faqs"}>F. A. Q. s</NavLink>
                   </li>
                   <li class="nav-item">
                     <a href=" ">My Favorites</a>
@@ -48,7 +49,7 @@ export default function Footer() {
                     <a href=" ">My account</a>
                   </li>
                   <li class="nav-item">
-                    <a href=" ">Terms & Conditions</a>
+                  <NavLink to={"/terms"}>Terms & Conditions</NavLink>
                   </li>
                 </ul>
               </div>
@@ -77,14 +78,14 @@ export default function Footer() {
           <h3 class="rights">All Rights Reserved @ Team 13</h3>
           <ul class="footer-bottom">
             <li class="li-bottom">
-              <a href=" " class="a-bottom">
-                Terms & Conditions
-              </a>
+              <span class="a-bottom">
+              <NavLink to={"/terms"}>Terms & Conditions</NavLink>
+              </span>
             </li>
             <li class="li-bottom">
-              <a href=" " class="a-bottom">
-                Privacy & Policy
-              </a>
+              <span class="a-bottom">
+              <NavLink to={"/privacy"}>Privacy & Policy</NavLink>
+              </span>
             </li>
           </ul>
         </div>
