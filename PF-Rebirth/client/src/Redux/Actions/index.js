@@ -32,13 +32,13 @@ export function getUserId(id){
 }
 
 export function postUser(payload){
-    return function(dispatch){
+    return async function(dispatch){
         await axios.post('http://localhost:3001/user' + payload)
     }
 }
 
 export function deleteUser(id){
-    return function dispatch(){
+    return async function dispatch(){
         try {
             const json = await axios.delete(`http://localhost:3001/user/${id}`);
             return dispatch({
