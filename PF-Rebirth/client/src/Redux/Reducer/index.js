@@ -95,11 +95,23 @@ function rootReducer(state = initialState, action) {
       const filterSex =
         action.payload === "All"
           ? allSex
-          : allSex.filter((e) => e.genre === action.payload);
+          : allSex.filter((e) => e.gender === action.payload);
       return {
         ...state,
         filteredPets: filterSex,
       };
+
+    case FILTER_BY_LOCATION:
+      const location = state.pets;
+      const filterLocation =
+        action.payload === "All"
+          ? location
+          : location.filter((e) => e.location === action.payload);
+      return {
+        ...state,
+        filteredPets: filterLocation,
+      };
+
     default:
       return state;
   }
