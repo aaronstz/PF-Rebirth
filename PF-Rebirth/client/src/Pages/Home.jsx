@@ -62,6 +62,7 @@ function Home() {
           </Container>
           <Testimonials/>
           <Paginations cantPets = {cantPets} pets = {pets.length} paginado = {paginado} actual = {page}/>
+
       <Footer />
     </div>
   );
