@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Footer from "../Components/Footer/Footer";
 import logo from "../Assets/logoLanding.png";
 import cat from "../Assets/catTeam.png";
 import dog from "../Assets/dogTeam.png";

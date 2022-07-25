@@ -66,6 +66,7 @@ export function getPets() {
   };
 }
 
+
 export function getPetFilters(type, name) {
   type = type || "";
   name = name || "";
@@ -80,7 +81,7 @@ export function getPetFilters(type, name) {
       });
     } catch (error) {
       console.log(error);
-      alert("No pet found with that name :/");
+      alert("No pets found :/");
     }
   };
 }
@@ -142,14 +143,16 @@ export function resetDetails() {
   };
 }
 
-export function orderBySex(payload) {
+
+export function filterBySex(payload) {
   return {
     type: "FILTER_BY_SEX",
     payload,
   };
 }
 
-export function orderBySize(payload) {
+
+export function filterBySize(payload) {
   return {
     type: "FILTER_BY_SIZE",
     payload,
@@ -163,9 +166,11 @@ export function orderByAge(payload) {
   };
 }
 
-// export function orderByLocation(payload) {
-//     return {
-//         type: 'FILTER_BY_LOCATION',
-//         payload
-//     }
-// }
+
+export function filterByLocation(payload) {
+  return {
+    type: "FILTER_BY_LOCATION",
+    payload,
+  };
+}
+
