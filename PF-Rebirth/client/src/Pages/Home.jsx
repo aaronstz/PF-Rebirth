@@ -8,13 +8,24 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
+<<<<<<< HEAD
 import { getPetNames, getPetFilters } from "../Redux/Actions/index.js";
+=======
+
+import { getPets, getPetNames, getPetFilters } from "../Redux/Actions/index.js";
+>>>>>>> 1f7baed309f80139992649c13d42a02f044d32d6
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+
+
+function Home() {
+
+
 function Home() {
   const petType = useLocation().search?.replace("?type=", "");
+
   const dispatch = useDispatch();
   const pets = useSelector((store) => store.pets);
   // const loading = useSelector(store => store.loading)
@@ -36,8 +47,9 @@ function Home() {
     dispatch(getPetFilters(petType));
   }, [dispatch, petType]);
 
+
   return (
-    <div>
+    <div>{console.log(`tipo mascota -${type}-`)} 
       <Navbar />
       <Container>
         <Header />
@@ -66,10 +78,9 @@ function Home() {
         actual={page}
       />
       <Testimonials />
-
       <Footer />
     </div>
   );
 }
-
+}
 export default Home;
