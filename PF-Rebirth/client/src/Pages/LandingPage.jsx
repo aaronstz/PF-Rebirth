@@ -7,14 +7,14 @@ import "./LandingPage.css";
 export default function LandingPage() {
   return (
     <body>
-      <div class="container">
-        <div class="logo-ld">
+      <div className="container">
+        <div className="logo-ld">
           <img src={logo} alt="Rebirth" />
         </div>
-        <div class="title-ld">
+        <div className="title-ld">
           <h2>A NEW LIFE OPPORTUNITY </h2>
         </div>
-        <div class="pet-ld">
+        <div className="pet-ld">
           <Link to="/home?type=dog">
             <img src={dog} alt="Dog Team" />
           </Link>
@@ -22,7 +22,7 @@ export default function LandingPage() {
             <img src={cat} alt="Cat Team" />
           </Link>
         </div>
-        <div class="sub-ld">
+        <div className="sub-ld">
           <br />
           <h3>PLEASE CHOOSE YOUR TEAM</h3>
         </div>
