@@ -69,7 +69,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case ORDER_BY_AGE:
-      let ordenados;
+      let ordenados = [];
       if (action.payload === "age") {
         ordenados = state.pets;
       } else if (action.payload === "old") {
@@ -83,30 +83,30 @@ function rootReducer(state = initialState, action) {
       }
       return {
         ...state,
-        filteredPets: [...ordenados],
+        pets: [...ordenados],
       };
 
     case FILTER_BY_SIZE:
-      const allPets = state.pets;
+      const allPets = state.filteredPets;
       const filter =
-        action.payload === "all"
+        action.payload == "Any"
           ? allPets
-          : allPets.filter((pet) => pet.size === action.payload);
+          : allPets.filter((p) => p.size == action.payload);
       return {
         ...state,
-        filteredPets: filter,
+        pets: [...filter],
       };
 
-    case FILTER_BY_SEX:
-      const allSex = state.pets;
+    case FILTER_BY_SEX: {
       const filterSex =
-        action.payload === "All"
-          ? allSex
-          : allSex.filter((e) => e.gender === action.payload);
+        action.payload === "Male"
+          ? state.filteredPets.filter((e) => e.gender == "male")
+          : state.filteredPets.filter((e) => e.gender == "female");
       return {
         ...state,
-        filteredPets: filterSex,
+        pets: action.payload === "All" ? state.filteredPets : filterSex,
       };
+    }
 
     case FILTER_BY_LOCATION:
       const location = state.pets;

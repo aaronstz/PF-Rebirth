@@ -51,10 +51,10 @@ export function deleteUser(id) {
   };
 }
 
-export function getPets(type) {
+export function getPets() {
   return async function (dispatch) {
     try {
-      const json = await axios(`http://localhost:3001/pets?type=${type}`);
+      const json = await axios("http://localhost:3001/pets");
       return dispatch({
         type: "GET_PETS",
         payload: json.data,
@@ -66,23 +66,23 @@ export function getPets(type) {
   };
 }
 
-/* export function getTypes(payload){
-    return function(dispatch){
-        try {
-            return dispatch({
-                type: 'GET_TYPES',
-                payload:payload
-            })
-        } catch (error) {
-            console.log(error);
-        }
-    }
-} */
 
-export function getTypes(payload) {
-  return {
-    type: "GET_TYPES",
-    payload,
+export function getPetFilters(type, name) {
+  type = type || "";
+  name = name || "";
+  return async function (dispatch) {
+    try {
+      const json = await axios(
+        `http://localhost:3001/pets?type=${type}&name=${name}`
+      );
+      return dispatch({
+        type: "GET_PETS",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No pets found :/");
+    }
   };
 }
 
@@ -143,14 +143,16 @@ export function resetDetails() {
   };
 }
 
-export function orderBySex(payload) {
+
+export function filterBySex(payload) {
   return {
     type: "FILTER_BY_SEX",
     payload,
   };
 }
 
-export function orderBySize(payload) {
+
+export function filterBySize(payload) {
   return {
     type: "FILTER_BY_SIZE",
     payload,
@@ -164,9 +166,11 @@ export function orderByAge(payload) {
   };
 }
 
-export function orderByLocation(payload) {
+
+export function filterByLocation(payload) {
   return {
     type: "FILTER_BY_LOCATION",
     payload,
   };
 }
+

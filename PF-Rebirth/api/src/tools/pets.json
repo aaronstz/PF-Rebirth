@@ -10,7 +10,8 @@
     "size": "big",
     "type": "dog",
     "race": "golden",
-    "owner": "Maru"
+    "owner": "Maru Gramajo",
+    "location" : "Buenos Aires"
   },
   {
     "id": "08b73e6e-7d81-454a-a73f-c0b71f74ea1c",
@@ -23,7 +24,8 @@
     "size": "small",
     "type": "dog",
     "race": "Shih Tzu",
-    "owner": "Lucas"
+    "owner": "Lucas Diaz",
+    "location" : "Santiago del Estero"
   },
   {
     "id": "b6561d2e-ca7f-49c6-9b6c-08294e389bcf",
@@ -36,7 +38,8 @@
     "size": "medium",
     "type": "dog",
     "race": "caniche",
-    "owner": "Enzo"
+    "owner": "Enzo Sanchez",
+    "location" : "Chaco"
   },
   {
     "id": "80a357ff-dc3f-4565-8ba4-c1d599062e28",
@@ -49,7 +52,8 @@
     "size": "small",
     "type": "dog",
     "race": "caniche",
-    "owner": "Aaron"
+    "owner": "Aaron Gerez",
+    "location" : "Catamarca"
   },
   {
     "id": "9c54b377-e850-471e-bfb6-2ebb88bbc0e0",
@@ -62,7 +66,8 @@
     "size": "small",
     "type": "dog",
     "race": "dachshund",
-    "owner": "Lenny"
+    "owner": "Lenny Snaiderman",
+    "location" : "Ciudad de Mexico"
   },
   {
     "id": "1e9b004c-d5e1-4236-9999-ec3f5655e6ac",
@@ -75,7 +80,8 @@
     "size": "small",
     "type": "dog",
     "race": "dachshund",
-    "owner": "William"
+    "owner": "William Diaz",
+    "location" : "Bogota"
   },
   {
     "id": "2a6e2a84-ccb3-464e-a42b-6292acda2f25",
@@ -88,7 +94,8 @@
     "size": "big",
     "type": "dog",
     "race": "labrador",
-    "owner": "Carlos"
+    "owner": "Carlos Candioti",
+    "location" : "Cordoba"
   },
   {
     "id": "79c1a706-3fcc-4fca-b5d1-f1a30b61b692",
@@ -101,7 +108,8 @@
     "size": "small",
     "type": "dog",
     "race": "mixta",
-    "owner": "Tobias"
+    "owner": "Tobias Tymkiw",
+    "location" : "Buenos Aires"
   },
   {
     "id": "adaf53af-dfa0-43bf-9af9-2cc37fccbbe3",
@@ -114,7 +122,8 @@
     "size": "small",
     "type": "dog",
     "race": "mixta",
-    "owner": "Maria"
+    "owner": "Maria Becerra",
+    "location" : "Santiago del Estero"
   },
   {
     "id": "838ef145-2c15-4786-ab7e-255747a12aba",
@@ -127,7 +136,8 @@
     "size": "small",
     "type": "dog",
     "race": "mixta",
-    "owner": "Maria"
+    "owner": "Maria Ledesma",
+    "location" : "Buenos Aires"
   },
   {
     "id": "4eb7ecd5-2f5f-4d91-933c-b1b77f51978a",
@@ -140,7 +150,8 @@
     "size": "medium",
     "type": "cat",
     "race": "abyssinian",
-    "owner": "Maria"
+    "owner": "Marianella Rodriguez",
+    "location" : "Chaco"
   },
   {
     "id": "fec25412-3961-4f57-b9f1-4853c408356f",
@@ -153,7 +164,8 @@
     "size": "medium",
     "type": "cat",
     "race": "aegean",
-    "owner": "Eugenio"
+    "owner": "Eugenio Alvarez",
+    "location" : "Santa Cruz"
   },
   {
     "id": "346af41b-6542-41f9-bec8-5ded88b593f2",
@@ -166,7 +178,8 @@
     "size": "big",
     "type": "cat",
     "race": "american bobtail",
-    "owner": "Alberto"
+    "owner": "Alberto Fernandez",
+    "location" : "Santa Fe"
   },
   {
     "id": "66dcfc88-d7cb-44d7-907c-1b31e566396a",
@@ -179,7 +192,8 @@
     "size": "big",
     "type": "cat",
     "race": "american curl",
-    "owner": "Patricia"
+    "owner": "Patricia Coronel",
+    "location" : "Salta"
   },
   {
     "id": "f9607e62-ee7f-4243-972d-9e6744e7de3b",
@@ -192,7 +206,8 @@
     "size": "small",
     "type": "cat",
     "race": "american shorthair",
-    "owner": "Rocio"
+    "owner": "Rocio Diaz",
+    "location" : "Salta"
   },
   {
     "id": "66cb866b-0d05-49e6-8d7e-af79babb32c8",
@@ -205,7 +220,8 @@
     "size": "medium",
     "type": "cat",
     "race": "american wirehair",
-    "owner": "Pedro"
+    "owner": "Pedro Gaona",
+    "location" : "Buenos Aires"
   },
   {
     "id": "8026161b-80f6-4f9b-9819-24d2a24fdb17",
@@ -218,7 +234,8 @@
     "size": "big",
     "type": "cat",
     "race": "arabian mau",
-    "owner": "Yanina"
+    "owner": "Yanina Sanchez",
+    "location" : "Santiago del Estero"
   },
   {
     "id": "c85ae00f-cd21-485e-8620-b219c6b72296",
@@ -231,7 +248,8 @@
     "size": "medium",
     "type": "cat",
     "race": "australian mist",
-    "owner": "Marcela"
+    "owner": "Marcela Acuña",
+    "location" : "Cordoba"
   },
   {
     "id": "652e00a7-af75-4f49-9732-6c49c8a33ed9",
@@ -244,7 +262,8 @@
     "size": "small",
     "type": "cat",
     "race": "balinese",
-    "owner": "Gabriel"
+    "owner": "Gabriel Roldan",
+    "location" : "Ciudad de Mexico"
   },
   {
     "id": "a5c47c04-f718-4e38-aa79-0da53db1ba03",
@@ -257,7 +276,8 @@
     "size": "small",
     "type": "cat",
     "race": "bambino",
-    "owner": "Nicolas"
+    "owner": "Nicolas Nasif",
+    "location" : "Chaco"
   },
   {
     "id": "c680de36-e901-40c0-9984-e50068d27498",
@@ -270,7 +290,8 @@
     "size": "medium",
     "type": "cat",
     "race": "bengal",
-    "owner": "Paula"
+    "owner": "Paula Bianchi",
+    "location" : "Tucuman"
   },
   {
     "id": "e65aedff-5d52-4342-9daa-869091a0affc",
@@ -283,7 +304,8 @@
     "size": "medium",
     "type": "cat",
     "race": "birman",
-    "owner": "Milagros"
+    "owner": "Milagros Almada",
+    "location" : "Tucuman"
   },
   {
     "id": "4b8853b1-fea9-4823-bfbe-0eb511e6c285",
@@ -296,7 +318,8 @@
     "size": "small",
     "type": "cat",
     "race": "bombay",
-    "owner": "Mariana"
+    "owner": "Enzo Perez",
+    "location" : "Buenos Aires"
   },
   {
     "id": "fd518c93-e24e-4244-9ef9-f332b5829db2",
@@ -309,7 +332,8 @@
     "size": "small",
     "type": "cat",
     "race": "british longhair",
-    "owner": "Carla"
+    "owner": "Carla Sayago",
+    "location" : "Neuquen"
   },
   {
     "id": "0bf33494-bf7e-4dca-9442-dadd533efc94",
@@ -322,7 +346,8 @@
     "size": "medium",
     "type": "cat",
     "race": "british shorthair",
-    "owner": "Belen"
+    "owner": "Belen Coronel",
+    "location" : "Misiones"
   },
   {
     "id": "ea753da8-072b-4efd-80b9-8de026ad75f7",
@@ -335,7 +360,8 @@
     "size": "small",
     "type": "cat",
     "race": "burmese",
-    "owner": "Daniel"
+    "owner": "Daniel Paz",
+    "location" : "Bogota"
   },
   {
     "id": "f062fee2-4136-45d6-aef8-46047818a4dc",
@@ -348,7 +374,8 @@
     "size": "medium",
     "type": "cat",
     "race": "burmilla",
-    "owner": "Mario"
+    "owner": "Mario Gomez",
+    "location" : "Yucatan"
   },
   {
     "id": "ba80dbb0-ffa2-4b70-9303-d82a8edc7e68",
@@ -361,7 +388,8 @@
     "size": "small",
     "type": "cat",
     "race": "california spangled",
-    "owner": "Elizabeth"
+    "owner": "Elizabeth del Valle",
+    "location" : "Cordoba"
   },
   {
     "id": "c6886108-5193-4bd6-be33-d10df634ef35",
@@ -374,7 +402,8 @@
     "size": "big",
     "type": "cat",
     "race": "chantilly-tiffany",
-    "owner": "Agustina"
+    "owner": "Agustina Maguna",
+    "location" : "Tierra del fuego"
   },
   {
     "id": "d70f80a6-03f0-4348-8e9a-c2b071db173e",
@@ -387,6 +416,7 @@
     "size": "medium",
     "type": "cat",
     "race": "chartreux",
-    "owner": "Augusta"
+    "owner": "Augusta Gramajo",
+    "location" : "Santiago del Estero"
   }
 ]

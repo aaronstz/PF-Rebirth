@@ -1,10 +1,6 @@
 import "./Card.css";
-import foto from "../../Assets/fotoPet1.png";
 
-
-
-
-function Cards({image, name, breed, age, gender, size, description}) {
+function Cards({ image, name, breed, age, gender, size, description }) {
   return (
     <div className="lcard">
       <div className="btnFav"></div>
@@ -13,25 +9,25 @@ function Cards({image, name, breed, age, gender, size, description}) {
         <div className="txtLeft">
           <div className="title">{name}</div>
           <div className="breed">{breed}</div>
-          <div className="age">{age}</div>
+          <div className="age">{age} years</div>
           <div className="location">Buenos Aires</div>
         </div>
         <div className="txtRight">
           <div className="views">
-            Views
             <span className="icoEye"></span>
+            Views
           </div>
           <div className="sex">
-            {gender}
             <span className="icoSex"></span>
+            {gender}
           </div>
           <div className="size">
-            {size}
             <span className="icoSize"></span>
+            {size}
           </div>
           <div className="weigth">
-            3.4 kg
             <span className="icoWeigth"></span>
+            3.4 kg
           </div>
         </div>
         <div className="attributes">{description}</div>
