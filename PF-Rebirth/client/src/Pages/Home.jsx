@@ -16,11 +16,11 @@ import { Link } from 'react-router-dom';
 
 
 
-function Home({type}) {
+function Home() {
 
   const dispatch = useDispatch();
   const pets = useSelector(store => store.pets)
-  const types = useSelector(store => store.type)
+  const type = useSelector(store => store.typePet)
   // const loading = useSelector(store => store.loading)
   
 
@@ -38,15 +38,16 @@ function Home({type}) {
   }
 
   // const dog = "dog"
+  
 
   useEffect(()=>{
-    dispatch(getPets());
+    dispatch(getPets(type));
     
   }, [dispatch])
 
 
   return (
-    <div>
+    <div>{console.log(`tipo mascota -${type}-`)} 
       <Navbar />
         <Container>
           <Header />

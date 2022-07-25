@@ -22,7 +22,7 @@ const initialState = {
   detail: [],
   user: [],
   userDetail: [],
-  type: []
+  typePet: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -30,7 +30,7 @@ function rootReducer(state = initialState, action) {
     case GET_TYPES:
       return {
         ...state,
-        type: action.payload,
+        typePet: action.payload,
       }
     case GET_PETS:
       return {

@@ -15,9 +15,12 @@ export default function LandingPage(){
     const navigate = useNavigate()
 
 
-    function handleClick(e){
-        e.preventDefault()
-        dispatch(getTypes(e.target.value))
+    function handleDog(){
+        dispatch(getTypes('dog'))
+        navigate('/home')
+    }
+    function handleCat(){
+        dispatch(getTypes('cat'))
         navigate('/home')
     }
 
@@ -34,10 +37,10 @@ export default function LandingPage(){
             </div>
             <div class ="pet-ld">
                         <div>
-                            <button value = "dog" onClick={(e)=>handleClick(e)}>
+                            <button value = "dog" onClick={(e)=>handleDog(e)}>
                                 <img  src = {dog} alt ="Dog Team" />
                             </button>
-                            <button value = "cat" onClick={(e)=>handleClick(e)} >
+                            <button value = "cat" onClick={(e)=>handleCat(e)} >
                             <img src = {cat} alt ="Cat Team" />
                             </button>
 
