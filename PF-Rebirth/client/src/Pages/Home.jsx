@@ -8,14 +8,10 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
-
-import { getPets, getPetNames, getPetFilters } from "../Redux/Actions/index.js";
+import { getPetNames, getPetFilters } from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-
-
-
 
 
 function Home() {
@@ -41,7 +37,6 @@ function Home() {
   useEffect(() => {
     dispatch(getPetFilters(petType));
   }, [dispatch, petType]);
-
 
   return (
     <div>
@@ -78,4 +73,5 @@ function Home() {
     </div>
   );
 }
+
 export default Home;
