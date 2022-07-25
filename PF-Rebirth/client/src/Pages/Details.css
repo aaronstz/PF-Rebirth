@@ -7,15 +7,20 @@
 
 .dtl-card{  
     left:50%;
-    height:450px;
+    margin-top:-20%;
+    height:650px;
 } 
+
+.info{
+  display:inline-block;
+  margin-bottom:30rem;
+}
 
 .dtl-card .title{
     font-size: 1.5rem;
     color: rgb(181, 181, 181);
     text-align: left;
     vertical-align: text-bottom;
-    margin-bottom: 8px;
     font-weight: bold;
     letter-spacing:3px;
 }
@@ -36,16 +41,15 @@
   color: rgb(181, 181, 181);
   text-align: left;
   line-height: 0.9;
-  margin-bottom: 10pt;
+  /* margin-bottom: 10pt; */
   vertical-align: text-bottom;
 }
 
 .dtl-card .location{
-    font-size: .9rem;
+  font-size: .9rem;
   color: rgb(143, 143, 143);
   text-align: left;
-  line-height: 0.9;
-  margin-bottom: 10pt;
+  /* margin-bottom: 10pt; */
   vertical-align: text-bottom;
 }
 
@@ -59,12 +63,25 @@
   }
 
   .story-dtl{
-    font-size: .9rem;
+    display:flex;
+    position: relative;
+    justify-content:left;
+    bottom:25%;
+    font-size: .8rem;
     color: rgb(181, 181, 181);
     text-align: left;
     line-height: 0.9;
     vertical-align: text-bottom;
     letter-spacing: 2px;
+  }
+
+  .txt-dscp{
+    font-size: 1.5rem;
+    text-align: left;
+    line-height: 2rem;
+    white-space: pre-wrap;
+    width: 50%;
+    
   }
   
 
@@ -73,20 +90,20 @@
     display:flex;
     justify-content: flex-start;
     position:relative;
-    top:-43rem;
-    left:25rem;
+    top:-42rem;
+    left:46rem;
     margin:auto;
     overflow:hidden;
-    width:60%;
+    width:80%;
     transform:scale(1)
 }
 
 .img-dtl img{
-    max-width: 100%;
+    max-width: 50%;
     transition: all 0.3s;
     display:block;
     border-radius:20px;
-    width: 80%;
+    width: 40%;
     height:100%;
   }
 
@@ -94,7 +111,7 @@
     transform: scale(1.1);
   } */
 
-.btnFav {
+.a-btnFav {
     position: absolute;
     left: 3%;
     top: 2%;
@@ -104,7 +121,7 @@
     background: url(../Assets/botonFAV_inactive.png);
   }
 
-  .btnFav:hover {
+  .a-btnFav:hover {
     position: absolute;
     left: 3%;
     top: 2%;
@@ -121,7 +138,7 @@
   .right-card{
     position: relative;
     top:-21rem;
-    left:25rem;
+    left:40rem;
     flex-direction: column;
     width: 13rem;
     height: 250px;
@@ -148,7 +165,7 @@
   }
   .txt-description-last{
     color: grey;
-
+    margin: 18px;
   }
 
   .btn-dtl{
@@ -156,10 +173,10 @@
     position: relative;
     justify-content:left;
     top:-300px;
-    left:40px;
+    left:12rem;
   }
 
-  .lbutton{
+  .a-btn{
     width: 120px;
     height: 25px;
     padding-top: 5px;
@@ -186,17 +203,17 @@
     font-weight: bold;
   }
 
-  .lbutton:hover {
+  .a-btn:hover {
     background: var(--text-color);
     border: 1px solid var(--border);
   }
   
-  .lbutton:focus {
+  .a-btn:focus {
     background: var(--text-color);
     border: 1px solid var(--border);
   }
   
-  .lbutton:active {
+  .a-btn:active {
     background: var(--text-color);
     border: 1px solid var(--border);
   }

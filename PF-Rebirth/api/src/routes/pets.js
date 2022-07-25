@@ -18,14 +18,24 @@ router.get("/:id", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   const { type } = req.query;
+  const { name } = req.query;
   const allPets = await Pets.findAll();
+  
   if (type) {
     const typeName = await allPets.filter((p) =>
-      p.type.toLowerCase().includes(type.toLocaleLowerCase())
+      p.type.toLowerCase().includes(type.toLowerCase())
     );
     typeName.length
       ? res.status(200).send(typeName)
       : res.status(404).send("there is no type of pet");
+  }
+  if (name) {
+    const namePet = await allPets.filter((p) =>
+      p.name.toLowerCase().includes(name.toLowerCase())
+    );
+    namePet.length
+      ? res.status(200).send(namePet)
+      : res.status(404).send("there is no name of pet");
   } else {
     try {
       allPets.length
@@ -38,7 +48,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const { id, name, image, age, description, gender, size, type, race } =
+  const { id, name, image, age, description, gender, size, type, race, location } =
     req.body;
   try {
     await Pets.create({
@@ -51,6 +61,7 @@ router.post("/", async (req, res, next) => {
       size,
       type,
       race,
+      location,
     });
     res.status(200).send(`the pet was created successfully`);
   } catch (error) {
