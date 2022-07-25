@@ -30,7 +30,6 @@ export function getUserId(id) {
   };
 }
 
-
 export function postUser(payload) {
   return async function (dispatch) {
     await axios.post("http://localhost:3001/user" + payload);

@@ -9,12 +9,15 @@ import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
 
-function Home() {
-
 import { getPets, getPetNames, getPetFilters } from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+
+
+
+function Home() {
+
 
 function Home() {
   const petType = useLocation().search?.replace("?type=", "");
@@ -42,7 +45,7 @@ function Home() {
 
 
   return (
-    <div>
+    <div>{console.log(`tipo mascota -${type}-`)} 
       <Navbar />
       <Container>
         <Header />
@@ -75,5 +78,5 @@ function Home() {
     </div>
   );
 }
-
+}
 export default Home;

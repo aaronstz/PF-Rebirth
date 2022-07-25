@@ -1,5 +1,6 @@
 import {
   GET_PETS,
+  GET_TYPES,
   GET_DETAILS,
   GET_USER,
   GET_NAMES,
@@ -21,10 +22,16 @@ const initialState = {
   detail: [],
   user: [],
   userDetail: [],
+  typePet: []
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case GET_TYPES:
+      return {
+        ...state,
+        typePet: action.payload,
+      }
     case GET_PETS:
       return {
         ...state,
