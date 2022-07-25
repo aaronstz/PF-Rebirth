@@ -1,6 +1,7 @@
 import "./Card.css";
+import { Link } from 'react-router-dom'
 
-function Cards({ image, name, breed, age, gender, size, description }) {
+function Cards({ image, name, breed, age, gender, size, description, id }) {
   return (
     <div className="lcard">
       <div className="btnFav"></div>
@@ -32,7 +33,12 @@ function Cards({ image, name, breed, age, gender, size, description }) {
         </div>
         <div className="attributes">{description}</div>
       </div>
-      <div className="lbutton">Adopt me!</div>
+      <div className="lbutton">
+        <Link to={"/home/" + id}>
+        More info
+        </Link>
+        </div>
+
     </div>
   );
 }

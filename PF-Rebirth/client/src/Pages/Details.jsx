@@ -44,8 +44,8 @@ function Details() {
 
   return (
     <div>
-      <Container>
         <Navbar/>
+      <Container>
         <Header/>
         <br/>
         <div class ="dtl-card">

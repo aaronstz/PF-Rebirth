@@ -16,7 +16,6 @@ import { Link, useLocation, useParams } from "react-router-dom";
 
 
 
-function Home() {
 
 
 function Home() {
@@ -45,7 +44,7 @@ function Home() {
 
 
   return (
-    <div>{console.log(`tipo mascota -${type}-`)} 
+    <div>
       <Navbar />
       <Container>
         <Header />
@@ -62,6 +61,7 @@ function Home() {
                   gender={p.gender}
                   size={p.size}
                   description={p.description}
+                  id = {p.id}
                 />
               );
             })}
@@ -77,6 +77,5 @@ function Home() {
       <Footer />
     </div>
   );
-}
 }
 export default Home;
