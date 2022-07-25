@@ -11,7 +11,8 @@ import "../index.css";
 import { getPetNames, getPetFilters } from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+
 
 function Home() {
   const petType = useLocation().search?.replace("?type=", "");
@@ -55,6 +56,7 @@ function Home() {
                   gender={p.gender}
                   size={p.size}
                   description={p.description}
+                  id = {p.id}
                 />
               );
             })}

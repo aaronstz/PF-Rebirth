@@ -41,17 +41,17 @@ function Details() {
 
   return (
     <div>
+        <Navbar/>
       <Container>
-        <Navbar />
-        <Header />
-        <br />
-        <div class="dtl-card">
-          <div class="info">
-            <h3 class="title">{name}</h3>
-            <h4 class="breed">{breed}</h4>
-            <h5 class="age">{age}</h5>
-            {/* <h6 class ="location">Mexico City</h6> */}
-            <br />
+        <Header/>
+        <br/>
+        <div class ="dtl-card">
+          <div class ="info">
+          <h3 class ="title">{name}</h3>
+          <h4 class = "breed">{breed}</h4>
+          <h5 class ="age">{age}</h5>
+          {/* <h6 class ="location">Mexico City</h6> */}
+          <br/>
           </div>
           <div class="attributes">{/* <h5>{description}</h5> */}</div>
           <br />
