@@ -1,4 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { getDetails, resetDetails, deletePet } from '../Redux/Actions/index'
+import { useSelector, useDispatch } from 'react-redux';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -17,6 +20,28 @@ import weight from '../Assets/weight_ico_big.png';
 
 
 function Details() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { name, image, breed, age, size, gender, type, race, description } = useSelector((state)=> state.detail);
+
+  console.log(name)
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    dispatch(getDetails(id))
+  }, [dispatch, id])
+
+  function clear(){
+    dispatch(resetDetails())
+  }
+
+  function handleDelete(){
+    dispatch(deletePet(id))
+    navigate('/home')
+  }
+
+
   return (
     <div>
       <Container>
@@ -25,40 +50,34 @@ function Details() {
         <br/>
         <div class ="dtl-card">
           <div class ="info">
-          <h3 class ="title">Lolita</h3>
-          <h4 class = "breed">Border Collie</h4>
-          <h5 class ="age">2 years</h5>
-          <h6 class ="location">Mexico City</h6>
+          <h3 class ="title">{name}</h3>
+          <h4 class = "breed">{breed}</h4>
+          <h5 class ="age">{age}</h5>
+          {/* <h6 class ="location">Mexico City</h6> */}
           <br/>
           </div>
           <div class ="attributes">
-          <h5>PLAYFUL, FRIENDLY, 
-          <br/>OBEDIENT, LOVELY</h5>
+          {/* <h5>{description}</h5> */}
           </div>
           <br/>
           <div class ="story-dtl">
-            <h5>Lorem ipsum dolor sit amet,
-            <br/>consectetur adipiscing elit.
-            <br/>Etiam eu turpis molestie,
-            <br/>dictum est a, mattis tellus.
-            <br/>Sed dignissim, metus nec
-            <br/>fringilla accumsan, risus sem</h5>
+            <h5 class ="txt-dscp">{description}</h5>
           </div>
           <div class ="right-card">
             <h3 class ="disp">AVAILABLE</h3>
             <div class ="txt-description">
-            <span >Female</span>
+            <span >{gender}</span>
             <img src ={female}/>
             </div>
             <br />
             <div class ="txt-description">
-            <span >Medium</span>
+            <span >{size}</span>
               <img src = {dogIco}/>
 
             </div>
             <br />
             <div>
-            <span class ="txt-description-last">3.4kg</span>
+            {/* <span class ="txt-description-last">3.4kg</span> */}
               <img src={weight} alt ="weight"/>
 
             </div>
@@ -68,7 +87,7 @@ function Details() {
         <div class ="img-dtl">
           <div class ="a-btnFav">
           </div>
-          <img src = {pic} alt ="Pet" class ="img"/>
+          <img src = {image} alt ="Pet" class ="img"/>
         </div>
       </div>
       </Container>

@@ -58,10 +58,9 @@ body.dark {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 3rem;
   height: fit-content;
+  margin-bottom: 5%;
 }
