@@ -1,19 +1,16 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("request", {
-    idMP: {
-      type: DataTypes.STRING,
-      allowNull: true,
+  sequelize.define("adoption", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
     },
     otherpets: { type: DataTypes.STRING, allowNull: true },
     requestdate: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.DATE,
-      allowNull: false,
-    },
-    requestType: {
-      type: DataTypes.ENUM("adoption", "donation"),
       allowNull: false,
     },
     state: {
@@ -23,18 +20,6 @@ module.exports = (sequelize) => {
     },
     comments: {
       type: DataTypes.TEXT,
-    },
-    price: {
-      type: DataTypes.INTEGER,
-    },
-    petName: {
-      type: DataTypes.STRING,
-    },
-    userName: {
-      type: DataTypes.STRING,
-    },
-    ownerName: {
-      type: DataTypes.STRING,
     },
     isActive: {
       type: DataTypes.BOOLEAN,
