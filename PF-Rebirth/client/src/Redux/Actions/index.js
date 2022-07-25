@@ -66,6 +66,25 @@ export function getPets() {
   };
 }
 
+export function getPetFilters(type, name) {
+  type = type || "";
+  name = name || "";
+  return async function (dispatch) {
+    try {
+      const json = await axios(
+        `http://localhost:3001/pets?type=${type}&name=${name}`
+      );
+      return dispatch({
+        type: "GET_PETS",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No pet found with that name :/");
+    }
+  };
+}
+
 export function getPetNames(name) {
   return async function (dispatch) {
     try {
