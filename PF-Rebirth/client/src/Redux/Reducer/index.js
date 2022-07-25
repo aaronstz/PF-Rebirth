@@ -13,7 +13,7 @@ import {
   POST_PET,
   POST_USER,
   FILTER_BY_SEX,
-} from "../actions/actionTypes";
+} from "../Actions/actionTypes";
 
 const initialState = {
   pets: [],
