@@ -43,11 +43,42 @@ function rootReducer(state = initialState, action) {
         typePet: action.payload,
       };
     case GET_PETS:
+      
+      ///////////////////////////////////filtrando ordenados por tamaño/////////////////////////
+      let ordenado = [];
+      ordenado =
+        state.filterSize === "Any"
+          ? action.payload
+          : action.payload.filter((p) => p.size === state.filterSize);
+
+      ///////////////////////////////////filtrando ordenados por sexo///////////////////////////////
+      ordenado =
+        state.filterSex === "All"
+          ? ordenado
+          : ordenado.filter((e) => e.gender === state.filterSex);
+      ///////////////////////////////////////filtrando por locacion///////////////////////////
+      ordenado =
+        state.filterLocation === "All"
+          ? ordenado
+          : ordenado.filter((e) => e.location === state.filterLocation);
+
+      ///////////////////////////ordenando "ordenados" por edad///////////////////////
+       if (state.filterAge === "old") {
+        ordenado = ordenado.sort((a, b) => {
+          return b.age - a.age;
+        });
+      } 
+      if (state.filterAge === "young") {
+        ordenado = ordenado.sort((a, b) => {
+          return a.age - b.age;
+        });
+      }
       return {
         ...state,
         pets: action.payload,
-        filteredPets: action.payload,
-      };
+        filteredPets:[...ordenado]
+
+        };
     case GET_USER:
       return {
         ...state,
