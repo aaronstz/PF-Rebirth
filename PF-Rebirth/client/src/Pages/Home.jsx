@@ -42,7 +42,7 @@ function Home() {
     <div>
       <Navbar />
       <Container>
-        <Header />
+        <Header type = {petType} />
         <FiltersBar />
         <div className="boxWrap">
           {refresh &&

@@ -44,3 +44,4 @@ function Cards({ image, name, breed, age, gender, size, description, id }) {
 }
 
 export default Cards;
+
