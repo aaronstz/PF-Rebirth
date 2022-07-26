@@ -20,31 +20,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gender: {
-      type: DataTypes.ENUM("man", "woman"),
-      allowNull: false,
-    },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    age: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isNumeric: true,
-      },
-    },
     mail: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isEmail: true,
       },
-    },
-    phone: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
     },
     active: {
       type: DataTypes.BOOLEAN,
@@ -66,7 +47,6 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
-    
     isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
   });
 };

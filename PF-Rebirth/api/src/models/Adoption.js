@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+      allowNull: false
     },
     otherpets: { type: DataTypes.STRING, allowNull: true },
     requestdate: {
