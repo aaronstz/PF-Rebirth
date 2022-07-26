@@ -1,0 +1,16 @@
+.exbutton{
+    margin-left:5px;
+    width: 15px;
+    height: 15px;
+}
+.filters-tabs{
+  min-height: 30px;
+}
+.filter-tabs-item{
+    background-color: #ffffff99;
+    display:inline;
+    margin:10px;
+    padding:5px;
+    border-radius: 5px;
+    border: 1px solid var(--greylight);
+    }

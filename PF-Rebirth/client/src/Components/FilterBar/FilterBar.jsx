@@ -17,13 +17,17 @@ import {
   noFilterPets,
   orderByAge,
 } from "../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
 
 function FiltersBar() {
   const dispatch = useDispatch();
-
+  let filterTabLocation=useSelector(state=> state.filterLocation)
+  let filterTabAge=useSelector(state=> state.filterAge)
+  let filterTabSex=useSelector(state=> state.filterSex)
+  let filterTabSize=useSelector(state=> state.filterSize)
   useEffect(() => {
-   dispatch(fullFilterAge("age"));
+  // dispatch(fullFilterAge("age"));
   }, [dispatch]);
 
   function handleOrderByAge(e) {
@@ -45,6 +49,7 @@ function FiltersBar() {
   }
 
   return (
+    <React.Fragment>
     <div className="filtBar">
       <DropdownButton
       onSelect={(e) => {
@@ -118,6 +123,8 @@ function FiltersBar() {
         <Dropdown.Item eventKey="big">Big</Dropdown.Item>
       </DropdownButton>
     </div>
+    <FilterbarSelect/>
+    </React.Fragment>
   );
 }
 
