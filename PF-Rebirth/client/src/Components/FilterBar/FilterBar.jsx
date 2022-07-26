@@ -13,8 +13,6 @@ import {
   fullFilterLocation,
   fullFilterSex,
   fullFilterSize,
-  getPets,
-  noFilterPets,
   orderByAge,
 } from "../../Redux/Actions";
 import { useDispatch } from "react-redux";

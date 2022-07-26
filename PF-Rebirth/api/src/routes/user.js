@@ -28,6 +28,12 @@ router.get("/" , async (req, res, next)=>{
 
 
 router.post("/", async(req,res,next) =>{
+    //     email: "will.diazor@gmail.com"
+    // familyName: "Diaz"
+    // givenName: "William"
+    // googleId: "112901499804350175056"
+    // imageUrl: "https://lh3.googleusercontent.com/a-/AFdZucpADX4F1pb5a7QR8vuWoUh3Bn8trbVLtBucLFRXCJ8=s96-c"
+    // name: "William Diaz"
     const {userName, name, lastName, gender, address, age, mail, phone, active, password, image} = req.body
     try {
         await User.create({userName, name, lastName, gender, address, age, mail, phone, active, password, image})

@@ -9,9 +9,13 @@ export default function BtnLogin() {
     const clientId = "944240356620-nimmpjlb0om115mdrka0o1a1tsn8j6c9.apps.googleusercontent.com";
     const navigate = useNavigate();
 
-    const responseGoogle = (response) => {
-      console.log(response.profileObj);
+    const onSuccess = (response) => {
+      console.log(response);
       navigate("/dashboard")
+    }
+
+    const failureLogin = (response) => {
+        console.log(response)
     }
   
     useEffect(()=>{
@@ -31,8 +35,8 @@ export default function BtnLogin() {
             render={renderProps => (
             <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='btn-google'>Login with Google</button>
             )}
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={onSuccess}
+            onFailure={failureLogin}
             cookiePolicy={'single_host_origin'}
         />
     )

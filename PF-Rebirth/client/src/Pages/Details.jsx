@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getDetails, resetDetails, deletePet } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Cards from "../Components/Card/Card";
 import Navbar from "../Components/Navbar/Navbar";
-import FiltersBar from "../Components/FilterBar/FilterBar";
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
-import pic from "../Assets/fotoPet1.png";
 import "./Details.css";
 import female from "../Assets/Female_ico_big.png";
 import dogIco from "../Assets/dog_ico_big.png";
@@ -28,18 +23,18 @@ function Details() {
     dispatch(getDetails(id));
   }, [dispatch, id]);
 
-  function clear() {
-    dispatch(resetDetails());
-  }
+  // function clear() {
+  //   dispatch(resetDetails());
+  // }
 
-  function handleDelete() {
-    dispatch(deletePet(id));
-    navigate("/home");
-  }
+  // function handleDelete() {
+  //   dispatch(deletePet(id));
+  //   navigate("/home");
+  // }
 
   return (
     <div>
-        <Navbar/>
+      <Navbar/>
       <Container>
         <Header/>
         <br/>
