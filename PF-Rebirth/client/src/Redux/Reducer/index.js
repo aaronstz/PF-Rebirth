@@ -125,8 +125,6 @@ function rootReducer(state = initialState, action) {
 
 
     case FULL_FILTER_SEX:
-
-
      ///////////////////////////////////filtrando ordenados por tamaño/////////////////////////
      let ordenadoSex = [];
      ordenadoSex =
