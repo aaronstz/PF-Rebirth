@@ -1,9 +1,8 @@
-import usuarioAvatar from '../../Assets/Testimoniales/usuarioAvatar.png';
-import usuarioAvatar2 from '../../Assets/Testimoniales/usuarioAvatar2.png';
-import profile2 from '../../Assets/Testimoniales/profile2.webp';
+import usuarioAvatar from '../Assets/Testimoniales/usuarioAvatar.png';
+import usuarioAvatar2 from '../Assets/Testimoniales/usuarioAvatar2.png';
+import profile2 from '../Assets/Testimoniales/profile2.webp';
 
 export const TESTIMONIALS = [
-
         {
             fullName : 'Federico Guzman Lopez',
             comments : 'El proceso de adopción de mi mascota con Rebirth fue super sencillo, Lolita es justo como la mostraban en las imagenes y la comunicación con el dueño anterior fue bastante agil. El diseño de la página es muy funcional, los menús superiores e inferiores tienen la información presisca para localizar perfectamente lo que está buscando y el poder elegir desde un inicio entre perro o gato hace muy amigable la página.',

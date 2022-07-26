@@ -1,0 +1,44 @@
+
+.formContainer{
+    display: flex;
+    justify-content: space-around;
+    margin: 4% auto;
+    border: solid 2px var(--grey);
+    width: 80%;
+    padding: 5% 0;
+    border-radius: 25px;
+    box-shadow: 0px 5px 5px 0px var(--grey2),
+                5px 5px 5px 5px var(--grey2);
+}
+
+.formRegister{
+    width: 30%;
+    margin: 0 5%;
+}
+
+.formImageContainer{
+    margin: 0 3%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 35%;
+    align-content: center;
+    align-items: center;
+}
+
+.formPetImage{
+    width: 120%;
+    margin-top: 15%;
+    border-radius: 25px;
+}
+
+.formLogoImage{
+    width: 80%;
+}
+
+.formBtnSubmit{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}

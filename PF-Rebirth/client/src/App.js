@@ -11,7 +11,7 @@ import Terms from "./Pages/Terms";
 import Privacy from "./Pages/Privacy";
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Register from "./Components/Register/Register";
+import Register from "./Pages/Register";
 
 function App() {
   return (

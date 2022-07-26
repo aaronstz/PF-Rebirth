@@ -1,7 +1,7 @@
 import React from 'react';
 import './Testimonials.css';
 import Carousel from 'react-bootstrap/Carousel';
-import { TESTIMONIALS } from './constants';
+import { TESTIMONIALS } from '../../Tools/userTestimonials.js';
 import { showStar } from '../../Tools/functions';
 
 export default function Testimonials() {
