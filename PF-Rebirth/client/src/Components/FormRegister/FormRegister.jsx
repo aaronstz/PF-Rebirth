@@ -6,41 +6,39 @@ import './FormRegister.css';
 
 export default function FormRegister() {
 
-
-
     return (
         <div className='formContainer'>
             <div className='formRegister'>
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Label>Nombres</Form.Label>
-                        <Form.Control type="text"></Form.Control>
+                        <Form.Label>Names</Form.Label>
+                        <Form.Control type="text" placeholder="Enter names" className='formInputStyle'></Form.Control>
                         <Form.Text></Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicLastName">
-                        <Form.Label>Apellidos</Form.Label>
-                        <Form.Control type="text"></Form.Control>
+                        <Form.Label>Last name</Form.Label>
+                        <Form.Control type="text" placeholder="Enter last names" className='formInputStyle'></Form.Control>
                         <Form.Text></Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicLastName">
                         <Form.Label>Phone number</Form.Label>
-                        <Form.Control type="text"></Form.Control>
+                        <Form.Control type="text" placeholder="Enter phone number" className='formInputStyle'></Form.Control>
                         <Form.Text></Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" placeholder="Enter email"  className='formInputStyle'/>
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                         </Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password"  className='formInputStyle'/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Confirm your password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Confirm your password"  className='formInputStyle'/>
                     </Form.Group>
                     <div className='formBtnSubmit'>
                         <Button variant="primary" type="submit">
