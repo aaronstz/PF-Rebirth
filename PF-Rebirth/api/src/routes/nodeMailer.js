@@ -46,19 +46,20 @@ router.post("/" , (req, res) =>{
       });
 
 
-    let mailOption = {
-        from : "Remitente",
+      const {email, subject, text} = req.body
+        let mailOption = {
+        from : email,
         to : "yvette58@ethereal.email",
-        subject : "Enviado desde Rebirth.app",
-        text : "Hola, llegue desde Gmail"
+        subject : subject,
+        text : text
     }
 
     transporter.sendMail(mailOption , (error, info) =>{
         if(error){
             res.status(500).send(error.message)
         }else{
-            console.log('mail sent successfully')
-            res.status(200).send(info)
+            console.log('mail sent successfully', req.body)
+            res.status(200).send(req.body)
         }
     })
 
