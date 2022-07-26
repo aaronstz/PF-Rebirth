@@ -42,7 +42,7 @@ export default function FormRegister() {
                     </Form.Group>
                     <div className='formBtnSubmit'>
                         <Button variant="primary" type="submit">
-                            Submit
+                            Registrarse
                         </Button>
                     </div>
                 </Form>
