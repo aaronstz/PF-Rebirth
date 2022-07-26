@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { getDetails, resetDetails, deletePet } from "../Redux/Actions/index";
+import { useParams } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { getDetails,} from "../Redux/Actions/index";
+// import {  resetDetails, deletePet } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Navbar from "../Components/Navbar/Navbar";
@@ -14,10 +16,10 @@ import weight from "../Assets/weight_ico_big.png";
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { name, image, breed, age, size, gender, type, race, description } =
+  const { name, image, breed, age, size, gender, description } =
   useSelector((state) => state.detail);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getDetails(id));

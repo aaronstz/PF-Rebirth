@@ -1,4 +1,3 @@
-import { filterByLocation } from "../Actions";
 import {
   GET_PETS,
   GET_TYPES,
@@ -6,9 +5,6 @@ import {
   GET_USER,
   GET_NAMES,
   GET_USER_ID,
-  DELETE_PET,
-  DELETE_USER,
-  RESET_DETAILS,
   ORDER_BY_AGE,
   FILTER_BY_SIZE,
   FILTER_BY_LOCATION,
