@@ -89,9 +89,9 @@ function rootReducer(state = initialState, action) {
     case FILTER_BY_SIZE:
       const allPets = state.filteredPets;
       const filter =
-        action.payload == "Any"
+        action.payload === "Any"
           ? allPets
-          : allPets.filter((p) => p.size == action.payload);
+          : allPets.filter((p) => p.size === action.payload);
       return {
         ...state,
         pets: [...filter],
@@ -100,8 +100,8 @@ function rootReducer(state = initialState, action) {
     case FILTER_BY_SEX: {
       const filterSex =
         action.payload === "Male"
-          ? state.filteredPets.filter((e) => e.gender == "male")
-          : state.filteredPets.filter((e) => e.gender == "female");
+          ? state.filteredPets.filter((e) => e.gender === "male")
+          : state.filteredPets.filter((e) => e.gender === "female");
       return {
         ...state,
         pets: action.payload === "All" ? state.filteredPets : filterSex,

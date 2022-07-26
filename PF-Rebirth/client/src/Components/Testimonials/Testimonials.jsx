@@ -1,8 +1,8 @@
 import React from 'react';
 import './Testimonials.css';
 import Carousel from 'react-bootstrap/Carousel';
-import star from '../../Assets/Testimoniales/Star.png';
 import { TESTIMONIALS } from './constants';
+import { showStar } from '../../Tools/functions';
 
 export default function Testimonials() {
 
@@ -26,11 +26,7 @@ export default function Testimonials() {
                   <p className='paragraph'>{comments}</p>
                 </div>
                 <div>
-                  <img src={star} alt="star"/>
-                  <img src={star} alt="star"/>
-                  <img src={star} alt="star"/>
-                  <img src={star} alt="star"/>
-                  <img src={star} alt="star"/>
+                  <img src={showStar(stars)} alt="star"/>
                 </div>
                 </Carousel.Caption>
               </Carousel.Item>
