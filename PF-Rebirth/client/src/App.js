@@ -12,6 +12,7 @@ import Privacy from "./Pages/Privacy";
 import Dashboard from "./Pages/Dashboard";
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Register from "./Components/Register/Register";
 
 function App() {
   return (
@@ -27,9 +28,9 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/register" element={<Register />} />
         {/*
 
-          
           <Route path = '*' element = {<NotFound/>}/> */}
       </Routes>
     </Router>

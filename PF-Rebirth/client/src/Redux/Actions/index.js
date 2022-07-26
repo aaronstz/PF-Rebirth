@@ -73,7 +73,7 @@ export function getPetFilters(type, name) {
   return async function (dispatch) {
     try {
       const json = await axios(
-        `http://localhost:3001/pets?type=${type}&name=${name}`
+        `http://localhost:3001/pets?type=${type}`
       );
       return dispatch({
         type: "GET_PETS",
