@@ -7,6 +7,25 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
     },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isNumeric: true,
+      },
+    },
+    gender: {
+      type: DataTypes.ENUM("man", "woman"),
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phone: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     otherpets: { type: DataTypes.STRING, allowNull: true },
     requestdate: {
       type: DataTypes.DATE,
