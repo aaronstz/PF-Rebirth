@@ -43,6 +43,7 @@ function rootReducer(state = initialState, action) {
         typePet: action.payload,
       };
     case GET_PETS:
+      
       ///////////////////////////////////filtrando ordenados por tamaño/////////////////////////
       let ordenado = [];
       ordenado =
