@@ -230,3 +230,13 @@
   background: var(--text-color);
   border: 1px solid var(--border);
 }
+
+.lbutton a {
+  text-decoration: none;
+  font-family: 'Mochiy Pop One';
+  color: var(--background-sec);
+}
+
+.lbutton a:hover {
+  color: var(--background);
+}
