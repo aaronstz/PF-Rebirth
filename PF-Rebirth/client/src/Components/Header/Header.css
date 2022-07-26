@@ -20,7 +20,9 @@
     width: 420px;
     height: 210px;
 }
-
+.marginImage{
+    margin-top: 6px;
+}
 .header-donations {
     margin-top: 8px;
     width: 420px;
