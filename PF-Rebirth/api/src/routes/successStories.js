@@ -3,15 +3,15 @@ const { SuccessStories } = require("../db");
 const router = Router();
 
 router.post("/", async (req, res, next) => {
-  const { id, nameOfPet, imageOfPet, rating, testimonio, show } = req.body;
+  const { nameOfPet, imageOfPet, rating, testimonio, userId } = req.body;
   try {
     await SuccessStories.create({
-      id,
       nameOfPet,
       imageOfPet,
       rating,
       testimonio,
-      show,
+
+      userId,
     });
     res.status(200).send(`the testimony was created successfully`);
   } catch (error) {
