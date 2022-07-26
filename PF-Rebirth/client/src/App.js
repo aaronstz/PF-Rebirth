@@ -9,6 +9,7 @@ import About from "./Pages/About";
 import Support from "./Pages/Support";
 import Terms from "./Pages/Terms";
 import Privacy from "./Pages/Privacy";
+import Dashboard from "./Pages/Dashboard";
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -25,12 +26,9 @@ function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/about" element={<About />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         {/*
 
-        
-          cambiar /details a -> home/:id una vez terminado
-
-          <Route exact path="/" element={<LandingPage />} />
           
           <Route path = '*' element = {<NotFound/>}/> */}
       </Routes>
