@@ -29,7 +29,6 @@ function Navbar() {
         </div>
         <div className="item">
           <DarkMode />
-          <span className="link-navbar">Mode</span>
         </div>
         <div className="item">
           <span>ES</span>

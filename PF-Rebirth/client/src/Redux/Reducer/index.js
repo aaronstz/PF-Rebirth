@@ -124,13 +124,6 @@ function rootReducer(state = initialState, action) {
       return { ...state, filteredPets: [...ordenadoAge] };
 
 
-    case FULL_FILTER_SEX:
-      ///////////////////////////////////filtrando ordenados por tamaño/////////////////////////
-      let ordenadoSex = [];
-      ordenadoSex =
-        state.filterSize === "Any"
-          ? state.pets
-          : state.pets.filter((p) => p.size === state.filterSize);
 
       ///////////////////////////ordenando "ordenados" por edad///////////////////////
       if (state.filterAge === "age") {
