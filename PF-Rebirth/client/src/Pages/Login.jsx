@@ -1,19 +1,14 @@
 import React from "react";
 import "../Components/Login/Login.css";
 import fondo from "../Assets/loginMain.png";
-import GoogleLogin from 'react-google-login';
+import BtnLogin from "../Components/BtnLogin/BtnLogin";
+
 import { Link } from "react-router-dom";
-const { REACT_ID_CLIENT_AUTH } = process.env;
 
 function Login() {
 
   const tab = '\u00A0'; //constante de espacio en blanco
 
-  console.log(REACT_ID_CLIENT_AUTH)
-  const responseGoogle = (response) => {
-    console.log(response);
-  }
-  
   return (
     <section>
       <div className="container">
@@ -27,16 +22,7 @@ function Login() {
                     <h5 className="">
                       Enter your credentials to access your account
                     </h5>
-                    <GoogleLogin
-                      clientId={ REACT_ID_CLIENT_AUTH }
-                      render={renderProps => (
-                        <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='btn-google'>Login with Google</button>
-                      )}
-                      onSuccess={responseGoogle}
-                      onFailure={responseGoogle}
-                      cookiePolicy={'single_host_origin'}
-                      
-                    />
+                    <BtnLogin/>
                     <h6>or</h6>
                   </div>
                   <div className="logCard-body">
