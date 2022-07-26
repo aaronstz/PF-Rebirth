@@ -2,11 +2,14 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("user", {
-    id: {
-      type: DataTypes.UUID,
+    mail: {
+      type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
+      validate: {
+        isEmail: true,
+      },
     },
     userName: {
       type: DataTypes.STRING,
@@ -19,13 +22,6 @@ module.exports = (sequelize) => {
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    mail: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-      },
     },
     active: {
       type: DataTypes.BOOLEAN,

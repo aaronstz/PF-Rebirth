@@ -2,14 +2,14 @@ const { Router } = require("express");
 const {User} = require('../db')
 const router = Router()
 
-router.get("/:id" , async(req, res, next) =>{
-    const {id} = req.params
+router.get("/:mail" , async(req, res, next) =>{
+    const {mail} = req.params
     try {
-        const userId = await User.findByPk(id)
-        if(!userId){
-            res.status(404).send("no se encontro el usuario con ese id")
+        const userMail = await User.findByPk(mail)
+        if(!userMail){
+            res.status(404).send("no se encontro el usuario con ese mail")
         }else {
-            res.status(200).send(userId) 
+            res.status(200).send(userMail) 
         }
     } catch (error) {
         next(error)
@@ -28,24 +28,32 @@ router.get("/" , async (req, res, next)=>{
 
 
 router.post("/", async(req,res,next) =>{
-    const {userName, name, lastName, gender, address, age, mail, phone, active, password, image} = req.body
+    const {userName, name, lastName,mail, password, image} = req.body
     try {
-        await User.create({userName, name, lastName, gender, address, age, mail, phone, active, password, image})
-        res.status(200).send(`El usuario ${req.body.name} fue creado con exito`)
+        await User.create({userName, name, lastName, mail, password, image})
+        res.status(200).send(`El usuario ${req.body.name} fue creado con exito`)     
     } catch (error) {
         next(error)
     }
 })
 
-router.delete("/:id" , async (req, res, next) =>{
-    const {id} = req.params
+//goggle :
+// {email: "will.diazor@gmail.com"
+// familyName: "Diaz"
+// givenName: "William"
+// googleId: "112901499804350175056"
+// imageUrl: "https://lh3.googleusercontent.com/a-/AFdZucpADX4F1pb5a7QR8vuWoUh3Bn8trbVLtBucLFRXCJ8=s96-c"
+// name: "William Diaz"}
+
+router.delete("/:mail" , async (req, res, next) =>{
+    const {mail} = req.params
     try {
-        const userDelete = await User.findByPk(id)
+        const userDelete = await User.findByPk(mail)
         if(!userDelete){
-            res.status(404).send(`No se encuntra el usuario con el id ${req.params.id}😒`)
+            res.status(404).send(`No se encuntra el usuario con el mail ${req.params.mail}😒`)
         }else{
-            await User.destroy({where: {id: id}})
-            res.status(200).send(`se elimino `)
+            await User.destroy({where: {mail: mail}})
+            res.status(200).send(`se elimino el usuario `)
         }
     } catch (error) {
         next(error)
@@ -54,3 +62,5 @@ router.delete("/:id" , async (req, res, next) =>{
 
 
 module.exports = router;
+
+
