@@ -1,4 +1,5 @@
 import axios from "axios";
+import { FULL_FILTER_AGE, FULL_FILTER_LOCATION, FULL_FILTER_SEX, FULL_FILTER_SIZE, NO_FILTER_PETS } from "./actionTypes";
 
 export function getUsers() {
   return async function (dispatch) {
@@ -174,3 +175,30 @@ export function filterByLocation(payload) {
   };
 }
 
+export function fullFilterAge(payload){
+  return{
+    type:FULL_FILTER_AGE,
+    payload
+  }
+}
+export function fullFilterSex(payload){
+  return{
+    type:FULL_FILTER_SEX,
+    payload
+  }
+}
+export function fullFilterLocation(payload){
+  return{
+    type:FULL_FILTER_LOCATION,
+    payload
+  }
+}
+export function fullFilterSize(payload){
+  return{
+    type:FULL_FILTER_SIZE,
+    payload
+  }
+}
+export function noFilterPets(){
+  return{type:NO_FILTER_PETS}
+}

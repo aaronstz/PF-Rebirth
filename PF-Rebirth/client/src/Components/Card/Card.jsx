@@ -1,7 +1,7 @@
 import "./Card.css";
 import { Link } from 'react-router-dom'
 
-function Cards({ image, name, breed, age, gender, size, description, id }) {
+function Cards({ image, name, breed, age, gender, size, description, id,location }) {
   return (
     <div className="lcard">
       <div className="btnFav"></div>
@@ -11,7 +11,7 @@ function Cards({ image, name, breed, age, gender, size, description, id }) {
           <div className="title">{name}</div>
           <div className="breed">{breed}</div>
           <div className="age">{age} years</div>
-          <div className="location">Buenos Aires</div>
+          <div className="location">{location}</div>
         </div>
         <div className="txtRight">
           <div className="views">
