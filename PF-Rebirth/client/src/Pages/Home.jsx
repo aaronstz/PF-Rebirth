@@ -18,7 +18,7 @@ function Home() {
   const petType = useLocation().search?.replace("?type=", "");
 
   const dispatch = useDispatch();
-  const pets = useSelector((store) => store.pets);
+  const pets = useSelector((store) => store.filteredPets);
   // const loading = useSelector(store => store.loading)
 
   //Paginado//
@@ -57,6 +57,7 @@ function Home() {
                   size={p.size}
                   description={p.description}
                   id = {p.id}
+                  location={p.location}
                 />
               );
             })}
