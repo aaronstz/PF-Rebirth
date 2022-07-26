@@ -20,9 +20,7 @@ function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { name, image, breed, age, size, gender, type, race, description } =
-    useSelector((state) => state.detail);
-
-  console.log(name);
+  useSelector((state) => state.detail);
 
   const navigate = useNavigate();
 
