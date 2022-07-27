@@ -5,23 +5,33 @@ const { generatePassword } = require('../tools/passwordGenerator.js');
 const bcrypt  = require('bcrypt');
 
 
-router.get("/:id" , async(req, res, next) =>{
-    const {id} = req.params
+router.put("/:mail" , async(req, res, next)=>{
+    const {mail} = req.params
+    const restoreUser = await User.restore({
+        where : {mail : mail}
+    })
+    res.sendStatus(200).send(restoreUser)
+})
+
+router.get("/:mail" , async(req, res, next) =>{
+    const {mail} = req.params
     try {
-        const userId = await User.findByPk(id)
-        if(!userId){
-            res.status(404).send("no se encontro el usuario con ese id")
+        const userMail = await User.findByPk(mail)
+        if(!userMail){
+            res.status(404).send("no se encontro el usuario con ese mail")
         }else {
-            res.status(200).send(userId) 
+            res.status(200).send(userMail) 
         }
     } catch (error) {
         next(error)
     }
 })
 
+
+
 router.get("/" , async (req, res, next)=>{
+    const allUsers = await User.findAll()
     try {
-        const allUsers = await User.findAll()
         allUsers.length ? res.status(200).send(allUsers) : res.status(400).send("No se encuentra ningun usuario")
     } catch (error) {
         next(error)
@@ -32,6 +42,7 @@ router.post("/", async(req,res,next) =>{
 
     const { body } = req;
     const { googleId } = body;
+
 
     if(googleId){
         try {
@@ -47,11 +58,13 @@ router.post("/", async(req,res,next) =>{
             res.send(`El usuario ${name} fue creado con exito`);
         } catch (error) {
             console.log(error)
+
             res.status(400).send(error)
             next();
         }
     }else{
         try {
+
             const userName = body.formBasicUserName;
             const name = body.formBasicName;
             const lastName = body.formBasicLastName;
@@ -66,15 +79,16 @@ router.post("/", async(req,res,next) =>{
     }
 })
 
-router.delete("/:id" , async (req, res, next) =>{
-    const {id} = req.params
+
+router.delete("/:mail" , async (req, res, next) =>{
+    const {mail} = req.params
     try {
-        const userDelete = await User.findByPk(id)
+        const userDelete = await User.findByPk(mail)
         if(!userDelete){
-            res.status(404).send(`No se encuntra el usuario con el id ${req.params.id}😒`)
+            res.status(404).send(`No se encuntra el usuario con el mail ${req.params.mail}😒`)
         }else{
-            await User.destroy({where: {id: id}})
-            res.status(200).send(`se elimino `)
+            await User.destroy({where: {mail: mail}})
+            res.status(200).send(`se elimino el usuario `)
         }
     } catch (error) {
         next(error)
@@ -83,3 +97,5 @@ router.delete("/:id" , async (req, res, next) =>{
 
 
 module.exports = router;
+
+

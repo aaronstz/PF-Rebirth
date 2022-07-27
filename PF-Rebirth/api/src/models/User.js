@@ -3,11 +3,14 @@ const bcrypt = require('bcrypt');
 
 module.exports = (sequelize) => {
   sequelize.define("user", {
-    id: {
-      type: DataTypes.UUID,
+    mail: {
+      type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
+      validate: {
+        isEmail: true,
+      },
     },
     userName: {
       type: DataTypes.STRING,
@@ -21,36 +24,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gender: {
-      type: DataTypes.ENUM("man", "woman"),
-      // allowNull: false,
-      defaultValue : "man"
-    },
-    address: {
-      type: DataTypes.STRING,
-      // allowNull: false,
-      defaultValue : null
-    },
-    age: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
-      validate: {
-        isNumeric: true,
-      },
-      defaultValue : 18
-    },
-    mail: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-      },
-    },
-    phone: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
-      defaultValue : 9999999
-    },
+
+
     active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -68,23 +43,15 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      // allowNull: false,,
-      defaultValue : null
+
+      allowNull: true,
     },
     // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
-    
-    isOwner: { type: DataTypes.BOOLEAN, defaultValue: false 
-    },
-  }, 
-  {    
-    freezeTableName : true,
-    instanceMethods : {
-      generateHash(password){
-        return bcrypt.hash(password, bcrypt.genSaltSync(8))
-      },
-      validPassword(password) {
-        return bcrypt.compare(password, this.password)
-      }
-    }
+    isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
+    isAdmin: { type: DataTypes.BOOLEAN, defaultValue: false }
+  },{
+    paranoid: true,
+    deletedAt: 'softDelete'
+
   });
 };
