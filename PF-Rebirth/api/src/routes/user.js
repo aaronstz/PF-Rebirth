@@ -64,7 +64,7 @@ router.post("/", async(req,res,next) =>{
  
             let mailOption = {
                     from : " 'Rebirth.App 🐾' <rebirhtPets@gmail.com>",
-                    to : "petsrebirth@gmail.com",
+                    to : req.body.email,
                     subject : "Rebirth.App 🐾",
                     text : "Gracias por registrarte en Rebirth!"
                 }
@@ -93,6 +93,32 @@ router.post("/", async(req,res,next) =>{
             const password = req.body.formBasicPassword;
 
             await User.create({userName, name, lastName, mail, password})
+            let transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
+                auth: {
+                  user: "rebirhtPets@gmail.com",
+                  pass: "vxhhgglvicwtjnax", 
+                },
+              });
+        
+
+        let mailOption = {
+                from : " 'Rebirth.App 🐾' <rebirhtPets@gmail.com>",
+                to : req.body.formBasicEmail,
+                subject : "Rebirth.App 🐾",
+                text : "Gracias por registrarte en Rebirth!"
+            }
+        
+            transporter.sendMail(mailOption , (error, info) =>{
+                if(error){
+                    res.status(500).send(error.message)
+                }else{
+                    console.log('mail sent successfully', req.body)
+                    res.status(200).send(req.body)
+                }
+            }) 
             res.status(200).send(`El usuario ${name} fue creado con exito`)
         } catch (error) {
             res.status(400).send(error)

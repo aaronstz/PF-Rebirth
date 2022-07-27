@@ -24,7 +24,7 @@ router.post("/" , (req, res) =>{
         to : "petsrebirth@gmail.com",
         subject : subject + " , " + name ,
         text : text +" , Phone: " + phone +" , Email: " +  email
-    }
+    } 
 
     transporter.sendMail(mailOption , (error, info) =>{
         if(error){
