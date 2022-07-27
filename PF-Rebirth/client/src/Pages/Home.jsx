@@ -8,14 +8,10 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
-import {
-  getPetNames,
-  getPetFilters,
-  fullFilterAge,
-} from "../Redux/Actions/index.js";
+import { getPetFilters } from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Home() {
   const petType = useLocation().search?.replace("?type=", "");
