@@ -28,22 +28,36 @@ router.get("/" , async (req, res, next)=>{
 
 
 router.post("/", async(req,res,next) =>{
-    const {userName, name, lastName,mail, password, image} = req.body
-    try {
-        await User.create({userName, name, lastName, mail, password, image})
-        res.status(200).send(`El usuario ${req.body.name} fue creado con exito`)     
-    } catch (error) {
-        next(error)
-    }
-})
+    if(req.body.googleId){
+        try {
+            const userName = req.body.name;
+            const name = req.body.givenName;
+            const lastName = req.body.familyName;
+            const mail = req.body.email;
+            const image = req.body.imageUrl;
+            const password = name+Math.random();
+            await User.create({userName, name, lastName, mail, image, password});
+            res.status(200).send(`El usuario ${name} fue creado con exito`);
 
-//goggle :
-// {email: "will.diazor@gmail.com"
-// familyName: "Diaz"
-// givenName: "William"
-// googleId: "112901499804350175056"
-// imageUrl: "https://lh3.googleusercontent.com/a-/AFdZucpADX4F1pb5a7QR8vuWoUh3Bn8trbVLtBucLFRXCJ8=s96-c"
-// name: "William Diaz"}
+        } catch (error) {
+            res.status(400).send(error)
+            next();
+        }
+    }else{
+        try {
+            const userName = req.body.formBasicUserName;
+            const name = req.body.formBasicName;
+            const lastName = req.body.formBasicLastName;
+            const mail = req.body.formBasicEmail;
+            const password = req.body.formBasicPassword;
+
+            await User.create({userName, name, lastName, mail, password})
+            res.status(200).send(`El usuario ${name} fue creado con exito`)
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    }})
+
 
 router.delete("/:mail" , async (req, res, next) =>{
     const {mail} = req.params

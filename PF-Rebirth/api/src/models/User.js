@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
     isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
