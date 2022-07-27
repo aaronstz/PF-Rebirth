@@ -15,7 +15,7 @@ import weight from "../Assets/weight_ico_big.png";
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { name, image, breed, age, size, gender, description } = useSelector(
+  const { name, image, race, age, size, gender, description } = useSelector(
     (state) => state.detail
   );
 
@@ -43,7 +43,7 @@ function Details() {
         <div class="dtl-card">
           <div className="dtl-cardLeft">
             <h3 class="title">{name}</h3>
-            <h4 class="breed">{breed}</h4>
+            <h4 class="breed">{race}</h4>
             <h5 class="age">{age}&nbsp;years</h5>
             <span class="petlocation">Mexico City</span>
             <br />

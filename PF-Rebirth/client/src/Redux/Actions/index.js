@@ -1,5 +1,11 @@
 import axios from "axios";
-import { FULL_FILTER_AGE, FULL_FILTER_LOCATION, FULL_FILTER_SEX, FULL_FILTER_SIZE, NO_FILTER_PETS } from "./actionTypes";
+import {
+  FULL_FILTER_AGE,
+  FULL_FILTER_LOCATION,
+  FULL_FILTER_SEX,
+  FULL_FILTER_SIZE,
+  NO_FILTER_PETS,
+} from "./actionTypes";
 
 export function getUsers() {
   return async function (dispatch) {
@@ -67,7 +73,6 @@ export function getPets() {
   };
 }
 
-
 export function getPetFilters(type, name) {
   type = type || "";
   name = name || "";
@@ -112,6 +117,7 @@ export function getDetails(id) {
   return async function (dispatch) {
     try {
       const json = await axios(`http://localhost:3001/pets/${id}`);
+      console.log(json);
       return dispatch({
         type: "GET_DETAILS",
         payload: json.data,
@@ -144,14 +150,12 @@ export function resetDetails() {
   };
 }
 
-
 export function filterBySex(payload) {
   return {
     type: "FILTER_BY_SEX",
     payload,
   };
 }
-
 
 export function filterBySize(payload) {
   return {
@@ -167,7 +171,6 @@ export function orderByAge(payload) {
   };
 }
 
-
 export function filterByLocation(payload) {
   return {
     type: "FILTER_BY_LOCATION",
@@ -175,30 +178,30 @@ export function filterByLocation(payload) {
   };
 }
 
-export function fullFilterAge(payload){
-  return{
-    type:FULL_FILTER_AGE,
-    payload
-  }
+export function fullFilterAge(payload) {
+  return {
+    type: FULL_FILTER_AGE,
+    payload,
+  };
 }
-export function fullFilterSex(payload){
-  return{
-    type:FULL_FILTER_SEX,
-    payload
-  }
+export function fullFilterSex(payload) {
+  return {
+    type: FULL_FILTER_SEX,
+    payload,
+  };
 }
-export function fullFilterLocation(payload){
-  return{
-    type:FULL_FILTER_LOCATION,
-    payload
-  }
+export function fullFilterLocation(payload) {
+  return {
+    type: FULL_FILTER_LOCATION,
+    payload,
+  };
 }
-export function fullFilterSize(payload){
-  return{
-    type:FULL_FILTER_SIZE,
-    payload
-  }
+export function fullFilterSize(payload) {
+  return {
+    type: FULL_FILTER_SIZE,
+    payload,
+  };
 }
-export function noFilterPets(){
-  return{type:NO_FILTER_PETS}
+export function noFilterPets() {
+  return { type: NO_FILTER_PETS };
 }
