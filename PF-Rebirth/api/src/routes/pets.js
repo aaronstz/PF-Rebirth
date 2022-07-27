@@ -19,8 +19,12 @@ router.get("/:id", async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   const { type } = req.query;
   const { name } = req.query;
+  const {location} = req.query
   const allPets = await Pets.findAll();
-  
+  if (location){
+    const locationPets = await allPets.filter((p) => p.location.toLowerCase().includes(location.toLowerCase()))
+    locationPets.length? res.status(200).send(locationPets) : res.status(404).send("there is no pet in that location")
+    }  
   if (type) {
     const typeName = await allPets.filter((p) =>
       p.type.toLowerCase().includes(type.toLowerCase())
