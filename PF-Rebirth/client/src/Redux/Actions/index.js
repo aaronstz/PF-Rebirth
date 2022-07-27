@@ -35,7 +35,7 @@ export function getUserId(id) {
 
 export function postUser(payload) {
   return async function (dispatch) {
-    await axios.post(`${SERVER}/user` + payload);
+    await axios.post(`${SERVER}/user`, payload);
   };
 }
 

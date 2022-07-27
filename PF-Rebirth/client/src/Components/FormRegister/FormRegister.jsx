@@ -34,7 +34,7 @@ export default function FormRegister() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(postUser(newUser))
-        navigate("/dashboard");
+        // navigate("/dashboard");
     }
 
     return (

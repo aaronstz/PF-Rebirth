@@ -36,7 +36,6 @@ function Login() {
                           type="email"
                           className="form-control"
                           name="email"
-                          value=""
                           required
                           autofocus
                         />
