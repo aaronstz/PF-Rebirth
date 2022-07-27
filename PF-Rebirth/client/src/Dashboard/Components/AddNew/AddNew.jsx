@@ -3,20 +3,49 @@ import background from '../../../Assets/loginMain.png';
 import './AddNew.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { postPet } from '../../../Redux/Actions/index'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { provincias } from '../../../Tools/provincias'
 
 function validate(input){
-    // let validateName = /^[a-zA-Z\s]+$/; 
-    // let validateUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
-    // let errors = {};
-    // if(!input.type){
-    //     errors.type = 'Type must be only one of the following options'
-    // }
-    // return errors;
+    let validateName = /^[a-zA-Z\s]+$/; 
+    let validateUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+    let errors = {};
+    if(!input.type || input.type > 1){
+        errors.type = 'Type must be only one of the following options'
+    }
+    if(!input.name){
+        errors.name = 'Name is required'
+    }
+    if(!validateName.test(input.name)){
+        errors.name = 'Name cannot contain numbers or special characters'
+    }
+    if(input.image && !validateUrl.test(input.image)){
+        errors.image = 'This is not a valid URL'
+    }
+    if(!input.size){
+        errors.size = 'Please select one of the following options'
+    }
+    if(!input.gender){
+        errors.gender = 'Please select one of the following options'
+    }
+    if(!input.type){
+        errors.type = 'Please select one of the following options'
+    }
+    if(!input.race){
+        errors.race = "If you don't know the breed write 'unknown'"
+    }
+    if(!input.location){
+        errors.location = 'Please select one of the following options'
+    }
+    return errors;
 }
 
 
 function AddNew(){
+    const [selectedFile, setSelectedFile] = useState()
+    const [isFilePicked, setIsFilePicked] = useState(false)
+
+    const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
     const [input, setInput] = useState({
@@ -38,45 +67,72 @@ function AddNew(){
 
     function handleChange(e){
         e.preventDefault()
+        console.log(e.target.name)
         setInput({
             ...input,
             [e.target.name] : e.target.value
         })
-        // setErrors(validate({
-        //     ...input,
-        //     [e.target.name] : e.target.value
-        // }))
+        setErrors(validate({
+            ...input,
+            [e.target.name] : e.target.value
+        }))
     }
 
     function handleType(e){
         e.preventDefault()
         setInput({
             ...input,
-            type: [...input.type, e.target.value]
+            type: e.target.value
         })
-        // setErrors(validate({
-        //     ...input,
-        //     [e.target.name] : e.target.value,
-        //     type: ''
-        // }))
-    }
-
-    function handleGender(e){
-        e.preventDefault()
-        setInput({
+        setErrors(validate({
             ...input,
-            gender: [...input.gender, e.target.value]
-        })
+            [e.target.name] : e.target.value,
+            type: ''
+        }))
     }
 
-    function handleSize(e){
-        e.preventDefault()
-        setInput({
-            ...input,
-            size: [...input.size, e.target.value]
-        })
+    function handleImage(e){
+        setSelectedFile(e.target.files[0])
+        setIsFilePicked(true)
     }
 
+    // function handleGender(e){
+    //     e.preventDefault()
+    //     setInput({
+    //         ...input,
+    //         gender: e.target.value
+    //     })
+    // }
+
+    // function handleSize(e){
+    //     e.preventDefault()
+    //     setInput({
+    //         ...input,
+    //         size: [...input.size, e.target.value]
+    //     })
+    // }
+
+
+    function submitImage(){
+        const formData = new FormData();
+
+        formData.append('File', selectedFile)
+
+        fetch(
+            'https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5',
+            {
+                method: 'POST',
+                body: formData
+            }
+        )
+            .then((response)=>response.json())
+            .then((result)=> {
+                console.log('Success:', result)
+            })    
+            .catch((error)=>{
+                console.error('Error:', error)
+            })
+    }
 
     function handleSubmit(e){
         e.preventDefault()
@@ -95,6 +151,7 @@ function AddNew(){
                 race:'',
                 location:'',
             })
+            navigate('/home')
         }
         else{
             alert('Fields with * are required')
@@ -127,22 +184,47 @@ function AddNew(){
                                             autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">Name is invalid</div>
+                                            <div className="addinvalid-fb">{errors.name}</div>
                                         </div>
 
                                         <div className="addform">
-                                            <label for ="image">Image*</label>
+                                            <label class="form-label" for ="customFile">Image*</label>
                                             <input
-                                            id="image"
-                                            type="file"
-                                            class="form-control-file"
+                                            id="customFile"
+                                            type="text"
+                                            class="form-control"
                                             name="image"
                                             value={input.image}
                                             required
                                             autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">Image is invalid</div>
+                                            {/* <input
+                                            id="customFile"
+                                            type="file"
+                                            class="form-control"
+                                            name="image"
+                                            value={input.image}
+                                            required
+                                            autoFocus
+                                            onChange ={(e)=>{handleImage(e)}}
+                                            />
+                                            {
+                                                isFilePicked? (
+                                                    <div>
+                                                        <p>Filename: {selectedFile.name}</p>
+                                                        <p>Filetype: {selectedFile.type}</p>
+
+                                                    </div>
+                                                    )
+                                                    : (
+                                                        <p>Select a file to show details</p>
+                                                        )
+                                            }
+                                            <div>
+                                                <button onClick={submitImage}>Upload Image</button>
+                                            </div> */}
+                                            <div className="addinvalid-fb">{errors.image}</div> 
                                         </div>
 
                                         <div className="addform">
@@ -155,42 +237,43 @@ function AddNew(){
                                             value={input.age}
                                             required
                                             autoFocus
+                                            min="0"
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">Age is invalid</div>
+                                            <div className="addinvalid-fb">{errors.age}</div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Size*</label>
-                                             <select class="form-control" id="exampleFormControlSelect1" value ={input.size} onChange={(e)=>handleSize(e)}>
+                                             <select name ="size" class="form-control" id="exampleFormControlSelect1" value ={input.size} onChange={(e)=>handleChange(e)}>
                                                 <option selected>Choose...</option>
                                                 <option value ="small">Small</option>
                                                 <option value ="medium">Medium</option>
                                                 <option value ="big">Big</option>
                                             </select>
 
-                                            <div className="addinvalid-fb">Size is invalid</div>
+                                            <div className="addinvalid-fb">{errors.size}</div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for ="exampleFormControlSelect1">Gender*</label>
-                                            <select class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleGender(e)}}>
+                                            <select name ="gender" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
                                                 <option selected>Choose...</option>
-                                                <option value ="male">Male</option>
+                                                <option value ="male" >Male</option>
                                                 <option value ="female">Female</option>
                                             </select>
 
-                                            <div className="addinvalid-fb">Gender is invalid</div>
+                                            <div className="addinvalid-fb">{errors.gender}</div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for ="exampleFormControlSelect1">Type*</label>
-                                            <select class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleType(e)}}>
+                                            <select name ="type" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
                                                 <option selected>Choose...</option>
-                                                <option value ="dog" name ="type" >Dog</option>
-                                                <option value ="cat" name ="type" >Cat</option>
+                                                <option value ="dog">Dog</option>
+                                                <option value ="cat">Cat</option>
                                             </select>
-                                            <div className="addinvalid-fb">Type is invalid</div>
+                                            <div className="addinvalid-fb">{errors.type}</div>
                                         </div>
 
                                         <div className="addform">
@@ -205,25 +288,27 @@ function AddNew(){
                                             autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">Race is invalid</div>
+                                            <div className="addinvalid-fb">{errors.race}</div>
                                         </div>
                                         <div className="addform">
-                                            <label for ="location">Location*</label>
-                                            <input
-                                            id="location"
-                                            type="text"
-                                            class="form-control"
-                                            name="location"
-                                            value={input.location}
-                                            required
-                                            autoFocus
-                                            onChange ={(e)=>{handleChange(e)}}
-                                            />
-                                            <div className="addinvalid-fb">Location is invalid</div>
+                                            <label for ="location" >Location*</label>
+                                            <select name ="location" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
+                                                <option selected>Choose...</option>
+                                                {
+                                                    provincias?.map(p => {
+                                                        return(
+                                                            <option value ={p}>{p}</option>
+                                                        )
+                                                    })
+                                                }
+                                            </select>
+                                            <div className="addinvalid-fb">{errors.location}</div>
                                         </div>
-                                        <div className="addform">
-                                            <label for ="description">Description</label>
-                                            <input
+                                        <div className="form-outline">
+                                            <label class="form-label"for ="textAreaExample">Description</label>
+                                            <textarea name="description" value={input.description} type="text" autoFocus class ="form-control" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
+
+                                            {/* <input
                                             id="description"
                                             type="text"
                                             class="form-control"
@@ -232,8 +317,8 @@ function AddNew(){
                                             required
                                             autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
-                                            />
-                                            <div className="addinvalid-fb">Description is invalid</div>
+                                            /> */}
+                                            {/* <div className="addinvalid-fb">Description is invalid</div> */}
                                         </div>
                                     <div className="addform-submit">
                                         <button
@@ -245,9 +330,6 @@ function AddNew(){
                                     </div>
                                         
                                     </form>
-                                    {
-                                        errors.type && <h6>{errors.type}</h6>
-                                    }
                                 </div>
                                     </div>
                                     <div className="addfooter">
