@@ -48,7 +48,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const { id, name, image, age, description, gender, size, type, race, location } =
+  const { id, name, image, age, description, gender, size, type, race, location, userMail } =
     req.body;
   try {
     await Pets.create({
@@ -62,6 +62,7 @@ router.post("/", async (req, res, next) => {
       type,
       race,
       location,
+      userMail
     });
     res.status(200).send(`the pet was created successfully`);
   } catch (error) {

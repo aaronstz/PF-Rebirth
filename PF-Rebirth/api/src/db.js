@@ -40,7 +40,8 @@ const { Pets, Chat, Adoption, SuccessStories, User } = sequelize.models;
 User.hasMany(Adoption);        // un usuario puede hacer o tener diferentes solicitudes y una solicitud pertenece a un usuario
 Adoption.belongsTo(User);       // el dueño puede hacer o tener diferentes solicitudes y una solicitud pertenece a el dueño
 
-
+Pets.hasMany(Adoption)
+Adoption.belongsTo(Pets)
 //----------------------------//
 
 User.hasMany(Pets);                   //el dueño puede adoptar diferentes mascotas y una mascota pertenece a el dueño
