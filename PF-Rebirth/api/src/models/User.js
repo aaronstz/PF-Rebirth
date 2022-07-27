@@ -2,11 +2,14 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("user", {
-    id: {
-      type: DataTypes.UUID,
+    mail: {
+      type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
+      validate: {
+        isEmail: true,
+      },
     },
     userName: {
       type: DataTypes.STRING,
@@ -18,32 +21,6 @@ module.exports = (sequelize) => {
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    gender: {
-      type: DataTypes.ENUM("man", "woman"),
-      allowNull: false,
-    },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    age: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isNumeric: true,
-      },
-    },
-    mail: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-      },
-    },
-    phone: {
-      type: DataTypes.INTEGER,
       allowNull: false,
     },
     active: {
@@ -63,10 +40,13 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
-    
     isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
+    isAdmin: { type: DataTypes.BOOLEAN, defaultValue: false }
+  },{
+    paranoid: true,
+    deletedAt: 'softDelete'
   });
 };
