@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./FilterBar.css";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -14,14 +14,19 @@ import {
   fullFilterSex,
   fullFilterSize,
   orderByAge,
+  getPetFilters
 } from "../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
+import { useLocation } from "react-router-dom";
 
 function FiltersBar() {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    let [searchName,setSearchName]=useState("")
+    const petType = useLocation().search?.replace("?type=", "");
 
   useEffect(() => {
-   dispatch(fullFilterAge("age"));
+  // dispatch(fullFilterAge("age"));
   }, [dispatch]);
 
   function handleOrderByAge(e) {
@@ -41,8 +46,11 @@ function FiltersBar() {
     dispatch(filterByLocation(e));
     dispatch(fullFilterLocation(e))
   }
-
+function handleSearchName(){
+  dispatch(getPetFilters(petType,searchName))
+}
   return (
+    <React.Fragment>
     <div className="filtBar">
       <DropdownButton
       onSelect={(e) => {
@@ -82,8 +90,9 @@ function FiltersBar() {
           placeholder="Search by name"
           aria-label="Search by name"
           aria-describedby="basic-addon2"
-        />
-        <Button className="btn-pink">Search</Button>
+          onChange={(e)=>setSearchName(e.target.value)}
+          value={searchName}        />
+        <Button className="btn-pink" onClick={e=>{handleSearchName()}}>Search</Button>
       </InputGroup>
 
       <DropdownButton
@@ -116,6 +125,8 @@ function FiltersBar() {
         <Dropdown.Item eventKey="big">Big</Dropdown.Item>
       </DropdownButton>
     </div>
+    <FilterbarSelect/>
+    </React.Fragment>
   );
 }
 

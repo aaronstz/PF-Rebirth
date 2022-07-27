@@ -11,6 +11,7 @@ import Support from "./Pages/Support";
 import Terms from "./Pages/Terms";
 import Privacy from "./Pages/Privacy";
 import Dashboard from "./Pages/Dashboard";
+import AddNew from './Dashboard/Components/AddNew/AddNew'
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
+        <Route path ='/create' element={<AddNew />} />
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}

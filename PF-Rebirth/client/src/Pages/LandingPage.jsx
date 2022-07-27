@@ -3,11 +3,14 @@ import logo from "../Assets/logoLanding.png";
 import cat from "../Assets/catTeam.png";
 import dog from "../Assets/dogTeam.png";
 import "./LandingPage.css";
+import Container from "react-bootstrap/esm/Container";
 
 export default function LandingPage() {
   return (
     <body>
-      <div className="container">
+      <Container>
+        <br />
+        <br />
         <div className="logo-ld">
           <img src={logo} alt="Rebirth" />
         </div>
@@ -26,7 +29,7 @@ export default function LandingPage() {
           <br />
           <h3>PLEASE CHOOSE YOUR TEAM</h3>
         </div>
-      </div>
+      </Container>
     </body>
   );
 }

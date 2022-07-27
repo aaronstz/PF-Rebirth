@@ -1,7 +1,19 @@
 import "./Card.css";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import female from "../../Assets/female-ico-w.png";
+import male from "../../Assets/male-icon-w.png";
 
-function Cards({ image, name, breed, age, gender, size, description, id,location }) {
+function Cards({
+  image,
+  name,
+  breed,
+  age,
+  gender,
+  size,
+  description,
+  id,
+  location,
+}) {
   return (
     <div className="lcard">
       <div className="btnFav"></div>
@@ -19,8 +31,14 @@ function Cards({ image, name, breed, age, gender, size, description, id,location
             Views
           </div>
           <div className="sex">
-            <span className="icoSex"></span>
-            {gender}
+            <span className="icoSex">
+              {gender === "male" ? (
+                <img src={male} alt="gender" />
+              ) : (
+                <img src={female} alt="gender" />
+              )}
+            </span>
+            <span>{gender}</span>
           </div>
           <div className="size">
             <span className="icoSize"></span>
@@ -34,14 +52,10 @@ function Cards({ image, name, breed, age, gender, size, description, id,location
         <div className="attributes">{description}</div>
       </div>
       <div className="lbutton">
-        <Link to={"/home/" + id}>
-        More info
-        </Link>
-        </div>
-
+        <Link to={"/home/" + id}>More info</Link>
+      </div>
     </div>
   );
 }
 
 export default Cards;
-
