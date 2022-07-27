@@ -45,5 +45,8 @@ module.exports = (sequelize) => {
     // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
     isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
     isAdmin: { type: DataTypes.BOOLEAN, defaultValue: false }
+  },{
+    paranoid: true,
+    deletedAt: 'softDelete'
   });
 };
