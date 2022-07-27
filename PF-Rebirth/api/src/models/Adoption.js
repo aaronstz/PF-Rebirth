@@ -28,11 +28,6 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     otherpets: { type: DataTypes.STRING, allowNull: true },
-    requestdate: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.DATE,
-      allowNull: false,
-    },
     state: {
       type: DataTypes.ENUM("fulfilled", "rejected", "pending"),
       defaultValue: "pending",
