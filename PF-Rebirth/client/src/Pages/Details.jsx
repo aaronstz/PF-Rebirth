@@ -1,88 +1,90 @@
 import React, { useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { getDetails, resetDetails, deletePet } from "../Redux/Actions/index";
+import { useParams } from "react-router-dom";
+import { getDetails } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Cards from "../Components/Card/Card";
 import Navbar from "../Components/Navbar/Navbar";
-import FiltersBar from "../Components/FilterBar/FilterBar";
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
-import pic from "../Assets/fotoPet1.png";
 import "./Details.css";
 import female from "../Assets/Female_ico_big.png";
+import male from "../Assets/male-icon.png";
 import dogIco from "../Assets/dog_ico_big.png";
 import weight from "../Assets/weight_ico_big.png";
 
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { name, image, breed, age, size, gender, type, race, description } =
-    useSelector((state) => state.detail);
 
-  console.log(name);
+  const { name, image, race, age, size, gender, description } = useSelector(
+    (state) => state.detail
+  );
 
-  const navigate = useNavigate();
+
+  // const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getDetails(id));
   }, [dispatch, id]);
 
-  function clear() {
-    dispatch(resetDetails());
-  }
+  // function clear() {
+  //   dispatch(resetDetails());
+  // }
 
-  function handleDelete() {
-    dispatch(deletePet(id));
-    navigate("/home");
-  }
+  // function handleDelete() {
+  //   dispatch(deletePet(id));
+  //   navigate("/home");
+  // }
 
   return (
     <div>
-        <Navbar/>
+      <Navbar />
       <Container>
-        <Header/>
-        <br/>
-        <div class ="dtl-card">
-          <div class ="info">
-          <h3 class ="title">{name}</h3>
-          <h4 class = "breed">{breed}</h4>
-          <h5 class ="age">{age}</h5>
-          {/* <h6 class ="location">Mexico City</h6> */}
-          <br/>
+        <Header />
+        <br />
+        <div class="dtl-card">
+          <div className="dtl-cardLeft">
+            <h3 class="title">{name}</h3>
+            <h4 class="breed">{race}</h4>
+            <h5 class="age">{age}&nbsp;years</h5>
+            <span class="petlocation">Mexico City</span>
+            <br />
+            <div class="story-dtl">
+              <h5 class="txt-dscp">{description}</h5>
+            </div>
           </div>
-          <div class="attributes">{/* <h5>{description}</h5> */}</div>
-          <br />
-          <div class="story-dtl">
-            <h5 class="txt-dscp">{description}</h5>
-          </div>
-          <div class="right-card">
+          <div className="dtl-cardCenter">
             <h3 class="disp">AVAILABLE</h3>
             <div class="txt-description">
               <span>{gender}</span>
-              <img src={female} alt="Female" />
+              {gender === "male" ? (
+                <img src={male} alt="gender" />
+              ) : (
+                <img src={female} alt="gender" />
+              )}
             </div>
             <br />
             <div class="txt-description">
               <span>{size}</span>
               <img src={dogIco} alt="Pet" />
             </div>
-            <br />
-            <div>
-              {/* <span class ="txt-description-last">3.4kg</span> */}
+            <div class="txt-description-last">
+              <span>3.4 kg</span>
               <img src={weight} alt="weight" />
             </div>
-          </div>
-          <div class="btn-dtl">
             <button class="a-btn">
-              <span class="text">Adopt me!</span>
+              <span>Donate</span>
+            </button>
+            <button class="a-btn">
+              <span>Adopt me!</span>
             </button>
           </div>
-          <div class="img-dtl">
-            <div class="a-btnFav"></div>
-            <img src={image} alt="Pet" class="img" />
+
+          <div className="dtl-cardRight">
+            <div class="img-dtl">
+              <div class="a-btnFav"></div>
+              <img src={image} alt="Pet" class="img" />
+            </div>
           </div>
         </div>
       </Container>

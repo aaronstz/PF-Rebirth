@@ -1,37 +1,45 @@
-.header-container{
+.header-container {
     display: flex;
     flex-direction: row;
-  }
-
-
-.header-carousel{
-    width: 860px;
-   
 }
-.header-buttons{
-    margin:14px;
+
+
+.header-carousel {
+    width: 860px;
+
+}
+
+.header-buttons {
+    margin: 14px;
     display: flex;
     flex-direction: column;
 }
-.heaeder-team{
+
+.heaeder-team {
 
     width: 420px;
-    height: 210px;  
+    height: 210px;
 }
-.header-donations{
-    margin-top: 12px;
+.marginImage{
+    margin-top: 6px;
+}
+.header-donations {
+    margin-top: 8px;
     width: 420px;
     height: 160px;
 }
+
 @media (max-width: 1400px) {
-    .header-container{
+    .header-container {
         flex-direction: column;
     }
-    .header-buttons{
-     flex-direction:row;
-     align-items: flex-end;
-     }
-     .header-donations{
+
+    .header-buttons {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .header-donations {
         margin-bottom: 6px;
-     }
+    }
 }

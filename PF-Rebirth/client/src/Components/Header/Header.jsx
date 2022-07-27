@@ -19,8 +19,8 @@ function Header({type}) {
             <NavLink to={'/home'}>
               {
                 type === 'cat' ?
-                <Link to ={'/home?type=dog'}>
-                <img src={headerDogTeam} alt="botonTeam" />
+                <Link to ={'/home?type=dog'} >
+                <img className="marginImage" src={headerDogTeam} alt="botonTeam" />
                 </Link>
                 :
                 <Link to ={'/home?type=cat'}>

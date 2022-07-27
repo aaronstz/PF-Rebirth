@@ -1,0 +1,74 @@
+
+.formContainer{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 80%;
+    border-radius: 25px;
+}
+
+.formRegister{
+    width: 40%;
+    padding: 10px;
+    margin-left: 3%;
+    color: var(--greylight);
+}
+
+.formImageContainer{
+    margin: 0 3%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 35%;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.formPetImage{
+    width: 120%;
+    margin-top: 15%;
+    border-radius: 25px;
+}
+
+.formLogoImage{
+    width: 129.5%;
+    padding: 10px;
+    margin-top: 8.7%;
+    margin-right: 20%;
+}
+
+.formBtnSubmit{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.formInputStyle{
+    box-shadow: 0px 3px 3px 0px var(--grey2);
+}
+
+.formBtnRegister{
+    width: 100%;
+    padding: 12px 10px;
+    margin-top: 10px;
+    background-color: var(--green) !important;
+    border: solid 1px var(--border);
+    box-shadow: 0px 5px 5px 0px var(--grey2);
+}
+
+.formBtnRegister:hover {
+    background-color: var(--pink) !important;
+}
+
+.formTextComment{
+    color: var(--greylight);
+    background-color: transparent;
+}
+
+.formErrores{
+    color: red;
+}

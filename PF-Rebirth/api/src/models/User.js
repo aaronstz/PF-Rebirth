@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const bcrypt = require('bcrypt');
 
 module.exports = (sequelize) => {
   sequelize.define("user", {
@@ -23,6 +24,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+
     active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -30,16 +33,17 @@ module.exports = (sequelize) => {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: {
-          args: [7, 42],
+          args: [7, 100],
           msg: "The password length should be between 7 and 42 characters.",
         },
       },
     },
     image: {
       type: DataTypes.STRING,
+
       allowNull: true,
     },
     // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
@@ -48,5 +52,6 @@ module.exports = (sequelize) => {
   },{
     paranoid: true,
     deletedAt: 'softDelete'
+
   });
 };

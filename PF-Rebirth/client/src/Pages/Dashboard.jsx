@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import DashNavBar from "../Dashboard/Components/Dash-NavBar/Dash-NavBar";
+import DashFavorites from "../Dashboard/Components/MyFavorites/DashFavorites";
+import "./Dashboard.css";
 
-function Dashboard() {
+function Navbar() {
   return (
-    <div>Dashboard</div>
-  )
+    <>
+      <DashNavBar />
+      <div className="DashcontainerMain">
+        <DashFavorites />
+      </div>
+    </>
+  );
 }
 
-export default Dashboard
+export default Navbar;

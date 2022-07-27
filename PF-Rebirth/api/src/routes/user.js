@@ -1,6 +1,9 @@
 const { Router } = require("express");
 const {User} = require('../db')
 const router = Router()
+const { generatePassword } = require('../tools/passwordGenerator.js');
+const bcrypt  = require('bcrypt');
+
 
 router.put("/:mail" , async(req, res, next)=>{
     const {mail} = req.params
@@ -35,39 +38,46 @@ router.get("/" , async (req, res, next)=>{
     }
 })
 
-
-
-
 router.post("/", async(req,res,next) =>{
-    if(req.body.googleId){
-        try {
-            const userName = req.body.name;
-            const name = req.body.givenName;
-            const lastName = req.body.familyName;
-            const mail = req.body.email;
-            const image = req.body.imageUrl;
-            const password = name+Math.random();
-            await User.create({userName, name, lastName, mail, image, password});
-            res.status(200).send(`El usuario ${name} fue creado con exito`);
 
+    const { body } = req;
+    const { googleId } = body;
+
+
+    if(googleId){
+        try {
+            const userName = body.name;
+            const name = body.givenName;
+            const lastName = body.familyName;
+            const mail = body.email;
+            const image = body.imageUrl;
+            const generatePass = generatePassword(9);
+            const password = await bcrypt.hash(generatePass, 10);
+
+            await User.create({userName, name, lastName, mail, image, password });
+            res.send(`El usuario ${name} fue creado con exito`);
         } catch (error) {
+            console.log(error)
+
             res.status(400).send(error)
             next();
         }
     }else{
         try {
-            const userName = req.body.formBasicUserName;
-            const name = req.body.formBasicName;
-            const lastName = req.body.formBasicLastName;
-            const mail = req.body.formBasicEmail;
-            const password = req.body.formBasicPassword;
+
+            const userName = body.formBasicUserName;
+            const name = body.formBasicName;
+            const lastName = body.formBasicLastName;
+            const mail = body.formBasicEmail;
+            const password = body.formBasicPassword;
 
             await User.create({userName, name, lastName, mail, password})
-            res.status(200).send(`El usuario ${name} fue creado con exito`)
+            res.send(`El usuario ${name} fue creado con exito`)
         } catch (error) {
             res.status(400).send(error)
         }
-    }})
+    }
+})
 
 
 router.delete("/:mail" , async (req, res, next) =>{
