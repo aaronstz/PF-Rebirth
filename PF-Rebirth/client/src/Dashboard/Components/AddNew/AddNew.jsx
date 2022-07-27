@@ -3,7 +3,7 @@ import background from '../../../Assets/loginMain.png';
 import './AddNew.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { postPet } from '../../../Redux/Actions/index'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { provincias } from '../../../Tools/provincias'
 
 function validate(input){
@@ -13,6 +13,30 @@ function validate(input){
     if(!input.type || input.type > 1){
         errors.type = 'Type must be only one of the following options'
     }
+    if(!input.name){
+        errors.name = 'Name is required'
+    }
+    if(!validateName.test(input.name)){
+        errors.name = 'Name cannot contain numbers or special characters'
+    }
+    if(input.image && !validateUrl.test(input.image)){
+        errors.image = 'This is not a valid URL'
+    }
+    if(!input.size){
+        errors.size = 'Please select one of the following options'
+    }
+    if(!input.gender){
+        errors.gender = 'Please select one of the following options'
+    }
+    if(!input.type){
+        errors.type = 'Please select one of the following options'
+    }
+    if(!input.race){
+        errors.race = "If you don't know the breed write 'unknown'"
+    }
+    if(!input.location){
+        errors.location = 'Please select one of the following options'
+    }
     return errors;
 }
 
@@ -21,7 +45,7 @@ function AddNew(){
     const [selectedFile, setSelectedFile] = useState()
     const [isFilePicked, setIsFilePicked] = useState(false)
 
-
+    const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
     const [input, setInput] = useState({
@@ -127,6 +151,7 @@ function AddNew(){
                 race:'',
                 location:'',
             })
+            navigate('/home')
         }
         else{
             alert('Fields with * are required')
@@ -159,7 +184,7 @@ function AddNew(){
                                             autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">Name is invalid</div>
+                                            <div className="addinvalid-fb">{errors.name}</div>
                                         </div>
 
                                         <div className="addform">
@@ -198,8 +223,8 @@ function AddNew(){
                                             }
                                             <div>
                                                 <button onClick={submitImage}>Upload Image</button>
-                                            </div>
-                                            <div className="addinvalid-fb">Image is invalid</div> */}
+                                            </div> */}
+                                            <div className="addinvalid-fb">{errors.image}</div> 
                                         </div>
 
                                         <div className="addform">
@@ -215,7 +240,7 @@ function AddNew(){
                                             min="0"
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">Age is invalid</div>
+                                            <div className="addinvalid-fb">{errors.age}</div>
                                         </div>
 
                                         <div class="form-group">
@@ -227,7 +252,7 @@ function AddNew(){
                                                 <option value ="big">Big</option>
                                             </select>
 
-                                            <div className="addinvalid-fb">Size is invalid</div>
+                                            <div className="addinvalid-fb">{errors.size}</div>
                                         </div>
 
                                         <div class="form-group">
@@ -238,7 +263,7 @@ function AddNew(){
                                                 <option value ="female">Female</option>
                                             </select>
 
-                                            <div className="addinvalid-fb">Gender is invalid</div>
+                                            <div className="addinvalid-fb">{errors.gender}</div>
                                         </div>
 
                                         <div class="form-group">
@@ -248,7 +273,7 @@ function AddNew(){
                                                 <option value ="dog">Dog</option>
                                                 <option value ="cat">Cat</option>
                                             </select>
-                                            <div className="addinvalid-fb">Type is invalid</div>
+                                            <div className="addinvalid-fb">{errors.type}</div>
                                         </div>
 
                                         <div className="addform">
@@ -263,7 +288,7 @@ function AddNew(){
                                             autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">Race is invalid</div>
+                                            <div className="addinvalid-fb">{errors.race}</div>
                                         </div>
                                         <div className="addform">
                                             <label for ="location" >Location*</label>
@@ -277,7 +302,7 @@ function AddNew(){
                                                     })
                                                 }
                                             </select>
-                                            <div className="addinvalid-fb">Location is invalid</div>
+                                            <div className="addinvalid-fb">{errors.location}</div>
                                         </div>
                                         <div className="form-outline">
                                             <label class="form-label"for ="textAreaExample">Description</label>
@@ -305,9 +330,6 @@ function AddNew(){
                                     </div>
                                         
                                     </form>
-                                    {
-                                        errors.type && <h6>{errors.type}</h6>
-                                    }
                                 </div>
                                     </div>
                                     <div className="addfooter">
