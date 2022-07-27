@@ -4,36 +4,6 @@ const router = Router();
 
 const nodemailer = require("nodemailer");
 
-// router.post("/" , (req, res) =>{
-//     let transporter = nodemailer.createTransport({
-//         host: "smtp.ethereal.email",
-//         port: 587,
-//         secure: false,
-//         auth: {
-//           user: "yvette58@ethereal.email",
-//           pass: "7EYyjnsRn3JGVv6wbN", 
-//         },
-//       });
-
-
-//     let mailOption = {
-//         from : "Remitente",
-//         to : "rebirhtPets@gmail.com",
-//         subject : "Enviado desde Rebirth.app",
-//         text : "Hola, llegue"
-//     }
-
-//     transporter.sendMail(mailOption , (error, info) =>{
-//         if(error){
-//             res.status(500).send(error.message)
-//         }else{
-//             console.log('mail sent successfully')
-//             res.status(200).send(info)
-//         }
-//     })
-
-// });
-
 router.post("/" , (req, res) =>{
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -46,12 +16,14 @@ router.post("/" , (req, res) =>{
       });
 
 
-      const {email, subject, text} = req.body
+      const {email, subject, text, name, phone} = req.body
         let mailOption = {
         from : email,
-        to : "yvette58@ethereal.email",
-        subject : subject,
-        text : text
+        name : name,
+        phone : phone,
+        to : "petsrebirth@gmail.com",
+        subject : subject + " , " + name ,
+        text : text +" , Phone: " + phone +" , Email: " +  email
     }
 
     transporter.sendMail(mailOption , (error, info) =>{
@@ -61,7 +33,7 @@ router.post("/" , (req, res) =>{
             console.log('mail sent successfully', req.body)
             res.status(200).send(req.body)
         }
-    })
+    }) 
 
 });
   

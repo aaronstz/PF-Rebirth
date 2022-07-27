@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const {User} = require('../db')
 const router = Router()
+const nodemailer = require("nodemailer");
 
 router.put("/:mail" , async(req, res, next)=>{
     const {mail} = req.params
@@ -48,6 +49,35 @@ router.post("/", async(req,res,next) =>{
             const image = req.body.imageUrl;
             const password = name+Math.random();
             await User.create({userName, name, lastName, mail, image, password});
+            
+            
+            let transporter = nodemailer.createTransport({
+                    host: "smtp.gmail.com",
+                    port: 465,
+                    secure: true,
+                    auth: {
+                      user: "rebirhtPets@gmail.com",
+                      pass: "vxhhgglvicwtjnax", 
+                    },
+                  });
+            
+ 
+            let mailOption = {
+                    from : " 'Rebirth.App 🐾' <rebirhtPets@gmail.com>",
+                    to : "petsrebirth@gmail.com",
+                    subject : "Rebirth.App 🐾",
+                    text : "Gracias por registrarte en Rebirth!"
+                }
+            
+                transporter.sendMail(mailOption , (error, info) =>{
+                    if(error){
+                        res.status(500).send(error.message)
+                    }else{
+                        console.log('mail sent successfully', req.body)
+                        res.status(200).send(req.body)
+                    }
+                }) 
+         
             res.status(200).send(`El usuario ${name} fue creado con exito`);
 
         } catch (error) {
