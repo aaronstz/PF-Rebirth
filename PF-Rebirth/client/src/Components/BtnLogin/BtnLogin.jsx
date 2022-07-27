@@ -1,17 +1,23 @@
+
 import GoogleLogin from 'react-google-login';
 import { gapi } from 'gapi-script';
 import React, { useEffect } from 'react';
 import './BtnLogin.css';
 import { useNavigate } from 'react-router-dom';
+import { postUser } from '../../Redux/Actions/index.js';
+import { useDispatch } from 'react-redux';
+const { REACT_APP_CLIENT_ID } = process.env;
 
 export default function BtnLogin() {
 
-    const clientId = "944240356620-nimmpjlb0om115mdrka0o1a1tsn8j6c9.apps.googleusercontent.com";
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const onSuccess = (response) => {
-      console.log(response);
-      navigate("/dashboard")
+    const onSuccess = ({profileObj, tokenObj}) => {
+      console.log(profileObj);
+      console.log(tokenObj);
+      dispatch(postUser(profileObj))
+      // navigate("/dashboard")
     }
 
     const failureLogin = (response) => {
@@ -21,7 +27,7 @@ export default function BtnLogin() {
     useEffect(()=>{
       function start(){
         gapi.client.init({
-          clientId : clientId,
+          clientId : REACT_APP_CLIENT_ID,
           scope : ""
         })
       }
@@ -31,9 +37,13 @@ export default function BtnLogin() {
     
     return (
         <GoogleLogin
-            clientId={clientId}
+            clientId={REACT_APP_CLIENT_ID}
             render={renderProps => (
-            <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='btn-google'>Login with Google</button>
+            <button 
+              onClick={renderProps.onClick} 
+              disabled={renderProps.disabled} 
+              className='btn-google'>Login with Google
+            </button>
             )}
             onSuccess={onSuccess}
             onFailure={failureLogin}

@@ -8,10 +8,12 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
+
 import { getPetFilters } from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+
 
 function Home() {
   const petType = useLocation().search?.replace("?type=", "");
@@ -21,13 +23,13 @@ function Home() {
   // const loading = useSelector(store => store.loading)
 
   //Paginado//
-  const [refresh, setRefresh] = useState(1);
+  const [ refresh ] = useState(1);
   const [page, setPage] = useState(1);
-  const [cantPets, setCantPets] = useState(12);
+  const [ cantPets ] = useState(12);
   const lastPet = page * cantPets;
   const firstPet = lastPet - cantPets;
   const petsPage = pets?.slice(firstPet, lastPet);
-  const cantPages = Math.ceil(pets.length / cantPets);
+  // const cantPages = Math.ceil(pets.length / cantPets);
 
   const paginado = (pageNum) => {
     setPage(pageNum);
@@ -48,6 +50,7 @@ function Home() {
             petsPage.map((p, i) => {
               return (
                 <Cards
+                  key={Math.random()}
                   image={p.image}
                   name={p.name}
                   breed={p.race}

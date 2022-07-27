@@ -15,9 +15,11 @@ import weight from "../Assets/weight_ico_big.png";
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
+
   const { name, image, race, age, size, gender, description } = useSelector(
     (state) => state.detail
   );
+
 
   // const navigate = useNavigate();
 

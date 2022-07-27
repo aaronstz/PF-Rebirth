@@ -1,6 +1,9 @@
 const { Router } = require("express");
 const {User} = require('../db')
 const router = Router()
+const { generatePassword } = require('../tools/passwordGenerator.js');
+const bcrypt  = require('bcrypt');
+
 
 router.get("/:id" , async(req, res, next) =>{
     const {id} = req.params
@@ -25,21 +28,41 @@ router.get("/" , async (req, res, next)=>{
     }
 })
 
-
-
 router.post("/", async(req,res,next) =>{
-    //     email: "will.diazor@gmail.com"
-    // familyName: "Diaz"
-    // givenName: "William"
-    // googleId: "112901499804350175056"
-    // imageUrl: "https://lh3.googleusercontent.com/a-/AFdZucpADX4F1pb5a7QR8vuWoUh3Bn8trbVLtBucLFRXCJ8=s96-c"
-    // name: "William Diaz"
-    const {userName, name, lastName, gender, address, age, mail, phone, active, password, image} = req.body
-    try {
-        await User.create({userName, name, lastName, gender, address, age, mail, phone, active, password, image})
-        res.status(200).send(`El usuario ${req.body.name} fue creado con exito`)
-    } catch (error) {
-        next(error)
+
+    const { body } = req;
+    const { googleId } = body;
+
+    if(googleId){
+        try {
+            const userName = body.name;
+            const name = body.givenName;
+            const lastName = body.familyName;
+            const mail = body.email;
+            const image = body.imageUrl;
+            const generatePass = generatePassword(9);
+            const password = await bcrypt.hash(generatePass, 10);
+
+            await User.create({userName, name, lastName, mail, image, password });
+            res.send(`El usuario ${name} fue creado con exito`);
+        } catch (error) {
+            console.log(error)
+            res.status(400).send(error)
+            next();
+        }
+    }else{
+        try {
+            const userName = body.formBasicUserName;
+            const name = body.formBasicName;
+            const lastName = body.formBasicLastName;
+            const mail = body.formBasicEmail;
+            const password = body.formBasicPassword;
+
+            await User.create({userName, name, lastName, mail, password})
+            res.send(`El usuario ${name} fue creado con exito`)
+        } catch (error) {
+            res.status(400).send(error)
+        }
     }
 })
 

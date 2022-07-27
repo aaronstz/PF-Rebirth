@@ -5,19 +5,19 @@ import profile2 from '../Assets/Testimoniales/profile2.webp';
 export const TESTIMONIALS = [
         {
             fullName : 'Federico Guzman Lopez',
-            comments : 'El proceso de adopción de mi mascota con Rebirth fue super sencillo, Lolita es justo como la mostraban en las imagenes y la comunicación con el dueño anterior fue bastante agil. El diseño de la página es muy funcional, los menús superiores e inferiores tienen la información presisca para localizar perfectamente lo que está buscando y el poder elegir desde un inicio entre perro o gato hace muy amigable la página.',
+            comments : 'The process of adopting my pet with Rebirth was super simple, Lolita is just as shown in the images and the communication with the previous owner was quite agile. The design of the page is very functional, the upper and lower menus have the precise information to perfectly locate what you are looking for and being able to choose from the beginning between a dog or a cat makes the page very friendly.',
             stars : 5,
             imgProfile : usuarioAvatar,
         },
         {
             fullName : 'Fatima Moreira de Melo',
-            comments : 'Realmente Rebirth es una plataforma que ayuda muchisimo al momento de escoger la mascota que queria adoptar, si fuese por mi adoptaria a todos los animalitos de la plataforma, me encantaron todos. Algunas otras veces nuestro adoptado tiene conductas que no comprendemos o pasa por un período de adaptación en el cual necesitamos ayuda y en Rebirth cuentan con el etólogo adecuado para darnos la guía necesaria y consejos para superar este tipo de problemas.',
+            comments : 'Really Rebirth is a platform that helps a lot when choosing the pet I wanted to adopt, if it were up to me I would adopt all the little animals on the platform, I loved them all. Sometimes our adoptee has behaviors that we do not understand or goes through a period of adaptation in which we need help and in Rebirth they have the right ethologist to give us the necessary guidance and advice to overcome this type of problem.',
             stars : 4,
             imgProfile : profile2,
         },
         {
             fullName : 'Carlos Bermudes Espinoza',
-            comments : 'Rebirth ofrece todo esto a solo un clic de distancia, y nos da la oportunidad desde la entrada a elegir entre los dos principales tipos de mascotas que existen en nuestros hogares, perros o gatos. Además ofrecen orientación veterinaria en determinadas categorías, por ejemplo, si eres padre primerizo de un perro o gatito puedes encontrar aquí la guía que necesitas para aprender a atender adecuadamente al nuevo integrante de la familia.',
+            comments : 'Rebirth offers all this just a click away, and gives us the opportunity to choose between the two main types of pets that exist in our homes, dogs or cats. They also offer veterinary guidance in certain categories, for example, if you are a new parent of a dog or kitten, you can find here the guide you need to learn how to properly care for the new member of the family.',
             stars : 5,
             imgProfile : usuarioAvatar2,
         },

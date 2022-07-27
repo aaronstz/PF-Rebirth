@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const bcrypt = require('bcrypt');
 
 module.exports = (sequelize) => {
   sequelize.define("user", {
@@ -22,18 +23,21 @@ module.exports = (sequelize) => {
     },
     gender: {
       type: DataTypes.ENUM("man", "woman"),
-      allowNull: false,
+      // allowNull: false,
+      defaultValue : "man"
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
+      defaultValue : null
     },
     age: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         isNumeric: true,
       },
+      defaultValue : 18
     },
     mail: {
       type: DataTypes.STRING,
@@ -44,7 +48,8 @@ module.exports = (sequelize) => {
     },
     phone: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
+      defaultValue : 9999999
     },
     active: {
       type: DataTypes.BOOLEAN,
@@ -53,20 +58,33 @@ module.exports = (sequelize) => {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: {
-          args: [7, 42],
+          args: [7, 100],
           msg: "The password length should be between 7 and 42 characters.",
         },
       },
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,,
+      defaultValue : null
     },
     // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
     
-    isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
+    isOwner: { type: DataTypes.BOOLEAN, defaultValue: false 
+    },
+  }, 
+  {    
+    freezeTableName : true,
+    instanceMethods : {
+      generateHash(password){
+        return bcrypt.hash(password, bcrypt.genSaltSync(8))
+      },
+      validPassword(password) {
+        return bcrypt.compare(password, this.password)
+      }
+    }
   });
 };

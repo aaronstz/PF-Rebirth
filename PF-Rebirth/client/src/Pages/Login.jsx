@@ -1,9 +1,9 @@
 import React from "react";
-import "../Components/Login/Login.css";
-import fondo from "../Assets/loginMain.png";
+import "./Login.css";
+import fondo from "../Assets/loginMain2.png";
 import BtnLogin from "../Components/BtnLogin/BtnLogin";
-
 import { Link } from "react-router-dom";
+import Navbar from '../Components/Navbar/Navbar';
 
 function Login() {
 
@@ -11,6 +11,8 @@ function Login() {
 
   return (
     <section>
+      <Navbar/>
+      <br/>
       <div className="container">
         <div className="wrapper">
           <div className="wrapperLeft">
@@ -34,7 +36,6 @@ function Login() {
                           type="email"
                           className="form-control"
                           name="email"
-                          value=""
                           required
                           autofocus
                         />
