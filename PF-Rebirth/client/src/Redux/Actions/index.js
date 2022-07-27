@@ -117,7 +117,6 @@ export function getDetails(id) {
   return async function (dispatch) {
     try {
       const json = await axios(`http://localhost:3001/pets/${id}`);
-      console.log(json);
       return dispatch({
         type: "GET_DETAILS",
         payload: json.data,
