@@ -2,9 +2,10 @@ const { Router } = require("express");
 const {User} = require('../db')
 const router = Router()
 
-router.get("/restore" , async(req, res, next)=>{
+router.put("/:mail" , async(req, res, next)=>{
+    const {mail} = req.params
     const restoreUser = await User.restore({
-        paranoid: true
+        where : {mail : mail}
     })
     res.sendStatus(200).send(restoreUser)
 })
