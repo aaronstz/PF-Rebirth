@@ -2,6 +2,14 @@ const { Router } = require("express");
 const {User} = require('../db')
 const router = Router()
 
+router.put("/:mail" , async(req, res, next)=>{
+    const {mail} = req.params
+    const restoreUser = await User.restore({
+        where : {mail : mail}
+    })
+    res.sendStatus(200).send(restoreUser)
+})
+
 router.get("/:mail" , async(req, res, next) =>{
     const {mail} = req.params
     try {
@@ -16,14 +24,17 @@ router.get("/:mail" , async(req, res, next) =>{
     }
 })
 
+
+
 router.get("/" , async (req, res, next)=>{
+    const allUsers = await User.findAll()
     try {
-        const allUsers = await User.findAll()
         allUsers.length ? res.status(200).send(allUsers) : res.status(400).send("No se encuentra ningun usuario")
     } catch (error) {
         next(error)
     }
 })
+
 
 
 
