@@ -15,4 +15,3 @@ const generatePassword = (longitud) => {
 module.exports = {
     generatePassword,
 };
-}
