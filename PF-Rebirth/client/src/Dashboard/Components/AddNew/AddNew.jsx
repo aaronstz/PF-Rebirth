@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postPet } from '../../../Redux/Actions/index'
 import { Link, useNavigate } from 'react-router-dom'
 import { provincias } from '../../../Tools/provincias'
+import { Widget } from "@uploadcare/react-widget";
 
 function validate(input){
     let validateName = /^[a-zA-Z\s]+$/; 
@@ -18,9 +19,6 @@ function validate(input){
     }
     if(!validateName.test(input.name)){
         errors.name = 'Name cannot contain numbers or special characters'
-    }
-    if(input.image && !validateUrl.test(input.image)){
-        errors.image = 'This is not a valid URL'
     }
     if(!input.size){
         errors.size = 'Please select one of the following options'
@@ -42,9 +40,8 @@ function validate(input){
 
 
 function AddNew(){
-    const [selectedFile, setSelectedFile] = useState()
-    const [isFilePicked, setIsFilePicked] = useState(false)
 
+    
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
@@ -62,8 +59,7 @@ function AddNew(){
     })
 
 
-    console.log(input)
-    console.log(errors)
+   
 
     function handleChange(e){
         e.preventDefault()
@@ -78,61 +74,18 @@ function AddNew(){
         }))
     }
 
-    function handleType(e){
-        e.preventDefault()
+
+    function handleImage(file){
         setInput({
             ...input,
-            type: e.target.value
+            image: file.uuid
         })
-        setErrors(validate({
-            ...input,
-            [e.target.name] : e.target.value,
-            type: ''
-        }))
+        console.log(input.image)
     }
 
-    function handleImage(e){
-        setSelectedFile(e.target.files[0])
-        setIsFilePicked(true)
-    }
-
-    // function handleGender(e){
-    //     e.preventDefault()
-    //     setInput({
-    //         ...input,
-    //         gender: e.target.value
-    //     })
-    // }
-
-    // function handleSize(e){
-    //     e.preventDefault()
-    //     setInput({
-    //         ...input,
-    //         size: [...input.size, e.target.value]
-    //     })
-    // }
+    console.log(input)
 
 
-    function submitImage(){
-        const formData = new FormData();
-
-        formData.append('File', selectedFile)
-
-        fetch(
-            'https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5',
-            {
-                method: 'POST',
-                body: formData
-            }
-        )
-            .then((response)=>response.json())
-            .then((result)=> {
-                console.log('Success:', result)
-            })    
-            .catch((error)=>{
-                console.error('Error:', error)
-            })
-    }
 
     function handleSubmit(e){
         e.preventDefault()
@@ -161,6 +114,7 @@ function AddNew(){
     return(
         <section>
             <div className="add-container">
+
                 <div className="add-wrapper">
                     <div className="add-wrapperleft">
                         <div className="add-md-center">
@@ -189,41 +143,14 @@ function AddNew(){
 
                                         <div className="addform">
                                             <label class="form-label" for ="customFile">Image*</label>
-                                            <input
-                                            id="customFile"
-                                            type="text"
-                                            class="form-control"
-                                            name="image"
-                                            value={input.image}
-                                            required
-                                            autoFocus
-                                            onChange ={(e)=>{handleChange(e)}}
-                                            />
-                                            {/* <input
-                                            id="customFile"
-                                            type="file"
-                                            class="form-control"
-                                            name="image"
-                                            value={input.image}
-                                            required
-                                            autoFocus
-                                            onChange ={(e)=>{handleImage(e)}}
-                                            />
-                                            {
-                                                isFilePicked? (
-                                                    <div>
-                                                        <p>Filename: {selectedFile.name}</p>
-                                                        <p>Filetype: {selectedFile.type}</p>
-
-                                                    </div>
-                                                    )
-                                                    : (
-                                                        <p>Select a file to show details</p>
-                                                        )
-                                            }
-                                            <div>
-                                                <button onClick={submitImage}>Upload Image</button>
-                                            </div> */}
+                                            <Widget publicKey = "e7afc989eff083e04496" 
+                                            onFileSelect={(e)=>{
+                                                console.log(e);
+                                                e.done((file)=>{handleImage(file)});
+                                                
+                                             }}
+                                             value={input.image}
+                                            clearable/>
                                             <div className="addinvalid-fb">{errors.image}</div> 
                                         </div>
 
@@ -236,7 +163,6 @@ function AddNew(){
                                             name="age"
                                             value={input.age}
                                             required
-                                            autoFocus
                                             min="0"
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
@@ -285,7 +211,6 @@ function AddNew(){
                                             name="race"
                                             value={input.race}
                                             required
-                                            autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
                                             <div className="addinvalid-fb">{errors.race}</div>
@@ -306,7 +231,7 @@ function AddNew(){
                                         </div>
                                         <div className="form-outline">
                                             <label class="form-label"for ="textAreaExample">Description</label>
-                                            <textarea name="description" value={input.description} type="text" autoFocus class ="form-control" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
+                                            <textarea maxlength ="150"name="description" value={input.description} type="text" class ="textarea" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
 
                                             {/* <input
                                             id="description"
@@ -340,8 +265,8 @@ function AddNew(){
                         </div>
                     </div>
                         <div className="addwrapper-right">
-                            <div className="add-md-center">
-                                <img src={background} alt="Add Pet"/>
+                            <div className="row justify-content-md-center">
+                                <img src={background} alt="pet"/>
                             </div>
                         </div>
                 </div>
