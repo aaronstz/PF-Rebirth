@@ -91,7 +91,7 @@ router.post("/", async (req, res, next) => {
         const basicPass = body.formBasicPassword;
         const password = await bcrypt.hash(basicPass, 10);
 
-        await User.findOrCreate({ userName, name, lastName, mail, password });
+        await User.create({ userName, name, lastName, mail, password });
         let transporter = nodemailer.createTransport({
           host: "smtp.gmail.com",
           port: 465,
