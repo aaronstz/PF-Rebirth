@@ -1,0 +1,10 @@
+POST http://localhost:3001/user
+Content-Type: application/json
+
+{
+    "formBasicUserName" : "willdz90",
+    "formBasicName" : "Will",
+    "formBasicLastName" : "Diaz",
+    "formBasicEmail" : "will@gmail.com",
+    "formBasicPassword" : "123131212"
+}
