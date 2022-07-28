@@ -2,7 +2,7 @@
 -------------------------------------------------- */
 html {
   position: relative;
-  
+
 }
 
 body {
@@ -20,13 +20,14 @@ body {
 /* Taller footer on small screens */
 @media (max-width: 567em) {
 
-    body {
-      margin-bottom: 700px;
-    }
-    .footer {
-      height: 500px;
+  body {
+    margin-bottom: 700px;
+  }
 
-    }
+  .footer {
+    height: 500px;
+
+  }
 
 }
 
@@ -39,10 +40,10 @@ footer {
 }
 
 
-.row{
-    flex:none;
-    display:inline-block;
-    position: relative;
+.row {
+  flex: none;
+  display: inline-block;
+  position: relative;
 
 }
 
@@ -51,15 +52,15 @@ footer {
 }
 
 
-.body{
-    height: 50%;
-    /* width: 100%; */
+.body {
+  height: 50%;
+  /* width: 100%; */
 
-    display:flex;
-    position: relative;
-    justify-content: center;
-    margin-top:80px;
-    bottom:0;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-top: 80px;
+  bottom: 0;
 
 }
 
@@ -80,12 +81,9 @@ footer a:focus {
 }
 
 
-.container{
-    margin-top: 40px;
-    bottom:0;
-    height: 100%;
-    
-
+.container {
+  bottom: 0;
+  height: 100%;
 }
 
 
@@ -127,12 +125,12 @@ footer .form-control {
 }
 
 
-.paragraph{
-    font-weight:normal;
-    margin: 0;
+.paragraph {
+  font-weight: normal;
+  margin: 0;
 }
 
-.sub-title{
+.sub-title {
   margin-top: 5px;
 
 }
@@ -195,9 +193,10 @@ footer .form-control {
   margin: 0 4rem auto 0;
 
 }
+
 .footer-link a:hover,
-.footer-link a:focus{
+.footer-link a:focus {
   text-decoration: none;
   border-bottom: 0px;
- 
+
 }

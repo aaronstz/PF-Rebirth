@@ -11,25 +11,32 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <div className="containerNavbar">
-      <NavLink to={"/home"} className={"link-navbar"}><img src={logo} alt="logo" className="logo" /></NavLink>
+      <NavLink to={"/home"} className="link-navbar">
+        <img src={logo} alt="logo" className="logo" />
+      </NavLink>
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
-         <NavLink to={"/login"} className={"link-navbar"}><span>New Pet</span></NavLink> 
+          <NavLink to={"/login"} className="link-navbar">
+            <span>New Pet</span>
+          </NavLink>
         </div>
         <div className="item">
           <img src={vector2} alt="vector2" className="icons" />
-          <NavLink to={"/login"} className={"link-navbar"}><span>My favorites</span></NavLink>
+          <NavLink to={"/login"} className="link-navbar">
+            <span>My favorites</span>
+          </NavLink>
         </div>
         <div className="item">
           <DarkMode />
-          <span>Mode</span>
         </div>
         <div className="item">
           <span>ES</span>
           <img src={es} alt="vector" className="bandera" />
         </div>
-        <NavLink to={"/login"} className={"link-navbar"}><img src={vector} alt="vector" /></NavLink>
+        <NavLink to={"/login"} className="link-navbar">
+          <img src={vector} alt="vector" />
+        </NavLink>
       </div>
     </div>
   );

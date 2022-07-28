@@ -24,7 +24,7 @@ const Paginations = ({cantPets, pets, paginado, actual}) => {
         } */}
 
         { pageNumbers && pageNumbers.map(e=>(
-          <ul className="next">
+          <ul className="next" key={Math.random()} >
             <li>
             <span onClick={()=> paginado(e)}>{e}</span>
             </li>

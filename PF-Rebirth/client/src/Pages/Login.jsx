@@ -1,10 +1,18 @@
 import React from "react";
-import "../Components/Login/Login.css";
-import fondo from "../Assets/loginMain.png";
+import "./Login.css";
+import fondo from "../Assets/loginMain2.png";
+import BtnLogin from "../Components/BtnLogin/BtnLogin";
+import { Link } from "react-router-dom";
+import Navbar from '../Components/Navbar/Navbar';
 
 function Login() {
+
+  const tab = '\u00A0'; //constante de espacio en blanco
+
   return (
     <section>
+      <Navbar/>
+      <br/>
       <div className="container">
         <div className="wrapper">
           <div className="wrapperLeft">
@@ -16,8 +24,7 @@ function Login() {
                     <h5 className="">
                       Enter your credentials to access your account
                     </h5>
-                    <div className="btn-google">Log in with google</div>
-
+                    <BtnLogin/>
                     <h6>or</h6>
                   </div>
                   <div className="logCard-body">
@@ -29,7 +36,6 @@ function Login() {
                           type="email"
                           className="form-control"
                           name="email"
-                          value=""
                           required
                           autofocus
                         />
@@ -82,7 +88,8 @@ function Login() {
                         </button>
                       </div>
                       <div className="mt-4 text-center">
-                        Don't have an account? <a href=" ">Create One</a>
+                        Don't have an account? {tab}
+                        <Link to="/register">Create One</Link>
                       </div>
                     </form>
                   </div>

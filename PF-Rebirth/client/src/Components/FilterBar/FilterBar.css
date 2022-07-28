@@ -1,8 +1,7 @@
 .filtBar {
-  width: 90%;
-  padding-left: 10%;
+  width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-direction: row;
   margin: 10px 0 20px 0px;
 }
@@ -19,4 +18,13 @@
   border: 1px solid var(--pink) !important;
   color: var(--white);
   cursor: pointer;
+}
+
+.dropdown-toggle {
+  margin-right: 20px;
+  width: 10rem !important;
+}
+
+.input-group {
+  margin-right: 20px;
 }
