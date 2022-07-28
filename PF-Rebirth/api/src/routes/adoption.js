@@ -61,4 +61,19 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const adoptionRequest = await Adoption.findOne({ where: { id: id } });
+    if (adoptionRequest) {
+      adoptionRequest.isActive = false;
+      await adoptionRequest.save();
+      res.status(200).send("AdoptionRequest deleted");
+    }else{res.status(400).send('AdoptionRequest not found')}
+    
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
