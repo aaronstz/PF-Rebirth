@@ -1,4 +1,5 @@
 const { Router } = require("express");
+
 const router = Router();
 const { User } = require('../db');
 const { getUserInfo } = require('../tools/getUserInfo.js');
@@ -66,5 +67,6 @@ router.delete("/:mail", async (req, res, next) => {
     next(error);
   }
 });
+
 
 module.exports = router;

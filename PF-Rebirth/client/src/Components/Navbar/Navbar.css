@@ -41,7 +41,13 @@
 .logo {
     margin: 12px;
 }
-.link-navbar:hover{
+
+.link-navbar {
     text-decoration: none;
-    color:var(--grey)
+    color: var(--text-color);
+}
+
+.link-navbar:hover {
+    text-decoration: none;
+    color: var(--pink)
 }
