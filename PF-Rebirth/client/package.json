@@ -18,7 +18,6 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.0",
-    "react-sdk-mercadopago": "^1.1.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "router": "^1.3.7",

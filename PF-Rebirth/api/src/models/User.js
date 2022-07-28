@@ -25,6 +25,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
+
     active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -42,23 +43,15 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
+
       allowNull: true,
     },
     // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
     isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
     isAdmin: { type: DataTypes.BOOLEAN, defaultValue: false }
-    },{
-      paranoid: true,
-      deletedAt: 'softDelete'
-    }, {
-      freezeTableName: true,
-      instanceMethods : {
-        generateHash(password) {
-          return bcrypt.hash(password, bcrypt.genSaltSync(8));
-        },
-        validPassword(password) {
-          return bcrypt.compare(password, this.password);
-        }
-      }
-    })
+  },{
+    paranoid: true,
+    deletedAt: 'softDelete'
+
+  });
 };
