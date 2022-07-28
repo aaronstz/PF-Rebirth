@@ -25,7 +25,6 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 function Home() {
-
   const petType = useLocation().search?.replace("?type=", "");
 
   const dispatch = useDispatch();
