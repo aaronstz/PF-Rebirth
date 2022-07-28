@@ -13,13 +13,11 @@ export default function BtnLogin() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // localStorage.clear()
-
     const onSuccess = ({profileObj, tokenObj}) => {
+      console.log(profileObj);
+      console.log(tokenObj);
       dispatch(postUser(profileObj))
-      localStorage.setItem("user", JSON.stringify(profileObj));
-      localStorage.setItem("token", JSON.stringify(tokenObj))
-      navigate("/home")
+      // navigate("/dashboard")
     }
 
     const failureLogin = (response) => {
