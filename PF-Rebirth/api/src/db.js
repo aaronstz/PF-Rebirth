@@ -9,13 +9,13 @@ const {
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DATABASE}`, {
   logging: false, // set to console.log to see the raw SQL queries
-  native: false,
-  dialectOptions : {
-    ssl : {
-      require : true,
-      rejectUnauthorized : false
-    }
-  } // lets Sequelize know we can use pg-native for ~30% more speed
+  native: false,// lets Sequelize know we can use pg-native for ~30% more speed
+  // dialectOptions : {
+  //   ssl : {
+  //     require : true,
+  //     rejectUnauthorized : false
+  //   }
+  // } 
 });
 const basename = path.basename(__filename);
 
@@ -63,13 +63,6 @@ SuccessStories.belongsTo(User);        // el dueño puede tener distintos casos 
 
 User.hasMany(Chat);                   //un usuario puede tener distintos chat y un chat pertenece a un usuario 
 Chat.belongsTo(User);                 // el dueño puede tener distintos chat y un chat pertenece a el dueño
-
-
-
-
-
-
-
 
 // siendo adoptante
 //  user --> muchas --> pets

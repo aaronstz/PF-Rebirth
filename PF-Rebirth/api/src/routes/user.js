@@ -1,9 +1,8 @@
 const { Router } = require("express");
-const {User} = require('../db')
-const router = Router()
+const router = Router();
+const { User } = require('../db');
 const { generatePassword } = require('../tools/passwordGenerator.js');
 const bcrypt  = require('bcrypt');
-
 
 router.put("/:mail" , async(req, res, next)=>{
     const {mail} = req.params
@@ -53,12 +52,12 @@ router.post("/", async(req,res,next) =>{
             const image = body.imageUrl;
             const generatePass = generatePassword(9);
             const password = await bcrypt.hash(generatePass, 10);
-
             await User.create({userName, name, lastName, mail, image, password });
             res.send(`El usuario ${name} fue creado con exito`);
-        } catch (error) {
-            console.log(error)
 
+        } catch (error) {
+
+            console.log(error)
             res.status(400).send(error)
             next();
         }
@@ -69,7 +68,8 @@ router.post("/", async(req,res,next) =>{
             const name = body.formBasicName;
             const lastName = body.formBasicLastName;
             const mail = body.formBasicEmail;
-            const password = body.formBasicPassword;
+            const basicPass = body.formBasicPassword;
+            const password = await bcrypt.hash(basicPass, 10);
 
             await User.create({userName, name, lastName, mail, password})
             res.send(`El usuario ${name} fue creado con exito`)

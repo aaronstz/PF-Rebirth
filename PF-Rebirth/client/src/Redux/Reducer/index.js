@@ -19,6 +19,7 @@ import {
 } from "../Actions/actionTypes";
 
 const initialState = {
+  userLogin : {},
   filterSex: "All",
   filterAge: "age",
   filterSize: "Any",
@@ -33,6 +34,11 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case 'LOGIN_USER' :
+      return {
+        ...state,
+        userLogin : action.payload
+      }
     case GET_TYPES:
       return {
         ...state,
