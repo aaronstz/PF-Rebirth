@@ -9,6 +9,7 @@ import Navbar from '../../../Components/Navbar/Navbar';
 
 
 function validate(input){
+
     let validateName = /^[a-zA-Z\s]+$/; 
     let validateUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
     let errors = {};

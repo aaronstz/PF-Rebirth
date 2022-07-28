@@ -54,7 +54,7 @@ router.post("/", async(req,res,next) =>{
             const generatePass = generatePassword(9);
             const password = await bcrypt.hash(generatePass, 10);
             await User.create({userName, name, lastName, mail, image, password });
-            res.send(`El usuario ${name} fue creado con exito`);
+        
             let transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 465,
@@ -66,7 +66,7 @@ router.post("/", async(req,res,next) =>{
               });
         
 
-        let mailOption = {
+             let mailOption = {
                 from : " 'Rebirth.App 🐾' <rebirhtPets@gmail.com>",
                 to : req.body.email,
                 subject : "Rebirth.App 🐾",
@@ -82,14 +82,11 @@ router.post("/", async(req,res,next) =>{
                 }
             }) 
      
-        res.status(200).send(`El usuario ${name} fue creado con exito`);
+        res.status(201).send(`El usuario ${name} fue creado con exito`);
 
 
         } catch (error) {
-
-            console.log(error)
-            res.status(400).send(error)
-            next();
+            res.status(409).send("El usuario ya se encuentra registrado")
         }
     }else{
         try {

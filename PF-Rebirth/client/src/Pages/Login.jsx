@@ -11,7 +11,6 @@ function Login() {
 
   const tab = '\u00A0'; //constante de espacio en blanco
 
-  const user = useSelector(state => state.userLogin)
   const [ userName, setUserName ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ errors, setErrors ] = useState("");
@@ -19,7 +18,6 @@ function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log(userName, password);
     dispatch(loginUser({userName, password}))
   }
 
@@ -27,8 +25,6 @@ function Login() {
   //   let error = {};
   //   console.log(event)  
   // }
-
-  console.log(user)
 
   return (
     <section>

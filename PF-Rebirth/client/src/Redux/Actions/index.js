@@ -55,7 +55,11 @@ export function getUserId(id) {
 
 export function postUser(payload) {
   return async function (dispatch) {
-    await axios.post(`${SERVER}/user`, payload);
+    try {
+      await axios.post(`${SERVER}/user`, payload);
+    } catch (error) {
+      console.log(error.response.data)
+    }
   };
 }
 
