@@ -1,13 +1,3 @@
-.msg-chat-title{
-    text-align: center;
-}
-.msg-container{
-    border-radius: 30px;
-}
-
-
-
-
 .chat-container{
     display: flex;
     flex-direction: column;
