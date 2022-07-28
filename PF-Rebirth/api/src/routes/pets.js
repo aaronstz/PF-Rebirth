@@ -2,6 +2,23 @@ const { Router } = require("express");
 const { Pets } = require("../db");
 const router = Router();
 
+router.get("/location", async (req, res, next) => {
+  try {
+  const allPets = await Pets.findAll()
+  const allLocation= new Set()
+  allPets.map(p => allLocation.add(p.location))
+  let result = Array.from(allLocation); 
+
+    result.length
+    ? res.status(200).send(result.sort())
+    : res.status(400).send("no");
+   
+  
+    } catch (error) {
+      next(error);
+    }
+});
+
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -17,35 +34,34 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.get("/", async (req, res, next) => {
+  try {
   const { type } = req.query;
   const { name } = req.query;
   const allPets = await Pets.findAll();
-  
+  let result = []; 
   if (type) {
-    const typeName = await allPets.filter((p) =>
+    result = await allPets.filter((p) =>
       p.type.toLowerCase().includes(type.toLowerCase())
     );
-    typeName.length
-      ? res.status(200).send(typeName)
-      : res.status(404).send("there is no type of pet");
-  }
+   }
   if (name) {
-    const namePet = await allPets.filter((p) =>
+    result.length ? 
+    result = await result.filter((p) =>
       p.name.toLowerCase().includes(name.toLowerCase())
-    );
-    namePet.length
-      ? res.status(200).send(namePet)
-      : res.status(404).send("there is no name of pet");
-  } else {
-    try {
-      allPets.length
-        ? res.status(200).send(allPets)
-        : res.status(400).send("pet not found");
+    ): result = await allPets.filter((p) =>
+    p.name.toLowerCase().includes(name.toLowerCase()))
+  } 
+  result.length
+    ? res.status(200).send(result)
+    : res.status(200).send(allPets);
+   
     } catch (error) {
       next(error);
     }
-  }
 });
+
+
+
 
 router.post("/", async (req, res, next) => {
   const { id, name, image, age, description, gender, size, type, race, location, userMail } =
