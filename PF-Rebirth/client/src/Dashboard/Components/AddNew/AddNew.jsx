@@ -200,7 +200,6 @@ function AddNew(){
                                             name="image"
                                             value={input.image}
                                             required
-                                            autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
                                             {/* <input
@@ -240,7 +239,6 @@ function AddNew(){
                                             name="age"
                                             value={input.age}
                                             required
-                                            autoFocus
                                             min="0"
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
@@ -289,7 +287,6 @@ function AddNew(){
                                             name="race"
                                             value={input.race}
                                             required
-                                            autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
                                             <div className="addinvalid-fb">{errors.race}</div>
@@ -310,19 +307,7 @@ function AddNew(){
                                         </div>
                                         <div className="form-outline">
                                             <label class="form-label"for ="textAreaExample">Description</label>
-                                            <textarea name="description" value={input.description} type="text" autoFocus class ="form-control" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
-
-                                            {/* <input
-                                            id="description"
-                                            type="text"
-                                            class="form-control"
-                                            name="description"
-                                            value={input.description}
-                                            required
-                                            autoFocus
-                                            onChange ={(e)=>{handleChange(e)}}
-                                            /> */}
-                                            {/* <div className="addinvalid-fb">Description is invalid</div> */}
+                                            <textarea name="description" value={input.description} type="text"  class ="form-control" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
                                         </div>
                                     <div className="addform-submit">
                                         <button

@@ -15,6 +15,7 @@
     align-items: center;
     font-size: 14px;
     color: var(--background-sec);
+    width: 40%;
 }
 
 .item {
@@ -50,4 +51,8 @@
 .link-navbar:hover {
     text-decoration: none;
     color: var(--pink)
+}
+
+.profile {
+  margin-left: 2%;
 }

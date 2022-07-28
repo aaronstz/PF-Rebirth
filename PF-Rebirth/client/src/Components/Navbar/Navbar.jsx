@@ -10,13 +10,11 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
 
-  // localStorage.clear();
   let user = null;
 
   if(localStorage.length !== 0){
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
-    console.log(user)
   }
 
   return (
@@ -51,7 +49,7 @@ function Navbar() {
             <span>LOG IN</span>
           </NavLink>
         }
-        <img src={vector} alt="vector" />
+        <img src={vector} alt="vector" className="profile"/>
       </div>
     </div>
   );
