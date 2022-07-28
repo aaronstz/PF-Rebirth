@@ -25,12 +25,27 @@ router.get("/:mail" , async(req, res, next) =>{
     } catch (error) {
         next(error)
     }
-})
+  } catch (error) {
+    next(error);
+  }
+});
 
+router.get("/", async (req, res, next) => {
+  const allUsers = await User.findAll();
+  try {
+    allUsers.length
+      ? res.status(200).send(allUsers)
+      : res.status(400).send("No se encuentra ningun usuario");
+  } catch (error) {
+    next(error);
+  }
+});
 
+router.post("/", async (req, res, next) => {
+  const { body } = req;
+  const { googleId } = body;
 
-router.get("/" , async (req, res, next)=>{
-    const allUsers = await User.findAll()
+  if (googleId) {
     try {
         allUsers.length ? res.status(200).send(allUsers) : res.status(400).send("No se encuentra ningun usuario")
     } catch (error) {
@@ -87,9 +102,9 @@ router.post("/", async(req,res,next) =>{
 
         } catch (error) {
             res.status(409).send("El usuario ya se encuentra registrado")
+
         }
-    }else{
-        try {
+      });
 
             const userName = body.formBasicUserName;
             const name = body.formBasicName;
@@ -132,25 +147,62 @@ router.post("/", async(req,res,next) =>{
             res.status(400).send(error)
         }
     }
-})
-
-
-router.delete("/:mail" , async (req, res, next) =>{
-    const {mail} = req.params
+  } else {
     try {
-        const userDelete = await User.findByPk(mail)
-        if(!userDelete){
-            res.status(404).send(`No se encuntra el usuario con el mail ${req.params.mail}😒`)
-        }else{
-            await User.destroy({where: {mail: mail}})
-            res.status(200).send(`se elimino el usuario `)
-        }
-    } catch (error) {
-        next(error)
-    }
-})
+      const userName = body.formBasicUserName;
+      const name = body.formBasicName;
+      const lastName = body.formBasicLastName;
+      const mail = body.formBasicEmail;
+      const password = body.formBasicPassword;
 
+      await User.create({ userName, name, lastName, mail, password });
+      let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "rebirhtPets@gmail.com",
+          pass: "vxhhgglvicwtjnax",
+        },
+      });
+
+      let mailOption = {
+        from: " 'Rebirth.App 🐾' <rebirhtPets@gmail.com>",
+        to: req.body.formBasicEmail,
+        subject: "Rebirth.App 🐾",
+        text: "Gracias por registrarte en Rebirth!",
+      };
+
+      transporter.sendMail(mailOption, (error, info) => {
+        if (error) {
+          res.status(500).send(error.message);
+        } else {
+          console.log("mail sent successfully", req.body);
+          res.status(200).send(req.body);
+        }
+      });
+      res.status(200).send(`El usuario ${name} fue creado con exito`);
+    } catch (error) {
+      res.status(400).send(error);
+    }
+  }
+});
+
+router.delete("/:mail", async (req, res, next) => {
+  const { mail } = req.params;
+  try {
+    const userDelete = await User.findByPk(mail);
+    if (!userDelete) {
+      res
+        .status(404)
+        .send(`No se encuntra el usuario con el mail ${req.params.mail}😒`);
+    } else {
+      await User.destroy({ where: { mail: mail } });
+      res.status(200).send(`se elimino el usuario `);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
-
-
