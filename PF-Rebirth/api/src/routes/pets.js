@@ -2,6 +2,23 @@ const { Router } = require("express");
 const { Pets } = require("../db");
 const router = Router();
 
+router.get("/location", async (req, res, next) => {
+  try {
+  const allPets = await Pets.findAll()
+  const allLocation= new Set()
+  allPets.map(p => allLocation.add(p.location))
+  let result = Array.from(allLocation); 
+
+    result.length
+    ? res.status(200).send(result.sort())
+    : res.status(400).send("no");
+   
+  
+    } catch (error) {
+      next(error);
+    }
+});
+
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -43,30 +60,8 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-router.get("/", async (req, res, next) => {
-  try {
-  const { type } = req.query;
-  const { location } = req.query;
-  const allPets = await Pets.findAll();
-  let result1; 
-  if (type) {
-    result1 = await allPets.filter((p) =>
-      p.type.toLowerCase().includes(type.toLowerCase())
-    );
-   }
-  if (location) {
-    result1 = await result1.filter((p) =>
-      p.location.toLowerCase().includes(location.toLowerCase())
-    )
-  } 
-  result1.length
-    ? res.status(200).send(result1)
-    : res.status(200).send("no");
-   
-    } catch (error) {
-      next(error);
-    }
-});
+
+
 
 router.post("/", async (req, res, next) => {
   const { id, name, image, age, description, gender, size, type, race, location } =
