@@ -9,6 +9,14 @@ import DarkMode from "../../Components/Switch/SwitchMode";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
+
+  let user = null;
+
+  if(localStorage.length !== 0){
+    const userJson = localStorage.getItem("user");
+    user = JSON.parse(userJson);
+  }
+
   return (
     <div className="containerNavbar">
       <NavLink to={"/home"} className="link-navbar">
@@ -34,9 +42,14 @@ function Navbar() {
           <span>ES</span>
           <img src={es} alt="vector" className="bandera" />
         </div>
-        <NavLink to={"/login"} className="link-navbar">
-          <img src={vector} alt="vector" />
-        </NavLink>
+        {
+          user!==null ? 
+          <a href="/home" onClick={() => localStorage.clear()} className="link-navbar">LOG OUT</a> : 
+          <NavLink to={"/login"} className="link-navbar">
+            <span>LOG IN</span>
+          </NavLink>
+        }
+        <img src={vector} alt="vector" className="profile"/>
       </div>
     </div>
   );
