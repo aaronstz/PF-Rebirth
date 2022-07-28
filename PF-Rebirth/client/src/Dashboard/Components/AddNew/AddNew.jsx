@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import background from '../../../Assets/loginMain.png';
-import './AddNew.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { postPet } from '../../../Redux/Actions/index'
-import { Link, useNavigate } from 'react-router-dom'
-import { provincias } from '../../../Tools/provincias'
+import './AddNew.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { postPet } from '../../../Redux/Actions/index';
+import { Link, useNavigate } from 'react-router-dom';
+import { provincias } from '../../../Tools/provincias';
+import Navbar from '../../../Components/Navbar/Navbar';
+
 
 function validate(input){
+
     let validateName = /^[a-zA-Z\s]+$/; 
     let validateUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
     let errors = {};
@@ -160,6 +163,7 @@ function AddNew(){
 
     return(
         <section>
+            <Navbar/>
             <div className="add-container">
                 <div className="add-wrapper">
                     <div className="add-wrapperleft">

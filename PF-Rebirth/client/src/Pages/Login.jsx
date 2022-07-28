@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import fondo from "../Assets/loginMain2.png";
 import BtnLogin from "../Components/BtnLogin/BtnLogin";
 import { Link } from "react-router-dom";
 import Navbar from '../Components/Navbar/Navbar';
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../Redux/Actions";
 
 function Login() {
 
   const tab = '\u00A0'; //constante de espacio en blanco
+
+  const [ userName, setUserName ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ errors, setErrors ] = useState("");
+  const dispatch = useDispatch();
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    dispatch(loginUser({userName, password}))
+  }
+
+  // const validateErrorsLogin = (event) => {
+  //   let error = {};
+  //   console.log(event)  
+  // }
 
   return (
     <section>
@@ -28,7 +45,7 @@ function Login() {
                     <h6>or</h6>
                   </div>
                   <div className="logCard-body">
-                    <form method="POST" className="validation" novalidate="">
+                    <form method="POST" className="validation" novalidate="" onSubmit={handleLogin}>
                       <div className="form-group">
                         <label for="email">E-Mail Address</label>
                         <input
@@ -36,8 +53,10 @@ function Login() {
                           type="email"
                           className="form-control"
                           name="email"
+                          value={userName}
                           required
                           autofocus
+                          onChange={({target}) => setUserName(target.value)}
                         />
                         <div className="invalid-feedback">Email is invalid</div>
                       </div>
@@ -54,11 +73,13 @@ function Login() {
                           type="password"
                           class="form-control"
                           name="password"
+                          value={password}
                           required
                           data-eye
+                          onChange={({target}) => setPassword(target.value)}
                         />
                         <div className="invalid-feedback">
-                          Password is required
+                          { errors }
                         </div>
                       </div>
 

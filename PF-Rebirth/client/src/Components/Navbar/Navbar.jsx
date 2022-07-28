@@ -9,6 +9,16 @@ import DarkMode from "../../Components/Switch/SwitchMode";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
+
+  // localStorage.clear();
+  let user = null;
+
+  if(localStorage.length !== 0){
+    const userJson = localStorage.getItem("user");
+    user = JSON.parse(userJson);
+    console.log(user)
+  }
+
   return (
     <div className="containerNavbar">
       <NavLink to={"/home"} className="link-navbar">
@@ -17,7 +27,7 @@ function Navbar() {
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
-          <NavLink to={"/login"} className="link-navbar">
+          <NavLink to={user !== null ? "/create" : "/login"} className="link-navbar">
             <span>New Pet</span>
           </NavLink>
         </div>
@@ -34,9 +44,14 @@ function Navbar() {
           <span>ES</span>
           <img src={es} alt="vector" className="bandera" />
         </div>
-        <NavLink to={"/login"} className="link-navbar">
-          <img src={vector} alt="vector" />
-        </NavLink>
+        {
+          user!==null ? 
+          <a href="/home" onClick={() => localStorage.clear()} className="link-navbar">LOG OUT</a> : 
+          <NavLink to={"/login"} className="link-navbar">
+            <span>LOG IN</span>
+          </NavLink>
+        }
+        <img src={vector} alt="vector" />
       </div>
     </div>
   );

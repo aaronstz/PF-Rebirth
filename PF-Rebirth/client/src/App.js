@@ -32,8 +32,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
+
         <Route path ='/create' element={<AddNew />} />
         <Route path ='/messageboard' element={<MessageBoard />} />
+    
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}
