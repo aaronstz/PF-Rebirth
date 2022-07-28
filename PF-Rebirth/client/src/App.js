@@ -12,9 +12,11 @@ import Terms from "./Pages/Terms";
 import Privacy from "./Pages/Privacy";
 import Dashboard from "./Pages/Dashboard";
 import AddNew from './Dashboard/Components/AddNew/AddNew'
+import Profile from './Dashboard/Components/Profile/Profile'
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
+import MessageBoard from "./Components/MessageBoard/MessageBoard.jsx";
 
 function App() {
   return (
@@ -31,7 +33,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
-        <Route path='/create' element={<AddNew />} />
+        <Route path ='/create' element={<AddNew />} />
+        <Route path ='/profile' element={<Profile />} />
+        <Route path ='/messageboard' element={<MessageBoard />} />
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}

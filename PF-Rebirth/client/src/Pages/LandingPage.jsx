@@ -4,17 +4,8 @@ import cat from "../Assets/catTeam.png";
 import dog from "../Assets/dogTeam.png";
 import "./LandingPage.css";
 import Container from "react-bootstrap/esm/Container";
-import { useState } from "react";
-import { useSelector } from "react-redux";
 
 export default function LandingPage() {
-
-  // const [user, setUSer] = useState({
-  //   name : "Will",
-  //   userName : "willd@gma.com",
-  //   img : "adsasdsdfs"
-  // });
-
   return (
     <body>
       <Container>

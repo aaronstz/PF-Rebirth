@@ -9,20 +9,6 @@ import {
 
 const SERVER = "http://localhost:3001";
 
-export function loginUser(credentials){
-  return async function(dispatch){
-    try {
-      const json = await axios.post(`${SERVER}/login`, credentials);
-      return dispatch({
-        type : 'LOGIN_USER',
-        payload : json.data
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-}
-
 export function getUsers() {
   return async function (dispatch) {
     try {
@@ -55,11 +41,7 @@ export function getUserId(id) {
 
 export function postUser(payload) {
   return async function (dispatch) {
-    try {
-      await axios.post(`${SERVER}/user`, payload);
-    } catch (error) {
-      console.log(error.response.data)
-    }
+    await axios.post(`${SERVER}/user`, payload);
   };
 }
 
@@ -143,6 +125,7 @@ export function getDetails(id) {
         payload: json.data,
       });
     } catch (error) {
+      console.log(error);
       alert("No pet found");
     }
   };

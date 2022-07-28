@@ -25,7 +25,7 @@ function Navbar() {
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
-          <NavLink to={user !== null ? "/create" : "/login"} className="link-navbar">
+          <NavLink to={"/login"} className="link-navbar">
             <span>New Pet</span>
           </NavLink>
         </div>

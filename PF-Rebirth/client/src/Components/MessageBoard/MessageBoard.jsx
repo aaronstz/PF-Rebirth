@@ -1,23 +1,30 @@
-import React from "react";
-import './MessageBoard/MessageBoard.css'
+import React, { useState } from "react";
+import Chat from "./Chat";
+import './MessageBoard.css'
+import Accordion from 'react-bootstrap/Accordion';
+import { useEffect} from "react";
+export default function MessageBoard({chatId=1,userId=1,userId2=2}){
+  let [conversation,setConversation]=useState([{userMsgId:1,msg:"hola"},{userMsgId:2,msg:"hola!"},{userMsgId:1,msg:"adios"},{userMsgId:1,msg:"hola"},{userMsgId:2,msg:"hola!"},{userMsgId:1,msg:"adios"},{userMsgId:1,msg:"hola"},{userMsgId:2,msg:"hola!"},{userMsgId:1,msg:"adios"}])
+ 
 
-export default function MessageBoard(chatId="1",mainUserId="12",secondaryUserId="7",message=[{msgUserId:"7",msg:"Hola"},{msgUserId:"12",msg:"Hola que tal"},{msgUserId:"7",msg:"Quiero adoptar al perrito"}]){
+  useEffect(()=>{
+    let chatInterval=  setInterval(() => {
+    setConversation([...conversation,{userMsgId:Math.round(Math.random()*2),msg:"adios"}]) 
+    console.log(conversation) 
+    }, 10000);
 
+    return(()=> clearInterval(chatInterval))
+  })
 
 return( 
 <React.Fragment>
-    <div className="container-chat">
+    <div className="msg-container">
    <Accordion>
       <Accordion.Item eventKey="0">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Header className="msg-chat-title"> Chat de adopción</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          <Chat id={chatId} userId={userId} userPhoto={""} userId2={userId2} userPhoto2={""} conversation={conversation} newMsg={newMsg}/>
+        
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
