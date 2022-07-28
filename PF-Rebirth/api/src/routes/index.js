@@ -1,5 +1,5 @@
 const { Router } = require("express");
-// const ownersRoute = require("./owners.js");
+const loginRoute = require("./login.js");
 const petsRoute = require("./pets.js");
 const userRoute = require("./user.js");
 const transporterRoute = require("./nodeMailer.js");
@@ -15,6 +15,7 @@ router.use(cors());
 // router.use("/owners", ownersRoute);
 router.use("/pets", petsRoute);
 router.use("/user", userRoute);
+router.use("/login", loginRoute);
 router.use("/nodeMailer", transporterRoute);
 // router.use("/chat", chatRoute);
 // router.use("/c/:idhat", chatRoIdute);
