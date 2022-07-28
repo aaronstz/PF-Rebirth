@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
       allowNull: false,
       validate: {
         len: {
-          args: [7, 42],
+          args: [7, 100],
           msg: "The password length should be between 7 and 42 characters.",
         },
       },
