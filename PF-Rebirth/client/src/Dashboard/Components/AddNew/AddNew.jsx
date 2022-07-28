@@ -143,14 +143,40 @@ function AddNew(){
 
                                         <div className="addform">
                                             <label class="form-label" for ="customFile">Image*</label>
-                                            <Widget publicKey = "e7afc989eff083e04496" 
-                                            onFileSelect={(e)=>{
-                                                console.log(e);
-                                                e.done((file)=>{handleImage(file)});
-                                                
-                                             }}
-                                             value={input.image}
-                                            clearable/>
+                                            <input
+                                            id="customFile"
+                                            type="text"
+                                            class="form-control"
+                                            name="image"
+                                            value={input.image}
+                                            required
+                                            onChange ={(e)=>{handleChange(e)}}
+                                            />
+                                            {/* <input
+                                            id="customFile"
+                                            type="file"
+                                            class="form-control"
+                                            name="image"
+                                            value={input.image}
+                                            required
+                                            autoFocus
+                                            onChange ={(e)=>{handleImage(e)}}
+                                            />
+                                            {
+                                                isFilePicked? (
+                                                    <div>
+                                                        <p>Filename: {selectedFile.name}</p>
+                                                        <p>Filetype: {selectedFile.type}</p>
+
+                                                    </div>
+                                                    )
+                                                    : (
+                                                        <p>Select a file to show details</p>
+                                                        )
+                                            }
+                                            <div>
+                                                <button onClick={submitImage}>Upload Image</button>
+                                            </div> */}
                                             <div className="addinvalid-fb">{errors.image}</div> 
                                         </div>
 
@@ -231,19 +257,7 @@ function AddNew(){
                                         </div>
                                         <div className="form-outline">
                                             <label class="form-label"for ="textAreaExample">Description</label>
-                                            <textarea maxlength ="150"name="description" value={input.description} type="text" class ="textarea" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
-
-                                            {/* <input
-                                            id="description"
-                                            type="text"
-                                            class="form-control"
-                                            name="description"
-                                            value={input.description}
-                                            required
-                                            autoFocus
-                                            onChange ={(e)=>{handleChange(e)}}
-                                            /> */}
-                                            {/* <div className="addinvalid-fb">Description is invalid</div> */}
+                                            <textarea name="description" value={input.description} type="text"  class ="form-control" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
                                         </div>
                                     <div className="addform-submit">
                                         <button
