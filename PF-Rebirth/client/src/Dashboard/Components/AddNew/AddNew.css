@@ -1,3 +1,17 @@
+.add-container{
+  width: 75%;
+}
+
+
+.textarea{
+  display:flex;
+  resize:none;
+  height: 100px;
+  width: 400px;
+  border-radius:8px;
+  border: 1px solid rgb(213, 213, 213);
+}
+
 .add-wrapper {
     display: flex;
     flex-direction: row;
