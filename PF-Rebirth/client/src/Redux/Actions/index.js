@@ -23,6 +23,20 @@ export function getUsers() {
     }
   };
 }
+export function mP() {
+  return async function (payload) {
+    try {
+      await axios(`${SERVER}/mercadoPago` , payload);
+      return ({
+        type: "MERCADO_PAGO",
+        payload
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No funca");
+    }
+  };
+}
 
 export function getUserId(id) {
   return async function (dispatch) {
