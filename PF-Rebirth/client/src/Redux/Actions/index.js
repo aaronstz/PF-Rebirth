@@ -12,7 +12,6 @@ const SERVER = "http://localhost:3001";
 export function loginUser(credentials){
   return async function(dispatch) {
     const json = await axios.post(`${SERVER}/login`, credentials);
-    console.log(json)
     return dispatch({
       type : "LOGIN_USER",
       payload : json.data

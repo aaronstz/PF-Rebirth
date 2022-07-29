@@ -16,6 +16,7 @@ function Login() {
   const activeUser = useSelector(state => state.activeUser)
   const [ userName, setUserName ] = useState("");
   const [ password, setPassword ] = useState("");
+  const [ isChecked, setIsChecked ] = useState(false);
 
   localStorage.setItem("user", JSON.stringify(activeUser));
   if(activeUser !== null ) navigate("/home");
@@ -27,12 +28,12 @@ function Login() {
     setPassword("");
   }
 
-  const captureLoginValues = (e) => {
-    if(e.name === "email"){
-      setUserName(e.value)
+  const captureLoginValues = ({name, value}) => {
+    if(name === "email"){
+      setUserName(value)
     }
-    if(e.name === "password"){
-      setPassword(e.value)
+    if(name === "password"){
+      setPassword(value)
     }
   }
 
@@ -51,7 +52,7 @@ function Login() {
                     <h5 className="">
                       Enter your credentials to access your account
                     </h5>
-                    <BtnLogin/>
+                    <BtnLogin />
                     <h6>or</h6>
                   </div>
                   <div className="logCard-body">
@@ -77,6 +78,7 @@ function Login() {
                           <a href=" " className="alignRight">
                             Forgot Password?
                           </a>
+                          <span>{!password ? tab+"required" : null}</span>
                         </label>
                         <input
                           id="password"
@@ -88,9 +90,6 @@ function Login() {
                           data-eye
                           onChange={({target}) => captureLoginValues(target)}
                         />
-                        <div className="invalid-feedback">
-                          Password is required
-                        </div>
                       </div>
 
                       <div class="form-group">
@@ -100,6 +99,7 @@ function Login() {
                             name="remember"
                             id="remember"
                             className="customControlInput"
+                            onChange={({target}) => setIsChecked(target.checked)}
                           />
                           <label
                             for="remember"
@@ -114,6 +114,7 @@ function Login() {
                         <button
                           type="submit"
                           className="btn btn-primary btn-block"
+                          disabled={!password || !userName ? true : false}
                         >
                           LOG IN
                         </button>

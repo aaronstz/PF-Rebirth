@@ -53,6 +53,18 @@
     color: var(--pink)
 }
 
-.profile {
+.profile>img {
   margin-left: 2%;
+  width: 130%;
+}
+
+.googleImg {
+    margin-right: -7%;
+}
+
+.googleImg>img{
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    width: 50%;
 }

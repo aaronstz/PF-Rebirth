@@ -16,6 +16,7 @@ export default function BtnLogin() {
     const onSuccess = ({profileObj, tokenObj}) => {
       dispatch(postUser(profileObj))
       localStorage.setItem("user", JSON.stringify(profileObj))
+      localStorage.setItem("token", JSON.stringify(tokenObj))
       navigate("/home")
     }
 

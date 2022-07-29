@@ -20,6 +20,7 @@ import MessageBoard from "./Components/MessageBoard/MessageBoard.jsx";
 import Favs from './Dashboard/Components/Favs/Favs.jsx';
 
 function App() {
+  
   return (
     <Router>
       <Routes>
