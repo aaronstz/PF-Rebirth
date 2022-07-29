@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postPet } from '../../../Redux/Actions/index'
 import { Link, useNavigate } from 'react-router-dom'
 import { provincias } from '../../../Tools/provincias'
-import { Widget } from "@uploadcare/react-widget";
+// import { Widget } from "@uploadcare/react-widget";
 
 function validate(input){
     let validateName = /^[a-zA-Z\s]+$/; 

@@ -25,13 +25,13 @@ function Navbar() {
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
-          <NavLink to={"/login"} className="link-navbar">
+          <NavLink to={user!== null ? "/create" : "/login"} className="link-navbar">
             <span>New Pet</span>
           </NavLink>
         </div>
         <div className="item">
           <img src={vector2} alt="vector2" className="icons" />
-          <NavLink to={"/login"} className="link-navbar">
+          <NavLink to={user!== null ? "/favorites" : "/login"} className="link-navbar">
             <span>My favorites</span>
           </NavLink>
         </div>
@@ -49,7 +49,9 @@ function Navbar() {
             <span>LOG IN</span>
           </NavLink>
         }
-        <img src={vector} alt="vector" className="profile"/>
+        <NavLink to={user!== null ? "/profile" : "/login"}>
+          <img src={vector} alt="vector" className="profile"/>
+        </NavLink>
       </div>
     </div>
   );

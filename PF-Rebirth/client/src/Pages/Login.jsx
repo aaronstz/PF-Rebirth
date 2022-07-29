@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import fondo from "../Assets/loginMain2.png";
 import BtnLogin from "../Components/BtnLogin/BtnLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../Components/Navbar/Navbar';
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../Redux/Actions";
 
 function Login() {
 
   const tab = '\u00A0'; //constante de espacio en blanco
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const activeUser = useSelector(state => state.activeUser)
+  const [ userName, setUserName ] = useState("");
+  const [ password, setPassword ] = useState("");
+
+  localStorage.setItem("user", JSON.stringify(activeUser));
+  if(activeUser !== null ) navigate("/home");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(loginUser({userName, password}))
+    setUserName("");
+    setPassword("");
+  }
+
+  const captureLoginValues = (e) => {
+    if(e.name === "email"){
+      setUserName(e.value)
+    }
+    if(e.name === "password"){
+      setPassword(e.value)
+    }
+  }
 
   return (
     <section>
@@ -28,7 +55,7 @@ function Login() {
                     <h6>or</h6>
                   </div>
                   <div className="logCard-body">
-                    <form method="POST" className="validation" novalidate="">
+                    <form method="POST" className="validation" novalidate="" onSubmit={(e) => handleLogin(e)}>
                       <div className="form-group">
                         <label for="email">E-Mail Address</label>
                         <input
@@ -36,8 +63,10 @@ function Login() {
                           type="email"
                           className="form-control"
                           name="email"
+                          value={userName}
                           required
                           autofocus
+                          onChange={({target}) => captureLoginValues(target)}
                         />
                         <div className="invalid-feedback">Email is invalid</div>
                       </div>
@@ -55,7 +84,9 @@ function Login() {
                           class="form-control"
                           name="password"
                           required
+                          value={password}
                           data-eye
+                          onChange={({target}) => captureLoginValues(target)}
                         />
                         <div className="invalid-feedback">
                           Password is required
