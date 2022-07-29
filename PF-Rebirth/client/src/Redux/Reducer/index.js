@@ -16,9 +16,11 @@ import {
   FULL_FILTER_SEX,
   FULL_FILTER_LOCATION,
   FULL_FILTER_SIZE,
+  LOGIN_USER
 } from "../Actions/actionTypes";
 
 const initialState = {
+  activeUser : null,
   filterSex: "All",
   filterAge: "age",
   filterSize: "Any",
@@ -33,6 +35,11 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case LOGIN_USER:
+      return {
+        ...state,
+        activeUser : action.payload
+      }
     case GET_TYPES:
       return {
         ...state,

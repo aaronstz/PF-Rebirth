@@ -9,6 +9,16 @@ import {
 
 const SERVER = "http://localhost:3001";
 
+export function loginUser(credentials){
+  return async function(dispatch) {
+    const json = await axios.post(`${SERVER}/login`, credentials);
+    return dispatch({
+      type : "LOGIN_USER",
+      payload : json.data
+    })
+  }
+}
+
 export function getUsers() {
   return async function (dispatch) {
     try {

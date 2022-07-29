@@ -23,7 +23,7 @@ return(
       <Accordion.Item eventKey="0">
         <Accordion.Header className="msg-chat-title"> Chat de adopción</Accordion.Header>
         <Accordion.Body>
-          <Chat id={chatId} userId={userId} userPhoto={""} userId2={userId2} userPhoto2={""} conversation={conversation} newMsg={newMsg}/>
+          {/* <Chat id={chatId} userId={userId} userPhoto={""} userId2={userId2} userPhoto2={""} conversation={conversation} newMsg={newMsg}/> */}
         
         </Accordion.Body>
       </Accordion.Item>
