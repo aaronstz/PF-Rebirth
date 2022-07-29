@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import fondo from "../Assets/loginMain2.png";
 import BtnLogin from "../Components/BtnLogin/BtnLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../Components/Navbar/Navbar';
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../Redux/Actions";
 
 function Login() {
 
   const tab = '\u00A0'; //constante de espacio en blanco
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const activeUser = useSelector(state => state.activeUser)
+  const [ userName, setUserName ] = useState("");
+  const [ password, setPassword ] = useState("");
+  const [ isChecked, setIsChecked ] = useState(false);
+
+  localStorage.setItem("user", JSON.stringify(activeUser));
+  if(activeUser !== null ) navigate("/home");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(loginUser({userName, password}))
+    setUserName("");
+    setPassword("");
+  }
+
+  const captureLoginValues = ({name, value}) => {
+    if(name === "email"){
+      setUserName(value)
+    }
+    if(name === "password"){
+      setPassword(value)
+    }
+  }
 
   return (
     <section>
@@ -24,11 +52,11 @@ function Login() {
                     <h5 className="">
                       Enter your credentials to access your account
                     </h5>
-                    <BtnLogin/>
+                    <BtnLogin />
                     <h6>or</h6>
                   </div>
                   <div className="logCard-body">
-                    <form method="POST" className="validation" novalidate="">
+                    <form method="POST" className="validation" novalidate="" onSubmit={(e) => handleLogin(e)}>
                       <div className="form-group">
                         <label for="email">E-Mail Address</label>
                         <input
@@ -36,8 +64,10 @@ function Login() {
                           type="email"
                           className="form-control"
                           name="email"
+                          value={userName}
                           required
                           autofocus
+                          onChange={({target}) => captureLoginValues(target)}
                         />
                         <div className="invalid-feedback">Email is invalid</div>
                       </div>
@@ -48,6 +78,7 @@ function Login() {
                           <a href=" " className="alignRight">
                             Forgot Password?
                           </a>
+                          <span>{!password ? tab+"required" : null}</span>
                         </label>
                         <input
                           id="password"
@@ -55,11 +86,10 @@ function Login() {
                           class="form-control"
                           name="password"
                           required
+                          value={password}
                           data-eye
+                          onChange={({target}) => captureLoginValues(target)}
                         />
-                        <div className="invalid-feedback">
-                          Password is required
-                        </div>
                       </div>
 
                       <div class="form-group">
@@ -69,6 +99,7 @@ function Login() {
                             name="remember"
                             id="remember"
                             className="customControlInput"
+                            onChange={({target}) => setIsChecked(target.checked)}
                           />
                           <label
                             for="remember"
@@ -83,6 +114,7 @@ function Login() {
                         <button
                           type="submit"
                           className="btn btn-primary btn-block"
+                          disabled={!password || !userName ? true : false}
                         >
                           LOG IN
                         </button>

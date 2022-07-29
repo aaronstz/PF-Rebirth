@@ -38,7 +38,7 @@ router.get("/", async (req, res, next) => {
   const { type } = req.query;
   const { name } = req.query;
   const allPets = await Pets.findAll();
-  let result = []; 
+  let result = allPets; 
   if (type) {
     result = await allPets.filter((p) =>
       p.type.toLowerCase().includes(type.toLowerCase())
@@ -53,7 +53,7 @@ router.get("/", async (req, res, next) => {
   } 
   result.length
     ? res.status(200).send(result)
-    : res.status(200).send(allPets);
+    : res.status(404).send('no se encontro mascota');
    
     } catch (error) {
       next(error);

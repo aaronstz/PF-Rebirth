@@ -9,11 +9,21 @@ import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
 
-import { getPetFilters } from "../Redux/Actions/index.js";
+import {
+  filterByLocation,
+  filterBySex,
+  filterBySize,
+  fullFilterAge,
+  fullFilterLocation,
+  fullFilterSex,
+  fullFilterSize,
+  getPetFilters,
+  getPetNames,
+  orderByAge,
+} from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
 
 function Home() {
   const petType = useLocation().search?.replace("?type=", "");
@@ -23,9 +33,9 @@ function Home() {
   // const loading = useSelector(store => store.loading)
 
   //Paginado//
-  const [ refresh ] = useState(1);
+  const [refresh] = useState(1);
   const [page, setPage] = useState(1);
-  const [ cantPets ] = useState(12);
+  const [cantPets] = useState(12);
   const lastPet = page * cantPets;
   const firstPet = lastPet - cantPets;
   const petsPage = pets?.slice(firstPet, lastPet);
@@ -39,12 +49,43 @@ function Home() {
     dispatch(getPetFilters(petType));
   }, [dispatch, petType]);
 
+  function handleFilterBySex(e) {
+    dispatch(filterBySex(e));
+    dispatch(fullFilterSex(e));
+    setPage(1);
+  }
+  function handleFilterBySize(e) {
+    dispatch(filterBySize(e));
+    dispatch(fullFilterSize(e));
+    setPage(1);
+  }
+  function handleFilterByLocation(e) {
+    dispatch(filterByLocation(e));
+    dispatch(fullFilterLocation(e));
+    setPage(1);
+  }
+  function handleOrderByAge(e) {
+    dispatch(orderByAge(e));
+    dispatch(fullFilterAge(e));
+    setPage(1);
+  }
+  function handleSearchName(search) {
+    dispatch(getPetNames(petType, search));
+    setPage(1);
+  }
+
   return (
     <div>
       <Navbar />
       <Container>
         <Header type={petType} />
-        <FiltersBar />
+        <FiltersBar
+          handleFilterBySex={handleFilterBySex}
+          handleFilterBySize={handleFilterBySize}
+          handleFilterByLocation={handleFilterByLocation}
+          handleOrderByAge={handleOrderByAge}
+          handleSearchName={handleSearchName}
+        />
         <div className="boxWrap">
           {refresh &&
             petsPage.map((p, i) => {
