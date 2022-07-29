@@ -16,9 +16,11 @@ import Profile from './Dashboard/Components/Profile/Profile'
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
-import MessageBoard from "./Components/MessageBoard/MessageBoard.jsx";
+import MessageBoard from "././Dashboard/Components/MessageBoard/MessageBoard.jsx";
+import Favs from './Dashboard/Components/Favs/Favs.jsx';
 
 function App() {
+  
   return (
     <Router>
       <Routes>
@@ -33,9 +35,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
-        <Route path ='/create' element={<AddNew />} />
-        <Route path ='/profile' element={<Profile />} />
-        <Route path ='/messageboard' element={<MessageBoard />} />
+        <Route path='/create' element={<AddNew />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/messageboard' element={<MessageBoard />} />
+        <Route path="/favorites" element={<Favs/>} />
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}

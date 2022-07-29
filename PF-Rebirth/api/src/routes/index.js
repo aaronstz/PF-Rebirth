@@ -14,7 +14,7 @@ router.use(cors());
 
 // router.use("/owners", ownersRoute);
 router.use("/pets", petsRoute);
-
+router.use("/login", loginRoute);
 router.use("/user", userRoute); 
 router.use("/user", userRoute);
 router.use("/nodeMailer", transporterRoute);

@@ -10,6 +10,8 @@ function Profile({name, lastname, email, password, user, image}){
         password: '',
     })
 
+    const infoStorage = localStorage.getItem("user");
+    const userInfo = JSON.parse(infoStorage);
     
     return(
         <div class="container rounded bg-white mt-5 mb-5">
@@ -23,7 +25,7 @@ function Profile({name, lastname, email, password, user, image}){
                     <h4 class="text-right">Profile</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">{name}</label><input type="text" class="form-control" placeholder="first name" value=""/></div>
+                    <div class="col-md-6"><label class="labels">{name}</label><input type="text" class="form-control" placeholder="first name" value={userInfo.givenName}/></div>
                     <div class="col-md-6"><label class="labels">{lastname}</label><input type="text" class="form-control" value="" placeholder="lastname"/></div>
                 </div>
                 <div class="row mt-3">

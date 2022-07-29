@@ -17,6 +17,16 @@ function Navbar() {
     user = JSON.parse(userJson);
   }
 
+  let theme = localStorage.getItem("theme")
+
+  const logOut = (e) => {
+    localStorage.clear();
+    localStorage.setItem("theme", theme)
+  }
+
+  let imgProfileSrc = user!==null ? user.imageUrl : vector ;
+  let classProfileImage = user!==null ? "googleImg" : "profile";
+
   return (
     <div className="containerNavbar">
       <NavLink to={"/home"} className="link-navbar">
@@ -25,13 +35,13 @@ function Navbar() {
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
-          <NavLink to={"/login"} className="link-navbar">
+          <NavLink to={user!== null ? "/create" : "/login"} className="link-navbar">
             <span>New Pet</span>
           </NavLink>
         </div>
         <div className="item">
           <img src={vector2} alt="vector2" className="icons" />
-          <NavLink to={"/login"} className="link-navbar">
+          <NavLink to={user!== null ? "/favorites" : "/login"} className="link-navbar">
             <span>My favorites</span>
           </NavLink>
         </div>
@@ -44,12 +54,16 @@ function Navbar() {
         </div>
         {
           user!==null ? 
-          <a href="/home" onClick={() => localStorage.clear()} className="link-navbar">LOG OUT</a> : 
+          <a href="/home" onClick={(e) => logOut(e)} className="link-navbar">LOG OUT</a> : 
           <NavLink to={"/login"} className="link-navbar">
             <span>LOG IN</span>
           </NavLink>
         }
-        <img src={vector} alt="vector" className="profile"/>
+          <NavLink to={user!== null ? "/profile" : "/login"} className={classProfileImage}>
+          <div className={classProfileImage}>
+                <img src={imgProfileSrc} alt="vector"/>
+          </div>
+          </NavLink>
       </div>
     </div>
   );
