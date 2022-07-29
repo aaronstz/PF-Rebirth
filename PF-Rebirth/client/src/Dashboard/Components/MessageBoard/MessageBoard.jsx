@@ -4,8 +4,12 @@ import './MessageBoard.css'
 import Accordion from 'react-bootstrap/Accordion';
 import { useEffect} from "react";
 export default function MessageBoard({chatId=1,userId=1,userId2=2}){
-  let [conversation,setConversation]=useState([{userMsgId:1,msg:"hola"},{userMsgId:2,msg:"hola!"},{userMsgId:1,msg:"adios"},{userMsgId:1,msg:"hola"},{userMsgId:2,msg:"hola!"},{userMsgId:1,msg:"adios"},{userMsgId:1,msg:"hola"},{userMsgId:2,msg:"hola!"},{userMsgId:1,msg:"adios"}])
- 
+  let [conversation,setConversation]=useState([{userMsgId:1,msg:"hola",new:false},{userMsgId:2,msg:"adios",new:true}])
+ let [newAd,setNewAd]=useState("")
+
+ function newAdvisor(n){
+setNewAd(n)
+ }
 
   useEffect(()=>{
     let chatInterval=  setInterval(() => {
@@ -21,9 +25,9 @@ return(
     <div className="msg-container">
    <Accordion>
       <Accordion.Item eventKey="0">
-        <Accordion.Header className="msg-chat-title"> Chat de adopción</Accordion.Header>
+        <Accordion.Header className="msg-chat-title"> Chat de adopción {newAd}</Accordion.Header>
         <Accordion.Body>
-          {/* <Chat id={chatId} userId={userId} userPhoto={""} userId2={userId2} userPhoto2={""} conversation={conversation} newMsg={newMsg}/> */}
+          <Chat id={chatId} userId={userId} userPhoto={""} userId2={userId2} userPhoto2={""} conversation={conversation} advisor={newAdvisor} />
         
         </Accordion.Body>
       </Accordion.Item>
