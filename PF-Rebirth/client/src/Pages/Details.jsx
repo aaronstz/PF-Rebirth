@@ -16,7 +16,7 @@ function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { name, image, race, age, size, gender, description } = useSelector(
+  const { name, image, race, age, size, gender, description, location } = useSelector(
     (state) => state.detail
   );
 
@@ -47,7 +47,7 @@ function Details() {
             <h3 class="title">{name}</h3>
             <h4 class="breed">{race}</h4>
             <h5 class="age">{age}&nbsp;years</h5>
-            <span class="petlocation">Mexico City</span>
+            <span class="petlocation">{location}</span>
             <br />
             <div class="story-dtl">
               <h5 class="txt-dscp">{description}</h5>
