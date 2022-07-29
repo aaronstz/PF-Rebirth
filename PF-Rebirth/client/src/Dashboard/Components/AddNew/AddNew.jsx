@@ -78,7 +78,7 @@ function AddNew(){
     function handleImage(file){
         setInput({
             ...input,
-            image: file.uuid
+            image: `https://ucarecdn.com/${file.uuid}/`
         })
         console.log(input.image)
     }
