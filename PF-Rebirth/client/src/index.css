@@ -35,6 +35,7 @@ body.light {
   --border: var(--grey2);
   --text-color: var(--greylight);
   --text-color-sec: var(--white);
+  --text-color-pag: var(--pink);
   --background: var(--white);
   --background-sec: var(--grey);
   --backgroundFooter: var(--grey);
@@ -47,6 +48,7 @@ body.dark {
   --border: var(--grey2);
   --text-color: var(--white);
   --text-color-sec: var(--greylight);
+  --text-color-pag: var(--greylight);
   --background: var(--grey);
   --background-sec: var(--pink);
   --backgroundFooter: var(--green);
