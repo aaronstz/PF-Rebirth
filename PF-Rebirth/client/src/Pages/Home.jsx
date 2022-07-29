@@ -70,7 +70,7 @@ function Home() {
     setPage(1);
   }
   function handleSearchName() {
-    dispatch(getPetNames(petType, searchName));
+    dispatch(getPetNames(petType));
     setPage(1);
   }
 
