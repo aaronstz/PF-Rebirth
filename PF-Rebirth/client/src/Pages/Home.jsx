@@ -69,8 +69,8 @@ function Home() {
     dispatch(fullFilterAge(e));
     setPage(1);
   }
-  function handleSearchName() {
-    dispatch(getPetNames(petType));
+  function handleSearchName(search) {
+    dispatch(getPetNames(petType, search));
     setPage(1);
   }
 
