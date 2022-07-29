@@ -146,6 +146,21 @@ export function deletePet(id) {
   };
 }
 
+export function getLocation() {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/pets/location`);
+      return dispatch({
+        type: "GET_LOCATION",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No location found");
+    }
+  };
+}
+
 export function resetDetails() {
   return {
     type: "RESET_DETAILS",

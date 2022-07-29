@@ -16,6 +16,7 @@ import {
   FULL_FILTER_SEX,
   FULL_FILTER_LOCATION,
   FULL_FILTER_SIZE,
+  GET_LOCATION
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
   user: [],
   userDetail: [],
   typePet: [],
+  location:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -136,6 +138,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case GET_LOCATION:
+        return{
+          ...state,
+          location: action.payload
+        }
 
     case ORDER_BY_AGE:
       return { ...state, filterAge: action.payload };

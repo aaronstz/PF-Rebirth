@@ -16,7 +16,7 @@ import Profile from './Dashboard/Components/Profile/Profile'
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
-import MessageBoard from "./Components/MessageBoard/MessageBoard.jsx";
+import MessageBoard from "./Dashboard/Components/MessageBoard/MessageBoard";
 
 function App() {
   return (
