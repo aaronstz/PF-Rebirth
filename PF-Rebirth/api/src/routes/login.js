@@ -6,6 +6,7 @@ const { User } = require('../db');
 const { SECRET_KEYWORD } = process.env;
 
 router.post("/" , async (req, res) => {
+
     const { body } = req;
     const { userName, password } = body;
 

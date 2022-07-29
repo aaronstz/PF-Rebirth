@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postPet } from '../../../Redux/Actions/index'
 import { Link, useNavigate } from 'react-router-dom'
 import { provincias } from '../../../Tools/provincias'
-import { Widget } from "@uploadcare/react-widget";
+import Navbar from '../../../Components/Navbar/Navbar';
+// import { Widget } from "@uploadcare/react-widget";
 
 function validate(input){
     let validateName = /^[a-zA-Z\s]+$/; 
@@ -40,7 +41,6 @@ function validate(input){
 
 
 function AddNew(){
-
     
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
@@ -113,8 +113,8 @@ function AddNew(){
 
     return(
         <section>
+            <Navbar/>
             <div className="add-container">
-
                 <div className="add-wrapper">
                     <div className="add-wrapperleft">
                         <div className="add-md-center">
