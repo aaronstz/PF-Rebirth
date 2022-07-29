@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getDetails } from "../Redux/Actions/index";
+import { Link, useParams } from "react-router-dom";
+import { getDetails, postMercadoPago } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Navbar from "../Components/Navbar/Navbar";
@@ -11,6 +11,7 @@ import female from "../Assets/Female_ico_big.png";
 import male from "../Assets/male-icon.png";
 import dogIco from "../Assets/dog_ico_big.png";
 import weight from "../Assets/weight_ico_big.png";
+import swal from "sweetalert";
 
 function Details() {
   const { id } = useParams();
@@ -35,6 +36,7 @@ function Details() {
   //   dispatch(deletePet(id));
   //   navigate("/home");
   // }
+
 
   return (
     <div>
@@ -72,9 +74,11 @@ function Details() {
               <span>3.4 kg</span>
               <img src={weight} alt="weight" />
             </div>
-            <button class="a-btn">
+            <Link to={"/mercadoPago"} >
+            <button class="a-btn" >
               <span>Donate</span>
             </button>
+            </Link>
             <button class="a-btn">
               <span>Adopt me!</span>
             </button>

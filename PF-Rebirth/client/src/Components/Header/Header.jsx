@@ -31,7 +31,7 @@ function Header({type}) {
             </NavLink>
           </div>
           <div className="header-donations">
-            <NavLink to={"/home"}>
+            <NavLink to={"/mercadoPago"}>
               <img src={headerImageDonation} alt="botonTeam" />
             </NavLink>
           </div>
