@@ -16,6 +16,7 @@ import {
   orderByAge,
   getPetFilters,
   getLocation,
+  getPetNames
 } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
@@ -37,7 +38,7 @@ function FiltersBar({
   }, [dispatch]);
 
   function handleSearchName() {
-    dispatch(getPetFilters(petType, searchName));
+    dispatch(getPetNames(petType,searchName));
   }
   return (
     <React.Fragment>

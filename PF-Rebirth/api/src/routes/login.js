@@ -21,6 +21,20 @@ router.post("/" , async (req, res) => {
         })
     }
 
+    function verifyUser(userData, password){
+        let userForToken = {};
+        if(userData && password){
+            userForToken = {
+                mail : userData._mail,
+                userName : userData.userName
+            }
+        }
+        return userForToken;
+    }
+
+    let userToken = verifyUser(user, passwordCorrect)
+    console.log(userToken)
+    
     const userForToken = {
         mail : user._mail,
         userName : user.userName
