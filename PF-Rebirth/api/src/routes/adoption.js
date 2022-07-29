@@ -37,6 +37,7 @@ router.post("/", async (req, res, next) => {
       comments,
       userMail,
       petId,
+      ownerMail,
     } = req.body;
     const adoption = await Adoption.findOrCreate({
       where: { userMail, petId },
@@ -49,6 +50,7 @@ router.post("/", async (req, res, next) => {
         comments,
         userMail,
         petId,
+        ownerMail,
       },
     });
     if (adoption) {
@@ -69,8 +71,9 @@ router.patch("/:id", async (req, res, next) => {
       adoptionRequest.isActive = false;
       await adoptionRequest.save();
       res.status(200).send("AdoptionRequest deleted");
-    }else{res.status(400).send('AdoptionRequest not found')}
-    
+    } else {
+      res.status(400).send("AdoptionRequest not found");
+    }
   } catch (error) {
     next(error);
   }
