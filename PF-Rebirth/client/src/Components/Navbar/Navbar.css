@@ -15,6 +15,7 @@
     align-items: center;
     font-size: 14px;
     color: var(--background-sec);
+    width: 50%;
 }
 
 .item {
@@ -50,4 +51,20 @@
 .link-navbar:hover {
     text-decoration: none;
     color: var(--pink)
+}
+
+.profile>img {
+  margin-left: 2%;
+  width: 130%;
+}
+
+.googleImg {
+    margin-right: -7%;
+}
+
+.googleImg>img{
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    width: 50%;
 }

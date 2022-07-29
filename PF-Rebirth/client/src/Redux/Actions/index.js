@@ -9,6 +9,16 @@ import {
 
 const SERVER = "http://localhost:3001";
 
+export function loginUser(credentials){
+  return async function(dispatch) {
+    const json = await axios.post(`${SERVER}/login`, credentials);
+    return dispatch({
+      type : "LOGIN_USER",
+      payload : json.data
+    })
+  }
+}
+
 export function getUsers() {
   return async function (dispatch) {
     try {
@@ -82,13 +92,11 @@ export function getPets() {
   };
 }
 
-export function getPetFilters(type, name) {
+export function getPetFilters(type) {
   type = type || "";
-  name = name || "";
   return async function (dispatch) {
     try {
       const json = await axios(
-
         `${SERVER}/pets?type=${type}`
       );
       return dispatch({
@@ -102,10 +110,10 @@ export function getPetFilters(type, name) {
   };
 }
 
-export function getPetNames(name) {
+export function getPetNames(type,name) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/pets?name=${name}`);
+      const json = await axios(`${SERVER}/pets?type=${type}&name=${name}`);
       return dispatch({
         type: "GET_NAMES",
         payload: json.data,
@@ -149,6 +157,21 @@ export function deletePet(id) {
     } catch (error) {
       console.log(error);
       alert("Could not delete pet");
+    }
+  };
+}
+
+export function getLocation() {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/pets/location`);
+      return dispatch({
+        type: "GET_LOCATION",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No location found");
     }
   };
 }

@@ -17,9 +17,12 @@ import {
   FULL_FILTER_LOCATION,
   FULL_FILTER_SIZE,
   MERCADO_PAGO,
+  GET_LOCATION,
+  LOGIN_USER
 } from "../Actions/actionTypes";
 
 const initialState = {
+  activeUser : null,
   filterSex: "All",
   filterAge: "age",
   filterSize: "Any",
@@ -30,10 +33,16 @@ const initialState = {
   user: [],
   userDetail: [],
   typePet: [],
+  location:[]
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case LOGIN_USER:
+      return {
+        ...state,
+        activeUser : action.payload
+      }
     case GET_TYPES:
       return {
         ...state,
@@ -141,6 +150,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case GET_LOCATION:
+        return{
+          ...state,
+          location: action.payload
+        }
 
     case ORDER_BY_AGE:
       return { ...state, filterAge: action.payload };

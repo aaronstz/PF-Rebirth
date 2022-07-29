@@ -18,6 +18,7 @@ import {
   fullFilterSex,
   fullFilterSize,
   getPetFilters,
+  getPetNames,
   orderByAge,
 } from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -68,6 +69,10 @@ function Home() {
     dispatch(fullFilterAge(e));
     setPage(1);
   }
+  function handleSearchName(search) {
+    dispatch(getPetNames(petType, search));
+    setPage(1);
+  }
 
   return (
     <div>
@@ -79,6 +84,7 @@ function Home() {
           handleFilterBySize={handleFilterBySize}
           handleFilterByLocation={handleFilterByLocation}
           handleOrderByAge={handleOrderByAge}
+          handleSearchName={handleSearchName}
         />
         <div className="boxWrap">
           {refresh &&

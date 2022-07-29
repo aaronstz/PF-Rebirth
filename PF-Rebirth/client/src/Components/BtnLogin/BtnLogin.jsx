@@ -14,10 +14,10 @@ export default function BtnLogin() {
     const dispatch = useDispatch();
 
     const onSuccess = ({profileObj, tokenObj}) => {
-      console.log(profileObj);
-      console.log(tokenObj);
       dispatch(postUser(profileObj))
-      // navigate("/dashboard")
+      localStorage.setItem("user", JSON.stringify(profileObj))
+      localStorage.setItem("token", JSON.stringify(tokenObj))
+      navigate("/home")
     }
 
     const failureLogin = (response) => {
