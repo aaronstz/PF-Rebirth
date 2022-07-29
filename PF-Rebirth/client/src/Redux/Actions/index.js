@@ -85,13 +85,11 @@ export function getPets() {
   };
 }
 
-export function getPetFilters(type, name) {
+export function getPetFilters(type) {
   type = type || "";
-  name = name || "";
   return async function (dispatch) {
     try {
       const json = await axios(
-
         `${SERVER}/pets?type=${type}`
       );
       return dispatch({
@@ -105,10 +103,10 @@ export function getPetFilters(type, name) {
   };
 }
 
-export function getPetNames(name) {
+export function getPetNames(type,name) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/pets?name=${name}`);
+      const json = await axios(`${SERVER}/pets?type=${type}&name=${name}`);
       return dispatch({
         type: "GET_NAMES",
         payload: json.data,
