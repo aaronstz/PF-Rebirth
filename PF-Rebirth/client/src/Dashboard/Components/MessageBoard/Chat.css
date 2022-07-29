@@ -42,11 +42,13 @@
     border-radius: 20px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-
     padding: 15px;
     resize: none;
     width: 90%;
     height: 100%;
+}
+.chat-input:focus{
+    outline: none;
 }
 .chat-left-container{
     display: flex;
