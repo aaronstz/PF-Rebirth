@@ -16,7 +16,7 @@ import {
   orderByAge,
   getPetFilters,
   getLocation,
-  getPetNames
+  getPetNames,
 } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
@@ -27,19 +27,20 @@ function FiltersBar({
   handleFilterBySize,
   handleFilterByLocation,
   handleOrderByAge,
+  handleSearchName,
 }) {
   const dispatch = useDispatch();
   let [searchName, setSearchName] = useState("");
   const petType = useLocation().search?.replace("?type=", "");
-  let locations=useSelector(state=>state.location)
+  let locations = useSelector((state) => state.location);
 
   useEffect(() => {
-     dispatch(getLocation());
+    dispatch(getLocation());
   }, [dispatch]);
 
-  function handleSearchName() {
-    dispatch(getPetNames(petType,searchName));
-  }
+  // function handleSearchName() {
+  //   dispatch(getPetNames(petType,searchName));
+  // }
   return (
     <React.Fragment>
       <div className="filtBar">
@@ -53,11 +54,11 @@ function FiltersBar({
           title="LOCATION"
           className="ms-2"
         >
-          <Dropdown.Item eventKey={"All"} >
-            All
-          </Dropdown.Item>
-          {locations && locations.map((location)=><Dropdown.Item eventKey={location} > {location}</Dropdown.Item>)}
-          
+          <Dropdown.Item eventKey={"All"}>All</Dropdown.Item>
+          {locations &&
+            locations.map((location) => (
+              <Dropdown.Item eventKey={location}> {location}</Dropdown.Item>
+            ))}
         </DropdownButton>
 
         <DropdownButton
