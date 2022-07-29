@@ -23,19 +23,12 @@ export function getUsers() {
     }
   };
 }
-export function mP() {
-  return async function (payload) {
-    try {
-      await axios(`${SERVER}/mercadoPago` , payload);
-      return ({
-        type: "MERCADO_PAGO",
-        payload
-      });
-    } catch (error) {
-      console.log(error);
-      alert("No funca");
-    }
-  };
+
+export function postMercadoPago(donacion){
+  return async function(dispatch){
+      let data = await axios.post("http://localhost:3001/donations", donacion)
+      return dispatch({type : "MERCADO_PAGO", data})
+  }
 }
 
 export function getUserId(id) {

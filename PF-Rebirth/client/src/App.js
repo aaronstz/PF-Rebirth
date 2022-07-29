@@ -33,7 +33,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path ='/create' element={<AddNew />} />
-        <Route path ='/mercadoPago' element={<MercadoPago />} />
+        <Route path ='/donations' element={<MercadoPago />} />
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}
