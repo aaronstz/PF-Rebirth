@@ -1,5 +1,7 @@
 .chat-container{
- 
+padding-bottom: 0px;
+margin-bottom: 0px;
+
 }
 
 .chat-display{
@@ -31,10 +33,23 @@
 
 }
 .chat-input-container{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
     margin: 0px;
     padding: 0px;
 }
 .chat-input{
+    resize: none;
     width: 90%;
+    height: 100%;
+}
+.chat-left-container{
+    display: flex;
+    flex-direction:column;
+}
+.chat-button{
+    width: 10%;
+    min-width: 100px;
     height: 100%;
 }
