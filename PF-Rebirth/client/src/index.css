@@ -41,6 +41,7 @@ body.light {
   --backgroundFooter: var(--grey);
   --backgroundBttn: var(--pink);
   --backgroundBttn2: var(--green);
+  --backgroundBttn3: var(--greylight);
   --shadow: var(--grey3);
 }
 
@@ -54,6 +55,7 @@ body.dark {
   --backgroundFooter: var(--green);
   --backgroundBttn: var(--grey);
   --backgroundBttn2: var(--green);
+  --backgroundBttn3: var(--greylight);
   --shadow: var(--grey3);
 }
 
