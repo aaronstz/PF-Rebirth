@@ -27,7 +27,7 @@ router.put("/:mail", async (req, res, next) => {
       },
       { where: { mail: id } }
     );
-    res.sendStatus(200).send("Usuario modificado");
+    res.send("Usuario modificado");
   } catch (error) {
     next(error);
   }
@@ -35,10 +35,10 @@ router.put("/:mail", async (req, res, next) => {
 
 router.patch("/:mail", async (req, res, next) => {
   const { mail } = req.params;
-  const restoreUser = await User.restore({
+  await User.restore({
     where: { mail: mail },
   });
-  res.sendStatus(200).send(restoreUser);
+  res.send("User Restored");
 });
 
 router.get("/:mail", async (req, res, next) => {
