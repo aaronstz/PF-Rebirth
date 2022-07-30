@@ -1,8 +1,17 @@
 import React from "react";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/dist/sweetalert2.css'
 import "./MyAdoption.css";
 import image from "../../../../../Assets/fotoPet1.png";
+import Swalert from "../SweetAlert/SweetAlert";
+import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 
 const MyAdoption = () => {
+let dogName='Lolita'
+
+
+
+
   return (
     <div className="mainDashCont">
       <div className="conTitulo">
@@ -34,10 +43,10 @@ const MyAdoption = () => {
         </div>
       </div>
       <div className="btnRowAdopt">
-        <button class="MAdoCancbutton">
+        <button class="MAdoCancbutton" onClick={()=>SwalertCancel(dogName)}>
           <span>Cancel</span>
         </button>
-        <button class="MAdoptbutton">
+        <button class="MAdoptbutton" onClick={()=>Swalert(dogName)}>
           <span>Confirm</span>
         </button>
       </div>

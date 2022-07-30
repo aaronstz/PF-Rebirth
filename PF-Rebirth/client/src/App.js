@@ -19,6 +19,7 @@ import Register from "./Pages/Register";
 import MercadoPago from "./Components/MercadoPago/MercadoPago"
 import MessageBoard from "././Dashboard/Components/MessageBoard/MessageBoard.jsx";
 import Favs from './Dashboard/Components/Favs/Favs.jsx';
+import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
 
 function App() {
   
@@ -42,6 +43,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/messageboard' element={<MessageBoard />} />
         <Route path="/favorites" element={<Favs/>} />
+        <Route path="/sw" element={<SW2/>} />
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}
