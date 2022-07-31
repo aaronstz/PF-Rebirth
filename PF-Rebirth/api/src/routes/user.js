@@ -1,17 +1,44 @@
-
 const { Router } = require("express");
 
 const router = Router();
-const { User } = require('../db');
-const { getUserInfo } = require('../tools/getUserInfo.js');
-const { sendEmailConfirmation } = require('../tools/sendEmail.js');
+const { User } = require("../db");
+const { getUserInfo } = require("../tools/getUserInfo.js");
+const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 
 router.put("/:mail", async (req, res, next) => {
+  try {
+    const id = req.params.mail;
+    console.log(req.body);
+    const {
+      formBasicUserName,
+      formBasicName,
+      formBasicLastName,
+      formBasicPassword,
+      formBasicImage,
+    } = req.body;
+
+    await User.update(
+      {
+        userName: formBasicUserName,
+        name: formBasicName,
+        lastName: formBasicLastName,
+        password: formBasicPassword,
+        image: formBasicImage,
+      },
+      { where: { mail: id } }
+    );
+    res.send("Usuario modificado");
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.patch("/:mail", async (req, res, next) => {
   const { mail } = req.params;
-  const restoreUser = await User.restore({
+  await User.restore({
     where: { mail: mail },
   });
-  res.sendStatus(200).send(restoreUser);
+  res.send("User Restored");
 });
 
 router.get("/:mail", async (req, res, next) => {
@@ -45,8 +72,9 @@ router.post("/", async (req, res, next) => {
     await User.create(userInformation);
 
     sendEmailConfirmation(userInformation);
-    res.status(201).send(`El usuario ${userInformation.name} fue creado con exito`);
-
+    res
+      .status(201)
+      .send(`El usuario ${userInformation.name} fue creado con exito`);
   } catch (error) {
     res.status(409).send("El usuario ya se encuentra registrado");
   }
@@ -68,6 +96,5 @@ router.delete("/:mail", async (req, res, next) => {
     next(error);
   }
 });
-
 
 module.exports = router;
