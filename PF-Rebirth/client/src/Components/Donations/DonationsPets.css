@@ -1,0 +1,28 @@
+
+.containerDonations{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    background-image: url('../../Assets/Donations/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 57%;
+}
+
+.leftContainer {
+    width: 50%; height: 100%;
+    padding: 1% 3%;
+}
+
+.rightContainer{
+    width: 50%; height: 100%;
+    padding-right: 3%;
+}
+
+.imgDonations{
+    opacity: 0%;
+    width: 130%;
+}

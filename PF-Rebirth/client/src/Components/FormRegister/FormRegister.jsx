@@ -18,7 +18,9 @@ export default function FormRegister() {
 
     const handleChange = (e) => {
         /*
-            La función recibe la data en el evento onChange, para capturar el valor del respectivo input, setea los atributos del nuevo usuario, al tiempo que valida los errores para confirmar que el usuario ingrese valores en los input
+            La función recibe la data en el evento onChange, para capturar el valor del respectivo input, 
+            setea los atributos del nuevo usuario, al tiempo que valida los errores para confirmar que el 
+            usuario ingrese valores en los input
         */
         setNewUser({
             ...newUser,
@@ -34,7 +36,7 @@ export default function FormRegister() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(postUser(newUser))
-        // navigate("/dashboard");
+        navigate("/home");
     }
 
     return (
@@ -82,7 +84,7 @@ export default function FormRegister() {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" className='formInputStyle'/>
                         <Form.Text className="formTextComment">
-                            The password must contain at least one number and max length of 15 characters, at least one capital letter, one special character and no spaces.<br/>
+                            The password must be min 8 characters at least one number, one special character and no spaces.<br/>
                         </Form.Text>
                         <Form.Text className='formErrores'>{
                             errores && errores.password ? errores.password : null 

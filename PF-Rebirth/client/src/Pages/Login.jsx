@@ -10,15 +10,15 @@ import { loginUser } from "../Redux/Actions";
 function Login() {
 
   const tab = '\u00A0'; //constante de espacio en blanco
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const activeUser = useSelector(state => state.activeUser)
   const [ userName, setUserName ] = useState("");
   const [ password, setPassword ] = useState("");
-  const [ isChecked, setIsChecked ] = useState(false);
 
   localStorage.setItem("user", JSON.stringify(activeUser));
+  console.log('activeUser', activeUser)
+
   if(activeUser !== null ) navigate("/home");
 
   const handleLogin = (e) => {
@@ -56,24 +56,23 @@ function Login() {
                     <h6>or</h6>
                   </div>
                   <div className="logCard-body">
-                    <form method="POST" className="validation" novalidate="" onSubmit={(e) => handleLogin(e)}>
+                    <form method="POST" className="validation" noValidate="" onSubmit={(e) => handleLogin(e)}>
                       <div className="form-group">
-                        <label for="email">E-Mail Address</label>
+                        <label htmlFor="email">Username</label>
                         <input
-                          id="email"
-                          type="email"
+                          id="username"
+                          type="text"
                           className="form-control"
                           name="email"
                           value={userName}
                           required
-                          autofocus
+                          autoFocus
                           onChange={({target}) => captureLoginValues(target)}
                         />
-                        <div className="invalid-feedback">Email is invalid</div>
                       </div>
 
                       <div className="form-group">
-                        <label for="password">
+                        <label htmlFor="password">
                           Password
                           <a href=" " className="alignRight">
                             Forgot Password?
@@ -83,7 +82,7 @@ function Login() {
                         <input
                           id="password"
                           type="password"
-                          class="form-control"
+                          className="form-control"
                           name="password"
                           required
                           value={password}
@@ -92,17 +91,16 @@ function Login() {
                         />
                       </div>
 
-                      <div class="form-group">
+                      <div className="form-group">
                         <div className="custom-checkbox custom-control">
                           <input
                             type="checkbox"
                             name="remember"
                             id="remember"
                             className="customControlInput"
-                            onChange={({target}) => setIsChecked(target.checked)}
                           />
                           <label
-                            for="remember"
+                            htmlFor="remember"
                             className="custom-control-label"
                           >
                             Remember Me
