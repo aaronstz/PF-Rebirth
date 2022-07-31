@@ -1,0 +1,17 @@
+.chat-title{
+    text-align: center;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    background-color: var(--background);
+   border-bottom: 1px solid var(--greylight);
+   }
+
+.msg-container{
+    max-width: 800px;
+    min-width: 400px;
+    background-color: var(--background);
+    border: 1px solid var(--greylight);
+    border-radius: 25px;
+    padding: 0px;
+    margin: auto;
+}
