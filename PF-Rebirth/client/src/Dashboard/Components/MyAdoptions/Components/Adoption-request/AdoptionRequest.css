@@ -22,7 +22,8 @@
       
 }
 .menu-div{
-    display: flex;
+    display: none;
+    
     justify-content: flex-end;
 }
 .accept-reject{
@@ -44,7 +45,9 @@ left:-400px;
     margin:0px;
     padding: 0px;
 }
-
+.menu-div{
+    display: flex;
+}
 }
 @media screen and (max-width: 500px){
     .hidden-sidebar2{
@@ -55,4 +58,5 @@ left:-400px;
         
         height: 100%;
     }
+  
 }    

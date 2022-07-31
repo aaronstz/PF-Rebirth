@@ -19,8 +19,6 @@ import Register from "./Pages/Register";
 
 import MercadoPago from "./Components/MercadoPago/MercadoPago"
 
-import MessageBoard from "././Dashboard/Components/MessageBoard/MessageBoard.jsx";
-
 import Favs from './Dashboard/Components/Favs/Favs.jsx';
 import DonationsPets from "./Components/Donations/DonationsPets";
 import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
