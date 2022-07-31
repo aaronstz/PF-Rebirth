@@ -1,5 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
 import "./Accept-Reject.css";
 import image from "../../../../../Assets/fotoPet1.png";
 
@@ -47,24 +46,3 @@ const AcceptReject = () => {
 };
 
 export default AcceptReject;
-=======
-
-export default function AcceptReject(){
-
-  return(<>
-        <div>
-          <div>
-              <div> Avatar</div>
-              <div>Nombre</div>
-              <div>Localidad</div>
-              <div>correo</div>
-          </div>
-          <div>
-            <button>Accept</button>
-            <button>Reject</button>
-          </div>
-        </div>
-    
-    </>)
-}
->>>>>>> 4825ea8257cb317fefbdb40bbfed3409c0d697aa
