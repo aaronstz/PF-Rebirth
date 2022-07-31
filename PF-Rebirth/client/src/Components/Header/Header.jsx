@@ -6,8 +6,15 @@ import headerDogTeam from '../../Assets/Header-images/btonDog.png';
 import headerImageDonation from "../../Assets/Header-images/btnDonate.png";
 import "./Header.css";
 
-
 function Header({type}) {
+
+  let user = null;
+
+  if(localStorage.length !== 0){
+    const userJson = localStorage.getItem("user");
+    user = JSON.parse(userJson);
+  }
+
   return (
     <React.Fragment>
       <div className="header-container">
@@ -16,22 +23,20 @@ function Header({type}) {
         </div>
         <div className="header-buttons">
           <div className="header-team">
-            <NavLink to={'/home'}>
               {
                 type === 'cat' ?
                 <Link to ={'/home?type=dog'} >
-                <img className="marginImage" src={headerDogTeam} alt="botonTeam" />
+                  <img className="marginImage" src={headerDogTeam} alt="botonTeam" />
                 </Link>
                 :
                 <Link to ={'/home?type=cat'}>
-                <img src={headerImageTeam} alt="botonTeam" />
+                  <img src={headerImageTeam} alt="botonTeam" />
                 </Link>
 
               }
-            </NavLink>
           </div>
           <div className="header-donations">
-            <NavLink to={"/mercadoPago"}>
+            <NavLink to={user!== null ? "/donations" : "/login"}>
               <img src={headerImageDonation} alt="botonTeam" />
             </NavLink>
           </div>

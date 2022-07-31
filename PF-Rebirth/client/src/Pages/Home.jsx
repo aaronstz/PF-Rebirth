@@ -84,6 +84,7 @@ function Home() {
   function handleSearchName(search) {
     dispatch(getPetNames(petType, search));
     setCurrentPage(1);
+    
   }
 
   return (

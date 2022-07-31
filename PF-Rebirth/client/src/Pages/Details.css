@@ -193,6 +193,21 @@
   height: 40px;
   text-transform: uppercase;
   margin-top: 2rem;
+  font-size: 18px;
+  font-family: 'Mochiy Pop One';
+  color: var(--text-color-sec);
+  background: var(--backgroundBttn2);
+  border: 1px solid transparent;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.b-btn {
+  width: 150px;
+  height: 40px;
+  text-transform: uppercase;
+  margin-top: 2rem;
   margin-left: .8rem;
   font-size: 18px;
   font-family: 'Mochiy Pop One';
@@ -216,6 +231,21 @@
 }
 
 .a-btn:active {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}
+
+.b-btn:hover {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}
+
+.b-btn:focus {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}
+
+.b-btn:active {
   background: var(--text-color);
   border: 1px solid var(--border);
 }
