@@ -48,6 +48,9 @@ left:-400px;
 .menu-div{
     display: flex;
 }
+.accept-reject{
+    width: 100%;
+}
 }
 @media screen and (max-width: 500px){
     .hidden-sidebar2{
