@@ -5,6 +5,8 @@ import {
   FULL_FILTER_LOCATION,
   FULL_FILTER_SEX,
   FULL_FILTER_SIZE,
+  GET_OWNER_ADOPTION,
+  GET_USER_ADOPTION,
   NO_FILTER_PETS,
 } from "./actionTypes";
 
@@ -23,6 +25,34 @@ export function loginUser(credentials){
     }
 
   }
+}
+export function getOwnerAdoption(id){
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/adoption/owner`);
+      return dispatch({
+        type: GET_OWNER_ADOPTION,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No user found");
+    }
+  };
+}
+export function getAdopterAdoption(id){
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/user`);
+      return dispatch({
+        type: GET_USER_ADOPTION,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No user found");
+    }
+  };
 }
 
 export function getUsers() {
@@ -94,6 +124,16 @@ export function postUserGoogle(payload) {
       console.log('error', error)
     }
   };
+}
+
+export function updateUser(email, payload) {
+  return async function (dispatch) {
+    try {
+      await axios.put(`${SERVER}/user/${email}`, payload);
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 export function deleteUser(id) {

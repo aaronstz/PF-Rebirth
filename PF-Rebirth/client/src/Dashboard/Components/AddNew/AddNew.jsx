@@ -41,6 +41,9 @@ function validate(input){
 
 function AddNew(){
     
+    const user = JSON.parse(localStorage.user)     
+    let mail = user.googleId ?  user.email : user.userToken.mail
+
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
@@ -54,6 +57,7 @@ function AddNew(){
         type:'',
         race:'',
         location:'',
+        userMail: mail
     })
    
 

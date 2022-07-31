@@ -11,7 +11,7 @@ const DashFavorites = () => {
       <div className="favContainer">
         <div className="favcardLeftPhoto">
           <div class="imgFav">
-            <div class="a-btnFav"></div>
+            <div class="FavBtn"></div>
             <img src={image} alt="Pet" class="img" />
           </div>
         </div>

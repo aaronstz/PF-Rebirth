@@ -20,6 +20,7 @@ import MessageBoard from "././Dashboard/Components/MessageBoard/MessageBoard.jsx
 import DashFavorites from './Dashboard/Components/MyFavorites/DashFavorites.jsx';
 import DonationsPets from "./Components/Donations/DonationsPets";
 import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
+import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
 
 function App() {
   
@@ -44,7 +45,9 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/messageboard' element={<MessageBoard />} />
         <Route path="/favorites" element={<DashFavorites/>} />
+        <Route path='/request' element={<AdoptionRequest/>} />
         <Route path="/sw" element={<SW2/>} />
+        
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}
