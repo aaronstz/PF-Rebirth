@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { getDetails, postMercadoPago } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
@@ -11,7 +11,7 @@ import female from "../Assets/Female_ico_big.png";
 import male from "../Assets/male-icon.png";
 import dogIco from "../Assets/dog_ico_big.png";
 import weight from "../Assets/weight_ico_big.png";
-import swal from "sweetalert";
+// import swal from "sweetalert";
 
 function Details() {
   const { id } = useParams();
@@ -20,7 +20,12 @@ function Details() {
   const { name, image, race, age, size, gender, description, location } = useSelector(
     (state) => state.detail
   );
-
+  
+  let user = null;
+  if(localStorage.length !== 0){
+    const userJson = localStorage.getItem("user");
+    user = JSON.parse(userJson);
+  }
 
   // const navigate = useNavigate();
 
@@ -36,28 +41,27 @@ function Details() {
   //   dispatch(deletePet(id));
   //   navigate("/home");
   // }
-
-
+  
   return (
     <div>
       <Navbar />
       <Container>
         <Header />
         <br />
-        <div class="dtl-card">
+        <div className="dtl-card">
           <div className="dtl-cardLeft">
-            <h3 class="title">{name}</h3>
-            <h4 class="breed">{race}</h4>
-            <h5 class="age">{age}&nbsp;years</h5>
-            <span class="petlocation">{location}</span>
+            <h3 className="title">{name}</h3>
+            <h4 className="breed">{race}</h4>
+            <h5 className="age">{age}&nbsp;years</h5>
+            <span className="petlocation">{location}</span>
             <br />
-            <div class="story-dtl">
-              <h5 class="txt-dscp">{description}</h5>
+            <div className="story-dtl">
+              <h5 className="txt-dscp">{description}</h5>
             </div>
           </div>
           <div className="dtl-cardCenter">
-            <h3 class="disp">AVAILABLE</h3>
-            <div class="txt-description">
+            <h3 className="disp">AVAILABLE</h3>
+            <div className="txt-description">
               <span>{gender}</span>
               {gender === "male" ? (
                 <img src={male} alt="gender" />
@@ -66,28 +70,28 @@ function Details() {
               )}
             </div>
             <br />
-            <div class="txt-description">
+            <div className="txt-description">
               <span>{size}</span>
               <img src={dogIco} alt="Pet" />
             </div>
-            <div class="txt-description-last">
+            <div className="txt-description-last">
               <span>3.4 kg</span>
               <img src={weight} alt="weight" />
             </div>
-            <Link to={"/mercadoPago"} >
-            <button class="a-btn" >
+            <Link to={user!== null ? `/donations/${id}` : `/login`} >
+            <button className="a-btn" >
               <span>Donate</span>
             </button>
             </Link>
-            <button class="a-btn">
+            <button className="b-btn">
               <span>Adopt me!</span>
             </button>
           </div>
 
           <div className="dtl-cardRight">
-            <div class="img-dtl">
-              <div class="a-btnFav"></div>
-              <img src={image} alt="Pet" class="img" />
+            <div className="img-dtl">
+              <div className="a-btnFav"></div>
+              <img src={image} alt="Pet" className="img" />
             </div>
           </div>
         </div>

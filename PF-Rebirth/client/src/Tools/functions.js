@@ -31,9 +31,13 @@ export const validateErrors = (objUser) => {
   let errors = {};
 
   /*
-    La funcion valida que el nombre y los apellidos no tengan numeros, que el username sea existente, valida que el email sea correcto y cumpla con las caracteristicas de un email, la password debe cumplir con las siguientes condiciones: al menos un caracter, una mayuscula, una minuscula, logitud entre 8 - 15 caracters, al menos un caracter especial y un numero
+    La funcion valida que el nombre y los apellidos no tengan numeros, que el username sea existente, 
+    valida que el email sea correcto y cumpla con las caracteristicas de un email, la password debe 
+    cumplir con las siguientes condiciones: al menos un caracter, una mayuscula, una minuscula, logitud 
+    entre 8 - 15 caracters, al menos un caracter especial y un numero
 
-    Finalmente valida si las passwords son identicas en que caso de fallar algun filtro, return un objeto con los errores
+    Finalmente valida si las passwords son identicas en que caso de fallar algun filtro, return un objeto 
+    con los errores
   */
     if(!objUser.formBasicName){
       errors.name = 'You must enter your name';

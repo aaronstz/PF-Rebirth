@@ -19,12 +19,12 @@ function Navbar() {
 
   let theme = localStorage.getItem("theme")
 
-  const logOut = (e) => {
+  const logOut = () => {
     localStorage.clear();
     localStorage.setItem("theme", theme)
   }
 
-  let imgProfileSrc = user!==null ? user.imageUrl : vector ;
+  let imgProfileSrc = user!==null ? user.userToken.imageUrl : vector ;
   let classProfileImage = user!==null ? "googleImg" : "profile";
 
   return (
@@ -54,7 +54,7 @@ function Navbar() {
         </div>
         {
           user!==null ? 
-          <a href="/home" onClick={(e) => logOut(e)} className="link-navbar">LOG OUT</a> : 
+          <a href="/home" onClick={() => logOut()} className="link-navbar">LOG OUT</a> : 
           <NavLink to={"/login"} className="link-navbar">
             <span>LOG IN</span>
           </NavLink>

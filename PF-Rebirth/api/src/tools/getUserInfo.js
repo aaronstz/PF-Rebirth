@@ -21,6 +21,7 @@ const getUserInfo = async (req) => {
 
     return {
       userName: body.formBasicUserName,
+      image : "https://i.imgur.com/ZAwO68O.png",
       name: body.formBasicName,
       lastName: body.formBasicLastName,
       mail: body.formBasicEmail,
