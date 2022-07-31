@@ -36,6 +36,21 @@ export default function DonationsPets() {
                 })
             }
         </section>
+        <section className='projectDonations'>
+            <div className='leftProjectContainer'>
+
+            </div>
+            <div className='rightProjectContainer'>
+                <div className='paragraphContainer'>
+                    <h2 className='projectTitle'>Project .......</h2>
+                    <p>We can all contribute in different ways. encourage yourself to donate, any contribution 
+                        helps us to continue with our mission of helping unprotected and abandoned pets. </p>
+                    <p>With our project we will be able to create a shelter for those homeless pets to give them a 
+                        temporary home while they manage to find a loving family to belong to.</p>
+                    <h5 className='moreInfoProject'>MORE INFO...</h5>
+                </div>
+            </div>
+        </section>
         <Footer/>
     </section>
   )
