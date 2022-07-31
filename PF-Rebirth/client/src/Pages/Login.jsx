@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../Components/Navbar/Navbar';
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Redux/Actions";
+import swal from "sweetalert";
 
 function Login() {
 
@@ -17,7 +18,6 @@ function Login() {
   const [ password, setPassword ] = useState("");
 
   localStorage.setItem("user", JSON.stringify(activeUser));
-  console.log('activeUser', activeUser)
 
   if(activeUser !== null ) navigate("/home");
 
@@ -27,7 +27,7 @@ function Login() {
     setUserName("");
     setPassword("");
   }
-
+  
   const captureLoginValues = ({name, value}) => {
     if(name === "email"){
       setUserName(value)
