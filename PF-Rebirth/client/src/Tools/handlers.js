@@ -22,7 +22,8 @@ export const handleMercadoPago = (e, donacion, dispatch) => {
         dispatch(postMercadoPago(donacion))
         .then((infoMP) => {
             const {data} = infoMP.data
-            window.open(data.init_point);
+            window.open(data.init_point, "_self")
+
         })
             break;
 

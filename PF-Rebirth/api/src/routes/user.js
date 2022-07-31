@@ -6,6 +6,7 @@ const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 
+
 router.put("/:mail", updateUser 
 // async (req, res, next) => {
 //   try {
@@ -38,6 +39,7 @@ router.put("/:mail", updateUser
 //     next(error);
 //   }}
 );
+
 
 router.patch("/:mail", async (req, res, next) => {
   const { mail } = req.params;
