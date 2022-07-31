@@ -51,9 +51,11 @@ function Cards({
         </div>
         <div className="attributes">{description}</div>
       </div>
-      <div className="lbutton">
-        <Link to={"/home/" + id}>More info</Link>
-      </div>
+      <Link to={`/home/${id}`} className="lbutton">
+        <div>
+          <span>More info</span>
+        </div>
+      </Link>
     </div>
   );
 }

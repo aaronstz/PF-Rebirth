@@ -34,6 +34,13 @@ export function getUsers() {
   };
 }
 
+export function postMercadoPago(donacion){
+  return async function(dispatch){
+      let data = await axios.post("http://localhost:3001/donations", donacion)
+      return dispatch({type : "MERCADO_PAGO", data})
+  }
+}
+
 export function getUserId(id) {
   return async function (dispatch) {
     try {

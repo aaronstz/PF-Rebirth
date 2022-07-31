@@ -6,9 +6,10 @@ const transporterRoute = require("./nodeMailer.js");
 //const chatRoute = require("./chat.js");
 const adoption = require("./adoption.js");
 const successStoriesRoute = require("./successStories.js");
+const donationsRoute = require("./donations.js");
 // const adminRoute = require("./admin.js");
 const cors = require("cors");
-
+ 
 const router = Router();
 router.use(cors());
 
@@ -22,6 +23,7 @@ router.use("/nodeMailer", transporterRoute);
 // router.use("/c/:idhat", chatRoIdute);
 router.use("/adoption", adoption);
 router.use("/successStories", successStoriesRoute);
+router.use("/donations", donationsRoute);
 // router.use("/admin", adminRoute);
 
 module.exports = router;
