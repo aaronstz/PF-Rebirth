@@ -17,7 +17,7 @@ import Profile from './Dashboard/Components/Profile/Profile'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
 
-import MercadoPago from "./Components/MercadoPago/MercadoPago"
+
 
 import Favs from './Dashboard/Components/Favs/Favs.jsx';
 import DonationsPets from "./Components/Donations/DonationsPets";
