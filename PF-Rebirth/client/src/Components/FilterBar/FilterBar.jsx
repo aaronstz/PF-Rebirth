@@ -68,6 +68,7 @@ function FiltersBar({
             className="btn-pink"
             onClick={(e) => {
               handleSearchName(searchName);
+              setSearchName("")
             }}
           >
             Search

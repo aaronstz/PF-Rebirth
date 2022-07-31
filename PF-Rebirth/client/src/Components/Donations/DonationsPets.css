@@ -26,3 +26,43 @@
     opacity: 0%;
     width: 130%;
 }
+
+.messageDonations{
+    background-color: var(--backgroundFooter);
+    color: var(--text-color);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 2%;
+}
+
+.testimonialsDonations{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.cardPet{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--background-sec);
+    padding: 1.5%;
+    border-radius: 25px;
+    width: 28vw;
+    height: 36vh;
+    color: var(--text-color-comments);
+}
+
+.petImage{
+    width: 10vw;
+    border-radius: 50%;
+}
+
+.commentContainer{
+    width: 13vw;
+    height: 5vh;
+}

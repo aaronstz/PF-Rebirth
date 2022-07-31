@@ -29,11 +29,13 @@ body {
   --green: #87E2D2;
   --background: #fafafa;
   --box-shadow-input: 0px 5px 5px 0px var(--grey2);
+  --dark--grey: rgb(19, 18, 18);
 }
 
 body.light {
   --border: var(--grey2);
   --text-color: var(--greylight);
+  --text-color-comments: var(--white);
   --text-color-sec: var(--white);
   --text-color-pag: var(--white);
   --background: var(--white);
@@ -49,6 +51,7 @@ body.dark {
   --border: var(--grey2);
   --text-color: var(--white);
   --text-color-sec: var(--greylight);
+  --text-color-comments: var(--dark--grey);
   --text-color-pag: var(--white);
   --background: var(--grey);
   --background-sec: var(--pink);

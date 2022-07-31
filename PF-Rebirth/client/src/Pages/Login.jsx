@@ -60,6 +60,7 @@ function Login() {
                       <div className="form-group">
                         <label htmlFor="email">Username</label>
                         <input
+                          autoComplete="off"
                           id="username"
                           type="text"
                           className="form-control"
@@ -80,6 +81,7 @@ function Login() {
                           <span>{!password ? tab+"required" : null}</span>
                         </label>
                         <input
+                          autoComplete="off"
                           id="password"
                           type="password"
                           className="form-control"
