@@ -1,37 +1,43 @@
 const { Router } = require("express");
-
+const bcrypt = require('bcrypt');
+const { updateUser } = require("../tools/userUpdate");
 const router = Router();
 const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 
-router.put("/:mail", async (req, res, next) => {
-  try {
-    const id = req.params.mail;
-    console.log(req.body);
-    const {
-      formBasicUserName,
-      formBasicName,
-      formBasicLastName,
-      formBasicPassword,
-      formBasicImage,
-    } = req.body;
+router.put("/:mail", updateUser 
+// async (req, res, next) => {
+//   try {
+//     const id = req.params.mail;
+//     const {
+//       formBasicUserName,
+//       formBasicName,
+//       formBasicLastName,
+//       formBasicPassword,
+//       formBasicImage,
+//       formBasicMail
+//     } = req.body;
+    
+//     const pass = formBasicPassword
 
-    await User.update(
-      {
-        userName: formBasicUserName,
-        name: formBasicName,
-        lastName: formBasicLastName,
-        password: formBasicPassword,
-        image: formBasicImage,
-      },
-      { where: { mail: id } }
-    );
-    res.send("Usuario modificado");
-  } catch (error) {
-    next(error);
-  }
-});
+//     await User.update(
+      
+//       {
+//         userName: formBasicUserName,
+//         name: formBasicName,
+//         lastName: formBasicLastName,
+//         password: await bcrypt.hash(pass, 10),
+//         image: formBasicImage,
+//         mail: formBasicMail ? formBasicMail : id
+//       },
+//       { where: { mail: id } }
+//     );
+//     res.send("Usuario modificado");
+//   } catch (error) {
+//     next(error);
+//   }}
+);
 
 router.patch("/:mail", async (req, res, next) => {
   const { mail } = req.params;

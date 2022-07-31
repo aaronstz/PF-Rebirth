@@ -29,28 +29,22 @@ function Profile(){
     const userInfo = JSON.parse(infoStorage);
 
     
-    function handleMail(e) {
-        e.preventDefault();
-        if(input.formBasicMail === ''){
-                setInput({
-                        ...input,
-                        [e.target["formBasicMail"]] : userInfo.email ? userInfo.email : userInfo.userToken.mail
-                    })
-                }
-        setInput({
-            ...input,
-            [e.target["formBasicMail"]] : e.target.value
-        })
-    }
+    // function handleMail(e) {
+    //     e.preventDefault();
+    //     if(input.formBasicMail === ''){
+    //             setInput({
+    //                     ...input,
+    //                     [e.target["formBasicMail"]] : userInfo.email ? userInfo.email : userInfo.userToken.mail
+    //                 })
+    //             }
+    //     setInput({
+    //         ...input,
+    //         [e.target["formBasicMail"]] : e.target.value
+    //     })
+    // }
 
-    function handleName(e){
+    function handleChange(e){
         e.preventDefault()
-        if(input.formBasicName === ''){
-            setInput({
-                ...input,
-                [e.target.formBasicName] : userInfo.givenName ? userInfo.givenName : userInfo.userToken.firstName
-            })
-        }
         setInput({
             ...input,
             [e.target.name] : e.target.value
@@ -66,44 +60,44 @@ function Profile(){
         
     }
 
-    function handleLastName(e){
-        if(input.formBasicLastName === ''){
-            setInput({
-                ...input,
-                [e.target.formBasicLastName] : userInfo.familyName ? userInfo.familyName : userInfo.userToken.lastName
-            })
-        }
-        setInput({
-            ...input,
-            [e.target.name] : e.target.value
-        })
-    }
+    // function handleLastName(e){
+    //     if(input.formBasicLastName === ''){
+    //         setInput({
+    //             ...input,
+    //             [e.target.formBasicLastName] : userInfo.familyName ? userInfo.familyName : userInfo.userToken.lastName
+    //         })
+    //     }
+    //     setInput({
+    //         ...input,
+    //         [e.target.name] : e.target.value
+    //     })
+    // }
 
-    function handlePassword(e){
-        if(input.formBasicPassword === ''){
-            setInput({
-                ...input,
-                [e.target.formBasicPassword] : userInfo.password
-            })
-        }
-        setInput({
-            ...input,
-            [e.target.name] : e.target.value
-        })
-    }
+    // function handlePassword(e){
+    //     if(input.formBasicPassword === ''){
+    //         setInput({
+    //             ...input,
+    //             [e.target.formBasicPassword] : userInfo.password
+    //         })
+    //     }
+    //     setInput({
+    //         ...input,
+    //         [e.target.name] : e.target.value
+    //     })
+    // }
 
-    function handleUser(e){
-        if(input.formBasicUserName === ''){
-            setInput({
-                ...input,
-                [e.target.formBasicUserName] : userInfo.name ? userInfo.name : userInfo.userToken.userName
-            })
-        }
-        setInput({
-            ...input,
-            [e.target.name] : e.target.value
-        })
-    }
+    // function handleUser(e){
+    //     if(input.formBasicUserName === ''){
+    //         setInput({
+    //             ...input,
+    //             [e.target.formBasicUserName] : userInfo.name ? userInfo.name : userInfo.userToken.userName
+    //         })
+    //     }
+    //     setInput({
+    //         ...input,
+    //         [e.target.name] : e.target.value
+    //     })
+    // }
 
     function handleSubmit(e){
         e.preventDefault();
@@ -137,17 +131,17 @@ function Profile(){
                 </div>
                 <div class="row mt-2">
                     
-                    <div class="col-md-6"><label class="labels">First Name</label><input id="formBasicName" type="text" class="form-control" name ="formBasicName" placeholder={userInfo.givenName ? userInfo.givenName : userInfo.userToken.name} value={input.formBasicName} onChange={(e)=> {handleName(e)}}/></div>
-                    <div class="col-md-6"><label class="labels">Last Name</label><input id="formBasicLastName" type="text" class="form-control" name="formBasicLastName" value={input.formBasicLastName} placeholder={userInfo.familyName ? userInfo.familyName : userInfo.userToken.lastName} onChange={(e)=> {handleLastName(e)}}/></div>
+                    <div class="col-md-6"><label class="labels">First Name</label><input id="formBasicName" type="text" class="form-control" name ="formBasicName" placeholder={userInfo.givenName ? userInfo.givenName : userInfo.userToken.name} value={input.formBasicName} onChange={(e)=> {handleChange(e)}}/></div>
+                    <div class="col-md-6"><label class="labels">Last Name</label><input id="formBasicLastName" type="text" class="form-control" name="formBasicLastName" value={input.formBasicLastName} placeholder={userInfo.familyName ? userInfo.familyName : userInfo.userToken.lastName} onChange={(e)=> {handleChange(e)}}/></div>
 
                 </div>
                 <div>
-                <div ><label class="labels">Username</label><input id="formBasicUserName" type="text" class="form-control" name="formBasicUserName" value={input.formBasicUserName} placeholder={userInfo.name ? userInfo.name : userInfo.userToken.userName} onChange={(e)=> {handleUser(e)}}/></div>
+                <div ><label class="labels">Username</label><input id="formBasicUserName" type="text" class="form-control" name="formBasicUserName" value={input.formBasicUserName} placeholder={userInfo.name ? userInfo.name : userInfo.userToken.userName} onChange={(e)=> {handleChange(e)}}/></div>
 
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Email</label><input id="formBasicMail" name ="formBasicMail" type="text" class="form-control" placeholder={userInfo.email ? userInfo.email : userInfo.userToken.mail} value={input.formBasicMail} onChange={(e)=>{handleMail(e)}}/></div>
-                    <div class="col-md-12"><label class="labels">Password</label><input id="formBasicPassword" name="formBasicPassword" type="password" class="form-control" placeholder="********" value={input.formBasicPassword} onChange={(e) => {handlePassword(e)}}/></div>
+                    <div class="col-md-12"><label class="labels">Email</label><input id="formBasicMail" name ="formBasicMail" type="text" class="form-control" placeholder={userInfo.email ? userInfo.email : userInfo.userToken.mail} value={input.formBasicMail} onChange={(e)=>{handleChange(e)}}/></div>
+                    <div class="col-md-12"><label class="labels">Password</label><input id="formBasicPassword" name="formBasicPassword" type="password" class="form-control" placeholder="********" value={input.formBasicPassword} onChange={(e) => {handleChange(e)}}/></div>
                 </div>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
             </div>
