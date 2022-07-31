@@ -39,7 +39,6 @@ function validate(input){
     return errors;
 }
 
-
 function AddNew(){
     
     const navigate = useNavigate()
@@ -55,7 +54,6 @@ function AddNew(){
         type:'',
         race:'',
         location:'',
-
     })
    
 
@@ -141,7 +139,6 @@ function AddNew(){
                                             value={input.image}
                                             required
                                             onFileSelect ={(e)=>{
-                                                console.log(e)
                                                 e.done((file)=>{handleImage(file)})
                                             }}
                                             />

@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
 
   let user = null;
+  let userImage = null;
 
   if(localStorage.length !== 0){
     const userJson = localStorage.getItem("user");
@@ -24,7 +25,9 @@ function Navbar() {
     localStorage.setItem("theme", theme)
   }
 
-  let imgProfileSrc = user!==null ? user.userToken.imageUrl : vector ;
+  if(user !== null ) userImage = user.googleId ? user.imageUrl : user.userToken.imageUrl
+
+  let imgProfileSrc = user!==null ? userImage : vector ;
   let classProfileImage = user!==null ? "googleImg" : "profile";
 
   return (
