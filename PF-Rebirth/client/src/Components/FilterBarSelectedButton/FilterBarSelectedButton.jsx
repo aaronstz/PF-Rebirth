@@ -46,19 +46,19 @@ return(
     <div className="filters-tabs"> 
         {filterTabLocation==="All"? "":  <div className="filter-tabs-item" >
             {filterTabLocation}
-           <img className="exbutton" onClick={e=>{handleFilterByLocation("All")}} src={exButton}/>
+           <img className="exbutton" onClick={e=>{handleFilterByLocation("All")}} src={exButton} alt="exbutton"/>
     </div>}
         {filterTabAge==="age"? "":  <div className="filter-tabs-item" >
             {filterTabAge}
-           <img className="exbutton" onClick={e=>{handleOrderByAge("age")}} src={exButton}/>
+           <img className="exbutton" onClick={e=>{handleOrderByAge("age")}} src={exButton} alt="exbutton"/>
     </div>} 
     {filterTabSex==="All"? "":  <div className="filter-tabs-item" >
             {filterTabSex}
-           <img className="exbutton" onClick={e=>{handleFilterBySex("All")}} src={exButton}/>
+           <img className="exbutton" onClick={e=>{handleFilterBySex("All")}} src={exButton} alt="exbutton"/>
     </div>}
     {filterTabSize==="Any"? "":  <div className="filter-tabs-item" >
             {filterTabSize}
-            <img className="exbutton" onClick={e=>{handleFilterBySize("Any")}} src={exButton}/>
+            <img className="exbutton" onClick={e=>{handleFilterBySize("Any")}} src={exButton} alt="exbutton"/>
     </div>}  
    
     </div>

@@ -39,9 +39,11 @@ function validate(input){
     return errors;
 }
 
-
 function AddNew(){
     
+    const user = JSON.parse(localStorage.user)     
+    let mail = user.googleId ?  user.email : user.userToken.mail
+
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
@@ -55,15 +57,12 @@ function AddNew(){
         type:'',
         race:'',
         location:'',
-
+        userMail: mail
     })
-
-
    
 
     function handleChange(e){
         e.preventDefault()
-        console.log(e.target.name)
         setInput({
             ...input,
             [e.target.name] : e.target.value
@@ -80,12 +79,7 @@ function AddNew(){
             ...input,
             image: `https://ucarecdn.com/${file.uuid}/`
         })
-        console.log(input.image)
     }
-
-    console.log(input)
-
-
 
     function handleSubmit(e){
         e.preventDefault()
@@ -121,18 +115,18 @@ function AddNew(){
                             <div className="addcard-wrapper">
                                 <div className="addcard fat">
                                     <div className="addcard header">
-                                    <div className="mb-3" controlId ="formBasicTitle">
+                                    <div className="mb-3" id="formBasicTitle">
                                         <h2>Add new pet</h2>
                                         <br/>Please leave us the following info to create a new pet
                                     </div>
                                 <div className="addcard-body">
                                     <form method = "POST" className ="addvalidate" noValidate="" onSubmit ={(e)=> handleSubmit(e)}>
                                         <div className="form-group">
-                                            <label for ="name">Name*</label>
+                                            <label htmlFor ="name">Name*</label>
                                             <input
                                             id="name"
                                             type="text"
-                                            class="form-control"
+                                            className="form-control"
                                             name="name"
                                             value={input.name}
                                             required
@@ -143,13 +137,12 @@ function AddNew(){
                                         </div>
 
                                         <div className="addform">
-                                            <label class="form-label" for ="customFile">Image*</label>
+                                            <label className="form-label" htmlFor ="customFile">Image*</label>
                                             <Widget
                                             publicKey="e7afc989eff083e04496"
                                             value={input.image}
                                             required
                                             onFileSelect ={(e)=>{
-                                                console.log(e)
                                                 e.done((file)=>{handleImage(file)})
                                             }}
                                             />
@@ -157,11 +150,11 @@ function AddNew(){
                                         </div>
 
                                         <div className="addform">
-                                            <label for ="age">Age*</label>
+                                            <label htmlFor ="age">Age*</label>
                                             <input
                                             id="age"
                                             type="number"
-                                            class="form-control"
+                                            className="form-control"
                                             name="age"
                                             value={input.age}
                                             required
@@ -171,10 +164,10 @@ function AddNew(){
                                             <div className="addinvalid-fb">{errors && errors.age ? errors.age : null}</div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Size*</label>
-                                             <select name ="size" class="form-control" id="exampleFormControlSelect1" value ={input.size} onChange={(e)=>handleChange(e)}>
-                                                <option selected>Choose...</option>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleFormControlSelect1">Size*</label>
+                                             <select name ="size" className="form-control" id="exampleFormControlSelect1" value ={input.size} onChange={(e)=>handleChange(e)}>
+                                                <option defaultValue>Choose...</option>
                                                 <option value ="small">Small</option>
                                                 <option value ="medium">Medium</option>
                                                 <option value ="big">Big</option>
@@ -183,10 +176,10 @@ function AddNew(){
                                             <div className="addinvalid-fb">{errors && errors.size ? errors.size : null}</div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for ="exampleFormControlSelect1">Gender*</label>
-                                            <select name ="gender" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
-                                                <option selected>Choose...</option>
+                                        <div className="form-group">
+                                            <label htmlFor ="exampleFormControlSelect1">Gender*</label>
+                                            <select name ="gender" className="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
+                                                <option defaultValue>Choose...</option>
                                                 <option value ="male" >Male</option>
                                                 <option value ="female">Female</option>
                                             </select>
@@ -194,10 +187,10 @@ function AddNew(){
                                             <div className="addinvalid-fb">{errors && errors.gender ? errors.gender : null}</div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for ="exampleFormControlSelect1">Type*</label>
-                                            <select name ="type" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
-                                                <option selected>Choose...</option>
+                                        <div className="form-group">
+                                            <label htmlFor ="exampleFormControlSelect1">Type*</label>
+                                            <select name ="type" className="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
+                                                <option defaultValue>Choose...</option>
                                                 <option value ="dog">Dog</option>
                                                 <option value ="cat">Cat</option>
                                             </select>
@@ -205,11 +198,11 @@ function AddNew(){
                                         </div>
 
                                         <div className="addform">
-                                            <label for ="race">Race</label>
+                                            <label htmlFor ="race">Race</label>
                                             <input
                                             id="race"
                                             type="text"
-                                            class="form-control"
+                                            className="form-control"
                                             name="race"
                                             value={input.race}
                                             required
@@ -218,13 +211,13 @@ function AddNew(){
                                             <div className="addinvalid-fb">{errors && errors.race ? errors.race : null}</div>
                                         </div>
                                         <div className="addform">
-                                            <label for ="location" >Location*</label>
-                                            <select name ="location" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
-                                                <option selected>Choose...</option>
+                                            <label htmlFor ="location" >Location*</label>
+                                            <select name ="location" className="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
+                                                <option defaultValue>Choose...</option>
                                                 {
                                                     provincias?.map(p => {
                                                         return(
-                                                            <option value ={p}>{p}</option>
+                                                            <option key={Math.random()} value={p}>{p}</option>
                                                         )
                                                     })
                                                 }
@@ -232,13 +225,13 @@ function AddNew(){
                                             <div className="addinvalid-fb">{errors && errors.location ? errors.location : null}</div>
                                         </div>
                                         <div className="form-outline">
-                                            <label class="form-label"for ="textAreaExample">Description</label>
-                                            <textarea name="description" value={input.description} type="text"  class ="textarea" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
+                                            <label className="form-label" htmlFor ="textAreaExample">Description</label>
+                                            <textarea name="description" value={input.description} type="text"  className="textarea" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
                                         </div>
                                     <div className="addform-submit">
                                         <button
                                         type="submit"
-                                        class="addbtn"
+                                        className="addbtn"
                                         disabled={Object.keys(errors).length === 0 ? false : true}
                                         >
                                             CREATE
@@ -257,7 +250,7 @@ function AddNew(){
                     </div>
                         <div className="addwrapper-right">
                             <div className="addimageContainer">
-                                <img src={background} alt="pet" class="addImage"/>
+                                <img src={background} alt="pet" className="addImage"/>
                             </div>
                         </div>
                 </div>

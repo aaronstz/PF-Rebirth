@@ -92,6 +92,16 @@ export function postUser(payload) {
   };
 }
 
+export function updateUser(email, payload) {
+  return async function (dispatch) {
+    try {
+      await axios.put(`${SERVER}/user/${email}`, payload);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 export function deleteUser(id) {
   return async function dispatch() {
     try {

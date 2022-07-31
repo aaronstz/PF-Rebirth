@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
 
   let user = null;
+  let userImage = null;
 
   if(localStorage.length !== 0){
     const userJson = localStorage.getItem("user");
@@ -19,12 +20,14 @@ function Navbar() {
 
   let theme = localStorage.getItem("theme")
 
-  const logOut = (e) => {
+  const logOut = () => {
     localStorage.clear();
     localStorage.setItem("theme", theme)
   }
 
-  let imgProfileSrc = user!==null ? user.imageUrl : vector ;
+  if(user !== null ) userImage = user.googleId ? user.imageUrl : user.userToken.imageUrl
+
+  let imgProfileSrc = user!==null ? userImage : vector ;
   let classProfileImage = user!==null ? "googleImg" : "profile";
 
   return (
@@ -54,7 +57,7 @@ function Navbar() {
         </div>
         {
           user!==null ? 
-          <a href="/home" onClick={(e) => logOut(e)} className="link-navbar">LOG OUT</a> : 
+          <a href="/home" onClick={() => logOut()} className="link-navbar">LOG OUT</a> : 
           <NavLink to={"/login"} className="link-navbar">
             <span>LOG IN</span>
           </NavLink>

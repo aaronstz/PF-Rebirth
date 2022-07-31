@@ -12,7 +12,7 @@ const Paginations = ({ petsPerPage, pets, pagination, currentPage }) => {
     <div>
       <div className="pagination">
         {numberPgs.map((e) => (
-          <ul className="pages">
+          <ul key={e} className="pages">
             <li key={e} className={currentPage === e ? "liactive" : ""}>
               <span onClick={() => pagination(e)}>{e}</span>
             </li>
