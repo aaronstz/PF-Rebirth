@@ -23,7 +23,7 @@ setNewAd(n)
 return( 
 <React.Fragment>
     <div className="msg-container">
-   <Accordion>
+   <Accordion >
       <Accordion.Item eventKey="0">
         <Accordion.Header className="msg-chat-title"> Chat de adopción {newAd}</Accordion.Header>
         <Accordion.Body>
