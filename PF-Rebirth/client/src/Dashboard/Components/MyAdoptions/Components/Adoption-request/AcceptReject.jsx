@@ -10,6 +10,9 @@ export default function AcceptReject(){
               <div>Localidad</div>
               <div>correo</div>
           </div>
+          <div>Avatar Mascota</div>
+          <div>Localidad</div>
+          <div>descripcion</div>
           <div>
             <button>Accept</button>
             <button>Reject</button>

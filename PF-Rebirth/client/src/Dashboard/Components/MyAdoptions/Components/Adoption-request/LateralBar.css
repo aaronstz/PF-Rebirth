@@ -1,0 +1,45 @@
+.avatar-lateral-bar{
+ height: 80px;
+ height: 80px;
+ border-radius: 5px;
+}
+.pet-lateral-bar{
+    height: 40px;
+    height: 40px;
+    position: relative;
+    left: -40px;
+    top:20px;
+    z-index: 10;
+    border-radius: 100%;
+   }
+.avatar-pet-lateral-bar{
+    min-height: 80px;
+    min-width: 80px;  
+    margin: 0px;
+    padding: 0px; 
+}
+
+.container-lateral-bar{
+display: flex;
+flex-direction: row;
+background-color:var(--background);
+width: 400px;
+border-radius: 10px;
+border: 1px solid var(--greylight);
+margin: 0px;
+    padding: 0px; 
+
+}
+.name-adoption-text-lb{
+    height: 80px;
+    
+    
+}
+.name-lateral-bar div{
+    height: 30px;
+   
+}
+.adoption-lateral-bar{
+    height: 50px;
+   
+}
