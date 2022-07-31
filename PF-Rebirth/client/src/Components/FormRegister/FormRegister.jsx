@@ -36,7 +36,6 @@ export default function FormRegister() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(postUser(newUser))
-        navigate("/home");
     }
 
     return (
