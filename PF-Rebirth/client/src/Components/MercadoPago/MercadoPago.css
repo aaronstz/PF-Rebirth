@@ -3,7 +3,8 @@
     background-color: rgba(245, 245, 245, 0.637);
     padding: 5%;
     width: 100%;
-    height: 500px;
+    height: fit-content;
+    border-radius: 25px;
 }
 
 .titleDonations{
@@ -52,4 +53,16 @@
     padding: 1%;
     border-radius: 25px;
     width: 60%;
+  }
+
+  .imgPetProfile {
+    width: 45%;
+    border-radius: 25px;
+  }
+
+  .petDonationsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
