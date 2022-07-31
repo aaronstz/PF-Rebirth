@@ -1,6 +1,6 @@
 import React from "react";
 import './Chat.css'
-import sendButton from '../../../Assets/Messageboard/send.svg'
+import sendButton from '../../../../../Assets/Messageboard/send.svg'
 
 export default function Chat({id,userId,userPhoto,userId2,userPhoto2,conversation,advisor}){
 

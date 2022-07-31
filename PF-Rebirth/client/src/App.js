@@ -17,9 +17,9 @@ import Profile from './Dashboard/Components/Profile/Profile'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
 import MercadoPago from "./Components/MercadoPago/MercadoPago"
-import MessageBoard from "././Dashboard/Components/MessageBoard/MessageBoard.jsx";
 import Favs from './Dashboard/Components/Favs/Favs.jsx';
 import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
+import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
 
 function App() {
   
@@ -41,9 +41,10 @@ function App() {
         <Route path ='/donations' element={<MercadoPago />} />
         <Route path='/create' element={<AddNew />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='/messageboard' element={<MessageBoard />} />
+        <Route path='/request' element={<AdoptionRequest/>} />
         <Route path="/favorites" element={<Favs/>} />
         <Route path="/sw" element={<SW2/>} />
+        
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}
