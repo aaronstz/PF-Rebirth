@@ -38,10 +38,10 @@ const AcceptReject = () => {
       </div>
       <div className="btnRowAdopt">
         <button class="MAdoCancbutton">
-          <span>Cancel</span>
+          <span>Reject</span>
         </button>
         <button class="MAdoptbutton">
-          <span>Confirm</span>
+          <span>Accept</span>
         </button>
       </div>
     </div>

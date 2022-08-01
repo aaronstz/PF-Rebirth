@@ -73,10 +73,11 @@
 }
 
 .btnRowAdopt {
+  padding-top: 50px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  width: 100%;  
   margin: auto;
   padding-right: 25px;
 }
@@ -143,7 +144,7 @@
 
 @media screen and (max-width: 1000px){
   .AdoptContainer {
-    display: flex;
+    display: none;
 flex-direction: column;
 justify-content: space-evenly;
 align-self: center;
@@ -153,6 +154,15 @@ height: 75%;
 overflow: hidden;
 padding: 50px;
 
+}
+.btnRowAdopt {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 70%;  
+  margin: auto;
+  padding-right: 25px;
 }
 
 };

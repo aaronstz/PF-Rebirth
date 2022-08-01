@@ -22,7 +22,7 @@
       
 }
 .menu-div{
-    display: none;
+    display: flex;
     
     justify-content: flex-end;
 }
@@ -45,11 +45,9 @@ left:-400px;
     margin:0px;
     padding: 0px;
 }
-.menu-div{
-    display: flex;
-}
+
 .accept-reject{
-    width: 100%;
+    width: 70%;
 }
 }
 @media screen and (max-width: 500px){

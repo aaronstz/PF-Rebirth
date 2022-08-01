@@ -11,6 +11,7 @@
     top:20px;
     z-index: 10;
     border-radius: 100%;
+    border: 1px solid #FFFFFF
    }
 .avatar-pet-lateral-bar{
     min-height: 80px;
