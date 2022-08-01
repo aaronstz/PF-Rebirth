@@ -3,7 +3,7 @@ import MessageBoard from "../MessageBoard/MessageBoard";
 import Menu from '../../../../../Assets/Messageboard/menu.svg'
 import LateralBar from "./LateralBar";
 import './AdoptionRequest.css'
-import AcceptReject from "./AcceptReject";
+import AcceptReject from "../Accept-Reject/Accept-Reject";
 
 export default function AdoptionRequest() {
     function SideBar(){

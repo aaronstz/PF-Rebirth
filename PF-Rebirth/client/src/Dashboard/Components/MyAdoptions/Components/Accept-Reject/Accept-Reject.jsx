@@ -5,27 +5,30 @@ import image from "../../../../../Assets/fotoPet1.png";
 const AcceptReject = () => {
   return (
     <div className="mainDashCont">
-      <div className="conTitulo">
-        <h3>Accept adoption</h3>
-      </div>
-      <div className="AdoptContainer">
-        <div className="AdoptcardLeftPhoto">
+        <div className="AdoptContainer">
+        <div >
           <div class="imgFav">
             <img src={image} alt="Pet" class="img" />
           </div>
         </div>
-        <div className="AdoptcardLeft">
+        <div >
           <span>Lolita</span>
+          <br />
           <span>Border collie</span>
+          <br />
           <span>3&nbsp;years</span>
+          <br />
           <span>Mexico City</span>
         </div>
-        <div className="AdoptcardCenter">
+        <div>
+          
           <span>Female</span>
+          <br />
           <span>Medium</span>
+          <br />
           <span>3.4&nbsp;KG</span>
         </div>
-        <div className="AdoptcardRight">
+        <div >
           <span>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
             turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
@@ -35,10 +38,10 @@ const AcceptReject = () => {
       </div>
       <div className="btnRowAdopt">
         <button class="MAdoCancbutton">
-          <span>Cancel</span>
+          <span>Reject</span>
         </button>
         <button class="MAdoptbutton">
-          <span>Confirm</span>
+          <span>Accept</span>
         </button>
       </div>
     </div>
