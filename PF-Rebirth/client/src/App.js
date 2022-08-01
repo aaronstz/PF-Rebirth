@@ -1,11 +1,6 @@
 import "./App.css";
-<<<<<<< HEAD
-import 'dotenv/config';
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
-=======
 import "dotenv/config";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
->>>>>>> 83c8eb15cd1df7b6694bec6b8ab02d5f69cbc978
 import LandingPage from "./Pages/LandingPage";
 import Home from "./Pages/Home";
 import FAQs from "./Pages/FAQs";
@@ -21,10 +16,6 @@ import Profile from "./Dashboard/Components/Profile/Profile";
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
-<<<<<<< HEAD
-=======
-
->>>>>>> 83c8eb15cd1df7b6694bec6b8ab02d5f69cbc978
 import DashFavorites from './Dashboard/Components/MyFavorites/DashFavorites.jsx';
 
 import DonationsPets from "./Components/Donations/DonationsPets";
@@ -32,10 +23,6 @@ import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetA
 import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
 
 function App() {
-<<<<<<< HEAD
-
-=======
->>>>>>> 83c8eb15cd1df7b6694bec6b8ab02d5f69cbc978
   return (
     <Router>
       <Routes>
