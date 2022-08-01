@@ -9,14 +9,14 @@ const sendEmailConfirmation = (userInformation) => {
     port: 465,
     secure: true,
     auth: {
-      user: "rebirhtPets@gmail.com",
-      pass: "vxhhgglvicwtjnax",
+      user: "rebirthpestpf@gmail.com",
+      pass: "zsthhqlvcmufkgbh", 
     },
   });
 
   let mailOption = {
-    from: " 'Rebirth.App 🐾' <rebirhtPets@gmail.com>",
-    to: email,
+    from: " 'Rebirth.App 🐾' <rebirthpestpf@gmail.com>",
+    to: 'petsrebirth@gmail.com',
     subject: "Rebirth.App 🐾",
     text: "Gracias por registrarte en Rebirth!",
   };
