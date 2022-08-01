@@ -16,7 +16,6 @@ import Profile from "./Dashboard/Components/Profile/Profile";
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
-
 import DashFavorites from './Dashboard/Components/MyFavorites/DashFavorites.jsx';
 
 import DonationsPets from "./Components/Donations/DonationsPets";
@@ -42,7 +41,6 @@ function App() {
         <Route path ='/create' element={<AddNew />} />
         <Route path ='/donations' element={<DonationsPets />} />
         <Route path ='/donations/:id' element={<DonationsPets />} />
-        <Route path='/create' element={<AddNew />} />
         <Route path='/profile' element={<Profile />} />
         <Route path="/favorites" element={<DashFavorites/>} />
         <Route path='/request' element={<AdoptionRequest/>} />
