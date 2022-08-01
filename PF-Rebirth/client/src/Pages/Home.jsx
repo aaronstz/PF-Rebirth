@@ -34,44 +34,57 @@ function Home() {
 
   //Paginado//
   const [refresh] = useState(1);
-  const [page, setPage] = useState(1);
-  const [cantPets] = useState(12);
-  const lastPet = page * cantPets;
-  const firstPet = lastPet - cantPets;
-  const petsPage = pets?.slice(firstPet, lastPet);
-  // const cantPages = Math.ceil(pets.length / cantPets);
+  // const [page, setPage] = useState(1);
+  // const [cantPets] = useState(6);
+  // const lastPet = page * cantPets;
+  // const firstPet = lastPet - cantPets;
+  // const petsPage = pets?.slice(firstPet, lastPet);
+  // // const cantPages = Math.ceil(pets.length / cantPets);
 
-  const paginado = (pageNum) => {
-    setPage(pageNum);
-  };
+  // const paginado = (pageNum) => {
+  //   setPage(pageNum);
+  // };
+
+  // logica de la paginacion, filtro por pagina y loading
+  const [currentPage, setCurrentPage] = useState(1); //lo seteo en 1 porque siempre arranco por la primer pagina
+  const petsPerPage = 6; //cantidad de pets que debe haber por pagina
+  const indexOfLastPet = currentPage * petsPerPage; // 1 * 6 = 6
+  const indexOfFirstPet = indexOfLastPet - petsPerPage; // 6 - 6 = 0
+  const currentPet = pets.slice(indexOfFirstPet, indexOfLastPet); //para dividir la cantidad de pets por pagina
+  const pagination = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     dispatch(getPetFilters(petType));
   }, [dispatch, petType]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   function handleFilterBySex(e) {
     dispatch(filterBySex(e));
     dispatch(fullFilterSex(e));
-    setPage(1);
+    setCurrentPage(1);
   }
   function handleFilterBySize(e) {
     dispatch(filterBySize(e));
     dispatch(fullFilterSize(e));
-    setPage(1);
+    setCurrentPage(1);
   }
   function handleFilterByLocation(e) {
     dispatch(filterByLocation(e));
     dispatch(fullFilterLocation(e));
-    setPage(1);
+    setCurrentPage(1);
   }
   function handleOrderByAge(e) {
     dispatch(orderByAge(e));
     dispatch(fullFilterAge(e));
-    setPage(1);
+    setCurrentPage(1);
   }
   function handleSearchName(search) {
     dispatch(getPetNames(petType, search));
-    setPage(1);
+    setCurrentPage(1);
+    
   }
 
   return (
@@ -88,7 +101,7 @@ function Home() {
         />
         <div className="boxWrap">
           {refresh &&
-            petsPage.map((p, i) => {
+            currentPet.map((p, i) => {
               return (
                 <Cards
                   key={Math.random()}
@@ -107,10 +120,10 @@ function Home() {
         </div>
       </Container>
       <Paginations
-        cantPets={cantPets}
+        currentPage={currentPage}
+        petsPerPage={petsPerPage}
         pets={pets.length}
-        paginado={paginado}
-        actual={page}
+        pagination={pagination}
       />
       <Testimonials />
       <Footer />

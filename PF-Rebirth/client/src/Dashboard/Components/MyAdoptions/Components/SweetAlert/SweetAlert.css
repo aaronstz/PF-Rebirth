@@ -1,0 +1,21 @@
+
+.rebirth-button {
+    font-weight: bolder;
+    color: white;
+    width: 150px;
+    height: 40px;
+    padding-top: 0px;
+    margin-left: 15px;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .pink{
+    background: var(--pink);
+  }
+  .grey{
+    background: var(--greylight);
+  }
