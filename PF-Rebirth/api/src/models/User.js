@@ -43,12 +43,20 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-
       allowNull: true,
     },
-    // favorites: { type: DataTypes.ARRAY, defaultValue: [] },
-    isOwner: { type: DataTypes.BOOLEAN, defaultValue: false },
-    isAdmin: { type: DataTypes.BOOLEAN, defaultValue: false }
+    favorites: { 
+      type: DataTypes.ARRAY(DataTypes.STRING), 
+      defaultValue : [] 
+    },
+    isOwner: { 
+      type: DataTypes.BOOLEAN, 
+      defaultValue: false 
+    },
+    isAdmin: { 
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   },{
     paranoid: true,
     deletedAt: 'softDelete'
