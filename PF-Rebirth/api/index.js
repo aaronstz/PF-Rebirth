@@ -20,11 +20,11 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { getPets } = require('./src/tools/preCharge.js');
-const PORT = process.env.PORT 
+// const PORT = process.env.PORT 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(async () => {
   await getPets()
-  server.listen(3001, () => {
+  server.listen(process.env.PORT, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
