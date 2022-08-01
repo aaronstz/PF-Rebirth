@@ -1,9 +1,13 @@
 import "./Footer.css";
 import logo from "../../Assets/logo.png";
 import socials from "../../Assets/Social.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useResolvedPath } from "react-router-dom";
 
 export default function Footer() {
+
+  const userJson = localStorage.getItem("user");
+  const user = JSON.parse(userJson);
+
   return (
     <footer className="body">
       <div className="container mt-5">
@@ -34,7 +38,7 @@ export default function Footer() {
                     <NavLink to={"/support"}>Contact Us</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a href=" ">Donate</a>
+                    <a href={user!==null ? "/donations" : "/login"}>Donate</a>
                   </li>
                 </ul>
               </div>
@@ -46,13 +50,13 @@ export default function Footer() {
                     <NavLink to={"/faqs"}>F. A. Q. s</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a href=" ">My Favorites</a>
+                    <a href={user!==null ? "/favorites" : "/login"}>My Favorites</a>
                   </li>
                   <li className="nav-item">
                     <a href=" ">My account</a>
                   </li>
                   <li className="nav-item">
-                    <NavLink to={"/terms"}>Terms & Conditions</NavLink>
+                    <NavLink to={user!==null ? "/profile" : "/login"}>Terms & Conditions</NavLink>
                   </li>
                 </ul>
               </div>

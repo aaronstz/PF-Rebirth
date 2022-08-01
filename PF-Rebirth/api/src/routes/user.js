@@ -1,37 +1,61 @@
 const { Router } = require("express");
-
+const bcrypt = require('bcrypt');
+const { updateUser } = require("../tools/userUpdate");
 const router = Router();
 const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 
-router.put("/:mail", async (req, res, next) => {
+router.put("/addFavs/:mail", async(req, res) =>{
+  const {mail}= req.params
+  const {favorites} = req.body
   try {
-    const id = req.params.mail;
-    console.log(req.body);
-    const {
-      formBasicUserName,
-      formBasicName,
-      formBasicLastName,
-      formBasicPassword,
-      formBasicImage,
-    } = req.body;
-
-    await User.update(
-      {
-        userName: formBasicUserName,
-        name: formBasicName,
-        lastName: formBasicLastName,
-        password: formBasicPassword,
-        image: formBasicImage,
-      },
-      { where: { mail: id } }
-    );
-    res.send("Usuario modificado");
+    const userFavs = await User.findByPk(mail)
+    userFavs.update({favorites},{
+      where : {
+        mail : favorites.mail
+      }
+    })
+   return res.status(200).send(" favs actualizados")
   } catch (error) {
-    next(error);
+    console.log(error)
   }
-});
+})
+
+
+router.put("/:mail", updateUser 
+// async (req, res, next) => {
+//   try {
+//     const id = req.params.mail;
+//     const {
+//       formBasicUserName,
+//       formBasicName,
+//       formBasicLastName,
+//       formBasicPassword,
+//       formBasicImage,
+//       formBasicMail
+//     } = req.body;
+    
+//     const pass = formBasicPassword
+
+//     await User.update(
+      
+//       {
+//         userName: formBasicUserName,
+//         name: formBasicName,
+//         lastName: formBasicLastName,
+//         password: await bcrypt.hash(pass, 10),
+//         image: formBasicImage,
+//         mail: formBasicMail ? formBasicMail : id
+//       },
+//       { where: { mail: id } }
+//     );
+//     res.send("Usuario modificado");
+//   } catch (error) {
+//     next(error);
+//   }}
+);
+
 
 router.patch("/:mail", async (req, res, next) => {
   const { mail } = req.params;
@@ -96,5 +120,24 @@ router.delete("/:mail", async (req, res, next) => {
     next(error);
   }
 });
+
+router.get("/favs/:mail", async (req, res) =>{
+  const {mail} = req.params
+  try {
+    const userFav = await User.findByPk(mail)
+    if(userFav.dataValues.favorites.length){
+      res.status(200).send(userFav)
+    }else{
+      res.status(400).send("no hay favs")
+    }
+
+  } catch (error) {
+    res.status(404).send(error.message)
+  }
+})
+
+
+
+
 
 module.exports = router;
