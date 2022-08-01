@@ -97,4 +97,21 @@ router.delete("/:mail", async (req, res, next) => {
   }
 });
 
+router.put("/adm/:mail" , async (req, res, next) =>{
+  const {mail} = req.params
+  const userMail = await User.findByPk(mail)
+  console.log("prueb", userMail)
+  if(userMail.dataValues.isAdmin === false){
+    await User.update({isAdmin : true},{
+      where: {mail : mail}
+    })
+    return res.status(200).send("pasa a adm")
+  }if(userMail.dataValues.isAdmin === true){
+    await User.update({isAdmin : false},{
+      where: {mail : mail}
+    })
+    return res.status(200).send("pasa a usuario")
+  }
+})
+
 module.exports = router;
