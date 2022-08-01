@@ -1,0 +1,169 @@
+.mainDashCont {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+.AdoptContainer {
+      display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  min-width: 200px;
+  height: 75%;
+  overflow: hidden;
+  padding: 50px;
+ 
+ 
+}
+
+.AdoptcardLeftPhoto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+  height: auto;
+}
+
+.AdoptcardLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: medium;
+  width: 50%;
+  height: auto;
+  color: var(--text-color);
+  border-right: 1px solid var(--greylight);
+}
+
+.AdoptcardCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: medium;
+  width: 20%;
+  height: auto;
+  padding-right: 2%;
+  color: var(--text-color);
+  border-right: 1px solid var(--greylight);
+}
+
+.AdoptcardRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: medium;
+  width: 30%;
+  height: auto;
+  padding-left: 2%;
+  padding-right: 2%;
+  color: var(--text-color);
+}
+
+.imgFav img {
+  transition: all 0.3s;
+  display: block;
+  border-radius: 20px;
+  width: 400px;
+  justify-self: center;
+}
+
+.btnRowAdopt {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;  
+  margin: auto;
+  padding-right: 25px;
+}
+
+.MAdoptbutton {
+  width: 150px;
+  height: 40px;
+  padding-top: 0px;
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-family: 'Mochiy Pop One';
+  background: var(--backgroundBttn2);
+  border: 1px solid var(--border);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.MAdoptbutton:hover {
+  background: var(--greylight);
+  border: 1px solid var(--border);
+}
+
+.MAdoptbutton:focus {
+  background: var(--green);
+  border: 1px solid var(--border);
+}
+
+.MAdoptbutton:active {
+  background: var(--green);
+  border: 1px solid var(--border);
+}
+
+.MAdoCancbutton {
+  width: 150px;
+  height: 40px;
+  padding-top: 0px;
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-family: 'Mochiy Pop One';
+  background: var(--backgroundBttn3);
+  border: 1px solid var(--border);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.MAdoCancbutton:hover {
+  background: var(--pink);
+  border: 1px solid var(--border);
+}
+
+.MAdoCancbutton:focus {
+  background: var(--greylight);
+  border: 1px solid var(--border);
+}
+
+.MAdoCancbutton:active {
+  background: var(--greylight);
+  border: 1px solid var(--border);
+}
+
+@media screen and (max-width: 1000px){
+  .AdoptContainer {
+    display: none;
+flex-direction: column;
+justify-content: space-evenly;
+align-self: center;
+width: 100%;
+min-width: 400px;
+height: 75%;
+overflow: hidden;
+padding: 50px;
+
+}
+.btnRowAdopt {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 70%;  
+  margin: auto;
+  padding-right: 25px;
+}
+
+};
+  

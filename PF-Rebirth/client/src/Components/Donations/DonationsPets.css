@@ -1,0 +1,108 @@
+
+.containerDonations{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    background-image: url('../../Assets/Donations/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 57%;
+}
+
+.leftContainer {
+    width: 50%; height: 100%;
+    padding: 1% 3%;
+}
+
+.rightContainer{
+    width: 50%; height: 100%;
+    padding-right: 3%;
+}
+
+.imgDonations{
+    opacity: 0%;
+    width: 130%;
+}
+
+.messageDonations{
+    background-color: var(--backgroundFooter);
+    color: var(--text-color-comments);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 2%;
+}
+
+.testimonialsDonations{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.cardPet{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--background-sec);
+    padding: 1.5%;
+    border-radius: 25px;
+    width: 28vw;
+    height: 36vh;
+    color: var(--text-color-comments);
+}
+
+.petImage{
+    width: 10vw;
+    border-radius: 50%;
+}
+
+.commentContainer{
+    width: 13vw;
+    height: 5vh;
+}
+
+.projectDonations{
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url('../../Assets/Donations/banner2.jpg');
+    margin-top: 5%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 48%;
+}
+
+.leftProjectContainer {
+    width: 50%; height: 100%;
+    padding: 1% 3%;
+}
+
+.rightProjectContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%; height: 100%;
+    padding-right: 3%;
+    background-color: rgba(22, 22, 22, 0.527);
+    color: var(--white);
+}
+
+.paragraphContainer{
+    width: 60%;
+    margin: 5% auto;
+    justify-content: center;
+    text-align: justify;
+}
+
+.projectTitle{
+    text-align: center;
+    margin: 5%;
+}
+
+.moreInfoProject{
+    margin: 5%;
+}

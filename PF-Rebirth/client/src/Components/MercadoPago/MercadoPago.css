@@ -1,0 +1,68 @@
+
+.donationsContainer{
+    background-color: rgba(245, 245, 245, 0.637);
+    padding: 5%;
+    width: 100%;
+    height: fit-content;
+    border-radius: 25px;
+}
+
+.titleDonations{
+    text-align: center;
+}
+
+  .btn.btnDonations-block {
+    width: 50%;
+    color: var(--grey2) ;
+    font-weight: bold;
+    padding: 12px 10px;
+    margin-top: 10px;
+    background-color: var(--green) !important;
+    border: solid 1px var(--border);
+    box-shadow: 0px 5px 5px 0px var(--grey2);
+  }
+  
+  .btn.btnDonations-block:hover {
+    background-color: var(--pink) !important;
+  }
+
+  .textDonation {
+    margin-top: 5%;
+    text-align: justify;
+  }
+
+  .btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .incommingDonation{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 2% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #donacion{
+    padding: 1%;
+    border-radius: 25px;
+    width: 60%;
+  }
+
+  .imgPetProfile {
+    width: 45%;
+    border-radius: 25px;
+  }
+
+  .petDonationsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

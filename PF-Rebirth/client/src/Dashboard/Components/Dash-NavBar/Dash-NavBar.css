@@ -1,0 +1,56 @@
+.DashcontainerNavbar {
+  display: flex;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background);
+  height: fit-content;
+  border-radius: 25px;
+  box-shadow: 0px 3px 33px 0px var(--shadow);
+}
+
+.DashiconsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 14px;
+  color: var(--background-sec);
+}
+
+.Dashitem {
+  width: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 10px;
+}
+
+.Dashicons {
+  width: 25px;
+  margin-right: 8px;
+}
+
+.DashuserName {
+  margin: 0 5px 0px 5px;
+}
+
+.Dashlogo {
+  width: 100px;
+  height: 45px;
+  margin: 12px;
+}
+
+.Dashlink-navbar {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.Dashlink-navbar:hover {
+  text-decoration: none;
+  color: var(--pink)
+}

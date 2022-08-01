@@ -1,0 +1,71 @@
+.containerNavbar {
+    display: flex;
+    padding-left: 11%;
+    padding-right: 11%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background);
+    height: fit-content;
+    box-shadow: 0px 3px 33px 0px var(--shadow);
+}
+
+.iconsContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    color: var(--background-sec);
+    width: 50%;
+}
+
+.item {
+    width: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 15px;
+}
+
+.bandera {
+    border-radius: 5px;
+    width: 26px;
+    height: 22px;
+    margin-left: 8px;
+}
+
+.icons {
+    width: 25px;
+    margin-right: 8px;
+}
+
+.logo {
+    margin: 12px;
+}
+
+.link-navbar {
+    text-align: right;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.link-navbar:hover {
+    text-decoration: none;
+    color: var(--pink)
+}
+
+.profile>img {
+    margin-left: 0;
+    width: 130%;
+}
+
+.googleImg {
+    padding-right: 0;
+}
+
+.googleImg>img {
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    max-width: 35px;
+}

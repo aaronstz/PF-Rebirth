@@ -1,0 +1,63 @@
+.adoption-request{
+    display: flex;
+    flex-direction: row;
+    padding:0px;
+    margin: 0px;
+    width: 100%;
+}
+.lateralbar{
+  min-width: 400px;
+  max-width: 400px;
+}
+.message-accept-reject{
+    width: 100%;
+     display: flex;
+    flex-direction: row;
+     padding-left: 25px;
+     justify-content: center;
+  }
+.messageboard{
+  width: 70%;
+  margin: auto;
+      
+}
+.menu-div{
+    display: flex;
+    
+    justify-content: flex-end;
+}
+.accept-reject{
+    width: 30%;
+}
+.hidden-sidebar{
+position: absolute;
+left:-400px;
+}
+.messageboard{
+    padding: 0px;
+    margin: 0px;
+}
+@media screen and (max-width:1000px){
+.message-accept-reject{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin:0px;
+    padding: 0px;
+}
+
+.accept-reject{
+    width: 70%;
+}
+}
+@media screen and (max-width: 500px){
+    .hidden-sidebar2{
+        position: absolute;
+        background-color: #000000cf;
+        min-width: 100%;
+        max-width: 100%;
+        
+        height: 100%;
+    }
+  
+}    

@@ -1,0 +1,251 @@
+.dtl-card {
+  position: relative;
+  font-family: 'Red Hat Display';
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: auto;
+  color: var(--text-color-sec);
+  word-wrap: break-word;
+  text-align: center;
+  margin: 10px 1% 10px 1%;
+  overflow: hidden;
+}
+
+.dtl-cardLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35%;
+  height: auto;
+}
+
+.dtl-cardCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 15%;
+  height: auto;
+}
+
+.dtl-cardRight {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding-left: 2%;
+}
+
+
+.dtl-cardLeft .info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dtl-cardLeft .title {
+  font-size: 3rem;
+  color: var(--text-color);
+  text-align: left;
+  vertical-align: text-bottom;
+  font-weight: bold;
+  margin-bottom: 10pt;
+  letter-spacing: 3px;
+  text-transform: capitalize;
+}
+
+.dtl-cardLeft .breed {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-align: left;
+  margin-bottom: 10pt;
+  vertical-align: text-bottom;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+.dtl-cardLeft .age {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-align: left;
+  line-height: 0.9;
+  margin-bottom: 10pt;
+  vertical-align: text-bottom;
+}
+
+.dtl-cardLeft .petlocation {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-align: left;
+  margin-bottom: 10pt;
+  vertical-align: text-bottom;
+}
+
+.attributes {
+  font-size: 2rem;
+  color: var(--text-color);
+  text-align: left;
+  line-height: 0.9;
+  vertical-align: text-bottom;
+  letter-spacing: 3px;
+}
+
+.story-dtl {
+  display: flex;
+  position: relative;
+  justify-content: left;
+  font-size: .8rem;
+  color: var(--text-color);
+  text-align: left;
+  line-height: 0.9;
+  vertical-align: text-bottom;
+  letter-spacing: 2px;
+  padding-right: 10%;
+}
+
+.txt-dscp {
+  font-size: 1.5rem;
+  text-align: left;
+  line-height: 2rem;
+  white-space: pre-wrap;
+}
+
+
+.img-dtl {
+  transition: all 0.3s;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: auto;
+  overflow: hidden;
+}
+
+.img-dtl img {
+  transition: all 0.3s;
+  display: block;
+  border-radius: 20px;
+  width: 640px;
+  height: 100%;
+}
+
+/* .img-dtl:hover img{
+    transform: scale(1.1);
+  } */
+
+.a-btnFav {
+  position: absolute;
+  left: 3%;
+  top: 2%;
+  width: 45px;
+  height: 43px;
+  cursor: pointer;
+  background: url(../Assets/botonFAV_inactive.png);
+}
+
+.a-btnFav:hover {
+  position: absolute;
+  left: 3%;
+  top: 2%;
+  width: 45px;
+  height: 43px;
+  cursor: pointer;
+  background: url(../Assets/botonFAV_active.png);
+}
+
+
+.disp {
+  color: rgb(87, 237, 160);
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.txt-description {
+  color: var(--text-color);
+  text-transform: capitalize;
+  border-bottom: 1px solid rgb(180, 180, 180);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.txt-description img {
+  height: 40px;
+  width: 40px;
+}
+
+.txt-description-last {
+  color: var(--text-color);
+  text-transform: capitalize;
+  margin-right: 18px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.txt-description-last img {
+  height: 26px;
+  width: 26px;
+  margin-left: 10px;
+}
+
+.a-btn {
+  width: 150px;
+  height: 40px;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  font-size: 18px;
+  font-family: 'Mochiy Pop One';
+  color: var(--text-color-sec);
+  background: var(--backgroundBttn2);
+  border: 1px solid transparent;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.b-btn {
+  width: 150px;
+  height: 40px;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  margin-left: .8rem;
+  font-size: 18px;
+  font-family: 'Mochiy Pop One';
+  color: var(--text-color-sec);
+  background: var(--backgroundBttn2);
+  border: 1px solid transparent;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.a-btn:hover {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}
+
+.a-btn:focus {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}
+
+.a-btn:active {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}
+
+.b-btn:hover {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}
+
+.b-btn:focus {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}
+
+.b-btn:active {
+  background: var(--text-color);
+  border: 1px solid var(--border);
+}

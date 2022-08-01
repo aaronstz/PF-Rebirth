@@ -1,0 +1,22 @@
+#darkMode {
+  background: transparent url(../../Assets/Navbar/Vector-1.png) no-repeat center center;
+  background-size: 25px 25px;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  border: none;
+  border-radius: 50%;
+  transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+#darkMode:hover,
+#darkMode:focus {
+  cursor: pointer;
+}
+
+#darkMode.clicked {
+  background: transparent url(../../Assets/Navbar/icons_sun.png) no-repeat center center;
+  background-size: 25px 25px;
+  cursor: pointer;
+}
