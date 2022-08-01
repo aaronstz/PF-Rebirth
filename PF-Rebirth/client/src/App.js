@@ -16,8 +16,9 @@ import Profile from "./Dashboard/Components/Profile/Profile";
 // import NotFound from "./Components/404/404";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
-//import MessageBoard from "././Dashboard/Components/MessageBoard/MessageBoard.jsx";
-import DashFavorites from "./Dashboard/Components/MyFavorites/DashFavorites.jsx";
+
+import DashFavorites from './Dashboard/Components/MyFavorites/DashFavorites.jsx';
+
 import DonationsPets from "./Components/Donations/DonationsPets";
 import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
 import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
@@ -37,15 +38,16 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/create" element={<AddNew />} />
-        <Route path="/donations" element={<DonationsPets />} />
-        <Route path="/donations/:id" element={<DonationsPets />} />
-        <Route path="/create" element={<AddNew />} />
-        <Route path="/profile" element={<Profile />} />
-        {/* <Route path='/messageboard' element={<MessageBoard />} /> */}
-        <Route path="/favorites" element={<DashFavorites />} />
-        <Route path="/request" element={<AdoptionRequest />} />
-        <Route path="/sw" element={<SW2 />} />
+
+        <Route path ='/create' element={<AddNew />} />
+        <Route path ='/donations' element={<DonationsPets />} />
+        <Route path ='/donations/:id' element={<DonationsPets />} />
+        <Route path='/create' element={<AddNew />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path="/favorites" element={<DashFavorites/>} />
+        <Route path='/request' element={<AdoptionRequest/>} />
+        <Route path="/sw" element={<SW2/>} />
+        
 
         {/*
 

@@ -1,7 +1,7 @@
 import React from "react";
 import {Col,Row} from 'react-bootstrap'
-import avatar from '../../../../../Assets/botonFAV_active.png'
-import mascota from '../../../../../Assets/botonFAV_active.png'
+import avatar from '../../../../../Assets/Messageboard/avatar.png'
+import mascota from '../../../../../Assets/Messageboard/pet.png'
 import './LateralBar.css'
 export default function LateralBar(){
     let AdoptionRequest=[1,2,3,4]
