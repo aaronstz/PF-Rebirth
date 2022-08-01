@@ -4,12 +4,16 @@ import Navbar from "../../Components/Navbar/Navbar.jsx";
 import MercadoPago from '../MercadoPago/MercadoPago';
 import Footer from '../Footer/Footer';
 import { PETS_TESTIMONIALS } from '../../Tools/petsTestimonials.js';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function DonationsPets() {
 
+    const navigate = useNavigate();
+    const activeUser = useSelector(state => state.activeUser)
+
+    if(activeUser === null) navigate("/login")
     let { id } = useParams();
-    console.log('id', id)
 
     return (
         <section>

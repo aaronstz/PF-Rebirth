@@ -6,7 +6,7 @@ import vector from "../../Assets/Navbar/Vector.png";
 import vector2 from "../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../Assets/Navbar/Vector-3.png";
 import DarkMode from "../../Components/Switch/SwitchMode";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 function Navbar() {
@@ -21,29 +21,27 @@ function Navbar() {
   }
 
   let theme = localStorage.getItem("theme")
-
+  
   const logOut = (e) => {
     e.preventDefault();
     swal({
-      title: "You are about to logout?",
-      text: "Are you sure still wanna go out",
+      title: "You are about to logout",
+      text: "Are you sure wanna go out?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
-        swal("Se you around!", {
+        swal("See you around!", {
           icon: "success",
-        }).then(goBack => {
-          if(goBack){
-            localStorage.clear();
-            localStorage.setItem("theme", JSON.stringify(theme));
-            navigate("/home")
-          }
-        });
+        })
       } 
+      navigate("/home")
     });
+    localStorage.clear();
+    localStorage.setItem("theme", theme)
+
   }
 
   if(user !== null ) userImage = user.googleId ? user.imageUrl : user.userToken.imageUrl;

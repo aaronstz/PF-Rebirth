@@ -117,8 +117,13 @@ export function postUserGoogle(payload) {
     try {
       const { status } = await axios.post(`${SERVER}/user`, payload);
       if(status === 201){
-        swal("WooHooo!", "User created successfully", "success")
-        .then(() => window.history.back());
+        swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
+        .then((willLogin) => {
+          if (willLogin) {
+            swal("WooHooo!", "User created successfully", "success")
+          }
+        });
+        
       }
     } catch (error) {
       console.log('error', error)
