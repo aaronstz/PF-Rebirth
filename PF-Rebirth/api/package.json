@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "nodemon": "nodemon -L",
     "start": "node index.js",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
