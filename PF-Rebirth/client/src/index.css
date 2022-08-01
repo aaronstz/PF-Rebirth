@@ -29,7 +29,7 @@ body {
   --green: #87E2D2;
   --background: #fafafa;
   --box-shadow-input: 0px 5px 5px 0px var(--grey2);
-  --dark--grey: rgb(19, 18, 18);
+  --dark--grey: rgb(77, 77, 77);
 }
 
 body.light {

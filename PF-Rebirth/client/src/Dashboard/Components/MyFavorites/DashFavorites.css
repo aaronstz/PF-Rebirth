@@ -77,20 +77,10 @@
   height: 100%;
 }
 
-.a-btnFav {
+.FavBtn {
   position: absolute;
   left: 3%;
-  top: 2%;
-  width: 45px;
-  height: 43px;
-  cursor: pointer;
-  background: url(../../../Assets/botonFAV_inactive.png);
-}
-
-.a-btnFav:hover {
-  position: absolute;
-  left: 3%;
-  top: 2%;
+  top: 3%;
   width: 45px;
   height: 43px;
   cursor: pointer;
