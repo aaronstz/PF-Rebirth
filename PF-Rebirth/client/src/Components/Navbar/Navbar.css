@@ -44,6 +44,7 @@
 }
 
 .link-navbar {
+    text-align: right;
     text-decoration: none;
     color: var(--text-color);
 }
@@ -54,17 +55,17 @@
 }
 
 .profile>img {
-    margin-left: 2%;
+    margin-left: 0;
     width: 130%;
 }
 
 .googleImg {
-    margin-right: 0%;
+    padding-right: 0;
 }
 
 .googleImg>img {
     position: relative;
     left: 10px;
     border-radius: 50%;
-    width: 100%;
+    max-width: 35px;
 }
