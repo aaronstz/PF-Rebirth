@@ -29,7 +29,7 @@ export default function MessageBoard({ chatId = 1, userId = 1, userId2 = 2 }) {
   return (
     <React.Fragment>
       <div className="msg-container">
-        <div className="chat-title"> Hola<img src="" alt="" /></div>
+        <div className="chat-title"> Message Board<img src="" alt="" /></div>
         <div className="chat-container">
           <Chat
             id={chatId}
