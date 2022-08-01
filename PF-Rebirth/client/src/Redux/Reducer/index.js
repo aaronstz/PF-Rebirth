@@ -16,6 +16,7 @@ import {
   FULL_FILTER_SEX,
   FULL_FILTER_LOCATION,
   FULL_FILTER_SIZE,
+  MERCADO_PAGO,
   GET_LOCATION,
   LOGIN_USER
 } from "../Actions/actionTypes";
@@ -142,6 +143,10 @@ function rootReducer(state = initialState, action) {
       };
 
     case POST_USER:
+      return {
+        ...state,
+      };
+    case MERCADO_PAGO:
       return {
         ...state,
       };

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import background from '../../../Assets/loginMain.png';
+import background from '../../../Assets/loginMain2.png';
 import './AddNew.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { postPet } from '../../../Redux/Actions/index'
 import { Link, useNavigate } from 'react-router-dom'
 import { provincias } from '../../../Tools/provincias'
 import Navbar from '../../../Components/Navbar/Navbar';
-// import { Widget } from "@uploadcare/react-widget";
+import { Widget } from "@uploadcare/react-widget";
 
 function validate(input){
     let validateName = /^[a-zA-Z\s]+$/; 
@@ -39,9 +39,11 @@ function validate(input){
     return errors;
 }
 
-
 function AddNew(){
     
+    const user = JSON.parse(localStorage.user)     
+    let mail = user.googleId ?  user.email : user.userToken.mail
+
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
@@ -55,15 +57,12 @@ function AddNew(){
         type:'',
         race:'',
         location:'',
-
+        userMail: mail
     })
-
-
    
 
     function handleChange(e){
         e.preventDefault()
-        console.log(e.target.name)
         setInput({
             ...input,
             [e.target.name] : e.target.value
@@ -78,14 +77,9 @@ function AddNew(){
     function handleImage(file){
         setInput({
             ...input,
-            image: file.uuid
+            image: `https://ucarecdn.com/${file.uuid}/`
         })
-        console.log(input.image)
     }
-
-    console.log(input)
-
-
 
     function handleSubmit(e){
         e.preventDefault()
@@ -121,148 +115,124 @@ function AddNew(){
                             <div className="addcard-wrapper">
                                 <div className="addcard fat">
                                     <div className="addcard header">
-                                    <div className="addcard-title">
+                                    <div className="mb-3" id="formBasicTitle">
                                         <h2>Add new pet</h2>
+                                        <br/>Please leave us the following info to create a new pet
                                     </div>
                                 <div className="addcard-body">
                                     <form method = "POST" className ="addvalidate" noValidate="" onSubmit ={(e)=> handleSubmit(e)}>
                                         <div className="form-group">
-                                            <label for ="name">Name*</label>
+                                            <label htmlFor ="name">Name*</label>
                                             <input
                                             id="name"
                                             type="text"
-                                            class="form-control"
+                                            className="form-control"
                                             name="name"
                                             value={input.name}
                                             required
                                             autoFocus
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">{errors.name}</div>
+                                            <div className="addinvalid-fb">{errors && errors.name ? errors.name : null}</div>
                                         </div>
 
                                         <div className="addform">
-                                            <label class="form-label" for ="customFile">Image*</label>
-                                            <input
-                                            id="customFile"
-                                            type="text"
-                                            class="form-control"
-                                            name="image"
+                                            <label className="form-label" htmlFor ="customFile">Image*</label>
+                                            <Widget
+                                            publicKey="e7afc989eff083e04496"
                                             value={input.image}
                                             required
-                                            onChange ={(e)=>{handleChange(e)}}
+                                            onFileSelect ={(e)=>{
+                                                e.done((file)=>{handleImage(file)})
+                                            }}
                                             />
-                                            {/* <input
-                                            id="customFile"
-                                            type="file"
-                                            class="form-control"
-                                            name="image"
-                                            value={input.image}
-                                            required
-                                            autoFocus
-                                            onChange ={(e)=>{handleImage(e)}}
-                                            />
-                                            {
-                                                isFilePicked? (
-                                                    <div>
-                                                        <p>Filename: {selectedFile.name}</p>
-                                                        <p>Filetype: {selectedFile.type}</p>
-
-                                                    </div>
-                                                    )
-                                                    : (
-                                                        <p>Select a file to show details</p>
-                                                        )
-                                            }
-                                            <div>
-                                                <button onClick={submitImage}>Upload Image</button>
-                                            </div> */}
-                                            <div className="addinvalid-fb">{errors.image}</div> 
+                                            <div className="addinvalid-fb">{errors && errors.image ? errors.image : null}</div> 
                                         </div>
 
                                         <div className="addform">
-                                            <label for ="age">Age*</label>
+                                            <label htmlFor ="age">Age*</label>
                                             <input
                                             id="age"
                                             type="number"
-                                            class="form-control"
+                                            className="form-control"
                                             name="age"
                                             value={input.age}
                                             required
                                             min="0"
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">{errors.age}</div>
+                                            <div className="addinvalid-fb">{errors && errors.age ? errors.age : null}</div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Size*</label>
-                                             <select name ="size" class="form-control" id="exampleFormControlSelect1" value ={input.size} onChange={(e)=>handleChange(e)}>
-                                                <option selected>Choose...</option>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleFormControlSelect1">Size*</label>
+                                             <select name ="size" className="form-control" id="exampleFormControlSelect1" value ={input.size} onChange={(e)=>handleChange(e)}>
+                                                <option defaultValue>Choose...</option>
                                                 <option value ="small">Small</option>
                                                 <option value ="medium">Medium</option>
                                                 <option value ="big">Big</option>
                                             </select>
 
-                                            <div className="addinvalid-fb">{errors.size}</div>
+                                            <div className="addinvalid-fb">{errors && errors.size ? errors.size : null}</div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for ="exampleFormControlSelect1">Gender*</label>
-                                            <select name ="gender" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
-                                                <option selected>Choose...</option>
+                                        <div className="form-group">
+                                            <label htmlFor ="exampleFormControlSelect1">Gender*</label>
+                                            <select name ="gender" className="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
+                                                <option defaultValue>Choose...</option>
                                                 <option value ="male" >Male</option>
                                                 <option value ="female">Female</option>
                                             </select>
 
-                                            <div className="addinvalid-fb">{errors.gender}</div>
+                                            <div className="addinvalid-fb">{errors && errors.gender ? errors.gender : null}</div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for ="exampleFormControlSelect1">Type*</label>
-                                            <select name ="type" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
-                                                <option selected>Choose...</option>
+                                        <div className="form-group">
+                                            <label htmlFor ="exampleFormControlSelect1">Type*</label>
+                                            <select name ="type" className="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
+                                                <option defaultValue>Choose...</option>
                                                 <option value ="dog">Dog</option>
                                                 <option value ="cat">Cat</option>
                                             </select>
-                                            <div className="addinvalid-fb">{errors.type}</div>
+                                            <div className="addinvalid-fb">{errors && errors.type ? errors.type : null}</div>
                                         </div>
 
                                         <div className="addform">
-                                            <label for ="race">Race</label>
+                                            <label htmlFor ="race">Race</label>
                                             <input
                                             id="race"
                                             type="text"
-                                            class="form-control"
+                                            className="form-control"
                                             name="race"
                                             value={input.race}
                                             required
                                             onChange ={(e)=>{handleChange(e)}}
                                             />
-                                            <div className="addinvalid-fb">{errors.race}</div>
+                                            <div className="addinvalid-fb">{errors && errors.race ? errors.race : null}</div>
                                         </div>
                                         <div className="addform">
-                                            <label for ="location" >Location*</label>
-                                            <select name ="location" class="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
-                                                <option selected>Choose...</option>
+                                            <label htmlFor ="location" >Location*</label>
+                                            <select name ="location" className="form-control" id="exampleFormControlSelect1" onChange ={(e)=> {handleChange(e)}}>
+                                                <option defaultValue>Choose...</option>
                                                 {
                                                     provincias?.map(p => {
                                                         return(
-                                                            <option value ={p}>{p}</option>
+                                                            <option key={Math.random()} value={p}>{p}</option>
                                                         )
                                                     })
                                                 }
                                             </select>
-                                            <div className="addinvalid-fb">{errors.location}</div>
+                                            <div className="addinvalid-fb">{errors && errors.location ? errors.location : null}</div>
                                         </div>
                                         <div className="form-outline">
-                                            <label class="form-label"for ="textAreaExample">Description</label>
-                                            <textarea name="description" value={input.description} type="text"  class ="form-control" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
+                                            <label className="form-label" htmlFor ="textAreaExample">Description</label>
+                                            <textarea name="description" value={input.description} type="text"  className="textarea" id="textAreaExample" rows="4" onChange= {(e)=>handleChange(e)}></textarea>
                                         </div>
                                     <div className="addform-submit">
                                         <button
                                         type="submit"
-                                        class="btn btn-primary my-1"
+                                        className="addbtn"
+                                        disabled={Object.keys(errors).length === 0 ? false : true}
                                         >
                                             CREATE
                                         </button>
@@ -279,8 +249,8 @@ function AddNew(){
                         </div>
                     </div>
                         <div className="addwrapper-right">
-                            <div className="row justify-content-md-center">
-                                <img src={background} alt="pet"/>
+                            <div className="addimageContainer">
+                                <img src={background} alt="pet" className="addImage"/>
                             </div>
                         </div>
                 </div>
