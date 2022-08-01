@@ -8,7 +8,6 @@ import DonationsForPet from "./DonationsForPet";
 export default function MercadoPago() {
 
   const dispatch = useDispatch();
-
   const [donacion , setDonacion] = useState({
     donacion : ''
   })

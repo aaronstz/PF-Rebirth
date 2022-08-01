@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../Components/Navbar/Navbar';
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Redux/Actions";
-import swal from "sweetalert";
 
 function Login() {
 
