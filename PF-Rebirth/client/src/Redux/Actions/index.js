@@ -240,10 +240,10 @@ export function deletePet(id) {
   };
 }
 
-export function getLocation() {
+export function getLocation(type) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/pets/location`);
+      const json = await axios(`${SERVER}/pets/location?type=${type||''}`);
       return dispatch({
         type: "GET_LOCATION",
         payload: json.data,
