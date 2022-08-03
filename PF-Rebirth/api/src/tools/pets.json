@@ -71,7 +71,7 @@
     "type": "dog",
     "race": "dachshund",
     "owner": "Lenny Snaiderman",
-    "location": "la rioja",
+    "location": "La Rioja",
     "userMail": null
   },
   {
@@ -431,7 +431,7 @@
     "type": "cat",
     "race": "chantilly-tiffany",
     "owner": "Agustina Maguna",
-    "location": "Tierra del fuego",
+    "location": "Tierra del Fuego",
     "userMail": null
   },
   {
@@ -460,7 +460,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "catamarca",
+    "location": "Catamarca",
     "userMail": null
   },
   {
@@ -474,7 +474,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "neuquen",
+    "location": "Neuquen",
     "userMail": null
   },
   {
@@ -488,7 +488,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "cordoba",
+    "location": "Cordoba",
     "userMail": null
   },
   {
@@ -502,7 +502,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "cordoba",
+    "location": "Cordoba",
     "userMail": null
   },
   {
@@ -516,7 +516,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "tucuman",
+    "location": "Tucuman",
     "userMail": null
   },
   {
@@ -530,7 +530,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "cordoba",
+    "location": "Cordoba",
     "userMail": null
   },
   {
@@ -544,7 +544,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "cordoba",
+    "location": "Cordoba",
     "userMail": null
   },
   {
@@ -558,7 +558,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "cordoba",
+    "location": "Cordoba",
     "userMail": null
   },
   {
@@ -586,7 +586,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "tucuman",
+    "location": "Tucuman",
     "userMail": null
   },
   {
@@ -656,7 +656,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "la rioja",
+    "location": "La Rioja",
     "userMail": null
   },
   {
@@ -670,7 +670,7 @@
     "active": true,
     "type": "dog",
     "race": "mestizo",
-    "location": "Rio negro",
+    "location": "Rio Negro",
     "userMail": null
   }
 ]

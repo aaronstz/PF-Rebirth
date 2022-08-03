@@ -16,7 +16,7 @@
 //         \  \ `_.   \_ __\ /__ _/   .-` /  /
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
-//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { getPets } = require('./src/tools/preCharge.js');
@@ -27,6 +27,6 @@ conn.sync({ force: true }).then(async () => {
   await getAdmin();
   await getPets();
   server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });

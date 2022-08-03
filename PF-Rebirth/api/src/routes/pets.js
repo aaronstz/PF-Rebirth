@@ -4,8 +4,13 @@ const router = Router();
 
 router.get("/location", async (req, res, next) => {
   try {
-  const allPets = await Pets.findAll()
+  const {type} = req.query
+  let allPets;
+  type? 
+    allPets = await Pets.findAll({where : {type : type}}) :
+  allPets = await Pets.findAll()  
   const allLocation= new Set()
+
   allPets.map(p => allLocation.add(p.location))
   let result = Array.from(allLocation); 
 
@@ -18,6 +23,7 @@ router.get("/location", async (req, res, next) => {
       next(error);
     }
 });
+
 
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
@@ -59,6 +65,7 @@ router.get("/", async (req, res, next) => {
       next(error);
     }
 });
+
 
 
 
