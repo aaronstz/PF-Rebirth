@@ -6,12 +6,14 @@ import vector from "../../Assets/Navbar/Vector.png";
 import vector2 from "../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../Assets/Navbar/Vector-3.png";
 import DarkMode from "../../Components/Switch/SwitchMode";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 function Navbar() {
 
   let user = null;
   let userImage = null;
+  const navigate = useNavigate()
 
   if(localStorage.length !== 0){
     const userJson = localStorage.getItem("user");
@@ -19,13 +21,30 @@ function Navbar() {
   }
 
   let theme = localStorage.getItem("theme")
-
-  const logOut = () => {
+  
+  const logOut = (e) => {
+    e.preventDefault();
+    swal({
+      title: "You are about to logout",
+      text: "Are you sure wanna go out?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("See you around!", {
+          icon: "success",
+        })
+      } 
+      navigate("/home")
+    });
     localStorage.clear();
     localStorage.setItem("theme", theme)
+
   }
 
-  if(user !== null ) userImage = user.googleId ? user.imageUrl : user.userToken.imageUrl
+  if(user !== null ) userImage = user.googleId ? user.imageUrl : user.userToken.imageUrl;
 
   let imgProfileSrc = user!==null ? userImage : vector ;
   let classProfileImage = user!==null ? "googleImg" : "profile";
@@ -57,15 +76,15 @@ function Navbar() {
         </div>
         {
           user!==null ? 
-          <a href="/home" onClick={() => logOut()} className="link-navbar">LOG OUT</a> : 
+          <a href="/home" onClick={(e) => logOut(e)} className="link-navbar">LOG OUT</a> : 
           <NavLink to={"/login"} className="link-navbar">
             <span>LOG IN</span>
           </NavLink>
         }
           <NavLink to={user!== null ? "/profile" : "/login"} className={classProfileImage}>
-          <div className={classProfileImage}>
-                <img src={imgProfileSrc} alt="vector"/>
-          </div>
+            <div className={classProfileImage}>
+              <img src={imgProfileSrc} alt="vector" id="imgProfile"/>
+            </div>
           </NavLink>
       </div>
     </div>

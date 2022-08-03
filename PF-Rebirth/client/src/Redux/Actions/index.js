@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 import {
   FULL_FILTER_AGE,
   FULL_FILTER_LOCATION,
@@ -13,11 +14,16 @@ const SERVER = "http://localhost:3001";
 
 export function loginUser(credentials){
   return async function(dispatch) {
-    const json = await axios.post(`${SERVER}/login`, credentials);
-    return dispatch({
-      type : "LOGIN_USER",
-      payload : json.data
-    })
+    try {
+      const json = await axios.post(`${SERVER}/login`, credentials);
+      return dispatch({
+        type : "LOGIN_USER",
+        payload : json.data
+      })
+    } catch (error) {
+      swal("Sorry", "Invalid username or password", "error")
+    }
+
   }
 }
 export function getOwnerAdoption(id){
@@ -57,17 +63,21 @@ export function getUsers() {
         type: "GET_USER",
         payload: json.data,
       });
-    } catch (error) {
-      console.log(error);
-      alert("No user found");
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No users found", "error")
     }
   };
 }
 
 export function postMercadoPago(donacion){
   return async function(dispatch){
-      let data = await axios.post("http://localhost:3001/donations", donacion)
-      return dispatch({type : "MERCADO_PAGO", data})
+      try {
+        let data = await axios.post("http://localhost:3001/donations", donacion)
+        return dispatch({type : "MERCADO_PAGO", data})
+      } catch (error) {
+        console.log('error', error)
+      }
   }
 }
 
@@ -80,15 +90,44 @@ export function getUserId(id) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
-      alert("No user found");
+      swal("Sorry", "No pets found", "error")
     }
   };
 }
 
 export function postUser(payload) {
   return async function (dispatch) {
-    await axios.post(`${SERVER}/user`, payload);
+    try {
+      const { status } = await axios.post(`${SERVER}/user`, payload);
+      if(status === 201){
+        swal("WooHooo!", "User created successfully", "success")
+        .then(() => window.history.back());
+      }
+    } catch (error) {
+      const { response } = error;
+      if(response.status === 409){
+        swal("Sorry", "Your email is already registered", "error")
+      }
+    }
+  };
+}
+
+export function postUserGoogle(payload) {
+  return async function (dispatch) {
+    try {
+      const { status } = await axios.post(`${SERVER}/user`, payload);
+      if(status === 201){
+        swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
+        .then((willLogin) => {
+          if (willLogin) {
+            swal("WooHooo!", "User created successfully", "success")
+          }
+        });
+        
+      }
+    } catch (error) {
+      console.log('error', error)
+    }
   };
 }
 
@@ -125,9 +164,9 @@ export function getPets() {
         type: "GET_PETS",
         payload: json.data,
       });
-    } catch (error) {
-      console.log(error);
-      alert("No pets found :/");
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No pets found", "error")
     }
   };
 }
@@ -143,14 +182,14 @@ export function getPetFilters(type) {
         type: "GET_PETS",
         payload: json.data,
       });
-    } catch (error) {
-      console.log(error);
-      alert("No pets found :/");
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No pets found", "error")
     }
   };
 }
 
-export function getPetNames(type,name) {
+export function getPetNames(type, name) {
   return async function (dispatch) {
     try {
       const json = await axios(`${SERVER}/pets?type=${type}&name=${name}`);
@@ -158,9 +197,9 @@ export function getPetNames(type,name) {
         type: "GET_NAMES",
         payload: json.data,
       });
-    } catch (error) {
-      console.log(error);
-      alert("No pet found with that name :/");
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No pets found", "error")
     }
   };
 }

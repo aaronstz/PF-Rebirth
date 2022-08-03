@@ -17,7 +17,6 @@ function Login() {
   const [ password, setPassword ] = useState("");
 
   localStorage.setItem("user", JSON.stringify(activeUser));
-  console.log('activeUser', activeUser)
 
   if(activeUser !== null ) navigate("/home");
 
@@ -27,7 +26,7 @@ function Login() {
     setUserName("");
     setPassword("");
   }
-
+  
   const captureLoginValues = ({name, value}) => {
     if(name === "email"){
       setUserName(value)
