@@ -135,7 +135,7 @@ function Profile(){
 
                 </div>
                 <div className="row mt-3">
-                    <div className="col-md-12"><label className="labels">Email</label><input id="formBasicMail" name ="formBasicMail" type="text" className="form-control" placeholder={user.email ? user.email : user.mail} value={input.formBasicMail} onChange={(e)=>{handleChange(e)}}/></div>
+                    <div className="col-md-12"><label className="labels">Email</label><input id="formBasicMail" name ="formBasicMail" type="text" className="form-control" placeholder={user.email ? user.email : user.mail} value={input.formBasicMail} onChange={(e)=>{handleChange(e)}} disabled/></div>
                     <div className="col-md-12"><label className="labels">Password</label><input id="formBasicPassword" name="formBasicPassword" type="password" className="form-control" placeholder="********" value={input.formBasicPassword} onChange={(e) => {handleChange(e)}}/></div>
                 </div>
                 <div className="mt-5 text-center"><button className="btn btn-primary profile-button" type="submit">Save Profile</button></div>

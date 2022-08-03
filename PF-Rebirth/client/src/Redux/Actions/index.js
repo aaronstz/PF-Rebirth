@@ -120,7 +120,7 @@ export function postUser(payload) {
     } catch (error) {
       const { response } = error;
       if(response.status === 409){
-        swal("Sorry", "Your email is already registered", "error")
+        swal("Sorry", "Email or username already registered", "error")
       }
     }
   };
@@ -148,9 +148,10 @@ export function postUserGoogle(payload) {
 export function updateUser(email, payload) {
   return async function (dispatch) {
     try {
-      await axios.put(`${SERVER}/user/${email}`, payload);
+      const { status } = await axios.put(`${SERVER}/user/${email}`, payload);
+      if (status === 200) swal("OK", "User info updated", "success");
     } catch (error) {
-      console.log(error)
+      swal("Error", "Username already in use", "error")
     }
   }
 }

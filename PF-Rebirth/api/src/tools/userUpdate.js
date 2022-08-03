@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const { User } = require("../db");
 
+
 const updateUser = async (req, res, next) => {
   const { mail } = req.params;
   const {
