@@ -6,6 +6,7 @@ import { updateUser } from '../../../Redux/Actions/index';
 import './Profile.css';
 import { useNavigate } from 'react-router-dom';
 
+
 function validate(){
     let errors = {};
 
@@ -15,8 +16,15 @@ function Profile(){
 
     const navigate = useNavigate();
     const dispatch = useDispatch()
+
+    const profile = useSelector((state)=>state.profileView)
+    
+    //console.log(profile)
+
     const infoStorage = localStorage.getItem("user");
-    const user = JSON.parse(infoStorage);
+    const user = Object.keys(profile).length !== 0 ? profile : JSON.parse(infoStorage)
+
+   
     const [input, setInput] = useState({
         formBasicName:'',
         formBasicLastName:'',
@@ -25,6 +33,7 @@ function Profile(){
         formBasicImage: '',
         formBasicUserName: ''
     })
+
    
     // function handleMail(e) {
     //     e.preventDefault();
