@@ -148,8 +148,14 @@ export function postUserGoogle(payload) {
 export function updateUser(email, payload) {
   return async function (dispatch) {
     try {
-      const { status } = await axios.put(`${SERVER}/user/${email}`, payload);
-      if (status === 200) swal("OK", "User info updated", "success");
+      const json = await axios.put(`${SERVER}/user/${email}`, payload);
+      localStorage.setItem('user',JSON.stringify(json.data))
+      if (json.status === 200) swal("OK", "User info updated", "success");
+      
+      return dispatch({
+        type:'UPDATE_PROFILE',
+        payload:json.data
+      })
     } catch (error) {
       swal("Error", "Username already in use", "error")
     }

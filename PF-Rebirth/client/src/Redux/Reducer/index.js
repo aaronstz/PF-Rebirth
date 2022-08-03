@@ -19,7 +19,8 @@ import {
   MERCADO_PAGO,
   GET_LOCATION,
   LOGIN_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
+  UPDATE_PROFILE
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -34,7 +35,8 @@ const initialState = {
   user: [],
   userDetail: [],
   typePet: [],
-  location:[]
+  location:[],
+  profileView:{},
 };
 
 function rootReducer(state = initialState, action) {
@@ -51,6 +53,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         activeUser : null
       }
+    case UPDATE_PROFILE:
+      return{
+        ...state,
+        profileView:action.payload
+      };
     case GET_TYPES:
       return {
         ...state,
