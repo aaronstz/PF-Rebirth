@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L",
+    "nodemon": "nodemon -L",
+    "start": "node index.js",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
@@ -26,7 +27,8 @@
     "morgan": "^1.10.0",
     "nodemailer": "^6.7.7",
     "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "serve": "^14.0.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
