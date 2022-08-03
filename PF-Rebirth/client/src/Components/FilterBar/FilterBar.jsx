@@ -8,7 +8,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import {  getLocation,} from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
-
+import { useLocation } from "react-router-dom";
 function FiltersBar({
   handleFilterBySex,
   handleFilterBySize,
@@ -16,13 +16,13 @@ function FiltersBar({
   handleOrderByAge,
   handleSearchName,
 }) {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   let [searchName, setSearchName] = useState("");
   let locations = useSelector((state) => state.location);
-
-  useEffect(() => {
+   
+  /* useEffect(() => {
     dispatch(getLocation());
-  }, [dispatch]);
+  }, [dispatch]); */
 
   return (
     <React.Fragment>
