@@ -4,9 +4,12 @@ const { Router } = require("express");
 const router = Router();
 const { User } = require('../db');
 const { SECRET_KEYWORD } = process.env;
+const postUser = require('./user.js');
+
 
 function verifyUser(userData, password){
     let userForToken = {};
+    
     if(userData && password){
         userForToken = {
             imageUrl : userData.image,
@@ -14,7 +17,9 @@ function verifyUser(userData, password){
             userName : userData.userName,
             name : userData.name,
             lastName : userData.lastName,
-            image : userData.image
+            image : userData.image,
+            isAdmin : userData.isAdmin,
+            active: userData.active
         }
     }
     return userForToken;
@@ -24,31 +29,46 @@ router.post("/" , async (req, res) => {
 
     const { body } = req;
     const { userName, password } = body;
+    const { googleId, name } = body;
 
-    const user = await User.findOne({ where: { userName: userName } }); //true or false
+    console.log(body)
 
-    const passwordCorrect = user === null  //true or false
-        ? false
-        : await bcrypt.compare(password, user.password)
+    if(googleId){
 
-    if(!(user && passwordCorrect)){
-        res.status(401).json({
-            error : 'Invalid password or email'
-        })
-        return;
-    }
+        const user = await User.findOne({ where : { userName : name.replace(" ", "_") } });
 
-    if(passwordCorrect){
-        let userToken = verifyUser(user["dataValues"], passwordCorrect)
+        console.log('!user', !user)
+        if(!user){
+            console.log('postUser', postUser)
+            router.use("/", postUser)
+        }
 
-        const token = jwt.sign(userToken, SECRET_KEYWORD)
+    } else {
+
+        const user = await User.findOne({ where: { userName: userName } });
+
+        const passwordCorrect = user === null  //true or false
+            ? false
+            : await bcrypt.compare(password, user.password)
     
-        res.send({
-            userToken,
-            token
-        })
+        if(!(user && passwordCorrect)){
+            res.status(401).json({
+                error : 'Invalid password or email'
+            })
+            return;
+        }
+    
+        if(passwordCorrect){
+            let userToken = verifyUser(user["dataValues"], passwordCorrect);
+    
+            const token = jwt.sign(userToken, SECRET_KEYWORD)
+        
+            res.send({
+                userToken,
+                token
+            })
+        }
     }
-
 })
 
 module.exports = router;

@@ -8,13 +8,8 @@ import "./Header.css";
 
 function Header({type}) {
 
-  let user = null;
-
-  if(localStorage.length !== 0){
-    const userJson = localStorage.getItem("user");
-    user = JSON.parse(userJson);
-  }
-
+  const user = window.localStorage.getItem("user");
+  
   return (
     <React.Fragment>
       <div className="header-container">
@@ -36,7 +31,7 @@ function Header({type}) {
               }
           </div>
           <div className="header-donations">
-            <NavLink to={user!== null ? "/donations" : "/login"}>
+            <NavLink to={user ? "/donations" : "/login"}>
               <img src={headerImageDonation} alt="botonTeam" />
             </NavLink>
           </div>

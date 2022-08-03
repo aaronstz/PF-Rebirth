@@ -6,6 +6,7 @@ import "./LandingPage.css";
 import Container from "react-bootstrap/esm/Container";
 
 export default function LandingPage() {
+
   return (
     <body>
       <Container>
