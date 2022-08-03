@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import fondo from "../Assets/loginMain2.png";
 import BtnLogin from "../Components/BtnLogin/BtnLogin";
@@ -12,19 +12,20 @@ function Login() {
   const tab = '\u00A0'; //constante de espacio en blanco
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const activeUser = useSelector(state => state.activeUser)
   const [ userName, setUserName ] = useState("");
   const [ password, setPassword ] = useState("");
+  const activeUser = useSelector(state => state.activeUser)
+  const sessionActive = window.localStorage.getItem("user")
 
-  localStorage.setItem("user", JSON.stringify(activeUser));
-
-  if(activeUser !== null ) navigate("/home");
+  useEffect(() => {
+    if(activeUser || sessionActive) navigate("/home")
+  }, [activeUser, navigate, sessionActive])
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    dispatch(loginUser({userName, password}))
-    setUserName("");
-    setPassword("");
+      e.preventDefault();
+      dispatch(loginUser({userName, password}))
+      setUserName("");
+      setPassword("");
   }
   
   const captureLoginValues = ({name, value}) => {

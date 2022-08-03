@@ -18,7 +18,8 @@ import {
   FULL_FILTER_SIZE,
   MERCADO_PAGO,
   GET_LOCATION,
-  LOGIN_USER
+  LOGIN_USER,
+  LOGOUT_USER
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -39,9 +40,16 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_USER:
+
       return {
         ...state,
         activeUser : action.payload
+      }
+    case LOGOUT_USER:
+      localStorage.clear()
+      return {
+        ...state,
+        activeUser : null
       }
     case GET_TYPES:
       return {

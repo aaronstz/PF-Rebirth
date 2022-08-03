@@ -23,38 +23,7 @@ router.put("/addFavs/:mail", async(req, res) =>{
 })
 
 
-router.put("/:mail", updateUser 
-// async (req, res, next) => {
-//   try {
-//     const id = req.params.mail;
-//     const {
-//       formBasicUserName,
-//       formBasicName,
-//       formBasicLastName,
-//       formBasicPassword,
-//       formBasicImage,
-//       formBasicMail
-//     } = req.body;
-    
-//     const pass = formBasicPassword
-
-//     await User.update(
-      
-//       {
-//         userName: formBasicUserName,
-//         name: formBasicName,
-//         lastName: formBasicLastName,
-//         password: await bcrypt.hash(pass, 10),
-//         image: formBasicImage,
-//         mail: formBasicMail ? formBasicMail : id
-//       },
-//       { where: { mail: id } }
-//     );
-//     res.send("Usuario modificado");
-//   } catch (error) {
-//     next(error);
-//   }}
-);
+router.put("/:mail", updateUser);
 
 
 router.patch("/:mail", async (req, res, next) => {
@@ -91,6 +60,10 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
+
+  let {body} = req;
+  console.log('body', body)
+  
   try {
     let userInformation = await getUserInfo(req);
     await User.create(userInformation);

@@ -7,18 +7,22 @@ import {
   FULL_FILTER_SIZE,
   GET_OWNER_ADOPTION,
   GET_USER_ADOPTION,
+  LOGIN_USER,
+  LOGOUT_USER,
   NO_FILTER_PETS,
 } from "./actionTypes";
 
-const SERVER = "http://localhost:3001";
+
+const SERVER  = "http://localhost:3001";
 
 export function loginUser(credentials){
   return async function(dispatch) {
     try {
       const json = await axios.post(`${SERVER}/login`, credentials);
+      const dataUser = json.data;
       return dispatch({
-        type : "LOGIN_USER",
-        payload : json.data
+        type : LOGIN_USER,
+        payload : dataUser
       })
     } catch (error) {
       swal("Sorry", "Invalid username or password", "error")
@@ -26,6 +30,16 @@ export function loginUser(credentials){
 
   }
 }
+
+export function logoutUser(){
+  return function(dispatch){
+    return dispatch({
+      type : LOGOUT_USER,
+      payload : null
+    })
+  }
+}
+
 export function getOwnerAdoption(id){
   return async function (dispatch) {
     try {
@@ -106,7 +120,7 @@ export function postUser(payload) {
     } catch (error) {
       const { response } = error;
       if(response.status === 409){
-        swal("Sorry", "Your email is already registered", "error")
+        swal("Sorry", "Email or username already registered", "error")
       }
     }
   };
@@ -134,9 +148,10 @@ export function postUserGoogle(payload) {
 export function updateUser(email, payload) {
   return async function (dispatch) {
     try {
-      await axios.put(`${SERVER}/user/${email}`, payload);
+      const { status } = await axios.put(`${SERVER}/user/${email}`, payload);
+      if (status === 200) swal("OK", "User info updated", "success");
     } catch (error) {
-      console.log(error)
+      swal("Error", "Username already in use", "error")
     }
   }
 }
