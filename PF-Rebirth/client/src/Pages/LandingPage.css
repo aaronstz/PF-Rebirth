@@ -1,3 +1,28 @@
+.containerLand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10%;
+    overflow: hidden;
+}
+
+
+.wrapperLeftLand {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapperRightLand {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
 .logo-ld {
     display: flex;
     justify-content: center;
@@ -6,23 +31,73 @@
 .title-ld {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    color: rgb(180, 180, 180);
-    white-space: pre;
-    font-family: monospace;
+    margin-top: 3rem;
+    color: #B4A8B9;
+    font-family: 'Red Hat Display';
 }
 
 .pet-ld {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 3rem;
 }
 
 .sub-ld {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    color: rgb(180, 180, 180);
-    white-space: pre;
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+    color: #B4A8B9;
+    font-family: 'Red Hat Display';
+}
 
+@media only screen and (max-width: 992px) {
+    .containerLand {
+        display: block;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-top: 12rem;
+    }
+
+    .wrapperLeftLand {
+        width: 100%;
+        display: block;
+    }
+
+    .wrapperRightLand {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 1068px) {
+    .wrapperLeftLand img {
+        width: 30rem;
+    }
+
+    .wrapperRightLand img {
+        width: 30rem;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .wrapperLeftLand img {
+        width: 25rem;
+    }
+
+    .wrapperRightLand img {
+        width: 25rem;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .wrapperLeftLand img {
+        width: 18rem;
+    }
+
+    .wrapperRightLand img {
+        width: 18rem;
+    }
 }
