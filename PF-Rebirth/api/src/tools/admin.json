@@ -1,0 +1,12 @@
+[
+    {
+    "mail": "rebirthpestpf@gmail.com",
+    "userName": "RebirthApp",
+    "name": "Rebirth",
+    "lastName": "Pets",
+    "active": true,
+    "password": "$2b$10$0KWnr0wrbVwAqN8n3UAZ8OKyyfG7KBeg1XT7CVCtrSXtOmAJA9C7G",
+    "image": "https://cdn.dribbble.com/users/535615/screenshots/16722250/media/d5b128412e557169035f910394d79906.png?compress=1&resize=400x300&vertical=top",
+    "isAdmin": true
+    }
+]

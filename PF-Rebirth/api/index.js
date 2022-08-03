@@ -16,15 +16,23 @@
 //         \  \ `_.   \_ __\ /__ _/   .-` /  /
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
-//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { getPets } = require('./src/tools/preCharge.js');
+const { getAdmin } = require('./src/tools/preChargeAdmin.js')
 
+<<<<<<< HEAD
 // Syncing all the models at once.
 conn.sync({ force: false }).then(async () => {
   await getPets()
+=======
+// Syncing all the models at once. 
+conn.sync({ force: true }).then(async () => {
+  await getAdmin();
+  await getPets();
+>>>>>>> 0b5a4b3756820d2ec07acbcd2e21488b6deee0ba
   server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });
