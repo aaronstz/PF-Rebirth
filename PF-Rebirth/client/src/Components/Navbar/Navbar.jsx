@@ -6,7 +6,7 @@ import vector from "../../Assets/Navbar/Vector.png";
 import vector2 from "../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../Assets/Navbar/Vector-3.png";
 import DarkMode from "../../Components/Switch/SwitchMode";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../Redux/Actions";
@@ -17,6 +17,11 @@ function Navbar() {
   const [ user, setUser ] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const pets = useSelector((store)=> store.pets)
+
+  const types = pets.map(p=> p.type === 'dog' ? 'dog' : 'cat');
+
 
   if(activeUser){
     window.localStorage.setItem("user", JSON.stringify(activeUser.userToken));
@@ -33,6 +38,7 @@ function Navbar() {
   let imgProfileSrc = imageUrl ? imageUrl : vector ;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
   
+
   const logOut = async (e) => {
     e.preventDefault();
     await swal({
@@ -59,7 +65,7 @@ function Navbar() {
   
   return (
     <div className="containerNavbar">
-      <NavLink to={"/home"} className="link-navbar">
+      <NavLink to={'/home?type=' + types[0]} className="link-navbar">
         <img src={logo} alt="logo" className="logo" />
       </NavLink>
       <div className="iconsContainer">
