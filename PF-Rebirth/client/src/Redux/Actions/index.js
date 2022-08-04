@@ -88,6 +88,7 @@ export function saveAdoptionId(id){
     }
   )
 }
+}
 export function logoutUser(){
   return function(dispatch){
     return dispatch({
