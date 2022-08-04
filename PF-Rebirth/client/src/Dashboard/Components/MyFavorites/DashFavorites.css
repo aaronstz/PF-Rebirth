@@ -9,7 +9,7 @@
 }
 .infoPets {
   opacity: 0;
-  animation: fade-in 4s forwards;
+  animation: fade-in 1.5s forwards;
 }
 
 .mainDashCont {

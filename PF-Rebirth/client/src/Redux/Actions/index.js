@@ -24,6 +24,14 @@ export function loginUser(credentials){
     try {
       const json = await axios.post(`${SERVER}/login`, credentials);
       const dataUser = json.data;
+      if(json.status === 201){
+        await swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
+        .then((willLogin) => {
+          if (willLogin) {
+            swal("WooHooo!", "User created successfully", "success")
+          }
+        });
+      }
       return dispatch({
         type : LOGIN_USER,
         payload : dataUser
@@ -31,7 +39,6 @@ export function loginUser(credentials){
     } catch (error) {
       await swal("Sorry", "Invalid username or password", "error")
     }
-
   }
 }
 
@@ -58,6 +65,7 @@ export function getOwnerAdoption(id){
     }
   };
 }
+
 export function getAdopterAdoption(id){
   return async function (dispatch) {
     try {
@@ -130,24 +138,24 @@ export function postUser(payload) {
   };
 }
 
-export function postUserGoogle(payload) {
-  return async function (dispatch) {
-    try {
-      const { status } = await axios.post(`${SERVER}/user`, payload);
-      if(status === 201){
-        await swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
-        .then((willLogin) => {
-          if (willLogin) {
-            swal("WooHooo!", "User created successfully", "success")
-          }
-        });
-        
-      }
-    } catch (error) {
-      console.log('error', error)
-    }
-  };
-}
+
+// export function postUserGoogle(payload) {
+//   return async function (dispatch) {
+//     try {
+//       const { status } = await axios.post(`${SERVER}/user`, payload);
+//       if(status === 201){
+//         await swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
+//         .then((willLogin) => {
+//           if (willLogin) {
+//             swal("WooHooo!", "User created successfully", "success")
+//           }
+//         });
+//       }
+//     } catch (error) {
+//       console.log('error', error)
+//     }
+//   };
+// }
 
 export function updateUser(email, payload) {
   return async function (dispatch) {
