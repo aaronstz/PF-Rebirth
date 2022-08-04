@@ -1,3 +1,17 @@
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.info {
+  opacity: 0;
+  animation: fade-in 0.5s forwards;
+}
+.infoPets {
+  opacity: 0;
+  animation: fade-in 4s forwards;
+}
+
 .mainDashCont {
   display: flex;
   flex-wrap: wrap;
