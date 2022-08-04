@@ -33,6 +33,7 @@ function Home() {
   const pets = useSelector((store) => store.filteredPets);
   // const loading = useSelector(store => store.loading)
 
+  console.log('pets', pets)
   //Paginado//
   const [refresh] = useState(1);
   // const [page, setPage] = useState(1);
@@ -51,7 +52,9 @@ function Home() {
   const petsPerPage = 6; //cantidad de pets que debe haber por pagina
   const indexOfLastPet = currentPage * petsPerPage; // 1 * 6 = 6
   const indexOfFirstPet = indexOfLastPet - petsPerPage; // 6 - 6 = 0
+
   const currentPet = pets.slice(indexOfFirstPet, indexOfLastPet); //para dividir la cantidad de pets por pagina
+  
   const pagination = (pageNumber) => setCurrentPage(pageNumber);
 
   let user = null;
@@ -61,7 +64,7 @@ function Home() {
   }
   
   if(user){
-    var mail = user.mail? user.mail : user.email
+    var mail = user.email
   }
 
   useEffect(() => {
@@ -133,6 +136,7 @@ function Home() {
                   id={p.id}
                   location={p.location}
                   userMail={p.userMail}
+                  currentPage={currentPage}
                 />
               );
             })}

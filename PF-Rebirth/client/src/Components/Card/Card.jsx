@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 
 
-function Cards({image,name,breed,age,gender,size,description,id,location, userMail}){
+function Cards({image,name,breed,age,gender,size,description,id,location, userMail, currentPage}){
   const dispatch = useDispatch()
   const [ favFilters , setFavFilters] = useState([])
   const favoritos = useSelector(state => state.favorite)
@@ -19,16 +19,14 @@ function Cards({image,name,breed,age,gender,size,description,id,location, userMa
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
+
   
   if(user){
-    var mail = user.mail? user.mail : user.email
+    var mail = user.email
   }
   useEffect(() => {
-   setFavFilters(favFilter)
+    setFavFilters(favFilter)
   },[] );
-
-  
-
 
   function handleFavoriteHome(){
     dispatch(addFavs(mail, id))
@@ -37,7 +35,9 @@ function Cards({image,name,breed,age,gender,size,description,id,location, userMa
   function handleDeleteFavHome(){
     dispatch(deleteFavs(mail, id))
   
-}
+  }
+
+
 
   return (
     <div className="lcard">

@@ -34,7 +34,7 @@ function Details() {
     user = JSON.parse(userJson);
   }
   if(user){
-    var mail = user.mail? user.mail : user.email
+    var mail = user.email
   }
 
   useEffect(() => {
@@ -49,12 +49,13 @@ function Details() {
   function handleDeleteFav(){
       dispatch(deleteFavs(mail, id))
   }
-  
+
   return (
     <div>
       <Navbar />
       <Container>
-        <Header/>
+        {/* <Header/> */}
+        
         <br />
         <div className="dtl-card">
           <div className="dtl-cardLeft">

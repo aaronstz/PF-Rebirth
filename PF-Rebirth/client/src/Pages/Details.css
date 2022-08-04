@@ -8,7 +8,8 @@
   color: var(--text-color-sec);
   word-wrap: break-word;
   text-align: center;
-  margin: 10px 1% 10px 1%;
+  /* margin: 10px 1% 10px 1%; */
+  margin: 5rem auto;
   overflow: hidden;
 }
 
