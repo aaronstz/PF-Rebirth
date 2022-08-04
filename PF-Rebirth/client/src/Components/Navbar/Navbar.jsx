@@ -10,18 +10,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 function Navbar() {
-
   let user = null;
   let userImage = null;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  if(localStorage.length !== 0){
+  if (localStorage.length !== 0) {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
 
-  let theme = localStorage.getItem("theme")
-  
+  let theme = localStorage.getItem("theme");
+
   const logOut = (e) => {
     e.preventDefault();
     swal({
@@ -30,24 +29,23 @@ function Navbar() {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    })
-    .then((willDelete) => {
+    }).then((willDelete) => {
       if (willDelete) {
         swal("See you around!", {
           icon: "success",
-        })
-      } 
-      navigate("/home")
+        });
+      }
+      navigate("/home");
     });
     localStorage.clear();
-    localStorage.setItem("theme", theme)
+    localStorage.setItem("theme", theme);
+  };
 
-  }
+  if (user !== null)
+    userImage = user.googleId ? user.imageUrl : user.userToken.imageUrl;
 
-  if(user !== null ) userImage = user.googleId ? user.imageUrl : user.userToken.imageUrl;
-
-  let imgProfileSrc = user!==null ? userImage : vector ;
-  let classProfileImage = user!==null ? "googleImg" : "profile";
+  let imgProfileSrc = user !== null ? userImage : vector;
+  let classProfileImage = user !== null ? "googleImg" : "profile";
 
   return (
     <div className="containerNavbar">
@@ -57,35 +55,46 @@ function Navbar() {
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
-          <NavLink to={user!== null ? "/create" : "/login"} className="link-navbar">
+          <NavLink
+            to={user !== null ? "/create" : "/login"}
+            className="link-navbar"
+          >
             <span>New Pet</span>
           </NavLink>
         </div>
         <div className="item">
           <img src={vector2} alt="vector2" className="icons" />
-          <NavLink to={user!== null ? "/favorites" : "/login"} className="link-navbar">
+          <NavLink
+            to={user !== null ? "/favorites" : "/login"}
+            className="link-navbar"
+          >
             <span>My favorites</span>
           </NavLink>
         </div>
         <div className="item">
           <DarkMode />
         </div>
-        <div className="item">
+        {/* <div className="item">
           <span>ES</span>
           <img src={es} alt="vector" className="bandera" />
-        </div>
-        {
-          user!==null ? 
-          <a href="/home" onClick={(e) => logOut(e)} className="link-navbar">LOG OUT</a> : 
+        </div> */}
+        {user !== null ? (
+          <a href="/home" onClick={(e) => logOut(e)} className="link-navbar">
+            LOG OUT
+          </a>
+        ) : (
           <NavLink to={"/login"} className="link-navbar">
             <span>LOG IN</span>
           </NavLink>
-        }
-          <NavLink to={user!== null ? "/profile" : "/login"} className={classProfileImage}>
-            <div className={classProfileImage}>
-              <img src={imgProfileSrc} alt="vector" id="imgProfile"/>
-            </div>
-          </NavLink>
+        )}
+        <NavLink
+          to={user !== null ? "/profile" : "/login"}
+          className={classProfileImage}
+        >
+          <div className={classProfileImage}>
+            <img src={imgProfileSrc} alt="vector" id="imgProfile" />
+          </div>
+        </NavLink>
       </div>
     </div>
   );
