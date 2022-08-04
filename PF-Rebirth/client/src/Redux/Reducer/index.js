@@ -19,13 +19,19 @@ import {
   MERCADO_PAGO,
   GET_LOCATION,
   LOGIN_USER,
-  LOGOUT_USER,
+
+  GET_MESSAGE,
+  GET_CHAT,
+  POST_MESSAGE,
+  SAVE_ADOPTION_ID,
+  LOGOUT_USER
   FAVORITES,
   DELETE_FAVORITES,
   GET_FAVORITES,
   GET_ALL_PETS,
   UPDATE_PROFILE,
   RESET_DETAILS
+
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -41,9 +47,13 @@ const initialState = {
   userDetail: [],
   typePet: [],
   location:[],
+  message:[],
+  adoptionChat:[],
+  adoptionId:""
   favorite: [],
   allPets : [],
   profileView:{},
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -75,6 +85,26 @@ function rootReducer(state = initialState, action) {
         ...state,
         typePet: action.payload,
       };
+
+     case GET_MESSAGE:
+      return {
+        ...state,
+        message:action.payload
+      } 
+      case POST_MESSAGE:
+      return {
+        ...state
+      } 
+      case SAVE_ADOPTION_ID:
+        return {
+          ...state,
+          adoptionId:action.payload
+        }
+      case GET_CHAT:
+        return {
+          ...state,
+          adoptionChat:action.payload
+        }
     case GET_PETS:
 
       ///////////////////////////////////filtrando ordenados por tamaño/////////////////////////
