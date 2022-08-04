@@ -25,7 +25,8 @@ import {
   GET_FAVORITES,
   GET_ALL_PETS,
   UPDATE_PROFILE,
-  RESET_DETAILS
+  RESET_DETAILS,
+  RESET_PETS
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -127,7 +128,14 @@ function rootReducer(state = initialState, action) {
       return{
         ...state,
         detail: [],
-        allPets: state.allPets
+        allPets : [],
+
+      }
+    case RESET_PETS:
+      return{
+        ...state,
+        pets:[],
+        filteredPets: [],
       }
     case GET_NAMES:
    
