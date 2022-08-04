@@ -1,192 +1,198 @@
-.add-container{
-    display: flex;
-    justify-content: space-around;
-    margin: 0 auto ;
-    width: 80%;
-    border-radius: 25px;
+.add-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 80%;
+  border-radius: 25px;
 
 }
 
 
-.textarea{
-  display:flex;
-  resize:none;
+.textarea {
+  display: flex;
+  resize: none;
   height: 100%;
   width: 100%;
-  border-radius:8px;
+  border-radius: 8px;
   border: 1px solid rgb(213, 213, 213);
 }
 
 .add-wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width:90%;
-    /* padding: 0% 15px 0 15px; */
-    /* width: 40%; */
-    padding:5px;
-    /* margin-left:3%; */
-    color: var(--greylight);
-    
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  /* padding: 0% 15px 0 15px; */
+  /* width: 40%; */
+  padding: 5px;
+  /* margin-left:3%; */
+  color: var(--greylight);
 
-  .addImageContainer{
-    margin: 0 3%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width: 35%;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-  }
+}
 
-  .addImage{
-    width: 100%;
-    padding: 10px;
-    margin-top: 3.7%;
-    margin-left: 10%;
-  }
-  
-  .add-wrapperLeft {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .addwrapper-right {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    margin-left:50px;
-  }
-  
-  .addcard-wrapper {
-    width: 120%;
-  }
-  
-  .addcard {
-    border-color: transparent;
-    background-color: transparent;
-    height: 100%;
-    color: var(--greylight);
-  }
+.addImageContainer {
+  margin: 0 3%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 35%;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
 
-  .addcard.fat {
-    padding: 10px;
-    height: 800px;
-    margin:0px;
-    background-color: transparent;
-    border-color: transparent;
-  }
-  
-  .addcard.header {
-    margin-bottom: 1pt;
-  
-  }
-  
-  .addcard-body {
-    margin-top: 0pt;
-  }
-  
-  .addcard .addcard-title {
-    margin-bottom: 30px;
-    color:black;
-    font-weight:bold;
-    text-transform: uppercase;
-  }
-  
-  .addform {
-    border-width: 2.3px;
-  }
-  
-  .addform label {
-    width: 100%;
-    margin-bottom: 5px;
-    margin-top: 30px;
-  }
-  
-  
-  
-  .btnform-submit {
-    width: 100%;
-    padding: 12px 10px;
-    margin-top: 10px;
-    background-color: var(--green) !important;
-    border: solid 1px var(--border);
-    box-shadow: 0px 5px 5px 0px var(--grey2);
-  }
-  
-  .btnform-submit:hover {
-    background-color: var(--pink) !important;
-  }
-  
-  .alignRight {
-    position: absolute;
-    right: 34px;
-  }
-  
-  .addfooter {
-    color: var(--greylight);
-    text-align: center;
-    display:flex;
-    position: relative;
-    justify-content: right;
-    margin-top:270px;
-    left:60rem;
-  }
-  
-  .addbtn{
-    width: 100%;
-    padding: 12px 10px;
-    margin-top: 10px;
-    background-color: var(--green) !important;
-    border: solid 1px var(--border);
-    box-shadow: 0px 5px 5px 0px var(--grey2);
+.addImage {
+  width: 100%;
+  padding: 10px;
+  margin-top: 3.7%;
+  margin-left: 10%;
+}
+
+.add-wrapperLeft {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.addwrapper-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.addcard-wrapper {
+  width: 120%;
+}
+
+.addcard {
+  border-color: transparent;
+  background-color: transparent;
+  height: 100%;
+  color: var(--greylight);
+}
+
+.addcard.fat {
+  padding: 10px;
+  height: 800px;
+  margin: 0px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.addcard.header {
+  margin-bottom: 1pt;
+
+}
+
+.addcard-body {
+  margin-top: 0pt;
+}
+
+.addcard .addcard-title {
+  margin-bottom: 30px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.addform {
+  border-width: 2.3px;
+}
+
+.addform label {
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+
+
+.btnform-submit {
+  width: 100%;
+  padding: 12px 10px;
+  margin-top: 10px;
+  background-color: var(--green) !important;
+  border: solid 1px var(--border);
+  box-shadow: 0px 5px 5px 0px var(--grey2);
+}
+
+.btnform-submit:hover {
+  background-color: var(--pink) !important;
+}
+
+.alignRight {
+  position: absolute;
+  right: 34px;
+}
+
+.addfooter {
+  color: var(--greylight);
+  text-align: center;
+  display: flex;
+  position: relative;
+  justify-content: right;
+  margin-top: 270px;
+  left: 60rem;
+}
+
+.addbtn {
+  width: 100%;
+  padding: 12px 10px;
+  margin-top: 10px;
+  background-color: var(--green) !important;
+  border: solid 1px var(--border);
+  box-shadow: 0px 5px 5px 0px var(--grey2);
 }
 
 .addbtn:hover {
-    background-color: var(--pink) !important;
+  background-color: var(--pink) !important;
 }
-  
-  h6 {
-    display: flex;
-    flex-direction: row;
-    color: var(--greylight);
+
+h6 {
+  display: flex;
+  flex-direction: row;
+  color: var(--greylight);
+}
+
+h6:before,
+h6:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid;
+  margin: auto;
+}
+
+h6:before {
+  margin-right: 10px
+}
+
+h6:after {
+  margin-left: 10px
+}
+
+@media screen and (max-width: 1280px) {
+  .addimageContainer {
+    display: none;
   }
-  
-  h6:before,
-  h6:after {
-    content: "";
-    flex: 1 1;
-    border-bottom: 1px solid;
-    margin: auto;
+}
+
+@media screen and (max-width: 425px) {
+  .addcard-wrapper {
+    width: 90%;
+    margin: 0 auto;
   }
-  
-  h6:before {
-    margin-right: 10px
+}
+
+@media screen and (max-width: 320px) {
+  .addcard.fat {
+    padding: 0;
   }
-  
-  h6:after {
-    margin-left: 10px
+
+  .addcard.fat .addcard-body {
+    padding: 15px;
   }
-  
-  @media screen and (max-width: 425px) {
-    .addcard-wrapper {
-      width: 90%;
-      margin: 0 auto;
-    }
-  }
-  
-  @media screen and (max-width: 320px) {
-    .addcard.fat {
-      padding: 0;
-    }
-  
-    .addcard.fat .addcard-body {
-      padding: 15px;
-    }
-  }
+}
