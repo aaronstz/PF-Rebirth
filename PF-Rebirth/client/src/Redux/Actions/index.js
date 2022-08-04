@@ -5,9 +5,13 @@ import {
   FULL_FILTER_LOCATION,
   FULL_FILTER_SEX,
   FULL_FILTER_SIZE,
+  GET_CHAT,
+  GET_MESSAGE,
   GET_OWNER_ADOPTION,
   GET_USER_ADOPTION,
   NO_FILTER_PETS,
+  POST_MESSAGE,
+  SAVE_ADOPTION_ID,
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
@@ -26,6 +30,62 @@ export function loginUser(credentials){
 
   }
 }
+
+export function getMessage(adoptionId){
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/message?chat=${adoptionId}`);
+      return dispatch({
+        type: GET_MESSAGE,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No user found");
+    }
+  };
+}
+export function getChat(user){
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/message/chats?user=${user}`);
+      return dispatch({
+        type: GET_CHAT,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No user found");
+    }
+  };
+}
+
+export function postMessage(payload){
+  return async function (dispatch) {
+    try {
+      const json = await axios.post(`${SERVER}/message`,payload);
+      return dispatch({
+        type: POST_MESSAGE,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No user found");
+    }
+  };
+}
+
+export function saveAdoptionId(id){
+  return async function (dispatch){
+    return dispatch(
+    {
+      type:SAVE_ADOPTION_ID,
+      payload:id
+    }
+  )
+}
+}
+
 export function getOwnerAdoption(id){
   return async function (dispatch) {
     try {

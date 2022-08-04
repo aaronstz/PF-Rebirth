@@ -3,42 +3,19 @@ import Chat from "./Chat";
 import "./MessageBoard.css";
 
 import { useEffect } from "react";
-export default function MessageBoard({ chatId = 1, userId = 1, userId2 = 2 }) {
-  let [conversation, setConversation] = useState([
-    { userMsgId: 1, msg: "hola", new: false },
-    { userMsgId: 2, msg: "adios", new: true },
-  ]);
-  let [newAd, setNewAd] = useState("");
+import { useDispatch, useSelector } from "react-redux";
+import { getChat, getMessage } from "../../../../../Redux/Actions";
 
-  function newAdvisor(n) {
-    setNewAd(n);
-  }
-
-  useEffect(() => {
-    let chatInterval = setInterval(() => {
-      setConversation([
-        ...conversation,
-        { userMsgId: Math.round(Math.random() * 2), msg: "adios" },
-      ]);
-      console.log(conversation);
-    }, 10000);
-
-    return () => clearInterval(chatInterval);
-  });
+export default function MessageBoard() {
+  let {loadChat,setLoadChat}=useState(true);
+ const allMessages=useSelector((state)=>state.message)
 
   return (
     <React.Fragment>
-      <div className="msg-container">
+          <div className="msg-container">
         <div className="chat-title"> Message Board<img src="" alt="" /></div>
         <div className="chat-container">
-          <Chat
-            id={chatId}
-            userId={userId}
-            userPhoto={""}
-            userId2={userId2}
-            userPhoto2={""}
-            conversation={conversation}
-            advisor={newAdvisor}
+          <Chat allMessages={allMessages}
           />
         </div>
       </div>

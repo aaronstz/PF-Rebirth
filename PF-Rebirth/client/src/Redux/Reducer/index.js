@@ -18,7 +18,11 @@ import {
   FULL_FILTER_SIZE,
   MERCADO_PAGO,
   GET_LOCATION,
-  LOGIN_USER
+  LOGIN_USER,
+  GET_MESSAGE,
+  GET_CHAT,
+  POST_MESSAGE,
+  SAVE_ADOPTION_ID
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -33,7 +37,10 @@ const initialState = {
   user: [],
   userDetail: [],
   typePet: [],
-  location:[]
+  location:[],
+  message:[],
+  adoptionChat:[],
+  adoptionId:""
 };
 
 function rootReducer(state = initialState, action) {
@@ -48,6 +55,26 @@ function rootReducer(state = initialState, action) {
         ...state,
         typePet: action.payload,
       };
+
+     case GET_MESSAGE:
+      return {
+        ...state,
+        message:action.payload
+      } 
+      case POST_MESSAGE:
+      return {
+        ...state
+      } 
+      case SAVE_ADOPTION_ID:
+        return {
+          ...state,
+          adoptionId:action.payload
+        }
+      case GET_CHAT:
+        return {
+          ...state,
+          adoptionChat:action.payload
+        }
     case GET_PETS:
 
       ///////////////////////////////////filtrando ordenados por tamaño/////////////////////////
