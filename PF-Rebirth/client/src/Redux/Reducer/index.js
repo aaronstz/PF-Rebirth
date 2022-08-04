@@ -24,7 +24,8 @@ import {
   DELETE_FAVORITES,
   GET_FAVORITES,
   GET_ALL_PETS,
-  UPDATE_PROFILE
+  UPDATE_PROFILE,
+  RESET_DETAILS
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -120,6 +121,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
+
+    case RESET_DETAILS:
+      return{
+        ...state,
+        detail: [],
+        allPets: state.allPets
+      }
     case GET_NAMES:
    
       ///////////////////////////////////filtrando ordenados por tamaño/////////////////////////

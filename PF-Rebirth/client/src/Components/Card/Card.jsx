@@ -8,12 +8,12 @@ import { useEffect, useState } from "react";
 
 
 
-function Cards({image,name,breed,age,gender,size,description,id,location,}){
+function Cards({image,name,breed,age,gender,size,description,id,location, userMail}){
   const dispatch = useDispatch()
   const [ favFilters , setFavFilters] = useState([])
   const favoritos = useSelector(state => state.favorite)
   let favFilter = favoritos.length > 0 ? favoritos.filter((f) => f == id) : null
-
+  
   let user = null;
   if(localStorage.user){
     const userJson = localStorage.getItem("user");
@@ -42,11 +42,10 @@ function Cards({image,name,breed,age,gender,size,description,id,location,}){
   return (
     <div className="lcard">
       {            
-             user  ?      
+             user && (mail === userMail) ? null :   
              favFilter && favFilter.length !==0 ?
              <> <button className="btnFavEliminarHome" onClick={handleDeleteFavHome}/> </> : 
-             <> <button className="btnFavHome" onClick={handleFavoriteHome}/> </> :
-              null
+             <> <button className="btnFavHome" onClick={handleFavoriteHome}/> </> 
        }
       <img src={image} alt="foto" />
       <div className="txtCont">

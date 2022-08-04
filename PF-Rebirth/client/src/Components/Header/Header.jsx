@@ -6,10 +6,15 @@ import headerDogTeam from '../../Assets/Header-images/btonDog.png';
 import headerImageDonation from "../../Assets/Header-images/btnDonate.png";
 import "./Header.css";
 
-function Header({type}) {
+function Header({type, setPage, clear}) {
 
   const user = window.localStorage.getItem("user");
   
+  function handleSubmit(e){
+    e.preventDefault();
+    setPage(1)
+  }
+
   return (
     <React.Fragment>
       <div className="header-container">
@@ -20,13 +25,19 @@ function Header({type}) {
           <div className="header-team">
               {
                 type === 'cat' ?
+                <button type="submit" onClick={(e)=>handleSubmit(e)} class="btn-headerTeam">
                 <Link to ={'/home?type=dog'} >
                   <img className="marginImage" src={headerDogTeam} alt="botonTeam" />
                 </Link>
+                </button>
                 :
-                <Link to ={'/home?type=cat'}>
+                <button type="submit" onClick={(e)=>handleSubmit(e)} class="btn-headerTeam">
+
+                <Link to ={'/home?type=cat'} >
                   <img src={headerImageTeam} alt="botonTeam" />
                 </Link>
+                </button>
+
 
               }
           </div>

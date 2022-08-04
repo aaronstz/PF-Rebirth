@@ -56,7 +56,7 @@ body.dark {
   --background: var(--grey);
   --background-sec: var(--pink);
   --backgroundFooter: var(--green);
-  --backgroundBttn: var(--greylight);
+  --backgroundBttn: var(--pink);
   --backgroundBttn2: var(--green);
   --backgroundBttn3: var(--greylight);
   --shadow: var(--grey3);
