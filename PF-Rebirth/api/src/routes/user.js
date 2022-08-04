@@ -85,7 +85,6 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
 
   let {body} = req;
-  console.log('body', body)
   
   try {
     let userInformation = await getUserInfo(req);
@@ -120,7 +119,6 @@ router.delete("/:mail", async (req, res, next) => {
 router.put("/adm/:mail" , async (req, res, next) =>{
   const {mail} = req.params
   const userMail = await User.findByPk(mail)
-  console.log("prueb", userMail)
   if(userMail.dataValues.isAdmin === false){
     await User.update({isAdmin : true},{
       where: {mail : mail}
