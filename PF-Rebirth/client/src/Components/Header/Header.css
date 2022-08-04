@@ -3,6 +3,10 @@
     flex-direction: row;
 }
 
+.btn-headerTeam{
+    border:none;
+    background:transparent;
+}
 
 .header-carousel {
     width: 860px;

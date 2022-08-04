@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { addFavs, deleteFavs, getDetails, getUserId, postMercadoPago } from "../Redux/Actions/index";
+import { addFavs, deleteFavs, getDetails, resetDetails, getUserId, postMercadoPago } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Navbar from "../Components/Navbar/Navbar";
@@ -42,6 +42,7 @@ function Details() {
     if(user) {dispatch(getUserId(mail))};
   }, [dispatch, id]);
 
+  
   function handleFavorite(){
     {dispatch(addFavs(mail, id))}
   }
@@ -53,7 +54,7 @@ function Details() {
     <div>
       <Navbar />
       <Container>
-        <Header />
+        <Header/>
         <br />
         <div className="dtl-card">
           <div className="dtl-cardLeft">
