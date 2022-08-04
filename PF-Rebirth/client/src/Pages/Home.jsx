@@ -132,6 +132,7 @@ function Home() {
                   description={p.description}
                   id={p.id}
                   location={p.location}
+                  userMail={p.userMail}
                 />
               );
             })}

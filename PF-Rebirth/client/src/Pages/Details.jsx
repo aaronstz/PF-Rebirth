@@ -19,15 +19,18 @@ function Details() {
   const favoritos = useSelector(state => state.favorite)
   let favFilter = favoritos.length > 0 ? favoritos.filter((f) => f == id) : null
 
+
   const pets = useSelector((store) => store.pets);
 
   const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
+  console.log('id :>> ', id);
+
   
   useEffect(() => {
    setFavFilters(favFilter)
   },[] );
 
-  const { name, image, race, age, size, gender, description, location } = useSelector(
+  const { name, image, race, age, size, gender, description, location , userMail } = useSelector(
     (state) => state.detail
   );
   
@@ -92,25 +95,29 @@ function Details() {
               <span>3.4 kg</span>
               <img src={weight} alt="weight" />
             </div>
-            <Link to={user!== null ? `/donations/${id}` : `/login`} >
-            <button className="a-btn" >
-              <span>Donate</span>
-            </button>
-            </Link>
-            <button className="b-btn">
-              <span>Adopt me!</span>
-            </button>
+                {
+                 ( mail === userMail) ? null :
+              <Link to={user!== null ? `/donations/${id}` : `/login`} >
+                <button className="a-btn" >
+                  <span>Donate</span>
+                </button>
+              </Link>
+              }
+                { ( mail === userMail) ? null :
+                <button className="b-btn">
+                  <span>Adopt me!</span>
+                </button>
+              } 
           </div>
 
           <div className="dtl-cardRight">
             <div className="img-dtl">
               <div >
                {            
-                      user  ?      
+                      user && (mail === userMail) ?  null :
                       favFilter && favFilter.length !==0 ?
                        <><button className="a-btnFavEliminar" onClick={handleDeleteFav}/></>:
-                       <> <button className="a-btnFav" onClick={handleFavorite}/></> :
-                      null
+                       <> <button className="a-btnFav" onClick={handleFavorite}/></> 
               }
                 </div>
               <img src={image} alt="Pet" className="img" />
