@@ -23,7 +23,7 @@ const { getPets } = require('./src/tools/preCharge.js');
 const { getAdmin } = require('./src/tools/preChargeAdmin.js')
 
 // Syncing all the models at once. 
-conn.sync({ force: true }).then(async () => {
+conn.sync({ force: false }).then(async () => {
   await getAdmin();
   await getPets();
   server.listen(3001, () => {

@@ -54,8 +54,8 @@ function Home() {
   const pagination = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
-    dispatch(getPetFilters(petType))
-    dispatch(getLocation(petType));;
+    dispatch(getPetFilters(petType));
+    dispatch(getLocation(petType));
   }, [dispatch, petType]);
 
   
