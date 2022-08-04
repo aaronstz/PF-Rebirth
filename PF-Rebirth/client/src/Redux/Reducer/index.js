@@ -19,7 +19,11 @@ import {
   MERCADO_PAGO,
   GET_LOCATION,
   LOGIN_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
+  FAVORITES,
+  DELETE_FAVORITES,
+  GET_FAVORITES,
+  GET_ALL_PETS
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -34,11 +38,18 @@ const initialState = {
   user: [],
   userDetail: [],
   typePet: [],
-  location:[]
+  location:[],
+  favorite: [],
+  allPets : []
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case GET_ALL_PETS:
+      return{
+        ...state,
+        allPets: action.payload
+      }
     case LOGIN_USER:
 
       return {
@@ -310,6 +321,23 @@ function rootReducer(state = initialState, action) {
          });
        }
        return { ...state, filteredPets: [...ordenadoSize] };
+
+
+       case FAVORITES: 
+       return{
+        ...state,
+        favorite: action.payload
+       }
+       case DELETE_FAVORITES:
+        return{
+          ...state,
+          favorite: action.payload
+        }
+        case GET_FAVORITES:
+          return{
+            ...state,
+            favorite: action.payload
+          }
 
     default:
       return state;
