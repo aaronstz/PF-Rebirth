@@ -23,7 +23,8 @@ import {
   FAVORITES,
   DELETE_FAVORITES,
   GET_FAVORITES,
-  GET_ALL_PETS
+  GET_ALL_PETS,
+  UPDATE_PROFILE
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -40,7 +41,8 @@ const initialState = {
   typePet: [],
   location:[],
   favorite: [],
-  allPets : []
+  allPets : [],
+  profileView:{},
 };
 
 function rootReducer(state = initialState, action) {
@@ -62,6 +64,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         activeUser : null
       }
+    case UPDATE_PROFILE:
+      return{
+        ...state,
+        profileView:action.payload
+      };
     case GET_TYPES:
       return {
         ...state,
