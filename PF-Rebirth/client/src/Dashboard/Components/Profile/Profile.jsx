@@ -45,13 +45,14 @@ function Profile() {
     <div className="fixed-top">
       <Navbar />
       <form method="PUT" onSubmit={(e) => handleSubmit(e)}>
-        <div className="row">
-          <div className="col-md-3 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+        <div className="row d-flex flex-column align-items-center">
+          <div className="col-md-1">
+            <div className="d-flex flex-column align-items-center text-center p-3 py-2">
               <img
-                className="rounded-circle mt-5"
+                className="rounded-circle mt-5 mb-4"
                 alt="profileImg"
-                width="150px"
+                width="75px"
+                height="75px"
                 src={user.image ? user.image : user.imageUrl}
               />
               <Widget
@@ -65,14 +66,14 @@ function Profile() {
               />
             </div>
           </div>
-          <div className="col-md-5 border-right">
-            <div className="p-3 py-5">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h2 className="text-right">Profile</h2>
+          <div className="col-md-6 border-right">
+            <div className="p-3">
+              <div className="d-flex justify-content-between align-items-center">
+                <h2 className="text-right profTitle">Profile</h2>
               </div>
               <div className="row mt-2">
                 <div className="col-md-6">
-                  <label className="labels">First Name</label>
+                  <label className="labels profiTxt">First Name</label>
                   <input
                     id="formBasicName"
                     type="text"
@@ -86,7 +87,7 @@ function Profile() {
                   />
                 </div>
                 <div className="col-md-6">
-                  <label className="labels">Last Name</label>
+                  <label className="labels profiTxt">Last Name</label>
                   <input
                     id="formBasicLastName"
                     type="text"
@@ -104,7 +105,7 @@ function Profile() {
               </div>
               <div>
                 <div>
-                  <label className="labels">Username</label>
+                  <label className="labels profiTxt mt-3">Username</label>
                   <input
                     id="formBasicUserName"
                     type="text"
@@ -120,7 +121,7 @@ function Profile() {
               </div>
               <div className="row mt-3">
                 <div className="col-md-12">
-                  <label className="labels">Email</label>
+                  <label className="labels profiTxt">Email</label>
                   <input
                     id="formBasicMail"
                     name="formBasicMail"
@@ -135,7 +136,7 @@ function Profile() {
                   />
                 </div>
                 <div className="col-md-12">
-                  <label className="labels">Password</label>
+                  <label className="labels profiTxt">Password</label>
                   <input
                     id="formBasicPassword"
                     name="formBasicPassword"
@@ -150,10 +151,7 @@ function Profile() {
                 </div>
               </div>
               <div className="mt-5 text-center">
-                <button
-                  className="btn btn-primary profile-button"
-                  type="submit"
-                >
+                <button className="btn btn-profile" type="submit">
                   Save Profile
                 </button>
               </div>
