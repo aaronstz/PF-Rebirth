@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { getDetails, postMercadoPago } from "../Redux/Actions/index";
+import { addFavs, deleteFavs, getDetails, getUserId, postMercadoPago } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Navbar from "../Components/Navbar/Navbar";
@@ -16,6 +16,17 @@ import weight from "../Assets/weight_ico_big.png";
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [ favFilters , setFavFilters] = useState([])
+  const favoritos = useSelector(state => state.favorite)
+  let favFilter = favoritos.length > 0 ? favoritos.filter((f) => f == id) : null
+  
+  console.log("fav", favoritos)
+  
+  useEffect(() => {
+   setFavFilters(favFilter)
+  },[] );
+
+
 
   const { name, image, race, age, size, gender, description, location } = useSelector(
     (state) => state.detail
@@ -26,12 +37,16 @@ function Details() {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
+  const mail = user.mail? user.mail : user.email
 
   // const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getDetails(id));
+    dispatch(getUserId(mail));
   }, [dispatch, id]);
+
+ 
 
   // function clear() {
   //   dispatch(resetDetails());
@@ -41,6 +56,12 @@ function Details() {
   //   dispatch(deletePet(id));
   //   navigate("/home");
   // }
+  function handleFavorite(){
+      dispatch(addFavs(mail, id))
+  }
+  function handleDeleteFav(){
+      dispatch(deleteFavs(mail, id))
+  }
   
   return (
     <div>
@@ -90,7 +111,15 @@ function Details() {
 
           <div className="dtl-cardRight">
             <div className="img-dtl">
-              <div className="a-btnFav"></div>
+              <div >
+               {
+                                favFilter && favFilter.length !==0 ?
+                                 <><button className="a-btnFavEliminar" onClick={handleDeleteFav}/></>:
+                                 <> <button className="a-btnFav" onClick={handleFavorite}/></>
+                                
+                            }
+               
+                </div>
               <img src={image} alt="Pet" className="img" />
             </div>
           </div>

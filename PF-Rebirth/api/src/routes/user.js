@@ -9,14 +9,37 @@ const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 router.put("/addFavs/:mail", async(req, res) =>{
   const {mail}= req.params
   const {favorites} = req.body
+ 
   try {
+    const users= await User.findByPk(mail)
+    const favBd = users["dataValues"].favorites;
+    const favUpdate = favBd.concat(favorites)
     const userFavs = await User.findByPk(mail)
-    userFavs.update({favorites},{
+    userFavs.update({favorites: favUpdate},{
       where : {
-        mail : favorites.mail
+        mail : mail
       }
     })
-   return res.status(200).send(" favs actualizados")
+   return res.status(200).send(favUpdate)
+  } catch (error) {
+    console.log(error)
+  }
+})
+router.put("/deleteFavs/:mail", async(req, res) =>{
+  const {mail}= req.params
+  const {id} = req.body
+ 
+  try {
+    const users= await User.findByPk(mail)
+    const favBd = users["dataValues"].favorites;
+    const favUpdate = favBd.filter((f)=> f !== id)
+    const userFavs = await User.findByPk(mail)
+    userFavs.update({favorites: favUpdate},{
+      where : {
+        mail : mail
+      }
+    })
+   return res.status(200).send(favUpdate)
   } catch (error) {
     console.log(error)
   }
@@ -116,9 +139,9 @@ router.get("/favs/:mail", async (req, res) =>{
   try {
     const userFav = await User.findByPk(mail)
     if(userFav.dataValues.favorites.length){
-      res.status(200).send(userFav)
+      res.status(200).send(userFav.dataValues.favorites)
     }else{
-      res.status(400).send("no hay favs")
+      res.status(404).send("no hay favs")
     }
 
   } catch (error) {
