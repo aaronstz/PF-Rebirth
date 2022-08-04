@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../../../Components/Navbar/Navbar';
 import { Widget } from "@uploadcare/react-widget";
 import { updateUser } from '../../../Redux/Actions/index';
 import './Profile.css';
-import { useNavigate } from 'react-router-dom';
-
-
-function validate(){
-    let errors = {};
-
-}
 
 function Profile(){
 
-    const navigate = useNavigate();
     const dispatch = useDispatch()
-
     const profile = useSelector((state)=>state.profileView)
-    
-    //console.log(profile)
-
     const infoStorage = localStorage.getItem("user");
     const user = Object.keys(profile).length !== 0 ? profile : JSON.parse(infoStorage)
-
    
     const [input, setInput] = useState({
         formBasicName:'',
@@ -35,20 +22,6 @@ function Profile(){
     })
 
    
-    // function handleMail(e) {
-    //     e.preventDefault();
-    //     if(input.formBasicMail === ''){
-    //             setInput({
-    //                     ...input,
-    //                     [e.target["formBasicMail"]] : userInfo.email ? userInfo.email : userInfo.userToken.mail
-    //                 })
-    //             }
-    //     setInput({
-    //         ...input,
-    //         [e.target["formBasicMail"]] : e.target.value
-    //     })
-    // }
-
     function handleChange(e){
         e.preventDefault()
         setInput({
@@ -64,53 +37,11 @@ function Profile(){
         })
     }
 
-    // function handleLastName(e){
-    //     if(input.formBasicLastName === ''){
-    //         setInput({
-    //             ...input,
-    //             [e.target.formBasicLastName] : userInfo.familyName ? userInfo.familyName : userInfo.userToken.lastName
-    //         })
-    //     }
-    //     setInput({
-    //         ...input,
-    //         [e.target.name] : e.target.value
-    //     })
-    // }
-
-    // function handlePassword(e){
-    //     if(input.formBasicPassword === ''){
-    //         setInput({
-    //             ...input,
-    //             [e.target.formBasicPassword] : userInfo.password
-    //         })
-    //     }
-    //     setInput({
-    //         ...input,
-    //         [e.target.name] : e.target.value
-    //     })
-    // }
-
-    // function handleUser(e){
-    //     if(input.formBasicUserName === ''){
-    //         setInput({
-    //             ...input,
-    //             [e.target.formBasicUserName] : userInfo.name ? userInfo.name : userInfo.userToken.userName
-    //         })
-    //     }
-    //     setInput({
-    //         ...input,
-    //         [e.target.name] : e.target.value
-    //     })
-    // }
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(e.target)
-        dispatch(updateUser(user.email ? user.email : user.mail, input))
-        // localStorage.clear()
+        dispatch(updateUser(user.email ? user.email : user.mail, input));
     }
-
-    // console.log(input)
 
     return(
         <div className ="fixed-top">
