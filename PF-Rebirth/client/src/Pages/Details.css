@@ -136,6 +136,7 @@
 
 .a-btnFav {
   position: absolute;
+  border: none;
   left: 3%;
   top: 2%;
   width: 45px;
@@ -146,6 +147,16 @@
 
 .a-btnFav:hover {
   position: absolute;
+  left: 3%;
+  top: 2%;
+  width: 45px;
+  height: 43px;
+  cursor: pointer;
+  background: url(../Assets/botonFAV_active.png);
+}
+.a-btnFavEliminar {
+  position: absolute;
+  border: none;
   left: 3%;
   top: 2%;
   width: 45px;

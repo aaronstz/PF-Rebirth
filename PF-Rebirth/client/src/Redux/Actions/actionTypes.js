@@ -30,3 +30,10 @@ export const GET_CHAT= "GET_CHAT"
 export const SAVE_ADOPTION_ID="SAVE_ADOPTION_ID"
 export const LOGOUT_USER = "LOGOUT_USER"
 export const PUT_VISTO= "PUT_VISTO"
+export const FAVORITES = "FAVORITES";
+export const DELETE_FAVORITES = "DELETE_FAVORITES";
+export const GET_FAVORITES = "GET_FAVORITES";
+export const GET_ALL_PETS = "GET_ALL_PETS";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const RESET_DETAIL= 'RESET_DETAIL';
+

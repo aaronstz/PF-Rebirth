@@ -2,21 +2,51 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 import female from "../../Assets/female-ico-w.png";
 import male from "../../Assets/male-icon-w.png";
+import { useDispatch, useSelector } from "react-redux";
+import {addFavs, deleteFavs} from "../../Redux/Actions/index.js"
+import { useEffect, useState } from "react";
 
-function Cards({
-  image,
-  name,
-  breed,
-  age,
-  gender,
-  size,
-  description,
-  id,
-  location,
-}) {
+
+
+function Cards({image,name,breed,age,gender,size,description,id,location, userMail}){
+  const dispatch = useDispatch()
+  const [ favFilters , setFavFilters] = useState([])
+  const favoritos = useSelector(state => state.favorite)
+  let favFilter = favoritos.length > 0 ? favoritos.filter((f) => f == id) : null
+  
+  let user = null;
+  if(localStorage.user){
+    const userJson = localStorage.getItem("user");
+    user = JSON.parse(userJson);
+  }
+  
+  if(user){
+    var mail = user.mail? user.mail : user.email
+  }
+  useEffect(() => {
+   setFavFilters(favFilter)
+  },[] );
+
+  
+
+
+  function handleFavoriteHome(){
+    dispatch(addFavs(mail, id))
+  
+  }
+  function handleDeleteFavHome(){
+    dispatch(deleteFavs(mail, id))
+  
+}
+
   return (
     <div className="lcard">
-      <div className="btnFav"></div>
+      {            
+             user && (mail === userMail) ? null :   
+             favFilter && favFilter.length !==0 ?
+             <> <button className="btnFavEliminarHome" onClick={handleDeleteFavHome}/> </> : 
+             <> <button className="btnFavHome" onClick={handleFavoriteHome}/> </> 
+       }
       <img src={image} alt="foto" />
       <div className="txtCont">
         <div className="txtLeft">

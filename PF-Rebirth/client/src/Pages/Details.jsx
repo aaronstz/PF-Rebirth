@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { getDetails, postMercadoPago } from "../Redux/Actions/index";
+import { addFavs, deleteFavs, getDetails, resetDetails, getUserId, postMercadoPago } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Navbar from "../Components/Navbar/Navbar";
@@ -11,13 +11,20 @@ import female from "../Assets/Female_ico_big.png";
 import male from "../Assets/male-icon.png";
 import dogIco from "../Assets/dog_ico_big.png";
 import weight from "../Assets/weight_ico_big.png";
-// import swal from "sweetalert";
 
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [ favFilters , setFavFilters] = useState([])
+  const favoritos = useSelector(state => state.favorite)
+  let favFilter = favoritos.length > 0 ? favoritos.filter((f) => f == id) : null
+  console.log('id :>> ', id);
+  
+  useEffect(() => {
+   setFavFilters(favFilter)
+  },[] );
 
-  const { name, image, race, age, size, gender, description, location } = useSelector(
+  const { name, image, race, age, size, gender, description, location , userMail } = useSelector(
     (state) => state.detail
   );
   
@@ -26,27 +33,28 @@ function Details() {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
-
-  // const navigate = useNavigate();
+  if(user){
+    var mail = user.mail? user.mail : user.email
+  }
 
   useEffect(() => {
     dispatch(getDetails(id));
+    if(user) {dispatch(getUserId(mail))};
   }, [dispatch, id]);
 
-  // function clear() {
-  //   dispatch(resetDetails());
-  // }
-
-  // function handleDelete() {
-  //   dispatch(deletePet(id));
-  //   navigate("/home");
-  // }
+  
+  function handleFavorite(){
+    {dispatch(addFavs(mail, id))}
+  }
+  function handleDeleteFav(){
+      dispatch(deleteFavs(mail, id))
+  }
   
   return (
     <div>
       <Navbar />
       <Container>
-        <Header />
+        <Header/>
         <br />
         <div className="dtl-card">
           <div className="dtl-cardLeft">
@@ -78,19 +86,31 @@ function Details() {
               <span>3.4 kg</span>
               <img src={weight} alt="weight" />
             </div>
-            <Link to={user!== null ? `/donations/${id}` : `/login`} >
-            <button className="a-btn" >
-              <span>Donate</span>
-            </button>
-            </Link>
-            <button className="b-btn">
-              <span>Adopt me!</span>
-            </button>
+                {
+                 ( mail === userMail) ? null :
+              <Link to={user!== null ? `/donations/${id}` : `/login`} >
+                <button className="a-btn" >
+                  <span>Donate</span>
+                </button>
+              </Link>
+              }
+                { ( mail === userMail) ? null :
+                <button className="b-btn">
+                  <span>Adopt me!</span>
+                </button>
+              } 
           </div>
 
           <div className="dtl-cardRight">
             <div className="img-dtl">
-              <div className="a-btnFav"></div>
+              <div >
+               {            
+                      user && (mail === userMail) ?  null :
+                      favFilter && favFilter.length !==0 ?
+                       <><button className="a-btnFavEliminar" onClick={handleDeleteFav}/></>:
+                       <> <button className="a-btnFav" onClick={handleFavorite}/></> 
+              }
+                </div>
               <img src={image} alt="Pet" className="img" />
             </div>
           </div>
