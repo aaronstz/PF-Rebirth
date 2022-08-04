@@ -10,6 +10,10 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   NO_FILTER_PETS,
+  FAVORITES,
+  DELETE_FAVORITES,
+  GET_FAVORITES,
+  GET_ALL_PETS
 } from "./actionTypes";
 
 
@@ -25,7 +29,7 @@ export function loginUser(credentials){
         payload : dataUser
       })
     } catch (error) {
-      swal("Sorry", "Invalid username or password", "error")
+      await swal("Sorry", "Invalid username or password", "error")
     }
 
   }
@@ -131,7 +135,7 @@ export function postUserGoogle(payload) {
     try {
       const { status } = await axios.post(`${SERVER}/user`, payload);
       if(status === 201){
-        swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
+        await swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
         .then((willLogin) => {
           if (willLogin) {
             swal("WooHooo!", "User created successfully", "success")
@@ -186,8 +190,8 @@ export function getPets() {
         payload: json.data,
       });
     } catch ({response}) {
-      const { status } = response;
-      if(status === 404) swal("Oops!", "No pets found", "error")
+      const { status } = await response;
+      if(status === 404) await swal("Oops!", "No pets found", "error")
     }
   };
 }
@@ -204,8 +208,8 @@ export function getPetFilters(type) {
         payload: json.data,
       });
     } catch ({response}) {
-      const { status } = response;
-      if(status === 404) swal("Oops!", "No pets found", "error")
+      const { status } = await response;
+      if(status === 404) await swal("Oops!", "No pets found", "error")
     }
   };
 }
@@ -337,3 +341,60 @@ export function fullFilterSize(payload) {
 export function noFilterPets() {
   return { type: NO_FILTER_PETS };
 }
+export function addFavs(mail, id){
+  return async function(dispatch){
+    try {
+      let favs = {favorites : [id]}
+      const json = await axios.put(`${SERVER}/user/addFavs/${mail}` , favs)
+      return dispatch({
+        type: FAVORITES,
+        payload: json.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+export function deleteFavs(mail, id){
+  return async function(dispatch){
+    try {
+      let favs = {id : id}
+      const json = await axios.put(`${SERVER}/user/deleteFavs/${mail}` , favs)
+      return dispatch({
+        type: DELETE_FAVORITES,
+        payload: json.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+export function getFavs(mail){
+  return async function(dispatch){
+    try {
+      const json = await axios.get(`${SERVER}/user/Favs/${mail}`)
+      return dispatch({
+        type: GET_FAVORITES,
+        payload: json.data
+      })
+    } catch (error) {
+      await console.log(error)
+    }
+  }
+}
+
+export function getAllPets() {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/pets`);
+      return dispatch({
+        type: GET_ALL_PETS,
+        payload: json.data,
+      });
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No pets found", "error")
+    }
+  };
+}
+

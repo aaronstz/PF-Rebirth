@@ -4,20 +4,10 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import { Widget } from "@uploadcare/react-widget";
 import { updateUser } from "../../../Redux/Actions/index";
 import "./Profile.css";
-//import { useNavigate } from "react-router-dom";
-
-// function validate() {
-//   let errors = {};
-// }
 
 function Profile() {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const profile = useSelector((state) => state.profileView);
-
-  //console.log(profile)
-
   const infoStorage = localStorage.getItem("user");
   const user =
     Object.keys(profile).length !== 0 ? profile : JSON.parse(infoStorage);
@@ -30,20 +20,6 @@ function Profile() {
     formBasicImage: "",
     formBasicUserName: "",
   });
-
-  // function handleMail(e) {
-  //     e.preventDefault();
-  //     if(input.formBasicMail === ''){
-  //             setInput({
-  //                     ...input,
-  //                     [e.target["formBasicMail"]] : userInfo.email ? userInfo.email : userInfo.userToken.mail
-  //                 })
-  //             }
-  //     setInput({
-  //         ...input,
-  //         [e.target["formBasicMail"]] : e.target.value
-  //     })
-  // }
 
   function handleChange(e) {
     e.preventDefault();
@@ -60,53 +36,10 @@ function Profile() {
     });
   }
 
-  // function handleLastName(e){
-  //     if(input.formBasicLastName === ''){
-  //         setInput({
-  //             ...input,
-  //             [e.target.formBasicLastName] : userInfo.familyName ? userInfo.familyName : userInfo.userToken.lastName
-  //         })
-  //     }
-  //     setInput({
-  //         ...input,
-  //         [e.target.name] : e.target.value
-  //     })
-  // }
-
-  // function handlePassword(e){
-  //     if(input.formBasicPassword === ''){
-  //         setInput({
-  //             ...input,
-  //             [e.target.formBasicPassword] : userInfo.password
-  //         })
-  //     }
-  //     setInput({
-  //         ...input,
-  //         [e.target.name] : e.target.value
-  //     })
-  // }
-
-  // function handleUser(e){
-  //     if(input.formBasicUserName === ''){
-  //         setInput({
-  //             ...input,
-  //             [e.target.formBasicUserName] : userInfo.name ? userInfo.name : userInfo.userToken.userName
-  //         })
-  //     }
-  //     setInput({
-  //         ...input,
-  //         [e.target.name] : e.target.value
-  //     })
-  // }
-
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target);
     dispatch(updateUser(user.email ? user.email : user.mail, input));
-    // localStorage.clear()
   }
-
-  // console.log(input)
 
   return (
     <div className="fixed-top">
@@ -116,15 +49,10 @@ function Profile() {
           <div className="col-md-3 border-right">
             <div className="d-flex flex-column align-items-center text-center p-3 py-5">
               <img
-                className="rounded-circle mt-5 mb-3"
-                width="100px"
-                height="100px"
-                src={
-                  userInfo.imageUrl
-                    ? userInfo.imageUrl
-                    : userInfo.userToken.imageUrl
-                }
-                alt="user"
+                className="rounded-circle mt-5"
+                alt="profileImg"
+                width="150px"
+                src={user.image ? user.image : user.imageUrl}
               />
               <Widget
                 publicKey="e7afc989eff083e04496"
@@ -174,8 +102,6 @@ function Profile() {
                   />
                 </div>
               </div>
-            </div>
-            <div>
               <div>
                 <div>
                   <label className="labels">Username</label>

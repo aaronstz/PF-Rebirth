@@ -1,41 +1,92 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./DashFavorites.css";
-import image from "../../../Assets/fotoPet1.png";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
+import NavBar from "../../../Components/Navbar/Navbar.jsx"
+import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
-const DashFavorites = () => {
+export default function DashFavorites(){
+
+  const [ isLoading, setIsloading ] = useState(true);
+  const favorites= useSelector((s)=> s.favorite) 
+  const pets = useSelector((s) => s.allPets)
+  const infoUser= localStorage.getItem("user")
+  const user = JSON.parse(infoUser)
+  const dispatch = useDispatch()
+  const filterFavs = favorites?.map((p) => {
+    let pet = pets.filter((e) => e.id === p)
+    return pet[0]
+  })
+  const mail = user && user.mail? user.mail : user.email
+
+  useEffect(() =>{
+    dispatch(getAllPets())
+    dispatch(getFavs(user.mail || user.email))
+  }, [])
+
+  
+  setTimeout(()=> {
+    setIsloading(false)
+  },300)
+  
+  function handleDeleteFav(id){
+    dispatch(deleteFavs(mail, id))
+  }
+
   return (
-    <div className="mainDashCont">
-      <div className="conTitulo">
-        <h3>My favorite pets</h3>
-      </div>
-      <div className="favContainer">
-        <div className="favcardLeftPhoto">
-          <div class="imgFav">
-            <div class="FavBtn"></div>
-            <img src={image} alt="Pet" class="img" />
-          </div>
-        </div>
-        <div className="favcardLeft">
-          <span>Lolita</span>
-          <span>Border collie</span>
-          <span>3&nbsp;years</span>
-          <span>Mexico City</span>
-        </div>
-        <div className="favcardCenter">
-          <span>Female</span>
-          <span>Medium</span>
-          <span>3.4&nbsp;KG</span>
-        </div>
-        <div className="favcardRight">
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-            turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-            nec fringilla accumsan, risus sem
-          </span>
-        </div>
-      </div>
+    <>
+    <NavBar/>
+     <div className="mainDashCont">
+      {
+        isLoading || favorites.length === 0
+          ? null
+          : 
+            <>
+                <div className="conTitulo info">
+                  <h3>MY FAVORITES PETS</h3>
+                </div>
+                <div className="infoPets">
+                  { filterFavs?.map((e) => {
+                      return(
+                        <div key={Math.random()} className="favContainer">
+                    <div className="favcardLeftPhoto">
+                  <Link to={"/home/" + e.id} >
+                        <div className="imgFav">
+                        { e.image&&<img src={e.image} alt="Pet" className="img" />}
+                        </div>
+                    </Link>
+                        <div>
+                        <button className="a-btnFavElim" onClick={()=>handleDeleteFav(e.id)}/>
+                        </div>
+                    </div>
+                    <div className="favcardLeft">
+                      <span>{e.name}</span>
+                      <span>{e.breed}</span>
+                      <span>{e.age}&nbsp;years</span>
+                      <span>{e.location}</span>
+                    </div>
+                    <div className="favcardCenter">
+                      <span>{e.gender}</span>
+                      <span>{e.size}</span>
+                    </div>
+                    <div className="favcardRight">
+                      <span>
+                        {e.description}
+                    </span>
+                    </div>
+                  </div> 
+                      )
+                      })  
+                  }
+                </div>
+            </>
+      }
     </div>
+   
+    </>
   );
 };
 
-export default DashFavorites;
+
+           

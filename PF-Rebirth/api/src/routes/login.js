@@ -27,26 +27,30 @@ function verifyUser(userData, password){
 
 router.post("/" , async (req, res) => {
 
-// email: "will.diazor@gmail.com"
-// familyName: "Diaz"
-// givenName: "William"
-// googleId: "112901499804350175056"
-// imageUrl: "https://lh3.googleusercontent.com/a-/AFdZucpADX4F1pb5a7QR8vuWoUh3Bn8trbVLtBucLFRXCJ8=s96-c"
-// name: "William Diaz"
-
     const { body } = req;
     const { userName, password } = body;
     const { googleId, name } = body;
 
+    console.log(body);
+
+    // LO QUE LLEGA POR BODY CON LOGIN GOOGLE
+    // {
+    //     googleId: '112901499804350175056',
+    //     imageUrl: 'https://lh3.googleusercontent.com/a-/AFdZucpADX4F1pb5a7QR8vuWoUh3Bn8trbVLtBucLFRXCJ8=s96-c',
+    //     email: 'will.diazor@gmail.com',
+    //     name: 'William Diaz',
+    //     givenName: 'William',
+    //     familyName: 'Diaz'
+    // }
 
     // if(googleId){
-
     //     const user = await User.findOne({ where : { userName : name.replace(" ", "_") } });
     //     if(!user){
     //         console.log('postUser', postUser)
     //         router.use("/", postUser)
     //     } else {
-    //      }
+         
+    //     }
     
 
     // } else {

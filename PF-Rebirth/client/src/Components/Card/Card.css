@@ -29,9 +29,8 @@
   object-fit: cover;
 }
 
-
-
-.btnFav {
+.btnFavHome {
+  border: none;
   position: absolute;
   left: 81.63%;
   top: 2%;
@@ -42,7 +41,19 @@
   z-index: 1;
 }
 
-.btnFav:hover {
+.btnFavHome:hover {
+  border: none;
+  position: absolute;
+  left: 81.63%;
+  top: 2%;
+  width: 45px;
+  height: 43px;
+  cursor: pointer;
+  background: url(../../Assets/botonFAV_active.png);
+}
+.btnFavEliminarHome {
+  z-index: 100;
+  border: none;
   position: absolute;
   left: 81.63%;
   top: 2%;
