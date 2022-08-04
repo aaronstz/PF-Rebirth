@@ -22,7 +22,8 @@ import {
   GET_MESSAGE,
   GET_CHAT,
   POST_MESSAGE,
-  SAVE_ADOPTION_ID
+  SAVE_ADOPTION_ID,
+  LOGOUT_USER
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -46,9 +47,16 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_USER:
+
       return {
         ...state,
         activeUser : action.payload
+      }
+    case LOGOUT_USER:
+      localStorage.clear()
+      return {
+        ...state,
+        activeUser : null
       }
     case GET_TYPES:
       return {

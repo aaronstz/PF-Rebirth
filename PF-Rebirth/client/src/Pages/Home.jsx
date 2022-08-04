@@ -9,7 +9,7 @@ import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
 
-import {
+import {getLocation,
   filterByLocation,
   filterBySex,
   filterBySize,
@@ -55,7 +55,10 @@ function Home() {
 
   useEffect(() => {
     dispatch(getPetFilters(petType));
+    dispatch(getLocation(petType));
   }, [dispatch, petType]);
+
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
