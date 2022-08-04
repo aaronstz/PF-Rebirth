@@ -60,7 +60,7 @@ function Navbar() {
 
   return (
     <div className="containerNavbar">
-      <NavLink to={"/home?type=" + types[0]} className="link-navbar">
+      <NavLink to={types.length? "/home?type=" + types[0]: "/home"} className="link-navbar">
         <img src={logo} alt="logo" className="logo" />
       </NavLink>
       <div className="iconsContainer">
