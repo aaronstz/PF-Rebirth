@@ -10,9 +10,11 @@ import { useSelector } from 'react-redux';
 export default function DonationsPets() {
 
     const navigate = useNavigate();
-    const activeUser = useSelector(state => state.activeUser)
+    // const activeUser = useSelector(state => state.activeUser)
+    const user = window.localStorage.getItem("user");
+    console.log('user', user)
 
-    if(activeUser === null) navigate("/login")
+    if(!user) navigate("/login")
     let { id } = useParams();
 
     return (

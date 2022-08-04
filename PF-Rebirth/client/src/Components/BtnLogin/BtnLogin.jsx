@@ -4,7 +4,7 @@ import { gapi } from 'gapi-script';
 import React, { useEffect } from 'react';
 import './BtnLogin.css';
 import { useNavigate } from 'react-router-dom';
-import { postUserGoogle } from '../../Redux/Actions/index.js';
+import { loginUser, postUserGoogle } from '../../Redux/Actions/index.js';
 import { useDispatch } from 'react-redux';
 const { REACT_APP_CLIENT_ID } = process.env;
 
@@ -14,9 +14,12 @@ export default function BtnLogin() {
     const dispatch = useDispatch();
 
     const onSuccess = ({profileObj, tokenObj}) => {
-      dispatch(postUserGoogle(profileObj))
-      localStorage.setItem("user", JSON.stringify(profileObj))
-      localStorage.setItem("token", JSON.stringify(tokenObj))
+
+      // dispatch(postUserGoogle(profileObj))
+      console.log(profileObj)
+      dispatch(loginUser(profileObj))
+      // localStorage.setItem("user", JSON.stringify(profileObj))
+      // localStorage.setItem("token", JSON.stringify(tokenObj))
       navigate("/home")
     }
 
