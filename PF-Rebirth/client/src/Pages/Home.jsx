@@ -20,6 +20,7 @@ import {getLocation,
   getPetFilters,
   getPetNames,
   orderByAge,
+  getFavs,
 } from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -53,16 +54,30 @@ function Home() {
   const currentPet = pets.slice(indexOfFirstPet, indexOfLastPet); //para dividir la cantidad de pets por pagina
   const pagination = (pageNumber) => setCurrentPage(pageNumber);
 
+  let user = null;
+  if(localStorage.user){
+    const userJson = localStorage.getItem("user");
+    user = JSON.parse(userJson);
+  }
+  
+  if(user){
+    var mail = user.mail? user.mail : user.email
+  }
+
   useEffect(() => {
     dispatch(getPetFilters(petType));
     dispatch(getLocation(petType));
   }, [dispatch, petType]);
 
-  
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  useEffect(() => {
+   if(user){
+    dispatch(getFavs(mail))
+   }
+  },[]);
 
   function handleFilterBySex(e) {
     dispatch(filterBySex(e));
