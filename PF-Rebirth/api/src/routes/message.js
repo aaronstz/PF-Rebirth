@@ -78,14 +78,15 @@ router.post("/", async (req, res, next) => {
     next(error);
   }
 });
-router.put("/old", async (req, res, next) => {
+router.put("/visto", async (req, res, next) => {
   try {
-    const { messageId } = req.query;
-    const updateMessage = await Message.update({nuevo:false},{where:{id:messageId,}})
+    const {mail,adoptionId} = req.body;
+      const updateMessage = await Message.update({nuevo:false},{where:{[Op.and]:[{createdAt:{[Op.lt]:new Date()}},{userMail:mail},{adoptionId:adoptionId}]}})
     if (updateMessage) {
+      console.log(updateMessage)
       return res.json(updateMessage);
     } else {
-      return res.status(404).json({ message: "Aun no hay mensajes" });
+      return res.status(400).json({ message: "Aun no hay mensajes" });
     }
   } catch (error) {
     next(error);

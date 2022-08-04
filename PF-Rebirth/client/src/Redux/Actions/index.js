@@ -13,6 +13,7 @@ import {
   LOGOUT_USER,
   NO_FILTER_PETS,
   POST_MESSAGE,
+  PUT_VISTO,
   SAVE_ADOPTION_ID,
 } from "./actionTypes";
 
@@ -62,6 +63,17 @@ export function getChat(user){
       alert("No user found");
     }
   };
+}
+
+export function putVisto(mail,adoptionId){
+  return async function (dispatch){
+    try {
+      console.log(mail,adoptionId)
+      const json = await axios.put(`${SERVER}/message/visto`,{mail:mail ,adoptionId:adoptionId});
+        } catch (error) {
+      
+    }
+  }
 }
 
 export function postMessage(payload){

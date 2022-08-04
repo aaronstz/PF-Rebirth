@@ -28,4 +28,5 @@ export const GET_MESSAGE="GET_MESSAGE"
 export const  POST_MESSAGE="POST_MESSAGE"
 export const GET_CHAT= "GET_CHAT"
 export const SAVE_ADOPTION_ID="SAVE_ADOPTION_ID"
-export const LOGOUT_USER = "LOGOUT_USER";
+export const LOGOUT_USER = "LOGOUT_USER"
+export const PUT_VISTO= "PUT_VISTO"
