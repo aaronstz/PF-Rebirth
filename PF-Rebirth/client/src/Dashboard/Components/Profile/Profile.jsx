@@ -117,6 +117,7 @@ function Profile() {
               <img
                 className="rounded-circle mt-5 mb-3"
                 width="100px"
+                height="100px"
                 src={
                   userInfo.imageUrl
                     ? userInfo.imageUrl
