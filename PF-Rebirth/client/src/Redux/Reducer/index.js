@@ -64,7 +64,6 @@ function rootReducer(state = initialState, action) {
         allPets: action.payload
       }
     case LOGIN_USER:
-
       return {
         ...state,
         activeUser : action.payload

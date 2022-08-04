@@ -19,11 +19,13 @@ export default function LandingPage() {
       <div className="pet-ld">
         <div className="wrapperLeftLand">
           <Link to="/home?type=dog">
+            {localStorage.setItem("type", JSON.stringify("dog"))}
             <img src={dog} alt="Dog Team" />
           </Link>
         </div>
         <div className="wrapperRightLand">
           <Link to="/home?type=cat">
+          {localStorage.setItem("type", JSON.stringify("cat"))}
             <img src={cat} alt="Cat Team" />
           </Link>
         </div>
