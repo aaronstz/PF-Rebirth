@@ -6,7 +6,7 @@ import vector from "../../Assets/Navbar/Vector.png";
 import vector2 from "../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../Assets/Navbar/Vector-3.png";
 import DarkMode from "../../Components/Switch/SwitchMode";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../Redux/Actions";
