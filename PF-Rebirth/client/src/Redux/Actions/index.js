@@ -250,6 +250,7 @@ export function getDetails(id) {
   };
 }
 
+
 export function deletePet(id) {
   return async function (dispatch) {
     try {

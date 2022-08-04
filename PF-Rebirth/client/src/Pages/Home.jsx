@@ -109,7 +109,7 @@ function Home() {
     <div>
       <Navbar />
       <Container>
-        <Header type={petType} />
+        <Header type={petType} setPage ={setCurrentPage}/>
         <FiltersBar
           handleFilterBySex={handleFilterBySex}
           handleFilterBySize={handleFilterBySize}
