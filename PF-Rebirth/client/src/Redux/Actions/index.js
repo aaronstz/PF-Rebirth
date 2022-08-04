@@ -360,7 +360,6 @@ export function deleteFavs(mail, id){
     try {
       let favs = {id : id}
       const json = await axios.put(`${SERVER}/user/deleteFavs/${mail}` , favs)
-      console.log("json", json.data)
       return dispatch({
         type: DELETE_FAVORITES,
         payload: json.data
@@ -379,7 +378,7 @@ export function getFavs(mail){
         payload: json.data
       })
     } catch (error) {
-      swal("NO FAVORITES", "Looks like you don't have favorites pets yet", "error" )
+      console.log(error)
     }
   }
 }
