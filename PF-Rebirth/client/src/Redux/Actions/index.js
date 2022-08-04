@@ -29,7 +29,7 @@ export function loginUser(credentials){
         payload : dataUser
       })
     } catch (error) {
-      swal("Sorry", "Invalid username or password", "error")
+      await swal("Sorry", "Invalid username or password", "error")
     }
 
   }
@@ -135,7 +135,7 @@ export function postUserGoogle(payload) {
     try {
       const { status } = await axios.post(`${SERVER}/user`, payload);
       if(status === 201){
-        swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
+        await swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
         .then((willLogin) => {
           if (willLogin) {
             swal("WooHooo!", "User created successfully", "success")
@@ -190,8 +190,8 @@ export function getPets() {
         payload: json.data,
       });
     } catch ({response}) {
-      const { status } = response;
-      if(status === 404) swal("Oops!", "No pets found", "error")
+      const { status } = await response;
+      if(status === 404) await swal("Oops!", "No pets found", "error")
     }
   };
 }
@@ -208,8 +208,8 @@ export function getPetFilters(type) {
         payload: json.data,
       });
     } catch ({response}) {
-      const { status } = response;
-      if(status === 404) swal("Oops!", "No pets found", "error")
+      const { status } = await response;
+      if(status === 404) await swal("Oops!", "No pets found", "error")
     }
   };
 }
@@ -378,7 +378,7 @@ export function getFavs(mail){
         payload: json.data
       })
     } catch (error) {
-      console.log(error)
+      await console.log(error)
     }
   }
 }
