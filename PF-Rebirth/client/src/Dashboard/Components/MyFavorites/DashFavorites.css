@@ -1,12 +1,18 @@
 @keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .info {
   opacity: 0;
   animation: fade-in 0.5s forwards;
 }
+
 .infoPets {
   opacity: 0;
   animation: fade-in 1.5s forwards;
@@ -33,8 +39,9 @@
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-  height: 10rem;
+  height: max-content;
   overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 .favcardLeftPhoto {
@@ -83,12 +90,12 @@
   color: var(--text-color);
 }
 
-.imgFav img {
+.imgFavor img {
   transition: all 0.3s;
   display: block;
   border-radius: 20px;
   width: 100%;
-  height: 100%;
+  height: max-content;
 }
 
 .FavBtn {
@@ -100,6 +107,7 @@
   cursor: pointer;
   background: url(../../../Assets/botonFAV_active.png);
 }
+
 .a-btnFavElim {
   position: absolute;
   border: none;
