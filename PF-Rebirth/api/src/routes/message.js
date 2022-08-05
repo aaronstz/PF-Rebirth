@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { Message } = require("../db");
-const { Adoption } = require("../db");
+const { Adoption,User,Pets } = require("../db");
 const router = Router();
 const { Op } = require("sequelize");
 
@@ -27,15 +27,31 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/chat", async (req, res, next) => {
+router.get("/chats", async (req, res, next) => {
   const { user } = req.query;
   try {
     const allChats = await Adoption.findAll({
-      attributes: ["ownerMail", "userMail", "petId", "phone"],
+      attributes: ["id", "ownerMail", "userMail", "petId", "id"],
       where: {
-        userMail: user,
         [Op.or]: [{ ownerMail: user }, { userMail: user }],
       },
+
+      include: [
+        {
+          model: User,
+          attributes: ["name", "image", "mail"],
+          as: "owner",
+        },
+        {
+          model: User,
+          attributes: ["name", "image", "mail"],
+          as: "adopter",
+        },
+        {
+          model:Pets,
+          attributes:["name","image"]
+        }
+      ],
     });
 
     console.log(allChats);
@@ -58,6 +74,20 @@ router.post("/", async (req, res, next) => {
     const nuevoMensaje = await Message.create(obj);
 
     res.json(nuevoMensaje);
+  } catch (error) {
+    next(error);
+  }
+});
+router.put("/visto", async (req, res, next) => {
+  try {
+    const {mail,adoptionId} = req.body;
+      const updateMessage = await Message.update({nuevo:false},{where:{[Op.and]:[{createdAt:{[Op.lt]:new Date()}},{userMail:mail},{adoptionId:adoptionId}]}})
+    if (updateMessage) {
+      console.log(updateMessage)
+      return res.json(updateMessage);
+    } else {
+      return res.status(400).json({ message: "Aun no hay mensajes" });
+    }
   } catch (error) {
     next(error);
   }

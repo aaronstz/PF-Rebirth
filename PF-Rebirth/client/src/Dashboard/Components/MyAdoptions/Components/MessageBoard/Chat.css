@@ -8,19 +8,24 @@
 }
 
 .chat-right, .chat-left{
+    display: flex;
+    flex-wrap: wrap;
     max-width: 70%;   
     padding: 15px;
     margin:10px;
     border-radius: 15px;
 }
 .chat-right{
+
     background-color: #e2e2ff;
     align-self: flex-end;
 }
 
 .chat-left{
+    
     background-color: #e6e1e6;
   align-self: flex-start;
+
     }
 .chat-new{
     text-align: center;
@@ -31,7 +36,6 @@
 .chat-input-container{
     display: flex;
     flex-direction: row;
-    height: 100px;
     margin: 0px;
     padding: 0px;
 }
@@ -50,6 +54,7 @@
 .chat-left-container{
     display: flex;
     flex-direction:column;
+    
 }
 .chat-button{
     background-color: #FF8AE5;

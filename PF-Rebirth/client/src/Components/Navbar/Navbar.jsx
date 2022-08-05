@@ -9,7 +9,7 @@ import DarkMode from "../../Components/Switch/SwitchMode";
 import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../Redux/Actions";
+import { logoutUser, resetDetails } from "../../Redux/Actions";
 
 function Navbar() {
   const activeUser = useSelector((state) => state.activeUser);
@@ -58,11 +58,19 @@ function Navbar() {
     });
   };
 
+  function clear(){
+    dispatch(resetDetails())
+  }
+
   return (
     <div className="containerNavbar">
-      <NavLink to={"/home?type=" + types[0]} className="link-navbar">
+
+      <button onClick={clear} class="nav-btn-none">
+      <NavLink to={types.length? "/home?type=" + types[0]: "/home"} className="link-navbar">
+
         <img src={logo} alt="logo" className="logo" />
       </NavLink>
+      </button>
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />

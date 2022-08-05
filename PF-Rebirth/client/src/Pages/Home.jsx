@@ -9,7 +9,8 @@ import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
 
-import {getLocation,
+import {
+  getLocation,
   filterByLocation,
   filterBySex,
   filterBySize,
@@ -55,13 +56,13 @@ function Home() {
   const pagination = (pageNumber) => setCurrentPage(pageNumber);
 
   let user = null;
-  if(localStorage.user){
+  if (localStorage.user) {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
-  
-  if(user){
-    var mail = user.mail? user.mail : user.email
+
+  if (user) {
+    var mail = user.mail ? user.mail : user.email;
   }
 
   useEffect(() => {
@@ -74,10 +75,10 @@ function Home() {
   }, [currentPage]);
 
   useEffect(() => {
-   if(user){
-    dispatch(getFavs(mail))
-   }
-  },[]);
+    if (user) {
+      dispatch(getFavs(mail));
+    }
+  }, []);
 
   function handleFilterBySex(e) {
     dispatch(filterBySex(e));
@@ -102,14 +103,13 @@ function Home() {
   function handleSearchName(search) {
     dispatch(getPetNames(petType, search));
     setCurrentPage(1);
-    
   }
 
   return (
     <div>
       <Navbar />
       <Container>
-        <Header type={petType} />
+        <Header type={petType} setPage={setCurrentPage} current={currentPage} />
         <FiltersBar
           handleFilterBySex={handleFilterBySex}
           handleFilterBySize={handleFilterBySize}
@@ -132,6 +132,7 @@ function Home() {
                   description={p.description}
                   id={p.id}
                   location={p.location}
+                  userMail={p.userMail}
                 />
               );
             })}
