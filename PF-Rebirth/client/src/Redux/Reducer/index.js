@@ -29,8 +29,8 @@ import {
   GET_FAVORITES,
   GET_ALL_PETS,
   UPDATE_PROFILE,
-  RESET_PETS,
   RESET_DETAILS,
+  RESET_PETS,
 } from "../Actions/actionTypes";
 
 const initialState = {
