@@ -10,8 +10,8 @@ router.post("/", (req, res) => {
     port: 465,
     secure: true,
     auth: {
-      user: "rebirthpestpf@gmail.com",
-      pass: "zsthhqlvcmufkgbh",
+      user: "rebirthpetspf@gmail.com",
+      pass: "pwxdidflyzumqaop",
     },
   });
 
@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
     from: email,
     name: name,
     phone: phone,
-    to: "rebirthpestpf@gmail.com",
+    to: "rebirthpetspf@gmail.com",
     subject: subject + " , " + name,
     text: text + " , Phone: " + phone + " , Email: " + email,
   };

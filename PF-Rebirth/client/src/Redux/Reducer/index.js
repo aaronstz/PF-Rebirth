@@ -19,11 +19,19 @@ import {
   MERCADO_PAGO,
   GET_LOCATION,
   LOGIN_USER,
+
   GET_MESSAGE,
   GET_CHAT,
   POST_MESSAGE,
   SAVE_ADOPTION_ID,
   LOGOUT_USER
+  FAVORITES,
+  DELETE_FAVORITES,
+  GET_FAVORITES,
+  GET_ALL_PETS,
+  UPDATE_PROFILE,
+  RESET_DETAILS
+
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -42,10 +50,19 @@ const initialState = {
   message:[],
   adoptionChat:[],
   adoptionId:""
+  favorite: [],
+  allPets : [],
+  profileView:{},
+
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case GET_ALL_PETS:
+      return{
+        ...state,
+        allPets: action.payload
+      }
     case LOGIN_USER:
 
       return {
@@ -58,6 +75,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         activeUser : null
       }
+    case UPDATE_PROFILE:
+      return{
+        ...state,
+        profileView:action.payload
+      };
     case GET_TYPES:
       return {
         ...state,
@@ -130,6 +152,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
+
+    case RESET_DETAILS:
+      return{
+        ...state,
+        detail: [],
+        allPets: state.allPets
+      }
     case GET_NAMES:
    
       ///////////////////////////////////filtrando ordenados por tamaño/////////////////////////
@@ -337,6 +366,23 @@ function rootReducer(state = initialState, action) {
          });
        }
        return { ...state, filteredPets: [...ordenadoSize] };
+
+
+       case FAVORITES: 
+       return{
+        ...state,
+        favorite: action.payload
+       }
+       case DELETE_FAVORITES:
+        return{
+          ...state,
+          favorite: action.payload
+        }
+        case GET_FAVORITES:
+          return{
+            ...state,
+            favorite: action.payload
+          }
 
     default:
       return state;
