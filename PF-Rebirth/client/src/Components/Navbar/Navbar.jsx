@@ -66,7 +66,7 @@ function Navbar() {
     <div className="containerNavbar">
 
       <button onClick={clear} class="nav-btn-none">
-      <NavLink to={"/home?type=" + types[0]} className="link-navbar">
+      <NavLink to={types.length? "/home?type=" + types[0]: "/home"} className="link-navbar">
 
         <img src={logo} alt="logo" className="logo" />
       </NavLink>
