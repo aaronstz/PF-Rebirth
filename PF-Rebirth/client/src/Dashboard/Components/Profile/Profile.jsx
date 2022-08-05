@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Navbar from "../../../Components/Navbar/Navbar";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Navbar from '../../../Components/Navbar/Navbar';
 import { Widget } from "@uploadcare/react-widget";
 import { updateUser } from "../../../Redux/Actions/index";
 import "./Profile.css";
@@ -21,13 +21,13 @@ function Profile() {
     formBasicUserName: "",
   });
 
-  function handleChange(e) {
-    e.preventDefault();
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  }
+    function handleChange(e){
+        e.preventDefault()
+        setInput({
+            ...input,
+            [e.target.name] : e.target.value
+        })
+    }
 
   function handleImage(file) {
     setInput({
@@ -38,7 +38,14 @@ function Profile() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(updateUser(user.email ? user.email : user.mail, input));
+    dispatch(updateUser(user.mail, input));
+    setInput({
+        formBasicName: "",
+        formBasicLastName: "",
+        formBasicMail: "",
+        formBasicPassword: "",
+        formBasicUserName: "",
+      })
   }
 
   return (
@@ -53,7 +60,7 @@ function Profile() {
                 alt="profileImg"
                 width="75px"
                 height="75px"
-                src={user.image ? user.image : user.imageUrl}
+                src={user.image}
               />
               <Widget
                 publicKey="e7afc989eff083e04496"
@@ -94,9 +101,7 @@ function Profile() {
                     className="form-control"
                     name="formBasicLastName"
                     value={input.formBasicLastName}
-                    placeholder={
-                      user.familyName ? user.familyName : user.lastName
-                    }
+                    placeholder={user.lastName}
                     onChange={(e) => {
                       handleChange(e);
                     }}
@@ -112,7 +117,7 @@ function Profile() {
                     className="form-control"
                     name="formBasicUserName"
                     value={input.formBasicUserName}
-                    placeholder={user.name ? user.name : user.userName}
+                    placeholder={user.userName}
                     onChange={(e) => {
                       handleChange(e);
                     }}
@@ -127,7 +132,7 @@ function Profile() {
                     name="formBasicMail"
                     type="text"
                     className="form-control"
-                    placeholder={user.email ? user.email : user.mail}
+                    placeholder={user.mail}
                     value={input.formBasicMail}
                     onChange={(e) => {
                       handleChange(e);

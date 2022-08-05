@@ -4,7 +4,8 @@ const { Router } = require("express");
 const router = Router();
 const { User } = require('../db');
 const { SECRET_KEYWORD } = process.env;
-const postUser = require('./user.js');
+const { createToken } = require('../tools/loginSession');
+const { infoToPost } = require('../tools/loginSession');
 
 
 function verifyUser(userData, password){
@@ -25,36 +26,38 @@ function verifyUser(userData, password){
     return userForToken;
 }
 
-router.post("/" , async (req, res) => {
+router.post("/" , async (req, res, next) => {
 
     const { body } = req;
     const { userName, password } = body;
-    const { googleId, name } = body;
+    const { googleId, email } = body;
 
-    console.log(body);
+    if(googleId){
 
-    // LO QUE LLEGA POR BODY CON LOGIN GOOGLE
-    // {
-    //     googleId: '112901499804350175056',
-    //     imageUrl: 'https://lh3.googleusercontent.com/a-/AFdZucpADX4F1pb5a7QR8vuWoUh3Bn8trbVLtBucLFRXCJ8=s96-c',
-    //     email: 'will.diazor@gmail.com',
-    //     name: 'William Diaz',
-    //     givenName: 'William',
-    //     familyName: 'Diaz'
-    // }
+        const user = await User.findOne({ where : { mail : email } });
 
-    // if(googleId){
-    //     const user = await User.findOne({ where : { userName : name.replace(" ", "_") } });
-    //     if(!user){
-    //         console.log('postUser', postUser)
-    //         router.use("/", postUser)
-    //     } else {
-         
-    //     }
+        if(user){
+            res.send(createToken(user))
+        }
+
+        if(!user){
+            try {
+                await infoToPost(req)
+
+                let userCreated = await User.findOne({ where : { mail : email}})
+
+                if(userCreated){
+                    res.status(201).send(createToken(userCreated))
+                }
+            } catch (error) {
+                next(error);
+            }
+        } 
+
+
+    } 
     
-
-    // } else {
-
+    if(userName && password){
         const user = await User.findOne({ where: { userName: userName } });
 
         const passwordCorrect = user === null  //true or false
@@ -69,16 +72,9 @@ router.post("/" , async (req, res) => {
         }
     
         if(passwordCorrect){
-            let userToken = verifyUser(user["dataValues"], passwordCorrect);
-    
-            const token = jwt.sign(userToken, SECRET_KEYWORD)
-        
-            res.send({
-                userToken,
-                token
-            })
+            res.send(createToken(user))
         }
-    // }
+    }
 })
 
 module.exports = router;

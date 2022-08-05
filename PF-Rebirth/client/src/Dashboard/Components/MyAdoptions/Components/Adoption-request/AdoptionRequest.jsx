@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MessageBoard from "../MessageBoard/MessageBoard";
 import Menu from '../../../../../Assets/Messageboard/menu.svg'
 import LateralBar from "./LateralBar";
 import './AdoptionRequest.css'
 import AcceptReject from "../Accept-Reject/Accept-Reject";
+import { useDispatch, useSelector } from "react-redux";
+import { getChat, getMessage } from "../../../../../Redux/Actions";
 
 export default function AdoptionRequest() {
+
+ 
     function SideBar(){
     let Sidebar=document.getElementById("sidebar")
     Sidebar.classList.toggle("hidden-sidebar")

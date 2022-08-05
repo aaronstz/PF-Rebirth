@@ -1,10 +1,10 @@
 const { Router } = require("express");
-const bcrypt = require('bcrypt');
 const { updateUser } = require("../tools/userUpdate");
 const router = Router();
 const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
+
 
 router.put("/addFavs/:mail", async(req, res) =>{
   const {mail}= req.params
@@ -25,6 +25,7 @@ router.put("/addFavs/:mail", async(req, res) =>{
     console.log(error)
   }
 })
+
 router.put("/deleteFavs/:mail", async(req, res) =>{
   const {mail}= req.params
   const {id} = req.body
@@ -45,9 +46,7 @@ router.put("/deleteFavs/:mail", async(req, res) =>{
   }
 })
 
-
 router.put("/:mail", updateUser);
-
 
 router.patch("/:mail", async (req, res, next) => {
   const { mail } = req.params;
@@ -84,8 +83,6 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
 
-  let {body} = req;
-  
   try {
     let userInformation = await getUserInfo(req);
     await User.create(userInformation);
@@ -146,9 +143,6 @@ router.get("/favs/:mail", async (req, res) =>{
     res.status(404).send(error.message)
   }
 })
-
-
-
 
 
 module.exports = router;
