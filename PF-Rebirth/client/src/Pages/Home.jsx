@@ -21,6 +21,7 @@ import {getLocation,
   getPetNames,
   orderByAge,
   getFavs,
+  currPag,
 } from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -33,6 +34,8 @@ function Home() {
   const pets = useSelector((store) => store.filteredPets);
   // const loading = useSelector(store => store.loading)
 
+
+  
   //Paginado//
   const [refresh] = useState(1);
   // const [page, setPage] = useState(1);
@@ -46,13 +49,25 @@ function Home() {
   //   setPage(pageNum);
   // };
 
-  // logica de la paginacion, filtro por pagina y loading
-  const [currentPage, setCurrentPage] = useState(1); //lo seteo en 1 porque siempre arranco por la primer pagina
+ 
+  const currentPage = useSelector((state) => state.currentPagination)      
+ 
   const petsPerPage = 6; //cantidad de pets que debe haber por pagina
   const indexOfLastPet = currentPage * petsPerPage; // 1 * 6 = 6
   const indexOfFirstPet = indexOfLastPet - petsPerPage; // 6 - 6 = 0
   const currentPet = pets.slice(indexOfFirstPet, indexOfLastPet); //para dividir la cantidad de pets por pagina
-  const pagination = (pageNumber) => setCurrentPage(pageNumber);
+  // const pagination = (pageNumber) => setCurrentPage(pageNumber);
+  
+  if(!currentPage){
+    dispatch(currPag(1))
+  }
+  console.log('currentPage :>> ', currentPage);
+
+
+  const pagination = (pageNumber) => {
+    dispatch(currPag(pageNumber));
+  }
+  
 
   let user = null;
   if(localStorage.user){
@@ -82,26 +97,30 @@ function Home() {
   function handleFilterBySex(e) {
     dispatch(filterBySex(e));
     dispatch(fullFilterSex(e));
-    setCurrentPage(1);
+    // setCurrentPage(1);
   }
   function handleFilterBySize(e) {
     dispatch(filterBySize(e));
     dispatch(fullFilterSize(e));
-    setCurrentPage(1);
+
+    // setCurrentPage(1);
   }
   function handleFilterByLocation(e) {
     dispatch(filterByLocation(e));
     dispatch(fullFilterLocation(e));
-    setCurrentPage(1);
+  
+    // setCurrentPage(1);
   }
   function handleOrderByAge(e) {
     dispatch(orderByAge(e));
     dispatch(fullFilterAge(e));
-    setCurrentPage(1);
+   
+    // setCurrentPage(1);
   }
   function handleSearchName(search) {
     dispatch(getPetNames(petType, search));
-    setCurrentPage(1);
+  
+    // setCurrentPage(1);
     
   }
 
@@ -109,7 +128,7 @@ function Home() {
     <div>
       <Navbar />
       <Container>
-        <Header type={petType} setPage ={setCurrentPage}/>
+        <Header type={petType} pagination={pagination} />
         <FiltersBar
           handleFilterBySex={handleFilterBySex}
           handleFilterBySize={handleFilterBySize}

@@ -6,13 +6,14 @@ import headerDogTeam from '../../Assets/Header-images/btonDog.png';
 import headerImageDonation from "../../Assets/Header-images/btnDonate.png";
 import "./Header.css";
 
-function Header({type, setPage, clear}) {
+function Header({type, pagination, clear}) {
 
   const user = window.localStorage.getItem("user");
   
   function handleSubmit(e){
     e.preventDefault();
-    setPage(1)
+    pagination(1)
+    // setPage(1)
   }
 
   return (

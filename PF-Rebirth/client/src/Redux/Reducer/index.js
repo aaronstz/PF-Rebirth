@@ -24,13 +24,14 @@ import {
   GET_CHAT,
   POST_MESSAGE,
   SAVE_ADOPTION_ID,
-  LOGOUT_USER
+  LOGOUT_USER,
   FAVORITES,
   DELETE_FAVORITES,
   GET_FAVORITES,
   GET_ALL_PETS,
   UPDATE_PROFILE,
-  RESET_DETAILS
+  RESET_DETAILS,
+  CURRENT_PAG
 
 } from "../Actions/actionTypes";
 
@@ -49,11 +50,11 @@ const initialState = {
   location:[],
   message:[],
   adoptionChat:[],
-  adoptionId:""
+  adoptionId:"",
   favorite: [],
   allPets : [],
   profileView:{},
-
+  currentPagination: 0
 };
 
 function rootReducer(state = initialState, action) {
@@ -381,6 +382,11 @@ function rootReducer(state = initialState, action) {
           return{
             ...state,
             favorite: action.payload
+        }
+        case CURRENT_PAG:
+          return{
+            ...state,
+            currentPagination : action.payload
           }
 
     default:

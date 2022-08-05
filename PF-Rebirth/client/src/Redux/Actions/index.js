@@ -18,7 +18,8 @@ import {
   FAVORITES,
   DELETE_FAVORITES,
   GET_FAVORITES,
-  GET_ALL_PETS
+  GET_ALL_PETS,
+  CURRENT_PAG,
 
 } from "./actionTypes";
 
@@ -475,6 +476,12 @@ export function getAllPets() {
       const { status } = response;
       if(status === 404) swal("Oops!", "No pets found", "error")
     }
+  };
+}
+export function currPag(payload) {
+  return {
+    type: CURRENT_PAG,
+    payload,
   };
 }
 
