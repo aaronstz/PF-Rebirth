@@ -37,3 +37,5 @@ export const GET_ALL_PETS = "GET_ALL_PETS";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const RESET_DETAIL= 'RESET_DETAIL';
 
+export const RESET_PETS = 'RESET_PETS';
+

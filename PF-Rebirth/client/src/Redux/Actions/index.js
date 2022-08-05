@@ -275,6 +275,12 @@ export function getPets() {
   };
 }
 
+export function resetPets(){
+  return{
+    type:'RESET_PETS'
+  }
+}
+
 export function getPetFilters(type) {
   type = type || "";
   return async function (dispatch) {

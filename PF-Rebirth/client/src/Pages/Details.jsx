@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams, NavLink } from "react-router-dom";
 import { addFavs, deleteFavs, getDetails, resetDetails, getUserId, postMercadoPago } from "../Redux/Actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
@@ -18,7 +18,13 @@ function Details() {
   const [ favFilters , setFavFilters] = useState([])
   const favoritos = useSelector(state => state.favorite)
   let favFilter = favoritos.length > 0 ? favoritos.filter((f) => f == id) : null
+
+
+  const pets = useSelector((store) => store.pets);
+
+  const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
   console.log('id :>> ', id);
+
   
   useEffect(() => {
    setFavFilters(favFilter)
@@ -42,6 +48,7 @@ function Details() {
     if(user) {dispatch(getUserId(mail))};
   }, [dispatch, id]);
 
+
   
   function handleFavorite(){
     {dispatch(addFavs(mail, id))}
@@ -54,10 +61,12 @@ function Details() {
     <div>
       <Navbar />
       <Container>
-        <Header/>
         <br />
         <div className="dtl-card">
           <div className="dtl-cardLeft">
+            <button>
+            <Link to={"/home?type=" + types[0]} className="link-navbar"/>
+            </button>
             <h3 className="title">{name}</h3>
             <h4 className="breed">{race}</h4>
             <h5 className="age">{age}&nbsp;years</h5>
