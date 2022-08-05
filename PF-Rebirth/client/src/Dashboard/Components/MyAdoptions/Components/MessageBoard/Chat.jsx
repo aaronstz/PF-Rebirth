@@ -26,8 +26,7 @@ export default function Chat({ allMessages }) {
     finalScroll.scrollTop = finalScroll.scrollHeight;
   }, 200);
   function handleClick() {
-    console.log(mail);
-    inputChat.length > 0 &&
+        inputChat.length > 0 &&
       dispatch(
         postMessage({
           userMail: mail,

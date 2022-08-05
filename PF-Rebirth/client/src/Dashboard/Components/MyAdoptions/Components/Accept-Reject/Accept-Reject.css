@@ -68,7 +68,8 @@
   transition: all 0.3s;
   display: block;
   border-radius: 20px;
-  width: 400px;
+  width: 300px;
+  height:300px;
   justify-self: center;
 }
 
@@ -140,6 +141,11 @@
 .MAdoCancbutton:active {
   background: var(--greylight);
   border: 1px solid var(--border);
+}
+
+.avatar-adopter{
+  height: 100px;
+  width: 100px;
 }
 
 @media screen and (max-width: 1000px){

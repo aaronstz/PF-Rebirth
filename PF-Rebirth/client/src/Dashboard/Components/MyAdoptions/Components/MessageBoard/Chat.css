@@ -8,8 +8,7 @@
 }
 
 .chat-right, .chat-left{
-    display: flex;
-    flex-wrap: wrap;
+    word-wrap: break-word;
     max-width: 70%;   
     padding: 15px;
     margin:10px;
