@@ -19,6 +19,9 @@ function FiltersBar({
   //const dispatch = useDispatch();
   let [searchName, setSearchName] = useState("");
   let locations = useSelector((state) => state.location);
+  function handleEnter(searchName){
+    handleSearchName(searchName);
+    setSearchName("")}
    
   /* useEffect(() => {
     dispatch(getLocation());
@@ -62,6 +65,7 @@ function FiltersBar({
             aria-label="Search by name"
             aria-describedby="basic-addon2"
             onChange={(e) => setSearchName(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleEnter(searchName)}
             value={searchName}
           />
           <Button

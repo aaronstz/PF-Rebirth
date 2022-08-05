@@ -24,7 +24,7 @@ import {
   GET_CHAT,
   POST_MESSAGE,
   SAVE_ADOPTION_ID,
-  LOGOUT_USER
+  LOGOUT_USER,
   FAVORITES,
   DELETE_FAVORITES,
   GET_FAVORITES,
@@ -49,7 +49,7 @@ const initialState = {
   location:[],
   message:[],
   adoptionChat:[],
-  adoptionId:""
+  adoptionId:"",
   favorite: [],
   allPets : [],
   profileView:{},
