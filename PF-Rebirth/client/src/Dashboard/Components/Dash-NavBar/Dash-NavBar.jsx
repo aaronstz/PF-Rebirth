@@ -14,6 +14,10 @@ const DashNavBar = () => {
         <NavLink to={"/home"} className="Dashlink-navbar">
           <img src={logo} alt="logo" className="Dashlogo" />
         </NavLink>
+            <NavLink to={"/login"} className="Dashlink-navbar">
+              <img src={vector3} alt="vector3" className="Dashicons" />
+              <span>USERS</span>
+            </NavLink>
         <div className="DashiconsContainer">
           <div className="Dashitem">
             <NavLink to={"/login"} className="Dashlink-navbar">

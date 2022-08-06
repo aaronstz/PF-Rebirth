@@ -71,6 +71,12 @@ function Navbar() {
         <img src={logo} alt="logo" className="logo" />
       </NavLink>
       </button>
+          <NavLink
+            to={data !== null ? "/users" : "/login"}
+            className="link-navbar"
+          >
+            <span>Users</span>
+          </NavLink>
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />

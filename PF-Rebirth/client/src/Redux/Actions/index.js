@@ -18,7 +18,8 @@ import {
   FAVORITES,
   DELETE_FAVORITES,
   GET_FAVORITES,
-  GET_ALL_PETS
+  GET_ALL_PETS,
+  DELETE_USER,
 
 } from "./actionTypes";
 
@@ -167,6 +168,38 @@ export function getUsers() {
   };
 }
 
+export function updateUser(email, payload) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.put(`${SERVER}/user/${email}`, payload);
+      localStorage.setItem('user',JSON.stringify(json.data))
+      if (json.status === 200) swal("OK", "User info updated", "success");
+      
+      return dispatch({
+        type:'UPDATE_PROFILE',
+        payload:json.data
+      })
+    } catch (error) {
+      swal("Error", "Username already in use", "error")
+    }
+  }
+}
+
+export function deleteUser(mail) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.delete(`${SERVER}/user/${mail}`);
+      return dispatch({
+        type: DELETE_USER,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("Could not delete user");
+    }
+  };
+}
+
 export function postMercadoPago(donacion){
   return async function(dispatch){
       try {
@@ -228,37 +261,7 @@ export function postUser(payload) {
 //   };
 // }
 
-export function updateUser(email, payload) {
-  return async function (dispatch) {
-    try {
-      const json = await axios.put(`${SERVER}/user/${email}`, payload);
-      localStorage.setItem('user',JSON.stringify(json.data))
-      if (json.status === 200) swal("OK", "User info updated", "success");
-      
-      return dispatch({
-        type:'UPDATE_PROFILE',
-        payload:json.data
-      })
-    } catch (error) {
-      swal("Error", "Username already in use", "error")
-    }
-  }
-}
 
-export function deleteUser(id) {
-  return async function dispatch() {
-    try {
-      const json = await axios.delete(`${SERVER}/user/${id}`);
-      return dispatch({
-        type: "DELETE_USER",
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-      alert("Could not delete user");
-    }
-  };
-}
 
 export function getPets() {
   return async function (dispatch) {

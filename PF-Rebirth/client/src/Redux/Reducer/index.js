@@ -31,6 +31,7 @@ import {
   UPDATE_PROFILE,
   RESET_DETAILS,
   RESET_PETS,
+  DELETE_USER,
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -52,6 +53,7 @@ const initialState = {
   favorite: [],
   allPets: [],
   profileView: {},
+  userDeleted: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -142,6 +144,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         user: action.payload,
       };
+    case DELETE_USER:
+      return {
+        ...state,
+        userDeleted: action.payload
+      };
+
     case GET_DETAILS:
       return {
         ...state,
