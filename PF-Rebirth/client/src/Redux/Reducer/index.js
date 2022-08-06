@@ -31,6 +31,7 @@ import {
   UPDATE_PROFILE,
   RESET_DETAILS,
   RESET_PETS,
+  DELETE_ADOPTION,
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -60,6 +61,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         allPets: action.payload,
+      };
+    case DELETE_ADOPTION:
+      return {
+        ...state,
       };
     case LOGIN_USER:
       return {
