@@ -33,7 +33,7 @@ export default function Chat({ allMessages }) {
           adoptionId: adoptionId,
         })
       );
-    setTimeout(() => dispatch(getMessage(adoptionId)), 100);
+    setTimeout(() => dispatch(getMessage(adoptionId)), 300);
     setInputChat("");
     let finalScroll = document.getElementById("scroll");
     finalScroll.scrollTop = finalScroll.scrollHeight;

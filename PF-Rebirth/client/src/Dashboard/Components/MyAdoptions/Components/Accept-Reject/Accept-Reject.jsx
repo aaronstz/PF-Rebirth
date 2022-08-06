@@ -3,6 +3,7 @@ import "./Accept-Reject.css";
 import { useDispatch, useSelector } from "react-redux";
 import image from "../../../../../Assets/fotoPet1.png";
 import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
+import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 
 const AcceptReject = () => {
   const adoptChat = useSelector((state) => state.adoptionChat);
@@ -55,7 +56,10 @@ const AcceptReject = () => {
                 <div className="btnRowAdopt">
                   <button
                     class="MAdoCancbutton"
-                    onClick={() => handleClick(datos.id)}
+                    onClick={() =>
+                      SwalertCancel(datos.pet.name, handleClick, datos.id)
+                    }
+                    // onClick={() => handleClick(datos.id)}
                   >
                     <span>Reject</span>
                   </button>
@@ -94,7 +98,10 @@ const AcceptReject = () => {
                   <div>
                     <button
                       class="MAdoCanbutton"
-                      onClick={() => handleClick(datos.id)}
+                      onClick={() =>
+                        SwalertCancel(datos.pet.name, handleClick, datos.id)
+                      }
+                      // onClick={() => handleClick(datos.id)}
                     >
                       <span>Cancel Adoption</span>
                     </button>
