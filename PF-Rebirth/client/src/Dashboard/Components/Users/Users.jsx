@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
-
 import DashNavBar from "../Dash-NavBar/Dash-NavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, getUsers } from "../../../Redux/Actions/index.js";
-import swal from "sweetalert";
 import UserDetail from "../../../Components/UserDetail/UserDetail";
-import { useLocation, useNavigate } from "react-router-dom";
 
 export default function DashUsers() {
     
