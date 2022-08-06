@@ -48,7 +48,7 @@ router.put("/deleteFavs/:mail", async(req, res) =>{
 
 router.put("/:mail", updateUser);
 
-router.patch("/:mail", async (req, res, next) => {
+router.patch("/restore/:mail", async (req, res, next) => {
   const { mail } = req.params;
   await User.restore({
     where: { mail: mail },
@@ -106,7 +106,7 @@ router.delete("/:mail", async (req, res, next) => {
         .send(`No se encuentra el usuario con el mail ${req.params.mail}😒`);
     } else {
       await User.destroy({ where: { mail: mail } });
-      res.status(200).send(`se elimino el usuario `);
+      res.status(200).send(mail);
     }
   } catch (error) {
     next(error);
