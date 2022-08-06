@@ -19,6 +19,8 @@ import {
   DELETE_FAVORITES,
   GET_FAVORITES,
   GET_ALL_PETS,
+  POST_SUPPORT_FORM,
+
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
@@ -493,3 +495,15 @@ export function getAllPets() {
     }
   };
 }
+
+
+export function postSupportForm(payload){
+ return async (dispatch)=>{try {
+  const json = await axios.post(`${SERVER}/nodeMailer`, payload)
+  if(json.status === 200)swal("OK", "Mail sent successfully", "success")
+ } catch (error) {
+  console.log(`Error enviando correo ${error}`)
+  swal("Oops!", "Error sending the mail", "error")
+ }}
+}
+

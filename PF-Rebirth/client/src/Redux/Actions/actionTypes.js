@@ -35,6 +35,11 @@ export const DELETE_FAVORITES = "DELETE_FAVORITES";
 export const GET_FAVORITES = "GET_FAVORITES";
 export const GET_ALL_PETS = "GET_ALL_PETS";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
-export const RESET_DETAIL = "RESET_DETAIL";
+
+export const RESET_DETAIL= 'RESET_DETAIL';
+export const POST_SUPPORT_FORM = "POST_SUPPORT_FORM";
+
+export const RESET_PETS = 'RESET_PETS';
+
 export const DELETE_ADOPTION = "DELETE_ADOPTION";
-export const RESET_PETS = "RESET_PETS";
+
