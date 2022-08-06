@@ -487,7 +487,7 @@ export function getAllPets() {
 export function postSupportForm(payload){
  return async (dispatch)=>{try {
   const json = await axios.post(`${SERVER}/nodeMailer`, payload)
-  if(json.status === 200)swal("OK", "User info updated", "success")
+  if(json.status === 200)swal("OK", "Mail sent successfully", "success")
  } catch (error) {
   console.log(`Error enviando correo ${error}`)
   swal("Oops!", "Error sending the mail", "error")
