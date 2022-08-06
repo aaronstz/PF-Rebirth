@@ -38,8 +38,8 @@ export default function LateralBar() {
                   className="avatar-lateral-bar"
                   src={
                     adChat.adopter.mail === mail
-                      ? adChat.adopter.image
-                      : adChat.owner.image
+                      ? adChat.owner.image
+                      : adChat.adopter.image
                   }
                   alt=""
                 />

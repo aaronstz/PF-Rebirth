@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Accept-Reject.css";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import image from "../../../../../Assets/fotoPet1.png";
-import { useSelector } from "react-redux";
+import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
+
 const AcceptReject = () => {
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
@@ -11,7 +11,12 @@ const AcceptReject = () => {
   const user = JSON.parse(infoStorage);
   const mail = user.mail;
 
-  console.log();
+  function handleClick(adoptionId) {
+    dispatch(deleteAdoption(adoptionId));
+    setTimeout(() => dispatch(getChat(mail)), 200);
+  }
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -48,7 +53,10 @@ const AcceptReject = () => {
                   </div>
                 </div>
                 <div className="btnRowAdopt">
-                  <button class="MAdoCancbutton">
+                  <button
+                    class="MAdoCancbutton"
+                    onClick={() => handleClick(datos.id)}
+                  >
                     <span>Reject</span>
                   </button>
                   <button class="MAdoptbutton">
@@ -66,7 +74,7 @@ const AcceptReject = () => {
                       <img src={datos.pet.image} alt="Pet" class="img" />
                     </div>
                   </div>
-                  <div>
+                  <div className="datos">
                     <span>Name: {datos.pet.name}</span>
                     <br />
                     <span>Race: {datos.pet.race}</span>
@@ -79,16 +87,18 @@ const AcceptReject = () => {
                     <br />
                     <span>Size: {datos.pet.size}</span>
                     <br />
+                  </div>
+                  <div className="description">
                     <span>Description: {datos.pet.description}</span>
                   </div>
-                </div>
-                <div className="btnRowAdopt">
-                  <button class="MAdoCancbutton">
-                    <span>Reject</span>
-                  </button>
-                  <button class="MAdoptbutton">
-                    <span>Accept</span>
-                  </button>
+                  <div>
+                    <button
+                      class="MAdoCanbutton"
+                      onClick={() => handleClick(datos.id)}
+                    >
+                      <span>Cancel Adoption</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             );

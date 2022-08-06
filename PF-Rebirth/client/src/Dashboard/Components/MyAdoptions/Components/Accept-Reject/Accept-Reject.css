@@ -1,72 +1,30 @@
 .mainDashCont {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.AdoptContainer {
+  font-family: "Red Hat Display";
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  width: 100%;
-  min-width: 200px;
-  height: 75%;
+  width: 25rem;
+  height: auto;
+  color: var(--text-color-sec);
+  word-wrap: break-word;
+  text-align: center;
+  background-color: rgb(110, 107, 109);
+  backdrop-filter: blur(1rem);
+  box-shadow: 0px 5px 5px 0px var(--shadow);
+  border-radius: 1.6rem;
+  margin: 10px 1% 10px 1%;
+  transition: ease 0.2s, left 0.2s;
+  border: 1px solid var(--border);
   overflow: hidden;
-  padding: 50px;
 }
-
-.AdoptcardLeftPhoto {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 20%;
-  height: auto;
-}
-
-.AdoptcardLeft {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: medium;
-  width: 50%;
-  height: auto;
-  color: var(--text-color);
-  border-right: 1px solid var(--greylight);
-}
-
-.AdoptcardCenter {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: medium;
-  width: 20%;
-  height: auto;
-  padding-right: 2%;
-  color: var(--text-color);
-  border-right: 1px solid var(--greylight);
-}
-
-.AdoptcardRight {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: medium;
-  width: 30%;
-  height: auto;
-  padding-left: 2%;
-  padding-right: 2%;
-  color: var(--text-color);
-}
-
-.imgFav img {
-  transition: all 0.3s;
-  display: block;
-  border-radius: 20px;
-  width: 300px;
+.mainDashCont img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 300px;
-  justify-self: center;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  object-fit: cover;
 }
 
 .btnRowAdopt {
@@ -122,6 +80,34 @@
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
+}
+.MAdoCanbutton {
+  width: 200px;
+  height: 40px;
+  padding-top: 0px;
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-family: "Mochiy Pop One";
+  background: var(--backgroundBttn2);
+  border: 1px solid var(--border);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.MAdoCanbutton:hover {
+  background: var(--pink);
+  border: 1px solid var(--border);
+}
+
+.MAdoCanbutton:focus {
+  background: var(--greylight);
+  border: 1px solid var(--border);
+}
+
+.MAdoCanbutton:active {
+  background: var(--greylight);
+  border: 1px solid var(--border);
 }
 
 .MAdoCancbutton:hover {
