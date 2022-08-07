@@ -172,7 +172,7 @@ export default function FormRegister() {
               className="formBtnRegister"
               disabled={Object.keys(errores).length === 0 ? false : true}
             >
-              REGISTRARSE
+              REGISTER
             </Button>
           </div>
         </Form>
