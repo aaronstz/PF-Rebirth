@@ -329,7 +329,11 @@ export function getPetNames(type, name) {
 
 export function postPet(payload) {
   return async function (dispatch) {
-    await axios.post(`${SERVER}/pets`, payload);
+    try {
+      await axios.post(`${SERVER}/pets`, payload);
+    } catch (error) {
+      console.log(error)
+    }
   };
 }
 
@@ -507,3 +511,12 @@ export function postSupportForm(payload){
  }}
 }
 
+export function postAdoption(payload){
+  return async(dispatch)=>{try {
+    const json = await axios.post(`${SERVER}/adoption`, payload)
+    if(json.status === 201)await swal("OK", "Adoption request created", "success")
+  } catch (error) {
+    console.log(`Error creando ${error}`)
+    await swal("Oops!", "Error creating the Adoption request", "error")
+  }}
+}
