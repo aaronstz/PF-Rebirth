@@ -1,4 +1,4 @@
-.mainDashCont {
+.mainDashContACC {
   font-family: "Red Hat Display";
   display: flex;
   flex-direction: column;
@@ -16,7 +16,8 @@
   border: 1px solid var(--border);
   overflow: hidden;
 }
-.mainDashCont img {
+
+.mainDashContACC img {
   position: relative;
   top: 0;
   left: 0;
@@ -81,6 +82,7 @@
   cursor: pointer;
   text-decoration: none;
 }
+
 .MAdoCanbutton {
   width: 200px;
   height: 40px;
@@ -95,6 +97,7 @@
   cursor: pointer;
   text-decoration: none;
 }
+
 .MAdoCanbutton:hover {
   background: var(--pink);
   border: 1px solid var(--border);
@@ -142,6 +145,7 @@
     overflow: hidden;
     padding: 50px;
   }
+
   .btnRowAdopt {
     padding-top: 50px;
     display: flex;
@@ -151,4 +155,6 @@
     margin: auto;
     padding-right: 25px;
   }
-} ;
+}
+
+;

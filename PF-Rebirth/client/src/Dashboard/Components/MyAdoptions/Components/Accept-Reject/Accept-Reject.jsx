@@ -14,7 +14,7 @@ const AcceptReject = () => {
 
   function handleClick(adoptionId) {
     dispatch(deleteAdoption(adoptionId));
-    console.log(adoptionId)
+    console.log(adoptionId);
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
 
@@ -27,7 +27,7 @@ const AcceptReject = () => {
         .map((datos) => {
           if (datos.owner.mail === mail) {
             return (
-              <div className="mainDashCont">
+              <div className="mainDashContACC">
                 <div className="AdoptContainer">
                   <div>
                     <div class="imgFav">
@@ -102,7 +102,7 @@ const AcceptReject = () => {
                       onClick={() =>
                         SwalertCancel(datos.pet.name, handleClick, datos.id)
                       }
-                      >
+                    >
                       <span>Cancel Adoption</span>
                     </button>
                   </div>
