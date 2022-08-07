@@ -520,3 +520,11 @@ export function postAdoption(payload){
     await swal("Oops!", "Error creating the Adoption request", "error")
   }}
 }
+
+export function updatePetsViews(id){
+  return async()=>{try {
+    await axios.patch(`${SERVER}/pets/${id}`)
+  } catch (error) {
+    console.log(error)
+  }}
+}
