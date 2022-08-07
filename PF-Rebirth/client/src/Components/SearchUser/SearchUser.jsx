@@ -1,28 +1,35 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getUserName} from "../../Redux/Actions";
+import { getUserName, getUsers} from "../../Redux/Actions";
 
 export default function SearchUser(){
     const dispatch = useDispatch();
     const [userName, setUserName] = useState("")
 
-    function handleInput(e){
-        e.preventDefault()
-        setUserName(e.target.value)
+    function handleSubmit(){
+        if(userName){
+            dispatch(getUserName(userName))
+        }else{
+            dispatch(getUsers())
+        }
+        setUserName("")
     }
 
-    function handleSubmit(e){
-        e.preventDefault();
-        dispatch(getUserName(userName))
-            setUserName("")
-    }
+    function handleEnter(userName){
+        handleSubmit(userName);
+        setUserName("")}
 
 
 
     return(
         <div>
-            <input type="text" value={userName} placeholder="search user..." name="UserName" onChange={e => handleInput(e)}/>
-            <button type="submit" onClick={e => handleSubmit(e)}>Search</button>
+            <input type="text" value={userName}
+                placeholder="search user..." 
+                name="UserName" 
+                onChange={e => setUserName(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleEnter(userName)}     />
+            <button type="submit" onClick={handleSubmit} >Search</button>
+            <button type="submit" onClick={handleSubmit} >All Users</button>
         </div>
     )
 }
