@@ -54,8 +54,7 @@ export default function Chat({ allMessages }) {
                 <div className="chat-right">{messa.message}</div>
               ) : (
                 <div className="chat-left-container">
-                  {" "}
-                  <div className="chat-new">{newMsg}</div>{" "}
+                  <div className="chat-new">{newMsg}</div>
                   <div className="chat-left">{messa.message}</div>
                 </div>
               );
