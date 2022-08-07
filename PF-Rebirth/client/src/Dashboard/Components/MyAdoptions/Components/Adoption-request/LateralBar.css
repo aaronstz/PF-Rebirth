@@ -47,7 +47,7 @@ margin: 0px;
 
 }
 .container-lateral-bar:hover{
-    background-color:var(--greylight);   
+    background-color:#dfdfdf;   
 }
 .name-adoption-text-lb{
     height: 80px;

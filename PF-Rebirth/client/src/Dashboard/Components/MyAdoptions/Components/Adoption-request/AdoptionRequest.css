@@ -37,7 +37,7 @@ left:-400px;
     padding: 0px;
     margin: 0px;
 }
-@media screen and (max-width:1000px){
+@media screen and (max-width:1200px){
 .message-accept-reject{
     flex-direction: column;
     justify-content: flex-start;

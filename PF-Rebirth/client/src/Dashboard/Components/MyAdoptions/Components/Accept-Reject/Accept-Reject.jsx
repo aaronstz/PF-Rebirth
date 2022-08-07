@@ -96,7 +96,7 @@ const AcceptReject = () => {
                   <div className="description">
                     <span>Description: {datos.pet.description}</span>
                   </div>
-                  <div>
+                  <div className="btnRowAdopt">
                     <button
                       class="MAdoCanbutton"
                       onClick={() =>
