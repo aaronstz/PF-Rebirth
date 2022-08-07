@@ -122,7 +122,7 @@ function Home() {
             currentPet.map((p, i) => {
               return (
                 <Cards
-                  key={Math.random()}
+                  key={p.id}
                   image={p.image}
                   name={p.name}
                   breed={p.race}
@@ -133,6 +133,7 @@ function Home() {
                   id={p.id}
                   location={p.location}
                   userMail={p.userMail}
+                  views = {p.views}
                 />
               );
             })}

@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { Pets } = require("../db");
 const router = Router();
+const {Op} = require("sequelize")
 
 router.get("/location", async (req, res, next) => {
   try {
@@ -39,11 +40,22 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.patch("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const petId = await Pets.findByPk(id);
+    await petId.update({views:petId.views + 1})
+    res.status(200).send('ok')
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/", async (req, res, next) => {
   try {
   const { type } = req.query;
   const { name } = req.query;
-  const allPets = await Pets.findAll();
+  const allPets = await Pets.findAll({order:[["createdAt", "ASC"]]});
   let result = allPets; 
   if (type) {
     result = await allPets.filter((p) =>
