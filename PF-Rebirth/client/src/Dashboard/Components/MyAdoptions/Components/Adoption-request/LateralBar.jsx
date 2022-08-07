@@ -34,20 +34,25 @@ export default function LateralBar() {
           >
             <div>
               <div className="avatar-pet-lateral-bar">
-                <img
-                  className="avatar-lateral-bar"
+                <div className="avatar-lateral-bar"><img
+                  
                   src={
                     adChat.adopter.mail === mail
                       ? adChat.owner.image
                       : adChat.adopter.image
                   }
                   alt=""
+                
                 />
-                <img
-                  className="pet-lateral-bar"
+                </div>
+                <div className="pet-lateral-bar">
+                  <img
+                  
                   src={adChat.pet.image}
                   alt=""
                 />
+                </div>
+                
               </div>
             </div>
             <div className="name-adoption-text-lb">
@@ -59,8 +64,7 @@ export default function LateralBar() {
                   : adChat.adopter.name}
               </div>
               <div className="adoption-lateral-bar">
-                {" "}
-                Adoption
+                {adChat.id}
                 <br />
               </div>
             </div>
