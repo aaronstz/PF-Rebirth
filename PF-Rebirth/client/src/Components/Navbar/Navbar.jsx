@@ -35,6 +35,7 @@ function Navbar() {
   let imageUrl = data ? data.image : null;
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
+  console.log('data :>> ', data);
 
   const logOut = async (e) => {
     e.preventDefault();
@@ -71,12 +72,7 @@ function Navbar() {
         <img src={logo} alt="logo" className="logo" />
       </NavLink>
       </button>
-          <NavLink
-            to={data !== null ? "/users" : "/login"}
-            className="link-navbar"
-          >
-            <span>Users</span>
-          </NavLink>
+          
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
@@ -88,13 +84,23 @@ function Navbar() {
           </NavLink>
         </div>
         <div className="item">
+          { data && (data.isAdmin === true) ?
+          <NavLink
+          to={data !== null ? "/users" : "/login"}
+          className="link-navbar"
+        >
+          <span>Users</span>
+        </NavLink> :
+          <div>
           <img src={vector2} alt="vector2" className="icons" />
           <NavLink
-            to={data !== null ? "/favorites" : "/login"}
-            className="link-navbar"
+          to={data !== null ? "/favorites" : "/login"}
+          className="link-navbar"
           >
             <span>My favorites</span>
           </NavLink>
+          </div>
+          }
         </div>
         <div className="item">
           <DarkMode />

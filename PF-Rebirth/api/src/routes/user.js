@@ -64,11 +64,19 @@ router.put("/deleteFavs/:mail", async(req, res) =>{
 router.put("/:mail", updateUser);
 
 router.patch("/restore/:mail", async (req, res, next) => {
-  const { mail } = req.params;
-  await User.restore({
-    where: { mail: mail },
-  });
-  res.send("User Restored");
+  try {
+    const { mail } = req.params;
+    if(mail){
+      await User.restore({
+        where: { mail: mail },
+      });
+      res.send("User Restored");
+    }else {
+      res.status(404).send("Not found")
+    }
+  } catch (error) {
+    next(error)
+  }
 });
 
 router.get("/:mail", async (req, res, next) => {
@@ -86,13 +94,22 @@ router.get("/:mail", async (req, res, next) => {
 });
 
 router.get("/", async (req, res, next) => {
-  const allUsers = await User.findAll();
   try {
-    allUsers.length
+    const {userName} = req.query
+    const allUsers = await User.findAll()
+    if(userName){
+      const result = await allUsers.filter((u) =>
+      u.userName.toLowerCase().includes(userName.toLowerCase()))
+      result.length?
+        res.status(200).send(result) :
+        res.status(404).send("not found")
+    }else{  
+      allUsers.length
       ? res.status(200).send(allUsers)
       : res.status(400).send("No se encuentra ningun usuario");
-  } catch (error) {
-    next(error);
+    }
+    } catch (error) {
+      next(error);
   }
 });
 

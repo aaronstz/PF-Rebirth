@@ -19,7 +19,6 @@ function Cards({image,name,breed,age,gender,size,description,id,location, userMa
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
-  console.log('user', user)
   if(user){
     var mail = user.mail? user.mail : user.email
   }

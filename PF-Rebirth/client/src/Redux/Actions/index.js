@@ -22,7 +22,8 @@ import {
   DELETE_USER,
   DELETE_PET,
   USERS_BANNED,
-  USER_RESTORE
+  USER_RESTORE,
+  GET_USERNAME
 } from "./actionTypes";
 
 
@@ -166,6 +167,21 @@ export function getUsers() {
     } catch ({response}) {
       const { status } = response;
       if(status === 404) swal("Oops!", "No users found", "error")
+    }
+  };
+}
+
+export function getUserName(userName) {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/user?userName=${userName}`);
+      return dispatch({
+        type: GET_USERNAME,
+        payload: json.data,
+      });
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No user found", "error")
     }
   };
 }

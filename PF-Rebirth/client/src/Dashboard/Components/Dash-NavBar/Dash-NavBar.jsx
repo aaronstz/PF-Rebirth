@@ -17,19 +17,19 @@ const DashNavBar = () => {
             <NavLink to={"/login"} className="Dashlink-navbar">
               <img src={vector3} alt="vector3" className="Dashicons" />
               <span>USERS</span>
-            </NavLink>
+            </NavLink> 
         <div className="DashiconsContainer">
           <div className="Dashitem">
-            <NavLink to={"/login"} className="Dashlink-navbar">
-              <img src={vector3} alt="vector3" className="Dashicons" />
-              <span>New Pet</span>
-            </NavLink>
+              <NavLink to={"/login"} className="Dashlink-navbar">
+                <img src={vector3} alt="vector3" className="Dashicons" />
+                <span>New Pet</span>
+              </NavLink>
           </div>
           <div className="Dashitem">
             <NavLink to={"/login"} className="Dashlink-navbar">
               <img src={vector2} alt="vector2" className="Dashicons" />
               <span>My favorites</span>
-            </NavLink>
+            </NavLink> 
           </div>
           <div className="Dashitem">
             <DarkMode />

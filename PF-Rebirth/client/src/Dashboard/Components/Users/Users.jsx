@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, getUsers } from "../../../Redux/Actions/index.js";
 import UserDetail from "../../../Components/UserDetail/UserDetail";
 import { Link } from "react-router-dom";
+import SearchUser from "../../../Components/SearchUser/SearchUser";
 
 export default function DashUsers() {
     
@@ -28,6 +29,7 @@ export default function DashUsers() {
          <>
             <div className="conTituloU infoU">
                 <h3>USERS</h3>
+                <SearchUser/>
                 <>
                 <Link to={"/users/banned"} >
                 <button>go banned</button>

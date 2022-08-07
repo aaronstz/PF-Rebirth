@@ -19,8 +19,6 @@ export default function DashFavorites() {
   });
   const mail = user && user.mail ? user.mail : user.email;
 
-console.log('favorites', favorites)
-
   useEffect(() => {
     dispatch(getAllPets());
     dispatch(getFavs(user.mail || user.email));
