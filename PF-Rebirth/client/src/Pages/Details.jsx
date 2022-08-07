@@ -36,6 +36,10 @@ function Details() {
     setFavFilters(favFilter);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     name,
     image,
