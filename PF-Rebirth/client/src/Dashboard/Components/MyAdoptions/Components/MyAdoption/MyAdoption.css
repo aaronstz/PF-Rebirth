@@ -3,27 +3,37 @@
   flex-wrap: wrap;
 }
 
-.conTitulo {
+.conTituloAdop {
+  position: absolute;
   color: var(--text-color);
-  margin: 2.5rem 0 0rem 0;
+  margin-top: 2.5rem;
   text-align: center;
   width: 100%;
   height: 40px;
-  position: absolute;
 }
 
-.AdoptContainer {
+.AdoptaContainer {
   position: relative;
-  top: 8rem;
+  margin-top: 6rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
   width: 100%;
-  height: 10rem;
+  height: max-content;
   overflow: hidden;
 }
 
-.AdoptcardLeftPhoto {
+.AdoptaRow {
+  position: relative;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 12rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.AdoptacardLeftPhoto {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +41,7 @@
   height: auto;
 }
 
-.AdoptcardLeft {
+.AdoptacardLeft {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +53,7 @@
   border-right: 1px solid var(--greylight);
 }
 
-.AdoptcardCenter {
+.AdoptacardCenter {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,32 +62,32 @@
   width: 20%;
   height: auto;
   padding-right: 2%;
+  padding-left: 2%;
   color: var(--text-color);
   border-right: 1px solid var(--greylight);
 }
 
-.AdoptcardRight {
+.AdoptacardRight {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   font-size: medium;
-  width: 30%;
+  width: 40%;
   height: auto;
   padding-left: 2%;
-  padding-right: 2%;
   color: var(--text-color);
 }
 
-.imgFav img {
+.imgAdopt img {
   transition: all 0.3s;
   display: block;
   border-radius: 20px;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
-.btnRowAdopt {
+.btnRowAdopta {
   position: relative;
   bottom: 12rem;
   display: flex;

@@ -15,7 +15,7 @@
 
 .infoPets {
   opacity: 0;
-  animation: fade-in 1.5s forwards;
+  animation: fade-in 0.5s forwards;
 }
 
 .mainDashCont {
