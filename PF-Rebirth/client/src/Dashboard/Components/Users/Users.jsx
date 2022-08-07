@@ -3,11 +3,13 @@ import DashNavBar from "../Dash-NavBar/Dash-NavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, getUsers } from "../../../Redux/Actions/index.js";
 import UserDetail from "../../../Components/UserDetail/UserDetail";
+import { Link } from "react-router-dom";
 
 export default function DashUsers() {
     
   const dispatch = useDispatch()
-  const users = useSelector(s => s.user)
+  const allUsers = useSelector(s => s.user)
+  const users = allUsers.filter(e => e.isAdmin === false)
 
     useEffect(() => {
         dispatch(getUsers())
@@ -26,9 +28,14 @@ export default function DashUsers() {
          <>
             <div className="conTituloU infoU">
                 <h3>USERS</h3>
+                <>
+                <Link to={"/users/banned"} >
+                <button>go banned</button>
+                </Link>
+                </>
             </div>
             <div>
-                {users && users.map((u)=>
+                { users && users.map((u)=>
                     <UserDetail
                         handleDeleteUser={handleDeleteUser}
                         name={u.name}
@@ -36,6 +43,7 @@ export default function DashUsers() {
                         mail={u.mail}
                         image={u.image}
                         userName={u.userName}
+                        isAdmin={u.isAdmin}
                     />
                 )}
             </div>

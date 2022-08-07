@@ -20,7 +20,9 @@ import {
   GET_FAVORITES,
   GET_ALL_PETS,
   DELETE_USER,
-
+  DELETE_PET,
+  USERS_BANNED,
+  USER_RESTORE
 } from "./actionTypes";
 
 
@@ -220,7 +222,7 @@ export function getUserId(id) {
         payload: json.data,
       });
     } catch (error) {
-      swal("Sorry", "No pets found", "error")
+      swal("Sorry", "No user found", "error")
     }
   };
 }
@@ -343,8 +345,9 @@ export function deletePet(id) {
   return async function (dispatch) {
     try {
       const json = await axios.delete(`${SERVER}/pets/${id}`);
+      console.log('json', json)
       return dispatch({
-        type: "DELETE_PET",
+        type: DELETE_PET,
         payload: json.data,
       });
     } catch (error) {
@@ -483,6 +486,34 @@ export function getAllPets() {
     } catch ({response}) {
       const { status } = response;
       if(status === 404) swal("Oops!", "No pets found", "error")
+    }
+  };
+}
+export function getUsersBanned() {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/user/banned`);
+      return dispatch({
+        type: USERS_BANNED,
+        payload: json.data,
+      });
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No users banned", "error")
+    }
+  };
+}
+export function UserRestore(mail) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.patch(`${SERVER}/user/restore/${mail}`);
+      return dispatch({
+        type: USER_RESTORE,
+        payload: json.data,
+      });
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Wow!", "User Restored", "success")
     }
   };
 }

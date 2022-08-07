@@ -4,6 +4,21 @@ const router = Router();
 const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
+const { Op } = require("sequelize")
+
+router.get("/banned" , async (req, res, next) => {
+  try {
+    const users = await User.findAll({ where:{
+      softDelete: {
+        [Op.ne]: null
+        }},
+      paranoid : false
+    })
+    return res.status(200).send(users)
+  } catch (error) {
+    next(error)
+  }
+})
 
 
 router.put("/addFavs/:mail", async(req, res) =>{
@@ -143,6 +158,7 @@ router.get("/favs/:mail", async (req, res) =>{
     res.status(404).send(error.message)
   }
 })
+
 
 
 module.exports = router;

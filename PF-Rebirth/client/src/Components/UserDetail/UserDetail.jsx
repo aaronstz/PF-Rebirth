@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {deleteUser, getUsers} from "../../Redux/Actions/index.js"
 import { useEffect, useState } from "react";
@@ -6,17 +6,26 @@ import "./UserDetail.css"
 
 
 
-function UserDetail({handleDeleteUser ,name, mail, userName, image, lastName}){
+function UserDetail({handleDeleteUser ,name, mail, userName, image, lastName, handleRestoreUser}){
   const dispatch = useDispatch()
-   
+  
 
   return (
     <div className="infoUser">
+
                <div key={Math.random()} className="favContainerU">
-                <div>
-                    <button onClick={handleDeleteUser} id={mail} >x</button>
+
+
+
+                {
+                  (window.location.pathname == "/users/banned") ? 
+                  <div>
+                      <button onClick={handleRestoreUser} id={mail}>restore</button>
+                  </div> :
+                  <div>
+                  <button onClick={handleDeleteUser} id={mail} >x</button>
                   </div>
-                  
+                }    
                 <div className="favcardLeftPhotoU">
                     <div className="imgFavorU">
                       {image && (

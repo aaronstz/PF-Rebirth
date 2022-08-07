@@ -32,6 +32,9 @@ import {
   RESET_DETAILS,
   RESET_PETS,
   DELETE_USER,
+  DELETE_PET,
+  USERS_BANNED,
+  USER_RESTORE
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -53,7 +56,8 @@ const initialState = {
   favorite: [],
   allPets: [],
   profileView: {},
-  userDeleted: []
+  userDeleted: [],
+  userBanned: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -63,10 +67,23 @@ function rootReducer(state = initialState, action) {
         ...state,
         allPets: action.payload,
       };
+    case DELETE_PET:
+      return {
+        ...state
+      };
     case LOGIN_USER:
       return {
         ...state,
         activeUser: action.payload,
+      };
+    case USERS_BANNED:
+      return {
+        ...state,
+        userBanned: action.payload,
+      };
+    case USER_RESTORE:
+      return {
+        ...state
       };
     case LOGOUT_USER:
       localStorage.clear();

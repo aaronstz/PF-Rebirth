@@ -101,7 +101,7 @@ router.delete("/:id", async (req, res, next) => {
       res.status(404).send(`pet not found`);
     } else {
       await Pets.destroy({ where: { id: id } });
-      res.status(200).send("the pet was removed");
+      res.status(200).send(id);
     }
   } catch (error) {
     next(error);

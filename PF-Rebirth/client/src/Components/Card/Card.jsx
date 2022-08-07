@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import female from "../../Assets/female-ico-w.png";
 import male from "../../Assets/male-icon-w.png";
 import { useDispatch, useSelector } from "react-redux";
-import {addFavs, deleteFavs} from "../../Redux/Actions/index.js"
+import {addFavs, deleteFavs, deletePet, getAllPets, getPets} from "../../Redux/Actions/index.js"
 import { useEffect, useState } from "react";
 
 
@@ -19,13 +19,15 @@ function Cards({image,name,breed,age,gender,size,description,id,location, userMa
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
-  
+  console.log('user', user)
   if(user){
     var mail = user.mail? user.mail : user.email
   }
+
+
   useEffect(() => {
    setFavFilters(favFilter)
-  },[] );
+  },[dispatch] );
 
   
 
@@ -35,14 +37,19 @@ function Cards({image,name,breed,age,gender,size,description,id,location, userMa
   
   }
   function handleDeleteFavHome(){
-    dispatch(deleteFavs(mail, id))
-  
+    dispatch(deleteFavs(mail, id))  
+}
+
+function handleDelete(){
+  dispatch(deletePet(id))
+ 
 }
 
   return (
     <div className="lcard">
-      {            
-             user && (mail === userMail) ? null :   
+      {        
+             user && user.isAdmin ==true ? <button className="btnFavEliminarPets" onClick={handleDelete}>x</button> :    
+             user && (mail === userMail)? null :   
              favFilter && favFilter.length !==0 ?
              <> <button className="btnFavEliminarHome" onClick={handleDeleteFavHome}/> </> : 
              <> <button className="btnFavHome" onClick={handleFavoriteHome}/> </> 
