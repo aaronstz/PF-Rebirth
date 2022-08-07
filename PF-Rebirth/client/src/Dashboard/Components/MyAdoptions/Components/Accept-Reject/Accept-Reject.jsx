@@ -14,6 +14,7 @@ const AcceptReject = () => {
 
   function handleClick(adoptionId) {
     dispatch(deleteAdoption(adoptionId));
+    console.log(adoptionId)
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
 
@@ -101,8 +102,7 @@ const AcceptReject = () => {
                       onClick={() =>
                         SwalertCancel(datos.pet.name, handleClick, datos.id)
                       }
-                      // onClick={() => handleClick(datos.id)}
-                    >
+                      >
                       <span>Cancel Adoption</span>
                     </button>
                   </div>

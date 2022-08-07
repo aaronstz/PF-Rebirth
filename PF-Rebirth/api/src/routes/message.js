@@ -33,7 +33,8 @@ router.get("/chats", async (req, res, next) => {
     const allChats = await Adoption.findAll({
       attributes: ["id", "ownerMail", "userMail", "petId","age","gender","address","phone","otherpets","comments"],
       where: {
-        [Op.or]: [{ ownerMail: user }, { userMail: user }],
+        [Op.and]:[{[Op.or]: [{ ownerMail: user }, { userMail: user }]},{isActive:true}]
+        ,
       },
 
       include: [

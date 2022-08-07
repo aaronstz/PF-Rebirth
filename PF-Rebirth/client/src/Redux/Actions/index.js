@@ -265,7 +265,7 @@ export function deleteUser(id) {
 export function deleteAdoption(id) {
   return async function dispatch() {
     try {
-      const json = await axios.delete(`${SERVER}/adoption/delete/${id}`);
+      const json = await axios.patch(`${SERVER}/adoption/${id}`);
       return dispatch({
         type: "DELETE_ADOPTION",
       });
