@@ -80,6 +80,19 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/delete/:id", async (req, res, next) => {
+  const { id } = req.params;
 
+  try {
+    const adoptionDelete = await Adoption.findByPk(id);
+    if (!!adoptionDelete) {
+      await Adoption.destroy({ where: { id: id } });
+      res.status(200).send(`se elimino la adopcion `);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
+
