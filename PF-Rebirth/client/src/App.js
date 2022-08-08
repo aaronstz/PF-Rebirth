@@ -17,6 +17,7 @@ import Profile from "./Dashboard/Components/Profile/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
 import DashFavorites from "./Dashboard/Components/MyFavorites/DashFavorites.jsx";
+
 import DonationsPets from "./Components/Donations/DonationsPets";
 import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
 import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
@@ -39,6 +40,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
+
         <Route path="/create" element={<AddNew />} />
         <Route path="/donations" element={<DonationsPets />} />
         <Route path="/donations/:id" element={<DonationsPets />} />
@@ -49,6 +51,7 @@ function App() {
         <Route path="/users" element={<DashUsers />} />
         <Route path="/users/banned" element={<UsersBanned />} />
         <Route path="/admin" element={<Admins />} />
+
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}
