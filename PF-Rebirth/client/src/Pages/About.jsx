@@ -21,21 +21,15 @@ function About() {
               </div>
               <div className="about-text">
                 <h3>Rebirth is a pet adoption network</h3>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                quod numquam illo beatae? Magni quibusdam iusto dolores quasi
-                soluta nisi similique commodi! Mollitia harum ducimus est libero
-                perferendis facilis explicabo. Lorem, ipsum dolor sit amet
-                consectetur adipisicing elit. Vel nesciunt molestias sed quam
-                repellendus. Vero possimus ipsam quidem ad ratione sint ipsa
-                dignissimos accusantium quo? Nihil harum consectetur eaque
-                tenetur? Lorem ipsum dolor, sit amet consectetur adipisicing
-                elit. Vel voluptate quam amet dolores sint temporibus nisi,
-                excepturi, animi eos repellat hic architecto reprehenderit id
-                accusantium blanditiis? Sunt est aut veritatis. Lorem, ipsum
-                dolor sit amet consectetur adipisicing elit. Vel nesciunt
-                molestias sed quam repellendus. Vero possimus ipsam quidem ad
-                ratione sint ipsa dignissimos accusantium quo? Nihil harum
-                consectetur eaque tenetur?
+                REBIRTH is a company created in 2022 whose mission is to help
+                pets and their owners to facilitate communication between users
+                to find a home for pets looking for one. That is why our
+                objectives are designed to provide pets with the well-being they
+                deserve. At REBIRTH we think of pets as another member of the
+                family and we are 100% committed to promoting respect and care
+                for animals. Rebirth was formed in order to be able to rescue,
+                and then give up for adoption those abandoned or mistreated
+                dogs, cats in all the provinces of Argentina
               </div>
             </div>
           </Col>
