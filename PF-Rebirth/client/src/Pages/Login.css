@@ -78,6 +78,7 @@
 }
 
 .btn.btn-block:hover {
+  border: solid 1px var(--border);
   background-color: var(--pink) !important;
 }
 
