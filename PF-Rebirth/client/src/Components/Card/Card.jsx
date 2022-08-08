@@ -54,7 +54,7 @@ function handleDelete(){
       swal("The post was deleted!", {
         icon: "success",
       });
-      window.history.go()
+      window.history.go() 
     } else {
       swal("Uff! that was close!");
     }
