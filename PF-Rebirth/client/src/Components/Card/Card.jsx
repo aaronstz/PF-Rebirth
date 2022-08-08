@@ -97,10 +97,10 @@ function handleDelete(){
             <span className="icoSize"></span>
             {size}
           </div>
-          <div className="weigth">
+          {/* <div className="weigth">
             <span className="icoWeigth"></span>
             3.4 kg
-          </div>
+          </div> */}
         </div>
         <div className="attributes">{description}</div>
       </div>

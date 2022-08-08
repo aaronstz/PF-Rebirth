@@ -120,10 +120,10 @@ function Details() {
               <span>{size}</span>
               <img src={dogIco} alt="Pet" />
             </div>
-            <div className="txt-description-last">
+            {/* <div className="txt-description-last">
               <span>3.4 kg</span>
               <img src={weight} alt="weight" />
-            </div>
+            </div> */}
                 { user && (user.isAdmin === true)? null :
                  ( mail === userMail) ? null :
               <Link to={user!== null ? `/donations/${id}` : `/login`} >
