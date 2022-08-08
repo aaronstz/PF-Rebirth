@@ -21,8 +21,8 @@ import DashFavorites from "./Dashboard/Components/MyFavorites/DashFavorites.jsx"
 import DonationsPets from "./Components/Donations/DonationsPets";
 import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
 import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
-import DashUsers from "./Dashboard/Components/Users/Users.jsx"
-import UsersBanned from "./Components/UserBanned/UserBanned.jsx"
+import DashUsers from "./Dashboard/Components/Users/Users.jsx";
+import UsersBanned from "./Components/UserBanned/UserBanned.jsx";
 import Admins from "./Components/Admins/Admins";
 
 function App() {
