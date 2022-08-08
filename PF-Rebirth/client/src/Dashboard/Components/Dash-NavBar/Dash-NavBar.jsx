@@ -26,6 +26,7 @@ const DashNavBar = () => {
         <NavLink to={"/home"} className="Dashlink-navbar">
           <img src={logo} alt="logo" className="Dashlogo" />
         </NavLink>
+
         <div className="DashiconsContainer">
         <div className="Dashitem">
             <NavLink to={data !== null ? "/historial" : "/login"} className="Dashlink-navbar">
@@ -41,15 +42,22 @@ const DashNavBar = () => {
           </div>
           <div className="Dashitem">
             <NavLink to={data !== null ? "/create" : "/login"} className="Dashlink-navbar">
+
               <img src={vector3} alt="vector3" className="Dashicons" />
-              <span>New Pet</span>
-            </NavLink>
+              <span>USERS</span>
+            </NavLink> 
+        <div className="DashiconsContainer">
+          <div className="Dashitem">
+              <NavLink to={"/login"} className="Dashlink-navbar">
+                <img src={vector3} alt="vector3" className="Dashicons" />
+                <span>New Pet</span>
+              </NavLink>
           </div>
           <div className="Dashitem">
             <NavLink to={data !== null ? "/favorites" : "/login"} className="Dashlink-navbar">
               <img src={vector2} alt="vector2" className="Dashicons" />
               <span>My favorites</span>
-            </NavLink>
+            </NavLink> 
           </div>
           <div className="Dashitem">
             <DarkMode />

@@ -161,92 +161,85 @@ function AddNew() {
                             {errors && errors.image ? errors.image : null}
                           </div>
                         </div>
+                        <div className="formControlRow">
+                          <div className="addformSm">
+                            <label htmlFor="age">Age*</label>
+                            <input
+                              id="age"
+                              type="number"
+                              className="form-controlSm"
+                              name="age"
+                              value={input.age}
+                              required
+                              min="0"
+                              onChange={(e) => {
+                                handleChange(e);
+                              }}
+                            />
+                            <div className="addinvalid-fb">
+                              {errors && errors.age ? errors.age : null}
+                            </div>
+                          </div>
 
-                        <div className="addform">
-                          <label htmlFor="age">Age*</label>
-                          <input
-                            id="age"
-                            type="number"
-                            className="form-control"
-                            name="age"
-                            value={input.age}
-                            required
-                            min="0"
-                            onChange={(e) => {
-                              handleChange(e);
-                            }}
-                          />
-                          <div className="addinvalid-fb">
-                            {errors && errors.age ? errors.age : null}
+                          <div className="addformSm">
+                            <label htmlFor="exampleFormControlSelect1">
+                              Size*
+                            </label>
+                            <select
+                              name="size"
+                              className="form-controlSm"
+                              id="exampleFormControlSelect1"
+                              value={input.size}
+                              onChange={(e) => handleChange(e)}
+                            >
+                              <option defaultValue>Choose...</option>
+                              <option value="small">Small</option>
+                              <option value="medium">Medium</option>
+                              <option value="big">Big</option>
+                            </select>
+                          </div>
+
+                          <div className="addformSm">
+                            <label htmlFor="exampleFormControlSelect1">
+                              Gender*
+                            </label>
+                            <select
+                              name="gender"
+                              className="form-controlSm"
+                              id="exampleFormControlSelect1"
+                              onChange={(e) => {
+                                handleChange(e);
+                              }}
+                            >
+                              <option defaultValue>Choose...</option>
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                            </select>
+                          </div>
+                          <div className="addformSm">
+                            <label htmlFor="exampleFormControlSelect1">
+                              Type*
+                            </label>
+                            <select
+                              name="type"
+                              className="form-controlSm"
+                              id="exampleFormControlSelect1"
+                              onChange={(e) => {
+                                handleChange(e);
+                              }}
+                            >
+                              <option defaultValue>Choose...</option>
+                              <option value="dog">Dog</option>
+                              <option value="cat">Cat</option>
+                            </select>
                           </div>
                         </div>
-
-                        <div className="form-group">
-                          <label htmlFor="exampleFormControlSelect1">
-                            Size*
-                          </label>
-                          <select
-                            name="size"
-                            className="form-control"
-                            id="exampleFormControlSelect1"
-                            value={input.size}
-                            onChange={(e) => handleChange(e)}
-                          >
-                            <option defaultValue>Choose...</option>
-                            <option value="small">Small</option>
-                            <option value="medium">Medium</option>
-                            <option value="big">Big</option>
-                          </select>
-
-                          <div className="addinvalid-fb">
-                            {errors && errors.size ? errors.size : null}
-                          </div>
-                        </div>
-
-                        <div className="form-group">
-                          <label htmlFor="exampleFormControlSelect1">
-                            Gender*
-                          </label>
-                          <select
-                            name="gender"
-                            className="form-control"
-                            id="exampleFormControlSelect1"
-                            onChange={(e) => {
-                              handleChange(e);
-                            }}
-                          >
-                            <option defaultValue>Choose...</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                          </select>
-
-                          <div className="addinvalid-fb">
-                            {errors && errors.gender ? errors.gender : null}
-                          </div>
-                        </div>
-
-                        <div className="form-group">
-                          <label htmlFor="exampleFormControlSelect1">
-                            Type*
-                          </label>
-                          <select
-                            name="type"
-                            className="form-control"
-                            id="exampleFormControlSelect1"
-                            onChange={(e) => {
-                              handleChange(e);
-                            }}
-                          >
-                            <option defaultValue>Choose...</option>
-                            <option value="dog">Dog</option>
-                            <option value="cat">Cat</option>
-                          </select>
+                        <div>
                           <div className="addinvalid-fb">
                             {errors && errors.type ? errors.type : null}
                           </div>
                         </div>
-
-                        <div className="addform">
+                        <div className="form-groupAdd">
                           <label htmlFor="race">Breed</label>
                           <input
                             id="race"
@@ -263,12 +256,11 @@ function AddNew() {
                             {errors && errors.race ? errors.race : null}
                           </div>
                         </div>
-                        <div className="addform">
+                        <div className="form-groupAdd">
                           <label htmlFor="location">Location*</label>
                           <select
                             name="location"
-                            className="form-control"
-                            id="exampleFormControlSelect1"
+                            className="form-controlAdd"
                             onChange={(e) => {
                               handleChange(e);
                             }}
@@ -286,7 +278,7 @@ function AddNew() {
                             {errors && errors.location ? errors.location : null}
                           </div>
                         </div>
-                        <div className="form-outline">
+                        <div className="form-groupAdd">
                           <label
                             className="form-label"
                             htmlFor="textAreaExample"
@@ -303,10 +295,11 @@ function AddNew() {
                             onChange={(e) => handleChange(e)}
                           ></textarea>
                         </div>
+                        <br />
                         <div className="addform-submit">
                           <button
                             type="submit"
-                            className="addbtn"
+                            className="btn btn-primary addbtn"
                             disabled={
                               Object.keys(errors).length === 0 ? false : true
                             }
@@ -317,9 +310,6 @@ function AddNew() {
                       </form>
                     </div>
                   </div>
-                  <div className="addfooter">
-                    Copyright &copy; 2022 &mdash; Team 13
-                  </div>
                 </div>
               </div>
             </div>
@@ -329,6 +319,7 @@ function AddNew() {
               <img src={background} alt="pet" className="addImage" />
             </div>
           </div>
+          <div className="addfooter">Copyright &copy; 2022 &mdash; Team 13</div>
         </div>
       </div>
     </section>
