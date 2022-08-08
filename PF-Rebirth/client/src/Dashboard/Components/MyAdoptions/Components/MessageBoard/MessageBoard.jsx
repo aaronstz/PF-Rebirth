@@ -20,7 +20,8 @@ useEffect(()=>{
   let chatUpdate=setInterval(() => {
     dispatch(getChat(mail))
   }, 10000); 
-  setTimeout(()=>{document.getElementsByClassName("container-lateral-bar")[0].click()},300)
+  document.getElementsByClassName("container-lateral-bar").length &&
+    setTimeout(()=>{document.getElementsByClassName("container-lateral-bar")[0].click()},300)
   return ()=>clearInterval(chatUpdate)
 },[dispatch])
   return (
