@@ -25,7 +25,19 @@ export function showStar(number){
         return null
     }
 }
-
+export const validatePassword = (objUser) =>{
+  let errors = {};
+  if (objUser.formBasicPassword === '') {
+    errors = {}
+  }
+  if (objUser.formBasicPassword.length <= 7 && objUser.formBasicPassword !== '') {
+    errors.confirmPassword = "The passwords has to be longer than 7 characters"
+  }
+  if(objUser.formBasicConfirmPassword !== objUser.formBasicPassword){
+    errors.confirmPassword = "The passwords doesn't match"
+}
+return errors
+}
 export const validateErrors = (objUser) => {
 
   let errors = {};
