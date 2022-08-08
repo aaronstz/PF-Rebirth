@@ -20,7 +20,6 @@ import {
   GET_FAVORITES,
   GET_ALL_PETS,
   POST_SUPPORT_FORM,
-
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
@@ -189,7 +188,7 @@ export function getUserId(id) {
         payload: json.data,
       });
     } catch (error) {
-      swal("Sorry", "No pets found", "error");
+      swal("Sorry", "No user found", "error");
     }
   };
 }
@@ -332,7 +331,7 @@ export function postPet(payload) {
     try {
       await axios.post(`${SERVER}/pets`, payload);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 }
@@ -500,31 +499,37 @@ export function getAllPets() {
   };
 }
 
-
-export function postSupportForm(payload){
- return async (dispatch)=>{try {
-  const json = await axios.post(`${SERVER}/nodeMailer`, payload)
-  if(json.status === 200)swal("OK", "Mail sent successfully", "success")
- } catch (error) {
-  console.log(`Error enviando correo ${error}`)
-  swal("Oops!", "Error sending the mail", "error")
- }}
+export function postSupportForm(payload) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(`${SERVER}/nodeMailer`, payload);
+      if (json.status === 200) swal("OK", "Mail sent successfully", "success");
+    } catch (error) {
+      console.log(`Error enviando correo ${error}`);
+      swal("Oops!", "Error sending the mail", "error");
+    }
+  };
 }
 
-export function postAdoption(payload){
-  return async(dispatch)=>{try {
-    const json = await axios.post(`${SERVER}/adoption`, payload)
-    if(json.status === 201)await swal("OK", "Adoption request created", "success")
-  } catch (error) {
-    console.log(`Error creando ${error}`)
-    await swal("Oops!", "Error creating the Adoption request", "error")
-  }}
+export function postAdoption(payload) {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(`${SERVER}/adoption`, payload);
+      if (json.status === 201)
+        await swal("OK", "Adoption request created", "success");
+    } catch (error) {
+      console.log(`Error creando ${error}`);
+      await swal("Oops!", "Error creating the Adoption request", "error");
+    }
+  };
 }
 
-export function updatePetsViews(id){
-  return async()=>{try {
-    await axios.patch(`${SERVER}/pets/${id}`)
-  } catch (error) {
-    console.log(error)
-  }}
+export function updatePetsViews(id) {
+  return async () => {
+    try {
+      await axios.patch(`${SERVER}/pets/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
