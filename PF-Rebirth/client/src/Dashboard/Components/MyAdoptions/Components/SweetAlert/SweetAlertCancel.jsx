@@ -27,9 +27,8 @@ export default function SwalertCancel(dogName, deleteAdoption, id) {
           "Cancelled adoption",
           "Dont worry," + dogName + " gonna find a good home",
           "error"
-        );
-
-        deleteAdoption(id);
+        ).then(()=>{deleteAdoption(id);})
+               
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel

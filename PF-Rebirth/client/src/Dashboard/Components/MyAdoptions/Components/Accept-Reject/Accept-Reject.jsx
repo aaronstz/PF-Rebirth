@@ -4,16 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import image from "../../../../../Assets/fotoPet1.png";
 import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
+import { useNavigate } from "react-router-dom";
 
 const AcceptReject = () => {
+  let mail=""
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
-  const mail = user.mail;
+  if(infoStorage) mail = user.mail;
 
   function handleClick(adoptionId) {
     dispatch(deleteAdoption(adoptionId));
+    console.log(adoptionId);
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
 
@@ -26,7 +29,7 @@ const AcceptReject = () => {
         .map((datos) => {
           if (datos.owner.mail === mail) {
             return (
-              <div className="mainDashCont">
+              <div className="mainDashContACC">
                 <div className="AdoptContainer">
                   <div>
                     <div class="imgFav">
@@ -95,13 +98,12 @@ const AcceptReject = () => {
                   <div className="description">
                     <span>Description: {datos.pet.description}</span>
                   </div>
-                  <div>
+                  <div className="btnRowAdopt">
                     <button
                       class="MAdoCanbutton"
                       onClick={() =>
                         SwalertCancel(datos.pet.name, handleClick, datos.id)
                       }
-                      // onClick={() => handleClick(datos.id)}
                     >
                       <span>Cancel Adoption</span>
                     </button>

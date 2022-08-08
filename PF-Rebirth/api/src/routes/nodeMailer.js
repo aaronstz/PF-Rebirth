@@ -11,22 +11,21 @@ router.post("/", (req, res) => {
     secure: true,
     auth: {
       user: "rebirthpetspf@gmail.com",
-      pass: "pwxdidflyzumqaop",
+      pass: "hviqqxuplywplida",
     },
   });
 
-  const { email, subject, text, name, phone } = req.body;
+  const { email, subject, description} = req.body;
   let mailOption = {
     from: email,
-    name: name,
-    phone: phone,
     to: "rebirthpetspf@gmail.com",
-    subject: subject + " , " + name,
-    text: text + " , Phone: " + phone + " , Email: " + email,
+    subject: subject,
+    text: description +" , Email: " + email,
   };
 
   transporter.sendMail(mailOption, (error, info) => {
     if (error) {
+      console.log(error.message)
       res.status(500).send(error.message);
     } else {
       console.log("mail sent successfully", req.body);

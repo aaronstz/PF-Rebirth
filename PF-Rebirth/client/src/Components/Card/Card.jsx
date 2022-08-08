@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import female from "../../Assets/female-ico-w.png";
 import male from "../../Assets/male-icon-w.png";
 import { useDispatch, useSelector } from "react-redux";
-import {addFavs, deleteFavs} from "../../Redux/Actions/index.js"
+import {addFavs, deleteFavs, updatePetsViews} from "../../Redux/Actions/index.js"
 import { useEffect, useState } from "react";
 
 
 
-function Cards({image,name,breed,age,gender,size,description,id,location, userMail}){
+function Cards({image,name,breed,age,gender,size,description,id,location,views,userMail}){
   const dispatch = useDispatch()
   const [ favFilters , setFavFilters] = useState([])
   const favoritos = useSelector(state => state.favorite)
@@ -58,7 +58,7 @@ function Cards({image,name,breed,age,gender,size,description,id,location, userMa
         <div className="txtRight">
           <div className="views">
             <span className="icoEye"></span>
-            Views
+             {views}
           </div>
           <div className="sex">
             <span className="icoSex">
@@ -81,7 +81,7 @@ function Cards({image,name,breed,age,gender,size,description,id,location, userMa
         </div>
         <div className="attributes">{description}</div>
       </div>
-      <Link to={`/home/${id}`} className="lbutton">
+      <Link to={`/home/${id}`} className="lbutton" onClick={(e)=> {dispatch(updatePetsViews(id))}}>
         <div>
           <span>More info</span>
         </div>

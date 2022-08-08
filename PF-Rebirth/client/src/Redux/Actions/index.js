@@ -19,6 +19,8 @@ import {
   DELETE_FAVORITES,
   GET_FAVORITES,
   GET_ALL_PETS,
+  POST_SUPPORT_FORM,
+
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
@@ -263,7 +265,7 @@ export function deleteUser(id) {
 export function deleteAdoption(id) {
   return async function dispatch() {
     try {
-      const json = await axios.delete(`${SERVER}/adoption/delete/${id}`);
+      const json = await axios.patch(`${SERVER}/adoption/${id}`);
       return dispatch({
         type: "DELETE_ADOPTION",
       });
@@ -327,7 +329,11 @@ export function getPetNames(type, name) {
 
 export function postPet(payload) {
   return async function (dispatch) {
-    await axios.post(`${SERVER}/pets`, payload);
+    try {
+      await axios.post(`${SERVER}/pets`, payload);
+    } catch (error) {
+      console.log(error)
+    }
   };
 }
 
@@ -492,4 +498,33 @@ export function getAllPets() {
       if (status === 404) swal("Oops!", "No pets found", "error");
     }
   };
+}
+
+
+export function postSupportForm(payload){
+ return async (dispatch)=>{try {
+  const json = await axios.post(`${SERVER}/nodeMailer`, payload)
+  if(json.status === 200)swal("OK", "Mail sent successfully", "success")
+ } catch (error) {
+  console.log(`Error enviando correo ${error}`)
+  swal("Oops!", "Error sending the mail", "error")
+ }}
+}
+
+export function postAdoption(payload){
+  return async(dispatch)=>{try {
+    const json = await axios.post(`${SERVER}/adoption`, payload)
+    if(json.status === 201)await swal("OK", "Adoption request created", "success")
+  } catch (error) {
+    console.log(`Error creando ${error}`)
+    await swal("Oops!", "Error creating the Adoption request", "error")
+  }}
+}
+
+export function updatePetsViews(id){
+  return async()=>{try {
+    await axios.patch(`${SERVER}/pets/${id}`)
+  } catch (error) {
+    console.log(error)
+  }}
 }

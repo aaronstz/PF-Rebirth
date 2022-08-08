@@ -4,7 +4,6 @@
   margin: 0 auto;
   width: 80%;
   border-radius: 25px;
-
 }
 
 
@@ -24,6 +23,7 @@
   align-items: center;
   justify-content: center;
   width: 90%;
+  margin-top: 2rem;
   /* padding: 0% 15px 0 15px; */
   /* width: 40%; */
   padding: 5px;
@@ -109,7 +109,44 @@
   margin-top: 10px;
 }
 
+.addformSm {
+  border-width: 2.3px;
+  width: 30%;
+}
 
+.addformSm label {
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.formControlRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.form-controlSm {
+  display: block;
+  width: 95%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: .375rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-groupAdd label {
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
 
 .btnform-submit {
   width: 100%;
@@ -134,22 +171,27 @@
   text-align: center;
   display: flex;
   position: relative;
-  justify-content: right;
-  margin-top: 270px;
-  left: 60rem;
+  text-align: center;
+  width: 60%;
+  left: 20%;
 }
 
 .addbtn {
   width: 100%;
   padding: 12px 10px;
   margin-top: 10px;
+  color: var(--white) !important;
   background-color: var(--green) !important;
-  border: solid 1px var(--border);
+  border: solid 1px var(--border) !important;
   box-shadow: 0px 5px 5px 0px var(--grey2);
 }
 
 .addbtn:hover {
   background-color: var(--pink) !important;
+}
+
+.addinvalid-fb {
+  color: #FF8AE5;
 }
 
 h6 {
@@ -174,7 +216,7 @@ h6:after {
   margin-left: 10px
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1627px) {
   .addimageContainer {
     display: none;
   }
