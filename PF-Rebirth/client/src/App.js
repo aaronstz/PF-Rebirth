@@ -22,6 +22,7 @@ import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetA
 import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
 import DashUsers from "./Dashboard/Components/Users/Users.jsx"
 import UsersBanned from "./Components/UserBanned/UserBanned.jsx"
+import Admins from "./Components/Admins/Admins";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path="/sw" element={<SW2 />} />
         <Route path="/users" element={<DashUsers />} />
         <Route path="/users/banned" element={<UsersBanned />} />
+        <Route path="/admin" element={<Admins />} />
         {/*
 
           <Route path = '*' element = {<NotFound/>}/> */}

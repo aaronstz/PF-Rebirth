@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import DashNavBar from "../Dash-NavBar/Dash-NavBar";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUser, getUsers } from "../../../Redux/Actions/index.js";
+import { deleteUser, getUsers, makeAdmin } from "../../../Redux/Actions/index.js";
 import UserDetail from "../../../Components/UserDetail/UserDetail";
-import { Link } from "react-router-dom";
 import SearchUser from "../../../Components/SearchUser/SearchUser";
+import Navbar from "../../../Components/Navbar/Navbar";
 
 export default function DashUsers() {
     
@@ -21,24 +21,27 @@ export default function DashUsers() {
     dispatch(deleteUser(e.target.id))
         window.history.go()
     }
+    function handleAdmin(e){
+    e.preventDefault()
+    dispatch(makeAdmin(e.target.id))
+        window.history.go()
+    }
 
   return (
     <div>
-      <DashNavBar/>
-      <div className="mainDashContU">
+      {/* <DashNavBar/> */}
+      <Navbar/>
+      <div>
          <>
-            <div className="conTituloU infoU">
+            <div>
                 <h3>USERS</h3>
                 <SearchUser/>
-                <>
-                <Link to={"/users/banned"} >
-                <button>go banned</button>
-                </Link>
-                </>
             </div>
             <div>
                 { users && users.map((u)=>
                     <UserDetail
+
+                        handleAdmin={handleAdmin}
                         handleDeleteUser={handleDeleteUser}
                         name={u.name}
                         lastName={u.lastName}

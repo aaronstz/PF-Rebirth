@@ -23,7 +23,8 @@ import {
   DELETE_PET,
   USERS_BANNED,
   USER_RESTORE,
-  GET_USERNAME
+  GET_USERNAME,
+  MAKE_ADMIN
 } from "./actionTypes";
 
 
@@ -530,6 +531,20 @@ export function UserRestore(mail) {
     } catch ({response}) {
       const { status } = response;
       if(status === 404) swal("Wow!", "User Restored", "success")
+    }
+  };
+}
+export function makeAdmin(mail) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.put(`${SERVER}/user/adm/${mail}`);
+      console.log('json', json)
+      return dispatch({
+        type: MAKE_ADMIN,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error)
     }
   };
 }

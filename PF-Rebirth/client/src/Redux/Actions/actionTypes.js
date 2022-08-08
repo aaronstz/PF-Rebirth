@@ -40,5 +40,6 @@ export const RESET_PETS = 'RESET_PETS';
 export const USERS_BANNED = 'USERS_BANNED';
 export const USER_RESTORE = 'USER_RESTORE';
 export const GET_USERNAME = 'GET_USERNAME';
+export const MAKE_ADMIN = 'MAKE_ADMIN';
 
 

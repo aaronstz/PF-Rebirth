@@ -5,6 +5,7 @@ import male from "../../Assets/male-icon-w.png";
 import { useDispatch, useSelector } from "react-redux";
 import {addFavs, deleteFavs, deletePet, getAllPets, getPets} from "../../Redux/Actions/index.js"
 import { useEffect, useState } from "react";
+import swal from "sweetalert";
 
 
 
@@ -40,8 +41,24 @@ function Cards({image,name,breed,age,gender,size,description,id,location, userMa
 }
 
 function handleDelete(){
-  dispatch(deletePet(id))
- 
+  swal({
+    title: "You are about to delete a publication!",
+    text: "Are you sure?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      dispatch(deletePet(id))
+      swal("The post was deleted!", {
+        icon: "success",
+      });
+      window.history.go()
+    } else {
+      swal("Uff! that was close!");
+    }
+  })
 }
 
   return (
