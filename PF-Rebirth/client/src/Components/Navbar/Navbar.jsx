@@ -9,7 +9,7 @@ import DarkMode from "../../Components/Switch/SwitchMode";
 import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../Redux/Actions";
+import { logoutUser, resetDetails } from "../../Redux/Actions";
 
 function Navbar({filters, setFilters}) {
   const activeUser = useSelector((state) => state.activeUser);
@@ -35,6 +35,7 @@ function Navbar({filters, setFilters}) {
   let imageUrl = data ? data.image : null;
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
+  console.log('data :>> ', data);
 
   function handleReturnToHome(e) {
     navigate("/home")
@@ -69,6 +70,10 @@ function Navbar({filters, setFilters}) {
     });
   };
 
+  function clear(){
+    dispatch(resetDetails())
+  }
+
   return (
     <div className="containerNavbar">
       <button
@@ -89,13 +94,23 @@ function Navbar({filters, setFilters}) {
           </NavLink>
         </div>
         <div className="item">
+          { data && (data.isAdmin === true) ?
+          <NavLink
+          to={data !== null ? "/users" : "/login"}
+          className="link-navbar"
+        >
+          <span>Users</span>
+        </NavLink> :
+          <div>
           <img src={vector2} alt="vector2" className="icons" />
           <NavLink
-            to={data !== null ? "/favorites" : "/login"}
-            className="link-navbar"
+          to={data !== null ? "/favorites" : "/login"}
+          className="link-navbar"
           >
             <span>My favorites</span>
           </NavLink>
+          </div>
+          }
         </div>
         <div className="item">
           <DarkMode />

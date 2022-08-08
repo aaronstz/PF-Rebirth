@@ -1,20 +1,46 @@
 @keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
+
+.spinner{
+  display:flex;
+  position: relative;
+  justify-content: center;
+  left:50%;
+  top:300px;
+  width: 3rem;
+  height: 3rem;
+}
+
 
 .info {
   opacity: 0;
   animation: fade-in 0.5s forwards;
 }
+
 .infoPets {
   opacity: 0;
-  animation: fade-in 1.5s forwards;
+  animation: fade-in 0.5s forwards;
 }
 
 .mainDashCont {
   display: flex;
   flex-wrap: wrap;
+}
+
+.noFavsTitle {
+  color: var(--text-color);
+  margin: 10.5rem 0 0rem 0;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  position: absolute;
 }
 
 .conTitulo {
@@ -33,8 +59,9 @@
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-  height: 10rem;
+  height: max-content;
   overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 .favcardLeftPhoto {
@@ -83,12 +110,12 @@
   color: var(--text-color);
 }
 
-.imgFav img {
+.imgFavor img {
   transition: all 0.3s;
   display: block;
   border-radius: 20px;
   width: 100%;
-  height: 100%;
+  height: max-content;
 }
 
 .FavBtn {
@@ -100,6 +127,7 @@
   cursor: pointer;
   background: url(../../../Assets/botonFAV_active.png);
 }
+
 .a-btnFavElim {
   position: absolute;
   border: none;

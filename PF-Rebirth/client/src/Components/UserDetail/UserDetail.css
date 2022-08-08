@@ -1,0 +1,120 @@
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .infoU {
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+  }
+  
+  .infoUser {
+    opacity: 0;
+    animation: fade-in 1.5s forwards;
+  }
+  
+  .mainDashContU {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .conTituloU {
+    color: var(--text-color);
+    margin: 2.5rem 0 0rem 0;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+  }
+  
+  .favContainerU {
+    position: relative;
+    top: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: max-content;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  .favcardLeftPhotoU {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+    height: auto;
+  }
+  
+  .favcardLeftU {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: medium;
+    width: 20%;
+    height: auto;
+    color: var(--text-color);
+    border-right: 1px solid var(--greylight);
+  }
+  
+  .favcardCenterU {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: medium;
+    width: 20%;
+    height: auto;
+    padding-right: 2%;
+    color: var(--text-color);
+    border-right: 1px solid var(--greylight);
+  }
+  
+  .favcardRightU {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: medium;
+    width: 30%;
+    height: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: var(--text-color);
+  }
+  
+  .imgFavorU img {
+    transition: all 0.3s;
+    display: block;
+    border-radius: 20px;
+    width: 100%;
+    height: max-content;
+  }
+  
+  .FavBtnU {
+    position: absolute;
+    left: 3%;
+    top: 3%;
+    width: 45px;
+    height: 43px;
+    cursor: pointer;
+    background: url(../../Assets/botonFAV_active.png);
+  }
+  
+  .a-btnFavElimU {
+    position: absolute;
+    border: none;
+    left: 3%;
+    top: 2%;
+    width: 45px;
+    height: 43px;
+    cursor: pointer;
+    background: url(../../Assets/botonFAV_active.png);
+  }

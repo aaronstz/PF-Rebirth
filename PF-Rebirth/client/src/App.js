@@ -17,10 +17,14 @@ import Profile from "./Dashboard/Components/Profile/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./Pages/Register";
 import DashFavorites from "./Dashboard/Components/MyFavorites/DashFavorites.jsx";
+
 import DonationsPets from "./Components/Donations/DonationsPets";
 import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
 import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import DashUsers from "./Dashboard/Components/Users/Users.jsx"
+import UsersBanned from "./Components/UserBanned/UserBanned.jsx"
+import Admins from "./Components/Admins/Admins";
 
 function App() {
 

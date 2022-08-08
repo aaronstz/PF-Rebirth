@@ -81,6 +81,7 @@ function FiltersBar({
             aria-label="Search by name"
             aria-describedby="basic-addon2"
             onChange={(e) => setSearchName(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleEnter(searchName)}
             value={searchName}
           /> */}
           {/* <Button
@@ -99,7 +100,7 @@ function FiltersBar({
           }}
           id="dropdown-button-light"
           variant="light"
-          title="SEX"
+          title="GENDER"
           className="ms-2"
         >
           <Dropdown.Item eventKey="All">All</Dropdown.Item>

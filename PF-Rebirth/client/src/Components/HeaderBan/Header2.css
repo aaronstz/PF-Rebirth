@@ -1,0 +1,51 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-headerTeam {
+    border: none;
+    background: transparent;
+}
+
+.header-carousel {
+    width: 860px;
+
+}
+
+.header-buttons {
+    margin: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.heaeder-team {
+
+    width: 420px;
+    height: 210px;
+}
+
+.marginImage2 {
+    margin-top: 1px;
+}
+
+.header-donations {
+    margin-top: 8px;
+    width: 420px;
+    height: 160px;
+}
+
+@media (max-width: 1400px) {
+    .header-container {
+        flex-direction: column;
+    }
+
+    .header-buttons {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .header-donations {
+        margin-bottom: 6px;
+    }
+}

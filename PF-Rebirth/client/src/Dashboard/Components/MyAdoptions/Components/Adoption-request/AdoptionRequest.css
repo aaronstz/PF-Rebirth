@@ -24,7 +24,7 @@
 .menu-div{
     display: flex;
     
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 .accept-reject{
     width: 30%;
@@ -37,7 +37,7 @@ left:-400px;
     padding: 0px;
     margin: 0px;
 }
-@media screen and (max-width:1000px){
+@media screen and (max-width:1200px){
 .message-accept-reject{
     flex-direction: column;
     justify-content: flex-start;
@@ -46,17 +46,21 @@ left:-400px;
     padding: 0px;
 }
 
-.accept-reject{
-    width: 70%;
+.messageboard{
+    width: 100%;
+    margin: auto;
+  }
+ .accept-reject{
+    width: 400px;
 }
 }
 @media screen and (max-width: 500px){
     .hidden-sidebar2{
         position: absolute;
         background-color: #000000cf;
-        min-width: 100%;
-        max-width: 100%;
-        
+        min-width: 500px;
+        max-width:500px;
+        z-index: 10;
         height: 100%;
     }
   

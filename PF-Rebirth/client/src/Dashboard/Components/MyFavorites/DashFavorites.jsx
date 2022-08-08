@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./DashFavorites.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
-import NavBar from "../../../Components/Navbar/Navbar.jsx"
+// import NavBar from "../../../Dashboard/Components/Dash-NavBar/Dash-NavBar.jsx";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { useUserFavoritesPets, useFavoritesPetsDetails } from '../../../Tools/customHooks.js';
@@ -38,6 +38,8 @@ export default function DashFavorites(){
     dispatch(deleteFavs(mail, id))
   }
 
+  console.log('favs:>>' + favorites)
+
   return (
     <>
     <NavBar/>
@@ -55,14 +57,19 @@ export default function DashFavorites(){
                       return(
                         <div key={Math.random()} className="favContainer">
                     <div className="favcardLeftPhoto">
-                  <Link to={"/home/" + e.id} >
-                        <div className="imgFav">
-                        { e.image&&<img src={e.image} alt="Pet" className="img" />}
+                      <Link to={"/home/" + e.id}>
+                        <div className="imgFavor">
+                          {e.image && (
+                            <img src={e.image} alt="Pet" className="img" />
+                          )}
                         </div>
-                    </Link>
-                        <div>
-                        <button className="a-btnFavElim" onClick={()=>handleDeleteFav(e.id)}/>
-                        </div>
+                      </Link>
+                      <div>
+                        <button
+                          className="a-btnFavElim"
+                          onClick={() => handleDeleteFav(e.id)}
+                        />
+                      </div>
                     </div>
                     <div className="favcardLeft">
                       <span>{e.name}</span>
@@ -75,22 +82,15 @@ export default function DashFavorites(){
                       <span>{e.size}</span>
                     </div>
                     <div className="favcardRight">
-                      <span>
-                        {e.description}
-                    </span>
+                      <span>{e.description}</span>
                     </div>
-                  </div> 
-                      )
-                      })  
-                  }
-                </div>
-            </>
-      }
-    </div>
-   
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
-};
-
-
-           
+}

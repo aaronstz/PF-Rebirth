@@ -1,10 +1,12 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
 import CarouselFade from "../Carousel/Carousel";
 import { NavLink } from "react-router-dom";
 import headerImageTeam from "../../Assets/Header-images/botCat.png";
 import headerDogTeam from '../../Assets/Header-images/btonDog.png';
 import headerImageDonation from "../../Assets/Header-images/btnDonate.png";
 import "./Header.css";
+import { resetDetails, resetPets } from '../../Redux/Actions/index'
 
 
 function Header({ filters, setFilters }) {
@@ -35,6 +37,9 @@ function Header({ filters, setFilters }) {
 
   }
 
+  
+
+
   return (
     <React.Fragment>
       <div className="header-container">
@@ -42,7 +47,7 @@ function Header({ filters, setFilters }) {
           <CarouselFade />
         </div>
         <div className="header-buttons">
-          <div className="header-team">
+          <div className="header-team" onClick={handlePage}>
               {
                 filters&&filters.type[0] === "cat" ?
                   <button type="submit" onClick={(e)=>handleChangeView(e)} className="btn-headerTeam">

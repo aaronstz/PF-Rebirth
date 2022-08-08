@@ -23,7 +23,7 @@ import swal from "sweetalert";
 function Home() {
 
   let user = null;
-  if (localStorage.user) {
+  if  (localStorage.user)  {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
@@ -79,6 +79,7 @@ function Home() {
     setCurrentPageNumber(0)
   }, [])
 
+  //POSIBLEMENTE QUEDE DEPRECATED
   useEffect(() => {
     localStorage.setItem("filters", JSON.stringify(filters))
   },[filters])
@@ -230,6 +231,8 @@ function Home() {
                   id={p.id}
                   location={p.location}
                   userMail={p.userMail}
+                  views = {p.views}
+                  type = {p.type}
                 />
               );
             })}

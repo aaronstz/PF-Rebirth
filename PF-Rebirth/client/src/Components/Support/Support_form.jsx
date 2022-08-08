@@ -1,13 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import '../Support/Support.css'
-
+import { useDispatch } from "react-redux";
+import {postSupportForm} from "../../Redux/Actions/index"
 
 function Support_form(){
+const dispatch = useDispatch();
 let [supportForm,setSupportForm]=useState({email:"",subject:"",description:""})
 let [sFormError,setSFormError]=useState({emailError:"",subjectError:"",descriptionError:""})
 let regexEmail=/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
-
+console.log(supportForm)
 function handleSubmit(event){
     event.preventDefault()
     let FormErrorData=sFormError;
@@ -19,7 +21,9 @@ function handleSubmit(event){
    else FormErrorData={...FormErrorData,descriptionError:""}
   setSFormError({...FormErrorData})
   if (FormErrorData.emailError==="" && FormErrorData.subjectError==="" && FormErrorData.descriptionError===""){
-    alert("se pueden enviar los datos")
+    console.log('se enviaron los datos')
+    dispatch(postSupportForm(supportForm))
+    setSupportForm({email:"",subject:"",description:""})
   }
    }
 
