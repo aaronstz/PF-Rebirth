@@ -96,7 +96,9 @@ function Details() {
             <span className="petlocation">{location}</span>
             {
               user && (user.isAdmin === true)?
-              <span className="petlocation">User: {userMail}</span> : null
+              <Link to={"/users"}>
+              <span className="petlocation">User: {userMail}</span> 
+              </Link> : null
             }
             <br />
             <div className="story-dtl">
@@ -141,7 +143,8 @@ function Details() {
           <div className="dtl-cardRight">
             <div className="img-dtl">
               <div>
-                {user && mail === userMail ? null : favFilter &&
+                {user && (user.isAdmin === true)? null :
+                user && mail === userMail ? null : favFilter &&
                   favFilter.length !== 0 ? (
                   <>
                     <button
