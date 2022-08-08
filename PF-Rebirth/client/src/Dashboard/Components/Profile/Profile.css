@@ -33,3 +33,6 @@
     background: var(--pink) !important;
     color: #fff
 }
+.overflow{
+    overflow:scroll;
+}

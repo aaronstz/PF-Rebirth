@@ -15,12 +15,15 @@ const dispatch= useDispatch();
 const infoStorage = localStorage.getItem("user");
     const user = JSON.parse(infoStorage)
     if(infoStorage) mail= user.mail
-    console.log(adoptChat)
+    
+ let chat= document.getElementsByClassName("container-lateral-bar").length 
 useEffect(()=>{
-  let chatUpdate=setInterval(() => {
+   
+  let chatUpdate= chat && setInterval(() => {
     dispatch(getChat(mail))
   }, 10000); 
-  setTimeout(()=>{document.getElementsByClassName("container-lateral-bar")[0].click()},300)
+  chat &&
+    setTimeout(()=>{document.getElementsByClassName("container-lateral-bar")[0].click()},300)
   return ()=>clearInterval(chatUpdate)
 },[dispatch])
   return (
