@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import image from "../../../../../Assets/fotoPet1.png";
 import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
+import { useNavigate } from "react-router-dom";
 
 const AcceptReject = () => {
+  let mail=""
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
-  const mail = user.mail;
+  if(infoStorage) mail = user.mail;
 
   function handleClick(adoptionId) {
     dispatch(deleteAdoption(adoptionId));

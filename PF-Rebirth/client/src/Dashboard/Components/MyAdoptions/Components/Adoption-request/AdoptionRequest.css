@@ -46,8 +46,12 @@ left:-400px;
     padding: 0px;
 }
 
-.accept-reject{
-    width: 70%;
+.messageboard{
+    width: 100%;
+    margin: auto;
+  }
+ .accept-reject{
+    width: 400px;
 }
 }
 @media screen and (max-width: 500px){

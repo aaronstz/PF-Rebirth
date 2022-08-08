@@ -10,10 +10,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { PUT_VISTO } from "../../../../../Redux/Actions/actionTypes";
 
+
 export default function Chat({ allMessages }) {
+let mail=""
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
-  const mail = user.mail;
+  if(infoStorage) mail = user.mail;
   let setEmail = new Set(allMessages.map((message) => message.userMail));
   let arrayMail = Array.from(setEmail);
   let mailVisto = arrayMail[0] === mail ? arrayMail[1] : arrayMail[0];
