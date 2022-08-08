@@ -77,8 +77,8 @@
 
 .addcard.fat {
   padding: 10px;
-  height: 800px;
-  margin: 0px;
+  height: max-content;
+  margin-bottom: 3rem;
   background-color: transparent;
   border-color: transparent;
 }

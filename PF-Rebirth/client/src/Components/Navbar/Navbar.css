@@ -18,9 +18,9 @@
     width: 50%;
 }
 
-.nav-btn-none{
-    border:none;
-    background:transparent;
+.nav-btn-none {
+    border: none;
+    background: transparent;
 }
 
 .item {
@@ -70,7 +70,8 @@
 
 .googleImg>img {
     position: relative;
-    left: 10px;
+    left: 0px;
     border-radius: 50%;
     max-width: 35px;
+    height: 35px;
 }
