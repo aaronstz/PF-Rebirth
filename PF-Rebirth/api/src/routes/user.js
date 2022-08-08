@@ -4,6 +4,21 @@ const router = Router();
 const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
+const { Op } = require("sequelize")
+
+router.get("/banned" , async (req, res, next) => {
+  try {
+    const users = await User.findAll({ where:{
+      softDelete: {
+        [Op.ne]: null
+        }},
+      paranoid : false
+    })
+    return res.status(200).send(users)
+  } catch (error) {
+    next(error)
+  }
+})
 
 
 router.put("/addFavs/:mail", async(req, res) =>{
@@ -48,12 +63,20 @@ router.put("/deleteFavs/:mail", async(req, res) =>{
 
 router.put("/:mail", updateUser);
 
-router.patch("/:mail", async (req, res, next) => {
-  const { mail } = req.params;
-  await User.restore({
-    where: { mail: mail },
-  });
-  res.send("User Restored");
+router.patch("/restore/:mail", async (req, res, next) => {
+  try {
+    const { mail } = req.params;
+    if(mail){
+      await User.restore({
+        where: { mail: mail },
+      });
+      res.send("User Restored");
+    }else {
+      res.status(404).send("Not found")
+    }
+  } catch (error) {
+    next(error)
+  }
 });
 
 router.get("/:mail", async (req, res, next) => {
@@ -71,13 +94,22 @@ router.get("/:mail", async (req, res, next) => {
 });
 
 router.get("/", async (req, res, next) => {
-  const allUsers = await User.findAll();
   try {
-    allUsers.length
+    const {userName} = req.query
+    const allUsers = await User.findAll()
+    if(userName){
+      const result = await allUsers.filter((u) =>
+      u.userName.toLowerCase().includes(userName.toLowerCase()))
+      result.length?
+        res.status(200).send(result) :
+        res.status(404).send("not found")
+    }else{  
+      allUsers.length
       ? res.status(200).send(allUsers)
       : res.status(400).send("No se encuentra ningun usuario");
-  } catch (error) {
-    next(error);
+    }
+    } catch (error) {
+      next(error);
   }
 });
 
@@ -106,7 +138,7 @@ router.delete("/:mail", async (req, res, next) => {
         .send(`No se encuentra el usuario con el mail ${req.params.mail}😒`);
     } else {
       await User.destroy({ where: { mail: mail } });
-      res.status(200).send(`se elimino el usuario `);
+      res.status(200).send(mail);
     }
   } catch (error) {
     next(error);
@@ -143,6 +175,7 @@ router.get("/favs/:mail", async (req, res) =>{
     res.status(404).send(error.message)
   }
 })
+
 
 
 module.exports = router;

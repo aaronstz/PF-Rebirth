@@ -31,6 +31,12 @@ import {
   UPDATE_PROFILE,
   RESET_DETAILS,
   RESET_PETS,
+  DELETE_USER,
+  DELETE_PET,
+  USERS_BANNED,
+  USER_RESTORE,
+  GET_USERNAME,
+  MAKE_ADMIN,
   DELETE_ADOPTION,
 } from "../Actions/actionTypes";
 
@@ -53,6 +59,9 @@ const initialState = {
   favorite: [],
   allPets: [],
   profileView: {},
+  userDeleted: [],
+  userBanned: [],
+  admins: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -62,6 +71,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         allPets: action.payload,
       };
+
+    case DELETE_PET:
+      return {
+        ...state
+      }
     case DELETE_ADOPTION:
       return {
         ...state,
@@ -70,6 +84,20 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         activeUser: action.payload,
+      };
+    case GET_USERNAME:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case USERS_BANNED:
+      return {
+        ...state,
+        userBanned: action.payload,
+      };
+    case USER_RESTORE:
+      return {
+        ...state
       };
     case LOGOUT_USER:
       localStorage.clear();
@@ -147,6 +175,17 @@ function rootReducer(state = initialState, action) {
         ...state,
         user: action.payload,
       };
+    case MAKE_ADMIN:
+      return {
+        ...state,
+        admins: action.payload,
+      };
+    case DELETE_USER:
+      return {
+        ...state,
+        userDeleted: action.payload
+      };
+
     case GET_DETAILS:
       return {
         ...state,

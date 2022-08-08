@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import female from "../../Assets/female-ico-w.png";
 import male from "../../Assets/male-icon-w.png";
 import { useDispatch, useSelector } from "react-redux";
-import {addFavs, deleteFavs, updatePetsViews} from "../../Redux/Actions/index.js"
+import {addFavs, deleteFavs,  deletePet, updatePetsViews} from "../../Redux/Actions/index.js"
 import { useEffect, useState } from "react";
+import swal from "sweetalert";
 
 
 
@@ -19,13 +20,14 @@ function Cards({image,name,breed,age,gender,size,description,id,location,views,u
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
-  
   if(user){
     var mail = user.mail? user.mail : user.email
   }
+
+
   useEffect(() => {
    setFavFilters(favFilter)
-  },[] );
+  },[dispatch] );
 
   
 
@@ -35,14 +37,35 @@ function Cards({image,name,breed,age,gender,size,description,id,location,views,u
   
   }
   function handleDeleteFavHome(){
-    dispatch(deleteFavs(mail, id))
-  
+    dispatch(deleteFavs(mail, id))  
+}
+
+function handleDelete(){
+  swal({
+    title: "You are about to delete a publication!",
+    text: "Are you sure?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      dispatch(deletePet(id))
+      swal("The post was deleted!", {
+        icon: "success",
+      });
+      window.history.go() 
+    } else {
+      swal("Uff! that was close!");
+    }
+  })
 }
 
   return (
     <div className="lcard">
-      {            
-             user && (mail === userMail) ? null :   
+      {        
+             user && user.isAdmin ==true ? <button className="btnFavEliminarPets" onClick={handleDelete}>x</button> :    
+             user && (mail === userMail)? null :   
              favFilter && favFilter.length !==0 ?
              <> <button className="btnFavEliminarHome" onClick={handleDeleteFavHome}/> </> : 
              <> <button className="btnFavHome" onClick={handleFavoriteHome}/> </> 

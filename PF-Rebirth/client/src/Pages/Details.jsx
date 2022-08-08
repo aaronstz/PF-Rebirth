@@ -61,6 +61,8 @@ function Details() {
     var mail = user.mail ? user.mail : user.email;
   }
 
+  console.log('user', user)
+
   useEffect(() => {
     dispatch(getDetails(id));
     if (user) {
@@ -85,10 +87,19 @@ function Details() {
         <br />
         <div className="dtl-card">
           <div className="dtl-cardLeft">
+            {/* <button>
+            <Link to={"/home?type=" + types[0]} className="link-navbar"/>
+            </button> */}
             <h3 className="title">{name}</h3>
             <h4 className="breed">{race}</h4>
             <h5 className="age">{age}&nbsp;years</h5>
             <span className="petlocation">{location}</span>
+            {
+              user && (user.isAdmin === true)?
+              <Link to={"/users"}>
+              <span className="petlocation">User: {userMail}</span> 
+              </Link> : null
+            }
             <br />
             <div className="story-dtl">
               <h5 className="txt-dscp">{description}</h5>
@@ -113,24 +124,27 @@ function Details() {
               <span>3.4 kg</span>
               <img src={weight} alt="weight" />
             </div>
-            {mail === userMail ? null : (
-              <Link to={user !== null ? `/donations/${id}` : `/login`}>
-                <button className="a-btn">
+                { user && (user.isAdmin === true)? null :
+                 ( mail === userMail) ? null :
+              <Link to={user!== null ? `/donations/${id}` : `/login`} >
+                <button className="a-btn" >
                   <span>Donate</span>
                 </button>
               </Link>
-            )}
-            {mail === userMail ? null : (
-              <button className="b-btn">
-                <span>Adopt me!</span>
-              </button>
-            )}
+              }
+                { user && (user.isAdmin === true)? null :
+                ( mail === userMail) ? null :
+                <button className="b-btn">
+                  <span>Adopt me!</span>
+                </button>
+              }
           </div>
 
           <div className="dtl-cardRight">
             <div className="img-dtl">
               <div>
-                {user && mail === userMail ? null : favFilter &&
+                {user && (user.isAdmin === true)? null :
+                user && mail === userMail ? null : favFilter &&
                   favFilter.length !== 0 ? (
                   <>
                     <button

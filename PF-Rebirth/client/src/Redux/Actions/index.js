@@ -19,6 +19,12 @@ import {
   DELETE_FAVORITES,
   GET_FAVORITES,
   GET_ALL_PETS,
+  DELETE_USER,
+  DELETE_PET,
+  USERS_BANNED,
+  USER_RESTORE,
+  GET_USERNAME,
+  MAKE_ADMIN,
   POST_SUPPORT_FORM,
 } from "./actionTypes";
 
@@ -168,6 +174,57 @@ export function getUsers() {
   };
 }
 
+
+export function getUserName(userName) {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/user?userName=${userName}`);
+      return dispatch({
+        type: GET_USERNAME,
+        payload: json.data,
+      });
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No user found", "error")
+    }
+  };
+}
+
+export function updateUser(email, payload) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.put(`${SERVER}/user/${email}`, payload);
+      localStorage.setItem('user',JSON.stringify(json.data))
+      if (json.status === 200) swal("OK", "User info updated", "success");
+      
+      return dispatch({
+        type:'UPDATE_PROFILE',
+        payload:json.data
+      })
+    } catch (error) {
+      swal("Error", "Username already in use", "error")
+    }
+  }
+}
+
+
+export function deleteUser(mail) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.delete(`${SERVER}/user/${mail}`);
+      return dispatch({
+        type: DELETE_USER,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("Could not delete user");
+    }
+  };
+}
+
+
+
 export function postMercadoPago(donacion) {
   return async function (dispatch) {
     try {
@@ -188,7 +245,7 @@ export function getUserId(id) {
         payload: json.data,
       });
     } catch (error) {
-      swal("Sorry", "No user found", "error");
+      swal("Sorry", "No user found", "error")
     }
   };
 }
@@ -229,37 +286,10 @@ export function postUser(payload) {
 //   };
 // }
 
-export function updateUser(email, payload) {
-  return async function (dispatch) {
-    try {
-      const json = await axios.put(`${SERVER}/user/${email}`, payload);
-      localStorage.setItem("user", JSON.stringify(json.data));
-      if (json.status === 200) swal("OK", "User info updated", "success");
 
-      return dispatch({
-        type: "UPDATE_PROFILE",
-        payload: json.data,
-      });
-    } catch (error) {
-      swal("Error", "Username already in use", "error");
-    }
-  };
-}
 
-export function deleteUser(id) {
-  return async function dispatch() {
-    try {
-      const json = await axios.delete(`${SERVER}/user/${id}`);
-      return dispatch({
-        type: "DELETE_USER",
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-      alert("Could not delete user");
-    }
-  };
-}
+
+
 
 export function deleteAdoption(id) {
   return async function dispatch() {
@@ -355,8 +385,9 @@ export function deletePet(id) {
   return async function (dispatch) {
     try {
       const json = await axios.delete(`${SERVER}/pets/${id}`);
+      console.log('json', json)
       return dispatch({
-        type: "DELETE_PET",
+        type: DELETE_PET,
         payload: json.data,
       });
     } catch (error) {
@@ -495,6 +526,48 @@ export function getAllPets() {
     } catch ({ response }) {
       const { status } = response;
       if (status === 404) swal("Oops!", "No pets found", "error");
+    }
+  };
+}
+export function getUsersBanned() {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`${SERVER}/user/banned`);
+      return dispatch({
+        type: USERS_BANNED,
+        payload: json.data,
+      });
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Oops!", "No users banned", "error")
+    }
+  };
+}
+export function UserRestore(mail) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.patch(`${SERVER}/user/restore/${mail}`);
+      return dispatch({
+        type: USER_RESTORE,
+        payload: json.data,
+      });
+    } catch ({response}) {
+      const { status } = response;
+      if(status === 404) swal("Wow!", "User Restored", "success")
+    }
+  };
+}
+export function makeAdmin(mail) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.put(`${SERVER}/user/adm/${mail}`);
+      console.log('json', json)
+      return dispatch({
+        type: MAKE_ADMIN,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error)
     }
   };
 }
