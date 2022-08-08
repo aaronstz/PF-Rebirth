@@ -5,24 +5,29 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import {  getLocation,} from "../../Redux/Actions";
+import {
+  getLocation,
+  getPetNames,
+  paginateData,
+  pruebasDeFiltrado,
+  saveName,
+} from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+
 function FiltersBar({
+  filters,
+  searchName,
   handleFilterBySex,
   handleFilterBySize,
   handleFilterByLocation,
   handleOrderByAge,
   handleSearchName,
+  handleChange,
+  valueName
 }) {
-  //const dispatch = useDispatch();
-  let [searchName, setSearchName] = useState("");
-  let locations = useSelector((state) => state.location);
-   
-  /* useEffect(() => {
-    dispatch(getLocation());
-  }, [dispatch]); */
+  const locations = useSelector((state) => state.location);
 
   return (
     <React.Fragment>
@@ -39,7 +44,10 @@ function FiltersBar({
           <Dropdown.Item eventKey={"All"}>All</Dropdown.Item>
           {locations &&
             locations.map((location) => (
-              <Dropdown.Item eventKey={location}  key={Math.random()}> {location}</Dropdown.Item>
+              <Dropdown.Item eventKey={location} key={Math.random()}>
+                {" "}
+                {location}
+              </Dropdown.Item>
             ))}
         </DropdownButton>
 
@@ -52,28 +60,38 @@ function FiltersBar({
           title="AGE"
           className="ms-2"
         >
+          <Dropdown.Item eventKey="All">All</Dropdown.Item>
           <Dropdown.Item eventKey="young">young</Dropdown.Item>
           <Dropdown.Item eventKey="old">old</Dropdown.Item>
         </DropdownButton>
 
-        <InputGroup className="ms-2 w-50">
-          <Form.Control
+        <Form className="ms-2 w-50" onSubmit={handleSearchName}>
+          <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Control
+              type="text"
+              placeholder="Search by name"
+              className="formInputStyle"
+              autoComplete="off"
+              onChange={handleChange}
+              // value={valueName}
+            />
+          </Form.Group>
+          {/* <Form.Control
             placeholder="Search by name"
             aria-label="Search by name"
             aria-describedby="basic-addon2"
             onChange={(e) => setSearchName(e.target.value)}
             value={searchName}
-          />
-          <Button
+          /> */}
+          {/* <Button
+            type="submit"
             className="btn-pink"
-            onClick={(e) => {
-              handleSearchName(searchName);
-              setSearchName("")
-            }}
+            disabled={!searchName ? true : false}
+            onClick={(e) => handleSearchName(e)}
           >
-            Search
-          </Button>
-        </InputGroup>
+            <Link to={`/home/name/?name=${searchName}`}> Search </Link>
+          </Button> */}
+        </Form>
 
         <DropdownButton
           onSelect={(e) => {
@@ -103,7 +121,7 @@ function FiltersBar({
           <Dropdown.Item eventKey="big">Big</Dropdown.Item>
         </DropdownButton>
       </div>
-      <FilterbarSelect />
+      <FilterbarSelect filters={filters}/>
     </React.Fragment>
   );
 }

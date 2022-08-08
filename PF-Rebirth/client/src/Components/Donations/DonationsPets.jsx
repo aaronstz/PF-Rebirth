@@ -5,12 +5,10 @@ import MercadoPago from '../MercadoPago/MercadoPago';
 import Footer from '../Footer/Footer';
 import { PETS_TESTIMONIALS } from '../../Tools/petsTestimonials.js';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 export default function DonationsPets() {
 
     const navigate = useNavigate();
-    // const activeUser = useSelector(state => state.activeUser)
     const user = window.localStorage.getItem("user");
     console.log('user', user)
 

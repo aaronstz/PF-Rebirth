@@ -47,6 +47,8 @@
     text-align: right;
     text-decoration: none;
     color: var(--text-color);
+    border: none;
+    background: transparent;
 }
 
 .link-navbar:hover {

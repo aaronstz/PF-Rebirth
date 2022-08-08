@@ -13,9 +13,9 @@ import {
 } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function FilterbarSelect(){
+export default function FilterbarSelect({filters}){
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   let filterTabLocation=useSelector(state=> state.filterLocation)
   let filterTabAge=useSelector(state=> state.filterAge)
   let filterTabSex=useSelector(state=> state.filterSex)
@@ -23,6 +23,8 @@ export default function FilterbarSelect(){
   useEffect(() => {
   // dispatch(fullFilterAge("age"));
   }, [dispatch]);
+
+  const {name, type, location, gender, size } = filters 
 
   function handleOrderByAge(e) {
     dispatch(orderByAge(e));
@@ -45,7 +47,9 @@ export default function FilterbarSelect(){
 return(
     <div className="filters-tabs"> 
         {filterTabLocation==="All"? "":  <div className="filter-tabs-item" >
-            {filterTabLocation}
+            {location&&location.map(l => {
+              return l
+            })}
            <img className="exbutton" onClick={e=>{handleFilterByLocation("All")}} src={exButton} alt="exbutton"/>
     </div>}
         {filterTabAge==="age"? "":  <div className="filter-tabs-item" >

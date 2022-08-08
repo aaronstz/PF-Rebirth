@@ -11,16 +11,16 @@ import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../Redux/Actions";
 
-function Navbar() {
+function Navbar({filters, setFilters}) {
   const activeUser = useSelector((state) => state.activeUser);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const pets = useSelector((store) => store.pets);
 
   const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
 
+  // console.log('Type pets :>> ', pets);
   if (activeUser) {
     window.localStorage.setItem("user", JSON.stringify(activeUser.userToken));
     window.localStorage.setItem("token", JSON.stringify(activeUser.token));
@@ -35,6 +35,17 @@ function Navbar() {
   let imageUrl = data ? data.image : null;
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
+
+  function handleReturnToHome(e) {
+    navigate("/home")
+    localStorage.setItem("type", JSON.stringify(""))
+    setFilters&&setFilters({
+      ...filters,
+      type : [],
+      page : 0
+    })
+    // navigate("/home")
+  }
 
   const logOut = async (e) => {
     e.preventDefault();
@@ -60,9 +71,13 @@ function Navbar() {
 
   return (
     <div className="containerNavbar">
-      <NavLink to={types.length? "/home?type=" + types[0]: "/home"} className="link-navbar">
-        <img src={logo} alt="logo" className="logo" />
-      </NavLink>
+      <button
+        onClick={(e) => handleReturnToHome(e)}
+        // to={types.length ? "/home?type=" + types[0] : "/home"}
+        className="link-navbar"
+      >
+        <img src={logo} alt="logo" className="logo" id="home"/>
+      </button>
       <div className="iconsContainer">
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />

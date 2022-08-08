@@ -5,35 +5,31 @@ import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
 import NavBar from "../../../Components/Navbar/Navbar.jsx"
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import { useUserFavoritesPets, useFavoritesPetsDetails } from '../../../Tools/customHooks.js';
 
 export default function DashFavorites(){
 
-
+  const [ isLoading, setIsloading ] = useState(true);
+  const favorites= useSelector((s)=> s.favorite) 
+  const pets = useSelector((s) => s.allPets)
   const infoUser= localStorage.getItem("user")
   const user = JSON.parse(infoUser)
   const dispatch = useDispatch()
+  const filterFavs = favorites?.map((p) => {
+    let pet = pets.filter((e) => e.id === p)
+    return pet[0]
+  })
+  const mail = user && user.mail? user.mail : user.email
 
-  const mail = user.mail
+  useEffect(() =>{
+    dispatch(getAllPets())
+    dispatch(getFavs(user.mail || user.email))
+  }, [])
 
-  const [ filters, setFilters ] = useState({ mail : mail})
-  const { data, isLoading }  = useUserFavoritesPets(filters)
   
-  const filterFavs = data&&data.data;
-  // console.log('data :>> ', data&&data.data);
-  // const usePetsDetails = (array) => {
-  //   return { data } = useFavoritesPetsDetails(pId)
-  // }
-  // const petsDetails = filterFavs&&filterFavs?.map(p => {
-  //   const { data } =   useFavoritesPetsDetails()
-  //   return 
-  // })
-
-
-  console.log('filterFavs.length :>> ', filterFavs&&filterFavs);
-
-  // if(filterFavs&&!filterFavs.length) swal("No favorites", "Looks like you don't have favorites yet", "info")
-
+  setTimeout(()=> {
+    setIsloading(false)
+  },300)
+  
   function handleDeleteFav(id){
     dispatch(deleteFavs(mail, id))
   }
@@ -43,7 +39,7 @@ export default function DashFavorites(){
     <NavBar/>
      <div className="mainDashCont">
       {
-        isLoading
+        isLoading || favorites.length === 0
           ? null
           : 
             <>
@@ -51,7 +47,7 @@ export default function DashFavorites(){
                   <h3>MY FAVORITES PETS</h3>
                 </div>
                 <div className="infoPets">
-                  { filterFavs&&filterFavs?.map((e) => {
+                  { filterFavs?.map((e) => {
                       return(
                         <div key={Math.random()} className="favContainer">
                     <div className="favcardLeftPhoto">

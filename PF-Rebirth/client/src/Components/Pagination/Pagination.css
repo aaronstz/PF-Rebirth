@@ -1,19 +1,69 @@
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .pagination {
-  border-radius: 1rem;
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
   height: fit-content;
+  align-items: center;
+  flex-wrap: wrap;
+  animation: fade-in 1s ease;
 }
 
-.pagination ul {
+.pages{
+  position: absolute;
+  top: 74rem;
+  font-size: 1.5rem;
+  animation: fade-in 1s ease;
+}
+
+.btn-pages{
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  
+}
+
+.pagesNone{
+  background-color: transparent;
+  margin: 0 3rem;
+}
+.arrowPages{
+  width: 5rem;
+  cursor: pointer;
+  position: relative;
+
+}
+
+#previousPage{
+  top: 0;
+  text-decoration: none;
+  text-align: center;
+  height: 5rem;
+  width: 5rem;
+  align-items: center;
+  justify-content: center;
+  left: -48rem;
+  position: absolute;
+  animation: fade-in 1s ease;
+}
+
+#nextPage{
   display: flex;
-  list-style-type: none;
+  text-decoration: none;
+  text-align: center;
+  height: 5rem;
+  width: 5rem;
+  align-items: center;
+  justify-content: center;
+  left: 43rem;
+  position: absolute;
+  animation: fade-in 1s ease;
 }
 
-.pagination:hover li {
+.pagination:hover {
   opacity: 1;
   box-shadow: none;
 }

@@ -7,6 +7,8 @@ const chatMessage = require("./message.js");
 const adoption = require("./adoption.js");
 const successStoriesRoute = require("./successStories.js");
 const donationsRoute = require("./donations.js");
+const page = require("./page.js");
+const locations = require('./page.js');
 // const adminRoute = require("./admin.js");
 const cors = require("cors");
 
@@ -14,6 +16,8 @@ const router = Router();
 router.use(cors());
 
 // router.use("/owners", ownersRoute);
+router.use("/", page);
+router.use("/locations", page)
 router.use("/message", chatMessage);
 router.use("/pets", petsRoute);
 router.use("/login", loginRoute);

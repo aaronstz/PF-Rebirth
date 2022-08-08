@@ -1,9 +1,7 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const { Router } = require("express");
 const router = Router();
+const bcrypt = require('bcrypt');
 const { User } = require('../db');
-const { SECRET_KEYWORD } = process.env;
 const { createToken } = require('../tools/loginSession');
 const { infoToPost } = require('../tools/loginSession');
 

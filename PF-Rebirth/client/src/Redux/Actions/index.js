@@ -13,11 +13,71 @@ import {
   FAVORITES,
   DELETE_FAVORITES,
   GET_FAVORITES,
-  GET_ALL_PETS
+  GET_ALL_PETS,
+  GET_NAMES
 } from "./actionTypes";
 
 
 const SERVER  = "http://localhost:3001";
+
+export function saveName(name){
+  return async function(dispatch){
+    try {
+      return dispatch({
+        type : "SAVE_NAME",
+        payload : name
+      })
+    } catch (error) {
+      
+    }
+  }
+}
+
+export function pruebasDeFiltrado(name){
+  return async function(dispatch){
+    try {
+      console.log('Name :>> ', name);
+      const { data } = await axios.get(`${SERVER}/by_name?name=${name}`)
+      return dispatch({
+        type : "PRUEBA",
+        payload : data.data
+      })
+    } catch (error) {
+      
+    }
+  }
+}
+
+export function switchHomeView(type){
+  return async function(dispatch){
+    const { data } = !type ?
+        await axios.get(`${SERVER}/by_type`) :
+        await axios.get(`${SERVER}/by_type?type=${type}`)
+    console.log('data :>> ', data);
+    const pets = data.data
+    try {
+      return dispatch({
+        type: "SWITCH_VIEW",
+        payload : pets
+      })
+    } catch (error) {
+      console.log('error :>> ', error);
+    }
+  }
+}
+
+export function paginateData(json){
+  return async function(dispatch){
+    try {
+      return dispatch({
+        type : "PAGINATE_DATA",
+        payload : json.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 
 export function loginUser(credentials){
   return async function(dispatch) {
@@ -138,25 +198,6 @@ export function postUser(payload) {
   };
 }
 
-
-// export function postUserGoogle(payload) {
-//   return async function (dispatch) {
-//     try {
-//       const { status } = await axios.post(`${SERVER}/user`, payload);
-//       if(status === 201){
-//         await swal("Welcome to Rebirth Pet Adoption Network!", "It seems that this is the first time you access our website, it's important for you to know that your information is protected by our privacy policy.", "info")
-//         .then((willLogin) => {
-//           if (willLogin) {
-//             swal("WooHooo!", "User created successfully", "success")
-//           }
-//         });
-//       }
-//     } catch (error) {
-//       console.log('error', error)
-//     }
-//   };
-// }
-
 export function updateUser(email, payload) {
   return async function (dispatch) {
     try {
@@ -222,19 +263,20 @@ export function getPetFilters(type) {
   };
 }
 
-export function getPetNames(type, name) {
-  return async function (dispatch) {
+export function getPetNames(searchName) {
+  return async function(dispatch){
     try {
-      const json = await axios(`${SERVER}/pets?type=${type}&name=${name}`);
+      console.log('pathSearchName :>> ', searchName);
+      const { data } = await axios.get(`${SERVER}/?name=${searchName}`)
+      console.log('data :>> ', data);
       return dispatch({
-        type: "GET_NAMES",
-        payload: json.data,
-      });
-    } catch ({response}) {
-      const { status } = response;
-      if(status === 404) swal("Oops!", "No pets found", "error")
+        type : GET_NAMES,
+        payload : data
+      })
+    } catch (error) {
+      console.log(error)
     }
-  };
+  }
 }
 
 export function postPet(payload) {
@@ -258,7 +300,6 @@ export function getDetails(id) {
   };
 }
 
-
 export function deletePet(id) {
   return async function (dispatch) {
     try {
@@ -277,10 +318,12 @@ export function deletePet(id) {
 export function getLocation(type) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/pets/location?type=${type||''}`);
+      const { data } =  !type ?
+                        await axios(`${SERVER}/locations`) :
+                        await axios(`${SERVER}/locations?type=${type}`);
       return dispatch({
         type: "GET_LOCATION",
-        payload: json.data,
+        payload: data.result,
       });
     } catch (error) {
       console.log(error);
@@ -329,27 +372,32 @@ export function fullFilterAge(payload) {
     payload,
   };
 }
+
 export function fullFilterSex(payload) {
   return {
     type: FULL_FILTER_SEX,
     payload,
   };
 }
+
 export function fullFilterLocation(payload) {
   return {
     type: FULL_FILTER_LOCATION,
     payload,
   };
 }
+
 export function fullFilterSize(payload) {
   return {
     type: FULL_FILTER_SIZE,
     payload,
   };
 }
+
 export function noFilterPets() {
   return { type: NO_FILTER_PETS };
 }
+
 export function addFavs(mail, id){
   return async function(dispatch){
     try {
@@ -364,6 +412,7 @@ export function addFavs(mail, id){
     }
   }
 }
+
 export function deleteFavs(mail, id){
   return async function(dispatch){
     try {
@@ -378,6 +427,7 @@ export function deleteFavs(mail, id){
     }
   }
 }
+
 export function getFavs(mail){
   return async function(dispatch){
     try {
@@ -387,7 +437,7 @@ export function getFavs(mail){
         payload: json.data
       })
     } catch (error) {
-      await console.log(error)
+      // await console.log(error)
     }
   }
 }

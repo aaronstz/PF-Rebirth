@@ -20,34 +20,46 @@ import DashFavorites from "./Dashboard/Components/MyFavorites/DashFavorites.jsx"
 import DonationsPets from "./Components/Donations/DonationsPets";
 import SW2 from "./Dashboard/Components/MyAdoptions/Components/SweetAlert/SweetAlert";
 import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adoption-request/AdoptionRequest";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<LandingPage />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/home/:id" element={<Details />} />
-        <Route path="/faqs" element={<FAQs />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/create" element={<AddNew />} />
-        <Route path="/donations" element={<DonationsPets />} />
-        <Route path="/donations/:id" element={<DonationsPets />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/favorites" element={<DashFavorites />} />
-        <Route path="/request" element={<AdoptionRequest />} />
-        <Route path="/sw" element={<SW2 />} />
-        {/*
 
-          <Route path = '*' element = {<NotFound/>}/> */}
-      </Routes>
-    </Router>
+  const queryClient = new QueryClient({
+    defaultOptions :{
+        staleTime : Infinity,
+        cacheTime : 600000
+    }
+  });
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<LandingPage />} />
+          <Route path="/home" element={<Home />} />
+          <Route exact path="/home/name/" element={<Home />} />
+          <Route path="/home/:id" element={<Details />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/create" element={<AddNew />} />
+          <Route path="/donations" element={<DonationsPets />} />
+          <Route path="/donations/:id" element={<DonationsPets />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/favorites" element={<DashFavorites />} />
+          <Route path="/request" element={<AdoptionRequest />} />
+          <Route path="/sw" element={<SW2 />} />
+          {/*
+
+            <Route path = '*' element = {<NotFound/>}/> */}
+        </Routes>
+      </Router>
+    </QueryClientProvider>
   );
 }
 

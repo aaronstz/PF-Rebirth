@@ -13,6 +13,10 @@ import dogIco from "../Assets/dog_ico_big.png";
 import weight from "../Assets/weight_ico_big.png";
 
 function Details() {
+
+  window.scroll({
+    top : 0,
+  })
   const { id } = useParams();
   const dispatch = useDispatch();
   const [ favFilters , setFavFilters] = useState([])
@@ -34,7 +38,7 @@ function Details() {
     user = JSON.parse(userJson);
   }
   if(user){
-    var mail = user.email
+    var mail = user.mail
   }
 
   useEffect(() => {
@@ -44,7 +48,7 @@ function Details() {
 
   
   function handleFavorite(){
-    {dispatch(addFavs(mail, id))}
+    dispatch(addFavs(mail, id))
   }
   function handleDeleteFav(){
       dispatch(deleteFavs(mail, id))

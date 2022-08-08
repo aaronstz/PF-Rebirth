@@ -1,18 +1,38 @@
 import React from "react";
 import CarouselFade from "../Carousel/Carousel";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import headerImageTeam from "../../Assets/Header-images/botCat.png";
 import headerDogTeam from '../../Assets/Header-images/btonDog.png';
 import headerImageDonation from "../../Assets/Header-images/btnDonate.png";
 import "./Header.css";
 
-function Header({type, setPage, clear}) {
+
+function Header({ filters, setFilters }) {
 
   const user = window.localStorage.getItem("user");
-  
-  function handleSubmit(e){
-    e.preventDefault();
-    setPage(1)
+  const tipo = localStorage.getItem("type")
+  let type;
+
+  function handleChangeView(e){
+    console.log('e :>> ', e);
+    e.preventDefault(e);
+    if(!tipo){
+      type = "cat"
+      localStorage.setItem("type", JSON.stringify(type))
+    }else if(e.target.id === "dogTeam"){
+      console.log('ENTREEEE A DOG :>> ');
+      type = "dog"
+      localStorage.setItem("type", JSON.stringify(type))
+    }else if(e.target.id === "catTeam"){
+      type = "cat"
+      localStorage.setItem("type", JSON.stringify(type))
+    }  
+    setFilters({
+      ...filters,
+      page : 0,
+      type : [type]
+    })
+
   }
 
   return (
@@ -24,20 +44,14 @@ function Header({type, setPage, clear}) {
         <div className="header-buttons">
           <div className="header-team">
               {
-                type === 'cat' ?
-                <button type="submit" onClick={(e)=>handleSubmit(e)} class="btn-headerTeam">
-                <Link to ={'/home?type=dog'} >
-                  <img className="marginImage" src={headerDogTeam} alt="botonTeam" />
-                </Link>
-                </button>
-                :
-                <button type="submit" onClick={(e)=>handleSubmit(e)} class="btn-headerTeam">
-
-                <Link to ={'/home?type=cat'} >
-                  <img src={headerImageTeam} alt="botonTeam" />
-                </Link>
-                </button>
-
+                filters&&filters.type[0] === "cat" ?
+                  <button type="submit" onClick={(e)=>handleChangeView(e)} className="btn-headerTeam">
+                    <img className="marginImage" src={headerDogTeam} alt="botonTeam" id="dogTeam"/>
+                  </button>
+                : 
+                  <button type="submit" onClick={(e)=>handleChangeView(e)} className="btn-headerTeam">
+                    <img src={headerImageTeam} alt="botonTeam"  id="catTeam"/>
+                  </button>
 
               }
           </div>

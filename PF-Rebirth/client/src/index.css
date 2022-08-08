@@ -8,6 +8,10 @@
   scroll-behavior: smooth;
 }
 
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 body {
   background-color: var(--background) !important;
   background: url("./Assets/mainBK.png") no-repeat center center fixed;
@@ -69,6 +73,23 @@ body.dark {
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  height: fit-content;
+  height: 75rem;
   margin-bottom: 5%;
+  animation: fade-in 1.5s forwards;
+}
+
+.subBoxWrap{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: max-content;
+  margin-bottom: 5%;
+  animation: fade-in 3s forwards;
+}
+
+.apperCards{
+  animation: fade-in 1s forwards;
 }

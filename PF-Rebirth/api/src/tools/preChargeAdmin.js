@@ -13,7 +13,8 @@ const getAdmin = async () => {
             active : a.active,
             password : a.password,
             image : a.image,
-            isAdmin : a.isAdmin ,
+            isAdmin : a.isAdmin,
+            favorites : a.favorites
           },
         });
       });

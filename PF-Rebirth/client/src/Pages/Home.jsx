@@ -8,123 +8,217 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
-
-import {getLocation,
-  filterByLocation,
-  filterBySex,
-  filterBySize,
-  fullFilterAge,
-  fullFilterLocation,
-  fullFilterSex,
-  fullFilterSize,
-  getPetFilters,
-  getPetNames,
-  orderByAge,
+import {
+  getLocation,
   getFavs,
+  paginateData,
 } from "../Redux/Actions/index.js";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useFetchPets } from '../Tools/customHooks.js';
+import swal from "sweetalert";
 
 function Home() {
-  const petType = useLocation().search?.replace("?type=", "");
-
-  const dispatch = useDispatch();
-  const pets = useSelector((store) => store.filteredPets);
-  // const loading = useSelector(store => store.loading)
-
-  console.log('pets', pets)
-  //Paginado//
-  const [refresh] = useState(1);
-  // const [page, setPage] = useState(1);
-  // const [cantPets] = useState(6);
-  // const lastPet = page * cantPets;
-  // const firstPet = lastPet - cantPets;
-  // const petsPage = pets?.slice(firstPet, lastPet);
-  // // const cantPages = Math.ceil(pets.length / cantPets);
-
-  // const paginado = (pageNum) => {
-  //   setPage(pageNum);
-  // };
-
-  // logica de la paginacion, filtro por pagina y loading
-  const [currentPage, setCurrentPage] = useState(1); //lo seteo en 1 porque siempre arranco por la primer pagina
-  const petsPerPage = 6; //cantidad de pets que debe haber por pagina
-  const indexOfLastPet = currentPage * petsPerPage; // 1 * 6 = 6
-  const indexOfFirstPet = indexOfLastPet - petsPerPage; // 6 - 6 = 0
-
-  const currentPet = pets.slice(indexOfFirstPet, indexOfLastPet); //para dividir la cantidad de pets por pagina
-  
-  const pagination = (pageNumber) => setCurrentPage(pageNumber);
 
   let user = null;
-  if(localStorage.user){
+  if (localStorage.user) {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
   
-  if(user){
-    var mail = user.email
+  if (user) {
+    var mail = user.mail;
   }
+  
+  const dispatch = useDispatch();
+  const { pathname, search } = useLocation();
+  const navigate = useNavigate();
+  
+  let afiltrar = localStorage.getItem("filters")
+  let filtros = !afiltrar ? {name: "", location : [], type : [], gender : [], size : []} : JSON.parse(afiltrar);
+  const [ filters, setFilters ] = useState(filtros);
+
+  let typeStorage = JSON.parse(localStorage.getItem("type")); // dog or cat
+  if(typeStorage && filters.type[0] !== typeStorage){
+    setFilters({
+      ...filters,
+      type : [typeStorage]
+    })
+  }
+  
+  let petType = !typeStorage ? [] : [typeStorage] 
+
+  let number = search.split("&")[0];
+  let numberPage = Number(number.split("=")[1]);
+
+  let queryType = !petType ? "" : petType
+
+  if (isNaN(numberPage)) numberPage = 1;
+  
+  //STATES TO USE THE APP
+  // const { totalPages, currentPage } = useSelector((state) => state.prueba); //para dividir la cantidad de pets por pagina
+  //LOCAL STATES
+
+  console.log('filters :>> ', filters);
+  //GLOBAL STATE THAT CONTROLS THE RENDER OF THE HOME PAGE
+  const { data : pets, isLoading } = useFetchPets(filters)
+  const megaPets = useSelector(state => state.prueba)
+  //STATE THAT CONTROL THE PAGINATE OF THE DATA
+  const totalPages = pets&&pets.data.totalPages;
+  const currentPage = pets&&pets.data.currentPage;
+  const [ searchName, setSearchName] = useState("");
+  const [ currentPageNumber, setCurrentPageNumber] = useState(Number(currentPage));
 
   useEffect(() => {
-    dispatch(getPetFilters(petType));
-    dispatch(getLocation(petType));
-  }, [dispatch, petType]);
+    dispatch(paginateData(pets))
+  }, [dispatch, pets])
+  
+  useEffect(() => {
+    setCurrentPageNumber(0)
+  }, [])
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    localStorage.setItem("filters", JSON.stringify(filters))
+  },[filters])
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getFavs(mail));
+    }
+  }, [dispatch, mail, user]);
+
+  useEffect(() => {
+    setCurrentPageNumber(currentPage);
   }, [currentPage]);
 
+  //POSIBLEMENTE QUEDE DEPRECATED
   useEffect(() => {
-   if(user){
-    dispatch(getFavs(mail))
-   }
-  },[]);
+    dispatch(getLocation(queryType));
+  }, [dispatch, queryType]);
+
 
   function handleFilterBySex(e) {
-    dispatch(filterBySex(e));
-    dispatch(fullFilterSex(e));
-    setCurrentPage(1);
+    let gender = e === "All" ? [] : [e]
+    setFilters({
+      ...filters,
+      name : "",
+      gender : gender,
+      page : 0
+    })
   }
+
   function handleFilterBySize(e) {
-    dispatch(filterBySize(e));
-    dispatch(fullFilterSize(e));
-    setCurrentPage(1);
+    let size = e === "Any" ? [] : [e]
+    setFilters({
+      ...filters,
+      name : "",
+      size : size,
+      page : 0
+    })
   }
+
   function handleFilterByLocation(e) {
-    dispatch(filterByLocation(e));
-    dispatch(fullFilterLocation(e));
-    setCurrentPage(1);
+    let location = e === "All" ? [] : [e]
+    setFilters({
+      ...filters,
+      name : "",
+      location : location,
+      page : 0,
+    })
   }
+
   function handleOrderByAge(e) {
-    dispatch(orderByAge(e));
-    dispatch(fullFilterAge(e));
-    setCurrentPage(1);
+    let age = e === 'young' ? ["0","1","2"] : e === 'old' ? ["3","4","5","6","7","8","9","10","11","12"] : ["0","1","2","3","4","5","6","7","8","9","10","11","12"];
+    setFilters({
+      ...filters,
+      name : "",
+      age : age,
+      page : 0,
+    })
   }
-  function handleSearchName(search) {
-    dispatch(getPetNames(petType, search));
-    setCurrentPage(1);
-    
+
+  function handleChange(e){
+    e.preventDefault();
+    let pag = 0
+    if(e.target.value===""){
+      let savedPage = JSON.parse(localStorage.getItem("page"));
+      pag = Number(savedPage)
+    }
+    setFilters({
+      ...filters,
+      name : e.target.value,
+      page : pag
+    })
   }
+
+  function handleSearchName(e){
+    e.preventDefault();
+    setFilters({
+      ...filters,
+      name : searchName
+    })
+    setSearchName("")
+  }
+
+  function handlePage(e) {
+    if (e.target.id === "nextPage") {
+      let pag = currentPageNumber + 1;
+      setFilters({
+        ...filters,
+        page : pag
+      })
+      setCurrentPageNumber(pag);
+      localStorage.setItem("page", JSON.stringify(pag))
+    } else if (e.target.id === "previousPage") {
+      let pag = currentPageNumber - 1;
+      setFilters({
+        ...filters,
+        page : pag
+      })
+      setCurrentPageNumber(pag);
+      localStorage.setItem("page", JSON.stringify(pag))
+    }
+    // window.scroll({
+    //   top: 500, 
+    //   left: 0, 
+    //   behavior: 'smooth'
+    // });
+  }
+
+  let page = currentPageNumber;
+  let nextPage = page+1;
+  let previousPage = page-1;
+  if (page > 1) previousPage = page - 1;
 
   return (
     <div>
-      <Navbar />
+      <Navbar filters={filters} setFilters={setFilters}/>
       <Container>
-        <Header type={petType} setPage ={setCurrentPage}/>
+        <Header
+          filters={filters}
+          setFilters={setFilters}
+        />
         <FiltersBar
+          filters={filters}
+          handleChange={handleChange}
           handleFilterBySex={handleFilterBySex}
           handleFilterBySize={handleFilterBySize}
           handleFilterByLocation={handleFilterByLocation}
           handleOrderByAge={handleOrderByAge}
           handleSearchName={handleSearchName}
+          searchName={searchName}
         />
+        
         <div className="boxWrap">
-          {refresh &&
-            currentPet.map((p, i) => {
+          <div className="subBoxWrap">
+          {
+            isLoading ? null :
+            megaPets.pets?.map((p, i) => {
               return (
                 <Cards
+                  className="apperCards"
                   key={Math.random()}
                   image={p.image}
                   name={p.name}
@@ -136,17 +230,21 @@ function Home() {
                   id={p.id}
                   location={p.location}
                   userMail={p.userMail}
-                  currentPage={currentPage}
                 />
               );
             })}
+          </div>
         </div>
+
       </Container>
       <Paginations
-        currentPage={currentPage}
-        petsPerPage={petsPerPage}
-        pets={pets.length}
-        pagination={pagination}
+        numberPage={currentPageNumber}
+        totalPages={totalPages}
+        pathname={pathname}
+        previousPage={previousPage}
+        currentPageNumber={currentPageNumber+1}
+        nextPage={nextPage}
+        handlePage={handlePage}
       />
       <Testimonials />
       <Footer />

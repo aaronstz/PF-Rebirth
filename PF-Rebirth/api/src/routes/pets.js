@@ -68,6 +68,20 @@ router.get("/", async (req, res, next) => {
 
 
 
+router.get("/", async (req, res, next) => {
+  try {
+    const { type, name } = req.query;
+    const allPets = await Pets.findAll();
+
+    
+
+  } catch (error) {
+      next(error);
+  }
+});
+
+
+
 
 
 router.post("/", async (req, res, next) => {
