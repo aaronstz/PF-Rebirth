@@ -259,13 +259,12 @@ function AddNew() {
                           <label htmlFor="location">Location*</label>
                           <select
                             name="location"
-                            className="form-control"
-                            id="exampleFormControlSelect1"
+                            className="form-controlAdd"
                             onChange={(e) => {
                               handleChange(e);
                             }}
                           >
-                            <option>Choose...</option>
+                            <option defaultValue>Choose...</option>
                             {provincias?.map((p) => {
                               return (
                                 <option key={Math.random()} value={p}>
