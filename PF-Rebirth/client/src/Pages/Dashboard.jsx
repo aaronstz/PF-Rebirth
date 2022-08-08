@@ -5,7 +5,7 @@ import Feedback from "../Dashboard/Components/MyAdoptions/Components/Feedback/Fe
 // import DashFavorites from "../Dashboard/Components/MyFavorites/DashFavorites";
 import "./Dashboard.css";
 
-function Navbar() {
+function Dashboard() {
   return (
     <>
       <DashNavBar />
@@ -18,4 +18,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Dashboard;

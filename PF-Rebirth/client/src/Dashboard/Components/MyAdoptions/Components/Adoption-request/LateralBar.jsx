@@ -6,15 +6,16 @@ import mascota from "../../../../../Assets/Messageboard/pet.png";
 import { getChat, saveAdoptionId } from "../../../../../Redux/Actions";
 import "./LateralBar.css";
 import { getMessage } from "../../../../../Redux/Actions";
+import { useNavigate } from "react-router-dom";
 
 export default function LateralBar() {
+  let mail=""
   const adoptChat = useSelector((state) => state.adoptionChat);
   const dispatch = useDispatch();
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
-  const mail = user.mail;
-  console.log(user.mail, mail);
-  console.log(adoptChat);
+  if(infoStorage) mail = user.mail;
+
   useEffect(() => {
     dispatch(getChat(mail));
   }, [dispatch]);
