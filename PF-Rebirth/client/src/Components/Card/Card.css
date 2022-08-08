@@ -62,6 +62,17 @@
   cursor: pointer;
   background: url(../../Assets/botonFAV_active.png);
 }
+.btnFavEliminarPets {
+  z-index: 100;
+  border: none;
+  position: absolute;
+  left: 81.63%;
+  top: 2%;
+  width: 45px;
+  height: 43px;
+  cursor: pointer;
+  background: url(../../Assets/weight_ico_big.png);
+}
 
 .lcard .txtCont {
   display: flex;
