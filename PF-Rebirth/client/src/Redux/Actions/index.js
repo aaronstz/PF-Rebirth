@@ -207,6 +207,7 @@ export function updateUser(email, payload) {
   }
 }
 
+
 export function deleteUser(mail) {
   return async function (dispatch) {
     try {
@@ -286,22 +287,7 @@ export function postUser(payload) {
 // }
 
 
-export function updateUser(email, payload) {
-  return async function (dispatch) {
-    try {
-      const json = await axios.put(`${SERVER}/user/${email}`, payload);
-      localStorage.setItem("user", JSON.stringify(json.data));
-      if (json.status === 200) swal("OK", "User info updated", "success");
 
-      return dispatch({
-        type: "UPDATE_PROFILE",
-        payload: json.data,
-      });
-    } catch (error) {
-      swal("Error", "Username already in use", "error");
-    }
-  };
-}
 
 
 
