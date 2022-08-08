@@ -8,6 +8,17 @@
   }
 }
 
+.spinner{
+  display:flex;
+  position: relative;
+  justify-content: center;
+  left:50%;
+  top:300px;
+  width: 3rem;
+  height: 3rem;
+}
+
+
 .info {
   opacity: 0;
   animation: fade-in 0.5s forwards;
@@ -21,6 +32,15 @@
 .mainDashCont {
   display: flex;
   flex-wrap: wrap;
+}
+
+.noFavsTitle {
+  color: var(--text-color);
+  margin: 10.5rem 0 0rem 0;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  position: absolute;
 }
 
 .conTitulo {
