@@ -134,6 +134,7 @@ function Home() {
                   location={p.location}
                   userMail={p.userMail}
                   views = {p.views}
+                  type = {p.type}
                 />
               );
             })}

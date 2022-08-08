@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { provincias } from "../../../Tools/provincias";
 import Navbar from "../../../Components/Navbar/Navbar";
 import { Widget } from "@uploadcare/react-widget";
+import DashNavBar from "../Dash-NavBar/Dash-NavBar";
 
 function validate(input) {
   let validateName = /^[a-zA-Z\s]+$/;
@@ -104,7 +105,7 @@ function AddNew() {
 
   return (
     <section>
-      <Navbar />
+    <DashNavBar/>
       <div className="add-container">
         <div className="add-wrapper">
           <div className="add-wrapperleft">
