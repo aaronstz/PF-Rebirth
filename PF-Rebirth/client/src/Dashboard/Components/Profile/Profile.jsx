@@ -4,6 +4,8 @@ import Navbar from '../../../Components/Navbar/Navbar';
 import { Widget } from "@uploadcare/react-widget";
 import { updateUser } from "../../../Redux/Actions/index";
 import "./Profile.css";
+import DashNavBar from '../Dash-NavBar/Dash-NavBar';
+import Footer from '../../../Components/Footer/Footer';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -49,8 +51,9 @@ function Profile() {
   }
 
   return (
+  
     <div className="fixed-top">
-      <Navbar />
+       <DashNavBar/>
       <form method="PUT" onSubmit={(e) => handleSubmit(e)}>
         <div className="row d-flex flex-column align-items-center">
           <div className="col-md-1">
@@ -164,7 +167,10 @@ function Profile() {
           </div>
         </div>
       </form>
-    </div>
+        </div>
+    
+   
+   
   );
 }
 
