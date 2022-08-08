@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./DashFavorites.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
+<<<<<<< HEAD
 // import NavBar from "../../../Dashboard/Components/Dash-NavBar/Dash-NavBar.jsx";
+=======
+>>>>>>> 1d7a3a2ffe7b814d7bf48aabbf2e1662a86d9ff2
 import { Link } from "react-router-dom";
-import swal from "sweetalert";
+// import swal from "sweetalert";
 
 export default function DashFavorites() {
   const [isLoading, setIsloading] = useState(true);
@@ -34,7 +37,10 @@ export default function DashFavorites() {
 
   return (
     <>
+<<<<<<< HEAD
       {/* <NavBar /> */}
+=======
+>>>>>>> 1d7a3a2ffe7b814d7bf48aabbf2e1662a86d9ff2
       <div className="mainDashCont">
         {isLoading || favorites.length === 0 ? null : (
           <>

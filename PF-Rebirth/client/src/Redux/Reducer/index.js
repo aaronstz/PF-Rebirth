@@ -36,7 +36,8 @@ import {
   USERS_BANNED,
   USER_RESTORE,
   GET_USERNAME,
-  MAKE_ADMIN
+  MAKE_ADMIN,
+  DELETE_ADOPTION,
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -70,9 +71,14 @@ function rootReducer(state = initialState, action) {
         ...state,
         allPets: action.payload,
       };
+
     case DELETE_PET:
       return {
         ...state
+      }
+    case DELETE_ADOPTION:
+      return {
+        ...state,
       };
     case LOGIN_USER:
       return {

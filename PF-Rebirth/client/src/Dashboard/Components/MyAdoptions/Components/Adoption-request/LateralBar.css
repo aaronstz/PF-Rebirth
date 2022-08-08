@@ -1,7 +1,13 @@
 .avatar-lateral-bar{
+    position: relative;
  height: 80px;
- height: 80px;
+ width: 80px;
  border-radius: 5px;
+}
+.avatar-lateral-bar img{
+    border-radius: 10px;
+    height: 80px;
+    width: 80px;
 }
 .pet-lateral-bar{
     max-height: 40px;
@@ -9,11 +15,15 @@
     min-height: 40px;
     min-height: 40px;
     position: relative;
-    left: -40px;
-    top:20px;
+    top:-40px;
+    left:40px;
     z-index: 10;
+   }
+   .pet-lateral-bar img{
     border-radius: 50%;
-    border: 1px solid #FFFFFF
+    border: 1px solid #FFFFFF;
+    width: 40px;
+    height: 40px;
    }
 .avatar-pet-lateral-bar{
     min-height: 80px;
@@ -22,16 +32,22 @@
     padding: 0px; 
 }
 
+
 .container-lateral-bar{
 display: flex;
 flex-direction: row;
+word-wrap: break-word;
 background-color:var(--background);
 width: 400px;
+height: 80px;
 border-radius: 10px;
 border: 1px solid var(--greylight);
 margin: 0px;
     padding: 0px; 
 
+}
+.container-lateral-bar:hover{
+    background-color:#dfdfdf;   
 }
 .name-adoption-text-lb{
     height: 80px;

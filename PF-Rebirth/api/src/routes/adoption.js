@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Adoption } = require("../db");
+const { Op } = require("sequelize");
 
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
@@ -66,7 +67,7 @@ router.post("/", async (req, res, next) => {
 router.patch("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const adoptionRequest = await Adoption.findOne({ where: { id: id } });
+    const adoptionRequest = await Adoption.findOne({ where: {[Op.and]:[{ id: id },{isActive:true}] }});
     if (adoptionRequest) {
       adoptionRequest.isActive = false;
       await adoptionRequest.save();
@@ -79,4 +80,19 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/delete/:id", async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const adoptionDelete = await Adoption.findByPk(id);
+    if (!!adoptionDelete) {
+      await Adoption.destroy({ where: { id: id } });
+      res.status(200).send(`se elimino la adopcion `);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
+
