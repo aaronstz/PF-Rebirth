@@ -32,8 +32,6 @@ export default function DashFavorites(){
 
   return (
     <>
-      <DashNavBar/>
-
       <div className="mainDashCont">
         {filterFavs&&filterFavs.length === 0 ? 
         (

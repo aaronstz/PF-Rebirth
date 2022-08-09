@@ -26,6 +26,8 @@ export default function FilterbarSelect({filters}){
 
   const {name, type, location, gender, size } = filters 
 
+  console.log('filters :>> ', filters);
+
   function handleOrderByAge(e) {
     dispatch(orderByAge(e));
     dispatch(fullFilterAge(e))
@@ -47,9 +49,7 @@ export default function FilterbarSelect({filters}){
 return(
     <div className="filters-tabs"> 
         {filterTabLocation==="All"? "":  <div className="filter-tabs-item" >
-            {location&&location.map(l => {
-              return l
-            })}
+
            <img className="exbutton" onClick={e=>{handleFilterByLocation("All")}} src={exButton} alt="exbutton"/>
     </div>}
         {filterTabAge==="age"? "":  <div className="filter-tabs-item" >

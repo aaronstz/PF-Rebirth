@@ -180,11 +180,6 @@ function Home() {
       setCurrentPageNumber(pag);
       localStorage.setItem("page", JSON.stringify(pag))
     }
-    // window.scroll({
-    //   top: 500, 
-    //   left: 0, 
-    //   behavior: 'smooth'
-    // });
   }
 
   let page = currentPageNumber;
