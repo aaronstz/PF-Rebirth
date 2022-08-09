@@ -9,7 +9,7 @@ import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
 import { getLocation, getFavs, paginateData } from "../Redux/Actions/index.js";
-
+import NotFound from '../Components/NotFound/NotFound'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useFetchPets } from "../Tools/customHooks.js";
@@ -209,7 +209,8 @@ function Home() {
         />
 
         <div className="boxWrap">
-          {isLoading
+          {
+            isLoading
             ? null
             : megaPets.pets?.map((p, i) => {
                 return (
@@ -229,8 +230,10 @@ function Home() {
                     views={p.views}
                     type={p.type}
                   />
-                );
-              })}
+                  );
+                })
+              }
+              
         </div>
       </Container>
       <Paginations
