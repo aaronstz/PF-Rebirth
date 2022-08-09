@@ -1,11 +1,15 @@
 import React from "react";
 import "./Feedback.css";
 import stars from "../../../../../Assets/Testimoniales/Star5.png";
+import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
+import Footer from "../../../../../Components/Footer/Footer";
 
 function Feedback() {
   const longitud = "-64.26617114519884";
   const latitud = "-27.792642976806206";
   return (
+    <>
+    <DashNavBar/>
     <div className="wrapperFeed">
       <div className="wrapperLeftFeed">
         <h2 className="mb-3">Next steps</h2>
@@ -59,6 +63,8 @@ function Feedback() {
         <div className="Loginfooter">Copyright &copy; 2022 &mdash; Team 13</div>
       </div>
     </div>
+<Footer/>
+    </>
   );
 }
 

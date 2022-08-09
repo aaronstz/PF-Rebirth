@@ -1,9 +1,10 @@
 import React from 'react';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-// import 'sweetalert2/dist/sweetalert2.css'
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/dist/sweetalert2.css";
 import './SweetAlert.css'
 
- export default function Swalert(dogName){
+ export default function Swalert(dogName,navigate){
+
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: 'rebirth-button pink',
@@ -25,7 +26,7 @@ import './SweetAlert.css'
         'Adopted',
         'Take care of '+dogName,
         'success'
-      )
+      ).then(()=>{navigate("/feedback")})
     } else if (
       /* Read more about handling dismissals below */
       result.dismiss === Swal.DismissReason.cancel
