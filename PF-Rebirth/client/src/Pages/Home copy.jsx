@@ -28,51 +28,47 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Home() {
-
   let user = null;
   if (localStorage.user) {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
-  
+
   if (user) {
     var mail = user.email;
   }
-  
+
   const dispatch = useDispatch();
   const { pathname, search } = useLocation();
   const navigate = useNavigate();
 
-  
   let petType = search.split("type=")[1];
   let number = search.split("&")[0];
   let numberPage = Number(number.split("=")[1]);
-  
+
   if (isNaN(numberPage)) numberPage = 1;
-  
+
   //STATE TO USE THE APP
-  const { pets, totalPages, currentPage } = useSelector((state) => state.prueba); //para dividir la cantidad de pets por pagina
+  const { pets, totalPages, currentPage } = useSelector(
+    (state) => state.prueba
+  ); //para dividir la cantidad de pets por pagina
   //LOCAL STATES
-  const [ currentPageNumber, setCurrentPageNumber] = useState(numberPage);
-  const [ type, setType ] = useState(petType);
-  const [ searchName, setSearchName] = useState("");
-  const [ pathSearchName, setPathSearchName ] = useState(search);
-  // const [ searchName, setSearchName ] = useState(pathSearchName + `&name=${name}`);
-
-  console.log('Pathsearch :>> ', pathSearchName);
-  console.log('Search Name :>>>> ', searchName);
+  const [currentPageNumber, setCurrentPageNumber] = useState(numberPage);
+  const [type, setType] = useState(petType);
+  const [searchName, setSearchName] = useState("");
+  const [pathSearchName, setPathSearchName] = useState(search);
 
   useEffect(() => {
-    setPathSearchName(search)
-  }, [search])
+    setPathSearchName(search);
+  }, [search]);
 
   useEffect(() => {
-    dispatch(paginateData(type, pathSearchName))
-  }, [dispatch, pathSearchName, type])
+    dispatch(paginateData(type, pathSearchName));
+  }, [dispatch, pathSearchName, type]);
 
   useEffect(() => {
-    setType(petType)
-  }, [petType])
+    setType(petType);
+  }, [petType]);
 
   useEffect(() => {
     if (user) {
@@ -90,7 +86,7 @@ function Home() {
   }, [dispatch, petType]);
 
   // const [searchName, setSearchName] = useState("");
-  
+
   // let enrutado = path.length > 1 ? path[1].replace("page=", "") : null;
   // enrutado = `?name=${searchName}`
 
@@ -119,49 +115,27 @@ function Home() {
     }
   }
 
-  function handleChange(e){
-    setSearchName(e.target.value)
+  function handleChange(e) {
+    setSearchName(e.target.value);
   }
 
-  function handleSearchName(e){
+  function handleSearchName(e) {
     e.preventDefault();
-    navigate(`/home/name/?name=${searchName}`)
-    console.log('searchName :>> ', searchName);
-    dispatch(getPetNames(searchName))
-    // setPathSearchName(searchName)
+    navigate(`/home/name/?name=${searchName}`);
+    dispatch(getPetNames(searchName));
   }
 
   let page = currentPageNumber;
-  let nextPage = page+1;
-  let previousPage = page-1;
+  let nextPage = page + 1;
+  let previousPage = page - 1;
 
-
-  
   if (page > 1) previousPage = page - 1;
-
-  console.log('petType :>> ', petType);
-
-  let pageUrl;
-  let nextPageUrl;
-  let previousPageUrl;
-
-  if (petType) {
-    pageUrl = pathSearchName + `&page=${currentPageNumber}`;
-    nextPageUrl = `&page=${page+1}`;
-    previousPageUrl = `&page=${page-1}`;
-    // setPathSearchName(pageUrl);
-  }
-  console.log('previousPageUrl :>> ', previousPageUrl);
-  console.log('pageUrl :>> ', pageUrl);
-  console.log('nextPageUrl :>> ', nextPageUrl);
 
   return (
     <div>
       <Navbar />
       <Container>
-        <Header
-          type={search}
-        />
+        <Header type={search} />
         <FiltersBar
           handleChange={handleChange}
           handleFilterBySex={handleFilterBySex}
@@ -171,35 +145,33 @@ function Home() {
           handleSearchName={handleSearchName}
           searchName={searchName}
         />
-        
-        <div className="boxWrap">
-          {
-            pets?.map((p, i) => {
-              return (
-                <Cards
-                  key={Math.random()}
-                  image={p.image}
-                  name={p.name}
-                  breed={p.race}
-                  age={p.age}
-                  gender={p.gender}
-                  size={p.size}
-                  description={p.description}
-                  id={p.id}
-                  location={p.location}
-                  userMail={p.userMail}
-                />
-              );
-            })}
-        </div>
 
+        <div className="boxWrap">
+          {pets?.map((p, i) => {
+            return (
+              <Cards
+                key={Math.random()}
+                image={p.image}
+                name={p.name}
+                breed={p.race}
+                age={p.age}
+                gender={p.gender}
+                size={p.size}
+                description={p.description}
+                id={p.id}
+                location={p.location}
+                userMail={p.userMail}
+              />
+            );
+          })}
+        </div>
       </Container>
       <Paginations
         numberPage={currentPageNumber}
         totalPages={totalPages}
         pathname={pathname}
         previousPage={previousPage}
-        currentPageNumber={currentPageNumber+1}
+        currentPageNumber={currentPageNumber + 1}
         nextPage={nextPage}
         handlePage={handlePage}
       />

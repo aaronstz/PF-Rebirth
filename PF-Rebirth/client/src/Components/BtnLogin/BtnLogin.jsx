@@ -24,7 +24,7 @@ export default function BtnLogin() {
     }
 
     const failureLogin = (response) => {
-        console.log(response)
+        return response
     }
   
     useEffect(()=>{

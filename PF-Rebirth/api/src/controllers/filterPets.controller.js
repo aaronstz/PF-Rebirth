@@ -18,7 +18,6 @@ exports.findAll = (req, res) => {
     .then(data => {
       const response = getPagingData(data, page, limit);
       res.send(response);
-      console.log('response :>> ', response);
     })
     .catch(err => {
       res.status(500).send({
@@ -60,7 +59,6 @@ exports.filterPets = (req, res) => {
 
   Pets.findAndCountAll({ where: condition, limit, offset, order : ageSearch })
     .then(data => {
-      console.log('data :>> ', data);
       const response = getPagingData(data, page, limit);
       res.send(response);
     })

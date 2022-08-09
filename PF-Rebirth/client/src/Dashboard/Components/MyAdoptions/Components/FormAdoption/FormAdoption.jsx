@@ -12,7 +12,6 @@ const FormAdoption = () => {
   let { id } = useParams();
   let dispatch = useDispatch();
   const { userMail } = useSelector((state) => state.detail);
-  console.log(userMail);
   let mailAdoptante = "";
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);

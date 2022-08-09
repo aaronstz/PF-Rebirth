@@ -17,7 +17,6 @@ const AcceptReject = () => {
 
   function handleClick(adoptionId) {
     dispatch(deleteAdoption(adoptionId));
-    console.log(adoptionId);
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
 

@@ -9,14 +9,12 @@ import { getMessage } from "../../../../../Redux/Actions";
 import { useNavigate } from "react-router-dom";
 
 export default function LateralBar() {
-  let mail=""
+  let mail = "";
   const adoptChat = useSelector((state) => state.adoptionChat);
   const dispatch = useDispatch();
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
-  if(infoStorage) mail = user.mail;
-
-  console.log(mail)
+  if (infoStorage) mail = user.mail;
 
   useEffect(() => {
     dispatch(getChat(mail));
@@ -39,28 +37,20 @@ export default function LateralBar() {
               <div className="avatar-pet-lateral-bar">
                 <div className="avatar-lateral-bar">
                   <img
-                  
-                  src={
-                    adChat.adopter.mail === mail
-                      ? adChat.owner.image
-                      : adChat.adopter.image
-                  }
-                  alt=""
-                
-                />
+                    src={
+                      adChat.adopter.mail === mail
+                        ? adChat.owner.image
+                        : adChat.adopter.image
+                    }
+                    alt=""
+                  />
                 </div>
                 <div className="pet-lateral-bar">
-                  <img
-                  
-                  src={adChat.pet.image}
-                  alt=""
-                />
+                  <img src={adChat.pet.image} alt="" />
                 </div>
-                
               </div>
             </div>
             <div className="name-adoption-text-lb">
-              {console.log(adChat)}
               <div className="name-lateral-bar">
                 {" "}
                 {adChat.userMail === mail

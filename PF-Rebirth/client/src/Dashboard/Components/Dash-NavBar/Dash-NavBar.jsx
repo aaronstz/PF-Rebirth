@@ -54,7 +54,7 @@ const DashNavBar = () => {
   }, []);
 
   let data = user ? JSON.parse(user) : null;
-  console.log(data)
+  
   return (
     <>
       <div className="DashcontainerNavbar">
