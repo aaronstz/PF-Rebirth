@@ -5,7 +5,8 @@ const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 const {sendEmailUserBanned} = require("../tools/sendEmailUserBanned.js")
-const { Op } = require("sequelize")
+const { Op } = require("sequelize");
+const { sendEmailUserRestored } = require("../tools/sendMailUserRestored");
 
 router.get("/banned" , async (req, res, next) => {
   try {
@@ -71,6 +72,7 @@ router.patch("/restore/:mail", async (req, res, next) => {
       await User.restore({
         where: { mail: mail },
       });
+      sendEmailUserRestored(mail)
       res.send("User Restored");
     }else {
       res.status(404).send("Not found")
