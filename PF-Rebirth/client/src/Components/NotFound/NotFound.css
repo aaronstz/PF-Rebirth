@@ -1,0 +1,11 @@
+.ContNotFoundBK {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.ContNotFoundBK img {
+  width: 700px;
+  height: auto;
+}
