@@ -9,6 +9,7 @@ import { getDetails, postAdoption } from "../../../../../Redux/Actions/index";
 import swal from "sweetalert";
 
 const FormAdoption = () => {
+
   let { id } = useParams();
   let dispatch = useDispatch();
   const { userMail } = useSelector((state) => state.detail);
@@ -45,6 +46,7 @@ const FormAdoption = () => {
     phone: " ",
   });
 
+
   function handleChange(e) {
     let field = e.target.name;
     let data = e.target.value;
@@ -67,7 +69,6 @@ const FormAdoption = () => {
         if (data === "")
           setAdoptError({ ...adoptError, address: "Field required" });
         else setAdoptError({ ...adoptError, address: "" });
-
         break;
       case "phone":
         if (data === "")

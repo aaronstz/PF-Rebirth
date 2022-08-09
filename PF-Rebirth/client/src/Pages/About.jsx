@@ -6,7 +6,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import "../Components/About/About.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import enzo from "../Assets/enzo.png";
 import leni from "../Assets/leni.png";
 import aron from "../Assets/aron.png";
@@ -48,7 +48,7 @@ function About() {
                     <p className="card-text">
                       <a
                         href="https://www.linkedin.com/in/enzo-sanchez-473a68232/"
-                        target="_blank"
+                        // target="_blank" -> warning
                         className="text-muted"
                       >
                         Linkedin
@@ -64,7 +64,7 @@ function About() {
                     <p>
                       <a
                         href="https://www.linkedin.com/in/lenny-snaiderman/"
-                        target="_blank"
+                        // target="_blank" -> warning
                         className="text-muted"
                       >
                         Linkedin
@@ -81,7 +81,7 @@ function About() {
                     <p className="card-text">
                       <a
                         href="https://www.linkedin.com/in/aaronstz/"
-                        target="_blank"
+                        // target="_blank" -> warning
                         className="text-muted"
                       >
                         Linkedin
@@ -101,7 +101,7 @@ function About() {
                     <p className="card-text">
                       <a
                         href="https://www.linkedin.com/in/willdz/"
-                        target="_blank"
+                        // target="_blank" -> warning
                         className="text-muted"
                       >
                         Linkedin
@@ -119,7 +119,7 @@ function About() {
                     <p className="card-text">
                       <a
                         href="https://www.linkedin.com/in/lucas-d%C3%ADaz-520bbb23a/"
-                        target="_blank"
+                        // target="_blank" -> warning
                         className="text-muted"
                       >
                         Linkedin
@@ -135,7 +135,7 @@ function About() {
                     <p className="card-text">
                       <a
                         href="https://www.linkedin.com/in/tobias-tymkiw/"
-                        target="_blank"
+                        // target="_blank" -> warning
                         className="text-muted"
                       >
                         Linkedin
@@ -151,7 +151,7 @@ function About() {
                     <p className="card-text">
                       <a
                         href="https://www.linkedin.com/in/marielgramajo/"
-                        target="_blank"
+                        // target="_blank" -> warning
                         className="text-muted"
                       >
                         Linkedin
@@ -167,7 +167,7 @@ function About() {
                     <p className="card-text">
                       <a
                         href="https://www.linkedin.com/in/carlos-candioti-14a990219/"
-                        target="_blank"
+                        // target="_blank" -> warning
                         className="text-muted"
                       >
                         Linkedin

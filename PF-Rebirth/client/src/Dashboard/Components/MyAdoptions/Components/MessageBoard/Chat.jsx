@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import "./Chat.css";
 import sendButton from "../../../../../Assets/Messageboard/send.svg";
 import {
-  getChat,
   getMessage,
   postMessage,
   putVisto,
-} from "../../../../../Redux/Actions";
+} from "../../../../../Redux/Actions"; // warning-> getChat
 import { useDispatch, useSelector } from "react-redux";
-import { PUT_VISTO } from "../../../../../Redux/Actions/actionTypes";
+// import { PUT_VISTO } from "../../../../../Redux/Actions/actionTypes"; warning
 
 
 export default function Chat({ allMessages }) {
@@ -71,7 +70,7 @@ let mail=""
           onChange={(e) => handleOnChange(e)}
         />
         <button onClick={() => handleClick()} className="chat-button">
-          <img src={sendButton}></img>{" "}
+          <img src={sendButton} alt ="send"></img>{" "}
         </button>
       </div>
     </React.Fragment>
