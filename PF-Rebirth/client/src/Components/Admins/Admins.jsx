@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import DashNavBar from "../../Dashboard/Components/Dash-NavBar/Dash-NavBar";
 import { getUsers, makeAdmin } from "../../Redux/Actions";
 import UserDetail from "../UserDetail/UserDetail";
 
 
 export default function Admins() {
-    const {mail} = useParams()
+    // const {mail} = useParams()
   const dispatch = useDispatch()
   const users = useSelector(s => s.user)
   const admins = users.filter((a) => a.isAdmin === true && a.userName !== "RebirthApp")
@@ -18,7 +18,7 @@ console.log('admins', admins)
 
     useEffect(() =>{
         dispatch(getUsers())
-    }, [])
+    }, [dispatch]) //warning->eliminar dispatch si algo rompe
   
     function handleDeleteAdmin(e){
         e.preventDefault()

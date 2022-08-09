@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../../Assets/Navbar/logo.png";
-import avatar from "../../../Assets/Navbar/UserAvatar-signed.png";
+// import avatar from "../../../Assets/Navbar/UserAvatar-signed.png"; warning
 import vector from "../../../Assets/Navbar/Vector.png";
 import vector2 from "../../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../../Assets/Navbar/Vector-3.png";
 import vector4 from "../../../Assets/Navbar/icoRequest.png";
-import vector5 from "../../../Assets/Navbar/ico-historial.png";
+// import vector5 from "../../../Assets/Navbar/ico-historial.png"; warning
 import DarkMode from "../../../Components/Switch/SwitchMode";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux"; // warning-> useSelector
 import { logoutUser } from "../../../Redux/Actions/index";
 
 
@@ -54,7 +54,7 @@ const DashNavBar = () => {
   }, []);
 
   let data = user ? JSON.parse(user) : null;
-  console.log(data)
+  // console.log(data)
   return (
     <>
       <div className="DashcontainerNavbar">

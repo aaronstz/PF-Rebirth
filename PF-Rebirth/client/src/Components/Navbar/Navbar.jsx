@@ -16,9 +16,9 @@ function Navbar({filters, setFilters}) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const pets = useSelector((store) => store.pets);
+  // const pets = useSelector((store) => store.pets);
 
-  const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
+  // const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
 
   // console.log('Type pets :>> ', pets);
   if (activeUser) {
@@ -36,7 +36,7 @@ function Navbar({filters, setFilters}) {
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
 
-  console.log(data)
+  // console.log(data)
 
   function handleReturnToHome(e) {
     navigate("/home")

@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react"; //warning-> useEffect
 import background from "../../../Assets/loginMain2.png";
 import "./AddNew.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux"; // warning->useSelector
 import { postPet } from "../../../Redux/Actions/index";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // warning->Link,
 import { provincias } from "../../../Tools/provincias";
-import Navbar from "../../../Components/Navbar/Navbar";
+// import Navbar from "../../../Components/Navbar/Navbar";
 import { Widget } from "@uploadcare/react-widget";
 import DashNavBar from "../Dash-NavBar/Dash-NavBar";
 
 function validate(input) {
   let validateName = /^[a-zA-Z\s]+$/;
-  let validateUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+  // let validateUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/; warning
   let errors = {};
   if (!input.type || input.type > 1) {
     errors.type = "Type must be only one of the following options";

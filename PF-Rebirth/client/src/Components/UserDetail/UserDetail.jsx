@@ -1,7 +1,7 @@
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteUser, getUsers } from "../../Redux/Actions/index.js";
-import { useEffect, useState } from "react";
+// import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { deleteUser, getUsers } from "../../Redux/Actions/index.js";
+// import { useEffect, useState } from "react";
 import "./UserDetail.css";
 
 function UserDetail({
@@ -15,7 +15,7 @@ function UserDetail({
   handleAdmin,
   handleDeleteAdmin,
 }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const rebirthApp = "RebirthApp";
 
   let user = null;
