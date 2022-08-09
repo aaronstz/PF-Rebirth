@@ -13,7 +13,7 @@ import {
   LOGOUT_USER,
   NO_FILTER_PETS,
   POST_MESSAGE,
-  PUT_VISTO,
+  // PUT_VISTO, -> warning
   SAVE_ADOPTION_ID,
   FAVORITES,
   DELETE_FAVORITES,
@@ -25,7 +25,7 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
-  POST_SUPPORT_FORM,
+  // POST_SUPPORT_FORM, -> warning
   GET_NAMES
 } from "./actionTypes";
 
@@ -163,7 +163,7 @@ export function putVisto(mail, adoptionId) {
   return async function (dispatch) {
     try {
       console.log(mail, adoptionId);
-      const json = await axios.put(`${SERVER}/message/visto`, {
+      await axios.put(`${SERVER}/message/visto`, {
         mail: mail,
         adoptionId: adoptionId,
       });
@@ -346,7 +346,7 @@ export function postUser(payload) {
 export function deleteAdoption(id) {
   return async function dispatch() {
     try {
-      const json = await axios.patch(`${SERVER}/adoption/${id}`);
+      await axios.patch(`${SERVER}/adoption/${id}`);
       return dispatch({
         type: "DELETE_ADOPTION",
       });

@@ -22,14 +22,9 @@ let navigate=useNavigate()
 
  useEffect(()=>{
   dispatch(getDetails(id))
- },[id]) 
+ },[dispatch, id]) //warning
 
- useEffect(()=>{
-
- setInput({...input,userMail:mailAdoptante,petId:id,ownerMail:userMail})
-
- },[])
-
+  
 
  
   const [input, setInput] = useState({
@@ -45,6 +40,13 @@ let navigate=useNavigate()
     address: " ",
     phone:" "
      })
+
+     useEffect(()=>{
+
+   
+      setInput({...input,userMail:mailAdoptante,petId:id,ownerMail:userMail})
+     
+      },[id, input, mailAdoptante, userMail]) //warning
 
 function handleChange(e){
   let field=e.target.name
