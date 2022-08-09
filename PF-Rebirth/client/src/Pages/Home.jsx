@@ -9,7 +9,7 @@ import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
 import { getLocation, getFavs, paginateData } from "../Redux/Actions/index.js";
-
+import NotFound from '../Components/NotFound/NotFound'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useFetchPets } from "../Tools/customHooks.js";
@@ -208,28 +208,40 @@ function Home() {
         />
 
         <div className="boxWrap">
-          {isLoading
-            ? null
-            : megaPets.pets?.map((p, i) => {
-                return (
-                  <Cards
-                    className="apperCards"
-                    key={Math.random()}
-                    image={p.image}
-                    name={p.name}
-                    breed={p.race}
-                    age={p.age}
-                    gender={p.gender}
-                    size={p.size}
-                    description={p.description}
-                    id={p.id}
-                    location={p.location}
-                    userMail={p.userMail}
-                    views={p.views}
-                    type={p.type}
-                  />
-                );
-              })}
+          {
+            megaPets.pets && !megaPets.pets.length ? (
+              <div className="notFound-img">
+            <NotFound/> 
+            </div>):
+            <>
+            {
+              isLoading
+              ? null
+              : megaPets.pets?.map((p, i) => {
+                  return (
+                    <Cards
+                      className="apperCards"
+                      key={Math.random()}
+                      image={p.image}
+                      name={p.name}
+                      breed={p.race}
+                      age={p.age}
+                      gender={p.gender}
+                      size={p.size}
+                      description={p.description}
+                      id={p.id}
+                      location={p.location}
+                      userMail={p.userMail}
+                      views={p.views}
+                      type={p.type}
+                    />
+                    );
+                  })
+                }
+                </>
+          }
+          
+              
         </div>
       </Container>
       <Paginations

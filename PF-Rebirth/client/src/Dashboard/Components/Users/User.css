@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.notFound-user{
+  margin:10rem;
+}
+
 .userTitulo {
   position: relative;
   margin-top: 3rem;

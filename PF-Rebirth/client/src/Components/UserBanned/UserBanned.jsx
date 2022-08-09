@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import DashNavBar from "../../Dashboard/Components/Dash-NavBar/Dash-NavBar";
 import {getUsersBanned, UserRestore } from "../../Redux/Actions"; //warning->getUserId eliminado
 import UserDetail from "../UserDetail/UserDetail";
-
+import NotFound from '../../Components/NotFound/NotFound'
+import './UserBanned.css'
 
 export default function UsersBanned() {
     const {mail} = useParams()
@@ -27,7 +28,12 @@ export default function UsersBanned() {
     <div>
         <DashNavBar/>
         <div>
-        { 
+            {!users.length ?(
+                <div className="notFound-banned">
+                    <NotFound/>
+                    </div>
+            ):<>
+            { 
             users && users.map((u) =>
                 <UserDetail
                     handleRestoreUser={handleRestoreUser}
@@ -38,6 +44,8 @@ export default function UsersBanned() {
                     userName={u.userName}
                 />)
         }
+            </>}
+        
         </div> 
     </div>
   );
