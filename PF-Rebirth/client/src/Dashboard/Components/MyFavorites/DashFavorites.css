@@ -33,6 +33,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 150px;
+  height: fit-content;
 }
 
 .noFavsTitle {

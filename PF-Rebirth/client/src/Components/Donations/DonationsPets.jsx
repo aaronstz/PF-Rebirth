@@ -10,8 +10,7 @@ export default function DonationsPets() {
 
     const navigate = useNavigate();
     const user = window.localStorage.getItem("user");
-    console.log('user', user)
-
+    
     if(!user) navigate("/login")
     let { id } = useParams();
 

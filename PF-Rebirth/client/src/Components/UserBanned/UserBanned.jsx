@@ -10,9 +10,7 @@ export default function UsersBanned() {
     const {mail} = useParams()
   const dispatch = useDispatch()
   const users = useSelector(s => s.userBanned)
-  console.log('mail', mail)
-
-
+  
     useEffect(() => {
         dispatch(getUsersBanned())
     }, [dispatch]) //warning
