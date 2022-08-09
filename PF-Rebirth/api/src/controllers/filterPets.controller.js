@@ -4,7 +4,6 @@ const { getPagination, getPagingData } = require('../tools/paginateData.js')
 
 // FIND ALL PETS IN CASE JUST WANNA LOST TIME FILTER INTO THE FRONT
 exports.findAll = (req, res) => {
-
   const { page, 
           size, 
           type,
@@ -42,8 +41,8 @@ exports.filterPets = (req, res) => {
   var genderSearch = gender ? { gender: { [Op.eq] : { [Op.any]: `${gender}` }} } : null;
 
   //NORMAL QUERIES
-  var nameSearch = name ? { name: { [Op.substring] : `${name}` } } : null;
-  var ageSearch = age !== "All" ? [['age',`${age}`]] : null;
+  var nameSearch = name ? { name: { [Op.substring]: `${name}` } } : null;
+  var ageSearch = age ? [['age',`${age}`]] : null;
   // var ageSearch = age ? { age: { [Op.eq] : { [Op.any]: `${age}` }} } : null;
   var locationSearch = location ? { location: { [Op.iLike] : { [Op.any]: `${location}` }} } : null;
   var raceSearch = race ? { race: { [Op.like]: `${race}` } } : null;
