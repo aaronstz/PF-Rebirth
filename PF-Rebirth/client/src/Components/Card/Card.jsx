@@ -2,6 +2,8 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 import female from "../../Assets/female-ico-w.png";
 import male from "../../Assets/male-icon-w.png";
+import cat from "../../Assets/ico-cat-white.png"
+import dog from "../../Assets/ico-dog-white.png"
 import { useDispatch, useSelector } from "react-redux";
 import {addFavs, deleteFavs,  deletePet, updatePetsViews} from "../../Redux/Actions/index.js"
 import { useEffect, useState } from "react";
@@ -9,7 +11,7 @@ import swal from "sweetalert";
 
 
 
-function Cards({image,name,breed,age,gender,size,description,id,location,views,userMail}){
+function Cards({image,name,breed,type,age,gender,size,description,id,location,views,userMail}){
   const dispatch = useDispatch()
   const [ favFilters , setFavFilters] = useState([])
   const favoritos = useSelector(state => state.favorite)
@@ -24,13 +26,9 @@ function Cards({image,name,breed,age,gender,size,description,id,location,views,u
     var mail = user.mail? user.mail : user.email
   }
 
-
   useEffect(() => {
    setFavFilters(favFilter)
   },[dispatch] );
-
-  
-
 
   function handleFavoriteHome(){
     dispatch(addFavs(mail, id))
@@ -64,7 +62,7 @@ function handleDelete(){
   return (
     <div className="lcard">
       {        
-             user && user.isAdmin ==true ? <button className="btnFavEliminarPets" onClick={handleDelete}>x</button> :    
+             user && user.isAdmin ==true ? <button className="btnEliminarPets" onClick={handleDelete}></button> :    
              user && (mail === userMail)? null :   
              favFilter && favFilter.length !==0 ?
              <> <button className="btnFavEliminarHome" onClick={handleDeleteFavHome}/> </> : 
@@ -83,6 +81,7 @@ function handleDelete(){
             <span className="icoEye"></span>
              {views}
           </div>
+          
           <div className="sex">
             <span className="icoSex">
               {gender === "male" ? (
@@ -93,15 +92,20 @@ function handleDelete(){
             </span>
             <span>{gender}</span>
           </div>
+
           <div className="size">
-            <span className="icoSize"></span>
-            {size}
+            <span className="icoSize">
+            {type === "cat" ? (
+              <img src={cat} alt="type" />
+              ) : (
+                <img src={dog} alt="type" />
+                )}
+              </span>
+            <span>{size}</span>
           </div>
-          {/* <div className="weigth">
-            <span className="icoWeigth"></span>
-            3.4 kg
-          </div> */}
         </div>
+
+
         <div className="attributes">{description}</div>
       </div>
       <Link to={`/home/${id}`} className="lbutton" onClick={(e)=> {dispatch(updatePetsViews(id))}}>
