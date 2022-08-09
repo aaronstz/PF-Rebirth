@@ -54,3 +54,11 @@
   text-decoration: none;
   color: var(--pink)
 }
+
+.DashProfile {
+  position: relative;
+  left: 0px;
+  border-radius: 50%;
+  max-width: 35px;
+  height: 35px;
+}
