@@ -1,15 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../Assets/logoLanding.png";
 import cat from "../Assets/catTeam.png";
 import dog from "../Assets/dogTeam.png";
 import "./LandingPage.css";
 import "../index.css";
-import { useDispatch } from "react-redux";
-import { paginateData } from "../Redux/Actions/index.js";
-//import Container from "react-bootstrap/esm/Container";
 
 export default function LandingPage() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleChooseSection(e) {
