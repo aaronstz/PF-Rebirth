@@ -67,10 +67,11 @@ const DashNavBar = () => {
             <img src={data&& data.image} alt="avatar" />
           </NavLink>
         </div>
-      </div>
+        </div>
       </div>
       </div>
     </>
+
   );
 };
 

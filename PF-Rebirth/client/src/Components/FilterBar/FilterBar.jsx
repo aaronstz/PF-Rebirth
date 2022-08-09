@@ -71,25 +71,8 @@ function FiltersBar({
               className="formInputStyle"
               autoComplete="off"
               onChange={handleChange}
-              // value={valueName}
             />
           </Form.Group>
-          {/* <Form.Control
-            placeholder="Search by name"
-            aria-label="Search by name"
-            aria-describedby="basic-addon2"
-            onChange={(e) => setSearchName(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleEnter(searchName)}
-            value={searchName}
-          /> */}
-          {/* <Button
-            type="submit"
-            className="btn-pink"
-            disabled={!searchName ? true : false}
-            onClick={(e) => handleSearchName(e)}
-          >
-            <Link to={`/home/name/?name=${searchName}`}> Search </Link>
-          </Button> */}
         </Form>
 
         <DropdownButton

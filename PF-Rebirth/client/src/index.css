@@ -34,16 +34,19 @@ body {
   --background: #fafafa;
   --box-shadow-input: 0px 5px 5px 0px var(--grey2);
   --dark--grey: rgb(77, 77, 77);
+  --black:#000;
 }
 
 body.light {
   --border: var(--grey2);
+  --text-color-bw: var(--black);
   --text-color: var(--greylight);
   --text-color-comments: var(--white);
   --text-color-sec: var(--white);
   --text-color-pag: var(--white);
   --background: var(--white);
   --background-sec: var(--grey);
+  --background-chat: var(--white);
   --backgroundFooter: var(--grey);
   --backgroundBttn: var(--pink);
   --backgroundBttn2: var(--green);
@@ -53,12 +56,14 @@ body.light {
 
 body.dark {
   --border: var(--grey2);
+  --text-color-bw: var(--white );
   --text-color: var(--white);
   --text-color-sec: var(--greylight);
   --text-color-comments: var(--dark--grey);
   --text-color-pag: var(--white);
   --background: var(--grey);
   --background-sec: var(--pink);
+  --background-chat: var(--greylight);
   --backgroundFooter: var(--green);
   --backgroundBttn: var(--grey);
   --backgroundBttn2: var(--green);

@@ -131,8 +131,6 @@ function Home() {
   }
 
   function handleOrderByAge(e) {
-    // let age="";
-    // if(e === "DESC") age = "DESC"
     setFilters({
       ...filters,
       name : "",

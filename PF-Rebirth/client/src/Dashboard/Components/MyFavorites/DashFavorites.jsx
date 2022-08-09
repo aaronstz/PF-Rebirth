@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./DashFavorites.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
-import NavBar from "../../../Dashboard/Components/Dash-NavBar/Dash-NavBar.jsx";
-import { Link } from "react-router-dom";
-import swal from "sweetalert";
+
 import { useUserFavoritesPets, useFavoritesPetsDetails } from '../../../Tools/customHooks.js';
+import { Link } from "react-router-dom";
+import DashNavBar from "../Dash-NavBar/Dash-NavBar";
+import Footer from "../../../Components/Footer/Footer";
+
 
 export default function DashFavorites(){
-
 
   const infoUser= localStorage.getItem("user")
   const user = JSON.parse(infoUser)
@@ -20,19 +21,8 @@ export default function DashFavorites(){
   const { data, isLoading }  = useUserFavoritesPets(filters)
   
   const filterFavs = data&&data.data;
-  // console.log('data :>> ', data&&data.data);
-  // const usePetsDetails = (array) => {
-  //   return { data } = useFavoritesPetsDetails(pId)
-  // }
-  // const petsDetails = filterFavs&&filterFavs?.map(p => {
-  //   const { data } =   useFavoritesPetsDetails()
-  //   return 
-  // })
-
 
   console.log('filterFavs.length :>> ', filterFavs&&filterFavs);
-
-  // if(filterFavs&&!filterFavs.length) swal("No favorites", "Looks like you don't have favorites yet", "info")
 
   function handleDeleteFav(id){
     dispatch(deleteFavs(mail, id))
@@ -42,20 +32,34 @@ export default function DashFavorites(){
 
   return (
     <>
-    <NavBar/>
-     <div className="mainDashCont">
-      {
-        isLoading
-          ? null
-          : 
-            <>
-                <div className="conTitulo info">
-                  <h3>MY FAVORITES PETS</h3>
-                </div>
-                <div className="infoPets">
-                  { filterFavs&&filterFavs?.map((e) => {
-                      return(
-                        <div key={Math.random()} className="favContainer">
+      <DashNavBar/>
+
+      <div className="mainDashCont">
+        {filterFavs&&filterFavs.length === 0 ? 
+        (
+          <div className="noFavsTitle">
+          <h3>You can add favorites to your favorites list by clicking on the heart icon</h3>
+          <div class="favContainer">
+          <Link to={'/home'}><span class ="btn btn-secondary">Go see some pets!</span></Link>
+          </div>
+          </div>
+        ) :
+          isLoading === true ? (
+            <div class="spinner">
+            <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+            </div>
+            </div>
+          ) :
+        (
+          <>
+            <div className="conTitulo info">
+              <h3>MY FAVORITE PETS</h3>
+            </div>
+            <div className="infoPets">
+              {filterFavs?.map((e) => {
+                return (
+                  <div key={Math.random()} className="favContainer">
                     <div className="favcardLeftPhoto">
                       <Link to={"/home/" + e.id}>
                         <div className="imgFavor">
@@ -89,8 +93,9 @@ export default function DashFavorites(){
               })}
             </div>
           </>
-            }
+        )}
       </div>
+      <Footer/>
     </>
   );
 }
