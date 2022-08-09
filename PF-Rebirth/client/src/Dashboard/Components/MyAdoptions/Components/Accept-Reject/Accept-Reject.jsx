@@ -2,28 +2,53 @@ import React, { useEffect, useState } from "react";
 import "./Accept-Reject.css";
 import { useDispatch, useSelector } from "react-redux";
 import image from "../../../../../Assets/fotoPet1.png";
-import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
+import { deleteAdoption, deletePost, getAllPets, getChat, getDetails, getPets } from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 import { useNavigate } from "react-router-dom";
 import Swalert from "../SweetAlert/SweetAlert";
 
 const AcceptReject = () => {
+  const dispatch = useDispatch();
   let mail=""
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
+  const [petid, setpetid] = useState("")
+  // const allPets= useSelector(s => s.pets) 
+  // console.log('allPets :>> ', allPets);
+  // const ids = allPets.map(e => e.id)
+  // console.log('ids', ids)
+  
+  // const {id} = useSelector((state) => state.detail);
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
   if(infoStorage) mail = user.mail;
+  console.log('adoptionId', adoptionId)
+  
+  // useEffect(() =>{
+  //   dispatch(getDetails())
+  // }, [dispatch])
+  
+  
+  // const petsIds = adoptChat.filter((e) => e.petId)
+  // console.log('adoptChat>>>', adoptChat)
 
-  function handleClick(adoptionId) {
+
+  function handleClick(adoptionId, e) {
     dispatch(deleteAdoption(adoptionId));
     console.log(adoptionId);
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
+  
+  const idPet = adoptChat.filter((adChat) => adChat.id === adoptionId).map((datos) => datos.petId)
+  console.log('idPet', idPet)
+  
+  function handleDeletePost() {
+    dispatch((deletePost(idPet)));
+  }
+
 
   let navigate= useNavigate()
 
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -31,6 +56,7 @@ const AcceptReject = () => {
         .filter((adChat) => adChat.id === adoptionId)
         .map((datos) => {
           if (datos.owner.mail === mail) {
+        
             return (
               <div className="mainDashContACC">
                 <div className="AdoptContainer">
@@ -69,7 +95,7 @@ const AcceptReject = () => {
                   >
                     <span>Reject</span>
                   </button>
-                  <button  onClick={()=> Swalert(datos.pet.name,navigate)  } class="MAdoptbutton">
+                  <button onClick={() =>  Swalert(datos.pet.name, handleDeletePost(),navigate)} class="MAdoptbutton">
                     <span>Accept</span>
                   </button>
                 </div>

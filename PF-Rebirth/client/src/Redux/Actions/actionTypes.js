@@ -43,4 +43,7 @@ export const USER_RESTORE = 'USER_RESTORE';
 export const GET_USERNAME = 'GET_USERNAME';
 export const MAKE_ADMIN = 'MAKE_ADMIN';
 export const DELETE_ADOPTION = "DELETE_ADOPTION";
+export const DELETE_POST = "DELETE_POST";
+export const SAVE_ID = "SAVE_ID";
+
 

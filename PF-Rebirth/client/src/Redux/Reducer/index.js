@@ -38,6 +38,8 @@ import {
   GET_USERNAME,
   MAKE_ADMIN,
   DELETE_ADOPTION,
+  DELETE_POST,
+  SAVE_ID,
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -70,6 +72,7 @@ const initialState = {
   userBanned: [],
   admins: [],
   favoritesSaved : [],
+  saveId : ""
 };
 
 function rootReducer(state = initialState, action) {
@@ -89,11 +92,20 @@ function rootReducer(state = initialState, action) {
         ...state,
         prueba: action.payload,
       };
-
+    case DELETE_POST: 
+    return{
+      ...state
+    }
     case DELETE_PET:
       return {
         ...state,
       };
+      case SAVE_ID:{
+        return{
+          ...state,
+          saveId : action.payload
+        }
+      }
     case "PRUEBA":
       console.log("action.payload :>> ", action.payload);
       return {

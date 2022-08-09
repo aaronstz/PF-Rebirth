@@ -212,8 +212,9 @@ function Home() {
           {isLoading
             ? null
             : megaPets.pets?.map((p, i) => {
-                return (
-                  <Cards
+
+              return (
+                <Cards
                     className="apperCards"
                     key={Math.random()}
                     image={p.image}
@@ -228,8 +229,9 @@ function Home() {
                     userMail={p.userMail}
                     views={p.views}
                     type={p.type}
-                  />
-                );
+                    active={p.active}
+                  /> 
+                ) 
               })}
         </div>
       </Container>

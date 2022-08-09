@@ -26,7 +26,9 @@ import {
   GET_USERNAME,
   MAKE_ADMIN,
   POST_SUPPORT_FORM,
-  GET_NAMES
+  GET_NAMES, 
+  DELETE_POST,
+  SAVE_ID
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
@@ -370,6 +372,20 @@ export function getPets() {
     }
   };
 }
+export function deletePost(id) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.put(`${SERVER}/pets/delete/${id}`);
+      console.log('json', json)
+      return dispatch({
+        type: DELETE_POST,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log('error', error)
+    }
+  };
+}
 
 export function resetPets() {
   return {
@@ -561,6 +577,14 @@ export function deleteFavs(mail, id){
     } catch (error) {
       console.log(error);
     }
+  }
+}
+export function saveId(id){
+  return async function(dispatch){
+    return dispatch({
+      type: SAVE_ID,
+      payload : id
+    })
   }
 }
 
