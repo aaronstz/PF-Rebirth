@@ -234,6 +234,7 @@ function Home() {
         </div>
       </Container>
       <Paginations
+        pets={megaPets.pets}
         numberPage={currentPageNumber}
         totalPages={totalPages}
         previousPage={previousPage}

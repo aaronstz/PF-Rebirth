@@ -43,7 +43,8 @@ async function fetchingData({
   size,
 }) {
   try {
-    const ageFilter = !age ? "All" : age;
+    console.log('age :>> ', age);
+    const ageFilter = !age ? "" : age;
     const nameFilter = !name ? "" : name;
     const typeFilter = !type.length
       ? "{%22dog%22,%22cat%22}"
