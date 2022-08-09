@@ -34,8 +34,6 @@ export default function DashFavorites() {
 
   return (
     <>
-      {/* <NavBar /> */}
-
       <div className="mainDashCont">
         {isLoading || favorites.length === 0 ? null : (
           <>
