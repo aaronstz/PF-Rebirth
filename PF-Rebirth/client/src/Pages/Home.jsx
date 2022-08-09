@@ -131,11 +131,12 @@ function Home() {
   }
 
   function handleOrderByAge(e) {
-    let age = e === 'young' ? ["0","1","2"] : e === 'old' ? ["3","4","5","6","7","8","9","10","11","12"] : ["0","1","2","3","4","5","6","7","8","9","10","11","12"];
+    // let age="";
+    // if(e === "DESC") age = "DESC"
     setFilters({
       ...filters,
       name : "",
-      age : age,
+      age : e,
       page : 0,
     })
   }
@@ -213,7 +214,6 @@ function Home() {
         />
         
         <div className="boxWrap">
-          <div className="subBoxWrap">
           {
             isLoading ? null :
             megaPets.pets?.map((p, i) => {
@@ -236,7 +236,6 @@ function Home() {
                 />
               );
             })}
-          </div>
         </div>
 
       </Container>

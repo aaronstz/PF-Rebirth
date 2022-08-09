@@ -7,16 +7,16 @@
   display: inline-block;
   justify-content: center;
   height: fit-content;
-  align-items: center;
   flex-wrap: wrap;
   animation: fade-in 1s ease;
+  align-content: center;
+  flex-direction: row;
 }
 
 .pages{
-  position: absolute;
-  top: 74rem;
   font-size: 1.5rem;
   animation: fade-in 1s ease;
+  margin: 2rem;
 }
 
 .btn-pages{
@@ -38,15 +38,12 @@
 }
 
 #previousPage{
-  top: 0;
   text-decoration: none;
   text-align: center;
   height: 5rem;
   width: 5rem;
   align-items: center;
   justify-content: center;
-  left: -48rem;
-  position: absolute;
   animation: fade-in 1s ease;
 }
 
@@ -58,8 +55,6 @@
   width: 5rem;
   align-items: center;
   justify-content: center;
-  left: 43rem;
-  position: absolute;
   animation: fade-in 1s ease;
 }
 

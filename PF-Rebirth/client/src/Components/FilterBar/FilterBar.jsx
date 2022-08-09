@@ -12,9 +12,8 @@ import {
   pruebasDeFiltrado,
   saveName,
 } from "../../Redux/Actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
-import { Link, useLocation, useParams } from "react-router-dom";
 
 function FiltersBar({
   filters,
@@ -60,9 +59,8 @@ function FiltersBar({
           title="AGE"
           className="ms-2"
         >
-          <Dropdown.Item eventKey="All">All</Dropdown.Item>
-          <Dropdown.Item eventKey="young">young</Dropdown.Item>
-          <Dropdown.Item eventKey="old">old</Dropdown.Item>
+          <Dropdown.Item eventKey="ASC">young</Dropdown.Item>
+          <Dropdown.Item eventKey="DESC">old</Dropdown.Item>
         </DropdownButton>
 
         <Form className="ms-2 w-50" onSubmit={handleSearchName}>

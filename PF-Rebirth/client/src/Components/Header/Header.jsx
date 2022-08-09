@@ -36,10 +36,7 @@ function Header({ filters, setFilters }) {
     })
 
   }
-
   
-
-
   return (
     <React.Fragment>
       <div className="header-container">
@@ -47,7 +44,7 @@ function Header({ filters, setFilters }) {
           <CarouselFade />
         </div>
         <div className="header-buttons">
-          <div className="header-team" onClick={handlePage}>
+          <div className="header-team">
               {
                 filters&&filters.type[0] === "cat" ?
                   <button type="submit" onClick={(e)=>handleChangeView(e)} className="btn-headerTeam">

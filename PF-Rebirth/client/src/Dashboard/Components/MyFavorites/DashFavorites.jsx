@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./DashFavorites.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
-// import NavBar from "../../../Dashboard/Components/Dash-NavBar/Dash-NavBar.jsx";
+import NavBar from "../../../Dashboard/Components/Dash-NavBar/Dash-NavBar.jsx";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { useUserFavoritesPets, useFavoritesPetsDetails } from '../../../Tools/customHooks.js';
@@ -38,7 +38,7 @@ export default function DashFavorites(){
     dispatch(deleteFavs(mail, id))
   }
 
-  console.log('favs:>>' + favorites)
+  // console.log('favs:>>' + favorites)
 
   return (
     <>
@@ -89,7 +89,7 @@ export default function DashFavorites(){
               })}
             </div>
           </>
-        )}
+            }
       </div>
     </>
   );

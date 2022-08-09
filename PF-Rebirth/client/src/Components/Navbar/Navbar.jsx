@@ -35,7 +35,6 @@ function Navbar({filters, setFilters}) {
   let imageUrl = data ? data.image : null;
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
-  console.log('data :>> ', data);
 
   function handleReturnToHome(e) {
     navigate("/home")

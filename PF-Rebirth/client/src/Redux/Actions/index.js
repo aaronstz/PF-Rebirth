@@ -26,11 +26,10 @@ import {
   GET_USERNAME,
   MAKE_ADMIN,
   POST_SUPPORT_FORM,
+  GET_NAMES
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
-
-const SERVER  = "http://localhost:3001";
 
 export function saveName(name){
   return async function(dispatch){
@@ -329,22 +328,6 @@ export function postUser(payload) {
   };
 }
 
-export function updateUser(email, payload) {
-  return async function (dispatch) {
-    try {
-      const json = await axios.put(`${SERVER}/user/${email}`, payload);
-      localStorage.setItem('user',JSON.stringify(json.data))
-      if (json.status === 200) swal("OK", "User info updated", "success");
-      
-      return dispatch({
-        type:'UPDATE_PROFILE',
-        payload:json.data
-      })
-    } catch (error) {
-      swal("Error", "Username already in use", "error")
-    }
-  }
-}
 
 export function deleteAdoption(id) {
   return async function dispatch() {
