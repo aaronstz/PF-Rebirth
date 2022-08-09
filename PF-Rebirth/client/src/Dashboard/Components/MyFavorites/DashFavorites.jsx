@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./DashFavorites.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
-// import NavBar from "../../../Dashboard/Components/Dash-NavBar/Dash-NavBar.jsx";
 import { Link } from "react-router-dom";
+import DashNavBar from "../Dash-NavBar/Dash-NavBar";
+import Footer from "../../../Components/Footer/Footer";
 // import swal from "sweetalert";
 
 export default function DashFavorites() {
@@ -36,8 +37,6 @@ export default function DashFavorites() {
 
   return (
     <>
-      {/* <NavBar /> */}
-
       <div className="mainDashCont">
         {favorites.length === 0 ? 
         (
@@ -99,6 +98,7 @@ export default function DashFavorites() {
           </>
         )}
       </div>
+      <Footer/>
     </>
   );
 }

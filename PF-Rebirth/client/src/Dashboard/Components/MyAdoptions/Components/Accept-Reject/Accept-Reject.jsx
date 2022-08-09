@@ -5,6 +5,7 @@ import image from "../../../../../Assets/fotoPet1.png";
 import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 import { useNavigate } from "react-router-dom";
+import Swalert from "../SweetAlert/SweetAlert";
 
 const AcceptReject = () => {
   let mail=""
@@ -19,6 +20,8 @@ const AcceptReject = () => {
     console.log(adoptionId);
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
+
+  let navigate= useNavigate()
 
   const dispatch = useDispatch();
 
@@ -66,7 +69,7 @@ const AcceptReject = () => {
                   >
                     <span>Reject</span>
                   </button>
-                  <button class="MAdoptbutton">
+                  <button  onClick={()=> Swalert(datos.pet.name,navigate)  } class="MAdoptbutton">
                     <span>Accept</span>
                   </button>
                 </div>
@@ -74,7 +77,7 @@ const AcceptReject = () => {
             );
           } else {
             return (
-              <div className="mainDashCont">
+              <div className="mainDashContACC">
                 <div className="AdoptContainer">
                   <div>
                     <div class="imgFav">
@@ -105,7 +108,7 @@ const AcceptReject = () => {
                         SwalertCancel(datos.pet.name, handleClick, datos.id)
                       }
                     >
-                      <span>Cancel Adoption</span>
+                      <span>Cancel</span>
                     </button>
                   </div>
                 </div>
