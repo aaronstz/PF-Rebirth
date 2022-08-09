@@ -22,7 +22,6 @@ const { conn } = require("./src/db.js");
 const { getPets } = require("./src/tools/preCharge.js");
 const { getAdmin } = require("./src/tools/preChargeAdmin.js");
 
-
 conn.sync({ force: true }).then(async () => {
   await getAdmin();
   await getPets();
