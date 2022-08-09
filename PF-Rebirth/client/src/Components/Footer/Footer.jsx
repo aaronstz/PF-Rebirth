@@ -29,9 +29,6 @@ export default function Footer() {
                 <NavLink to={"/about"}>About us</NavLink>
               </li>
               <li className="nav-item">
-                <a href=" ">Testimonials</a>
-              </li>
-              <li className="nav-item">
                 <NavLink to={"/support"}>Contact Us</NavLink>
               </li>
               <li className="nav-item">
