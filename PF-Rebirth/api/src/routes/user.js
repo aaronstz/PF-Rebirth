@@ -4,7 +4,9 @@ const router = Router();
 const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
-const { Op } = require("sequelize")
+const {sendEmailUserBanned} = require("../tools/sendEmailUserBanned.js")
+const { Op } = require("sequelize");
+const { sendEmailUserRestored } = require("../tools/sendMailUserRestored");
 
 router.get("/banned" , async (req, res, next) => {
   try {
@@ -70,6 +72,7 @@ router.patch("/restore/:mail", async (req, res, next) => {
       await User.restore({
         where: { mail: mail },
       });
+      sendEmailUserRestored(mail)
       res.send("User Restored");
     }else {
       res.status(404).send("Not found")
@@ -119,7 +122,7 @@ router.post("/", async (req, res, next) => {
     let userInformation = await getUserInfo(req);
     await User.create(userInformation);
 
-    sendEmailConfirmation(userInformation);
+    // sendEmailConfirmation(userInformation);
     res
       .status(201)
       .send(`El usuario ${userInformation.name} fue creado con exito`);
@@ -138,6 +141,7 @@ router.delete("/:mail", async (req, res, next) => {
         .send(`No se encuentra el usuario con el mail ${req.params.mail}😒`);
     } else {
       await User.destroy({ where: { mail: mail } });
+      sendEmailUserBanned(mail)
       res.status(200).send(mail);
     }
   } catch (error) {

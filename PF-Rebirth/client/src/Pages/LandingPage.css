@@ -6,25 +6,41 @@
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     overflow: hidden;
+}
+
+.containerLand img {
+    width: 66%;
 }
 
 
 .wrapperLeftLand {
-    width: 50%;
+    width: 49%;
     display: flex;
     flex-direction: column;
     border:none;
     background:transparent;
+    text-align: right;
+    margin-right: 1%;
+}
+
+.wrapperLeftLand img {
+    width: 66%;
 }
 
 .wrapperRightLand {
-    width: 50%;
+    width: 49%;
     display: flex;
     flex-direction: column;
     border:none;
     background:transparent;
+    text-align: left;
+    margin-left: 1%;
+}
+
+.wrapperRightLand img {
+    width: 66%;
 }
 
 .logo-ld {
@@ -65,43 +81,57 @@
         margin-top: 12rem;
     }
 
+    .containerLand img {
+        width: 33%;
+    }
+
+    .wrapperLeftLand img {
+        width: 66%;
+    }
+
+    .wrapperLeftRight img {
+        width: 66%;
+    }
+
     .wrapperLeftLand {
         width: 100%;
         display: block;
+        text-align: center;
     }
 
     .wrapperRightLand {
         width: 100%;
         display: block;
+        text-align: center;
     }
 }
 
 @media only screen and (max-width: 1068px) {
     .wrapperLeftLand img {
-        width: 30rem;
+        width: 40%;
     }
 
     .wrapperRightLand img {
-        width: 30rem;
+        width: 40%;
     }
 }
 
 @media only screen and (max-width: 540px) {
     .wrapperLeftLand img {
-        width: 25rem;
+        width: 33%;
     }
 
     .wrapperRightLand img {
-        width: 25rem;
+        width: 33%;
     }
 }
 
 @media only screen and (max-width: 360px) {
     .wrapperLeftLand img {
-        width: 18rem;
+        width: 66%;
     }
 
     .wrapperRightLand img {
-        width: 18rem;
+        width: 66%;
     }
 }
