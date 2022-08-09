@@ -3,6 +3,7 @@
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     background-color: var(--background);
+    color:var(--text-color-bw);
    border-bottom: 1px solid var(--greylight);
    }
 

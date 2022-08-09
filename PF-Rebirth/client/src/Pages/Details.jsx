@@ -17,7 +17,7 @@ import "./Details.css";
 import female from "../Assets/Female_ico_big.png";
 import male from "../Assets/male-icon.png";
 import dogIco from "../Assets/dog_ico_big.png";
-import weight from "../Assets/weight_ico_big.png";
+import catIco from "../Assets/ico-cat-gris.png";
 
 function Details() {
   const { id } = useParams();
@@ -50,6 +50,7 @@ function Details() {
     description,
     location,
     userMail,
+    type,
   } = useSelector((state) => state.detail);
 
   let user = null;
@@ -107,6 +108,7 @@ function Details() {
           </div>
           <div className="dtl-cardCenter">
             <h3 className="disp">AVAILABLE</h3>
+
             <div className="txt-description">
               <span>{gender}</span>
               {gender === "male" ? (
@@ -115,15 +117,19 @@ function Details() {
                 <img src={female} alt="gender" />
               )}
             </div>
+
             <br />
+
             <div className="txt-description">
               <span>{size}</span>
-              <img src={dogIco} alt="Pet" />
+              {type=== "cat" ? (
+                <img src={catIco} alt="type" />
+              ) : (
+                <img src={dogIco} alt="type" />
+              )}
             </div>
-            {/* <div className="txt-description-last">
-              <span>3.4 kg</span>
-              <img src={weight} alt="weight" />
-            </div> */}
+
+
                 { user && (user.isAdmin === true)? null :
                  ( mail === userMail) ? null :
               <Link to={user!== null ? `/donations/${id}` : `/login`} >
@@ -134,9 +140,12 @@ function Details() {
               }
                 { user && (user.isAdmin === true)? null :
                 ( mail === userMail) ? null :
+                <Link to={user!== null ? `/adoption/${id}` : `/login`} >
                 <button className="b-btn">
+                
                   <span>Adopt me!</span>
                 </button>
+                </Link>
               }
           </div>
 

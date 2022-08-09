@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./DashFavorites.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
-// import NavBar from "../../../Dashboard/Components/Dash-NavBar/Dash-NavBar.jsx";
 import { Link } from "react-router-dom";
+import DashNavBar from "../Dash-NavBar/Dash-NavBar";
+import Footer from "../../../Components/Footer/Footer";
 // import swal from "sweetalert";
 
 export default function DashFavorites() {
@@ -32,10 +33,28 @@ export default function DashFavorites() {
     dispatch(deleteFavs(mail, id));
   }
 
+  console.log('favs:>>' + favorites)
+
   return (
     <>
       <div className="mainDashCont">
-        {isLoading || favorites.length === 0 ? null : (
+        {favorites.length === 0 ? 
+        (
+          <div className="noFavsTitle">
+          <h3>You can add favorites to your favorites list by clicking on the heart icon</h3>
+          <div class="favContainer">
+          <Link to={'/home'}><span class ="btn btn-secondary">Go see some pets!</span></Link>
+          </div>
+          </div>
+        ) :
+          isLoading === true ? (
+            <div class="spinner">
+            <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+            </div>
+            </div>
+          ) :
+        (
           <>
             <div className="conTitulo info">
               <h3>MY FAVORITE PETS</h3>
@@ -79,6 +98,7 @@ export default function DashFavorites() {
           </>
         )}
       </div>
+      <Footer/>
     </>
   );
 }

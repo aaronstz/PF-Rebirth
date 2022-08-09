@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { provincias } from "../../../Tools/provincias";
 import Navbar from "../../../Components/Navbar/Navbar";
 import { Widget } from "@uploadcare/react-widget";
+import DashNavBar from "../Dash-NavBar/Dash-NavBar";
 
 function validate(input) {
   let validateName = /^[a-zA-Z\s]+$/;
@@ -20,6 +21,9 @@ function validate(input) {
   }
   if (!validateName.test(input.name)) {
     errors.name = "Name cannot contain numbers or special characters";
+  }
+  if (!input.image) {
+    errors.image = "Image is required";
   }
   if (!input.size) {
     errors.size = "Please select one of the following options";
@@ -104,7 +108,7 @@ function AddNew() {
 
   return (
     <section>
-      <Navbar />
+    <DashNavBar/>
       <div className="add-container">
         <div className="add-wrapper">
           <div className="add-wrapperleft">
@@ -260,18 +264,19 @@ function AddNew() {
                           <select
                             name="location"
                             className="form-controlAdd"
+                            value={input.location}
                             onChange={(e) => {
                               handleChange(e);
                             }}
                           >
                             <option defaultValue>Choose...</option>
-                            {provincias?.map((p) => {
-                              return (
+                            {provincias?.map((p) =>(  
+                              // return (
                                 <option key={Math.random()} value={p}>
                                   {p}
                                 </option>
-                              );
-                            })}
+                              // );
+                            ))}
                           </select>
                           <div className="addinvalid-fb">
                             {errors && errors.location ? errors.location : null}
@@ -326,3 +331,28 @@ function AddNew() {
 }
 
 export default AddNew;
+
+
+// <div className="addform">
+//                           <label htmlFor="location">Location*</label>
+//                           <select
+//                             name="location"
+//                             className="form-control"
+//                             id="exampleFormControlSelect1"
+//                             onChange={(e) => {
+//                               handleChange(e);
+//                             }}
+//                           >
+//                             <option defaultValue>Choose...</option>
+//                             {provincias?.map((p) => {
+//                               return (
+//                                 <option key={Math.random()} value={p}>
+//                                   {p}
+//                                 </option>
+//                               );
+//                             })}
+//                           </select>
+//                           <div className="addinvalid-fb">
+//                             {errors && errors.location ? errors.location : null}
+//                           </div>
+//                         </div>

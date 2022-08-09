@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../../../Components/Navbar/Navbar';
 import { Widget } from "@uploadcare/react-widget";
 import { updateUser } from "../../../Redux/Actions/index";
+import { validatePassword } from "../../../Tools/functions";
 import "./Profile.css";
+import DashNavBar from '../Dash-NavBar/Dash-NavBar';
+import Footer from '../../../Components/Footer/Footer';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -12,17 +15,39 @@ function Profile() {
   const user =
     Object.keys(profile).length !== 0 ? profile : JSON.parse(infoStorage);
 
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     formBasicName: "",
     formBasicLastName: "",
     formBasicMail: "",
     formBasicPassword: "",
+    formBasicConfirmPassword:"",
     formBasicImage: "",
     formBasicUserName: "",
   });
 
     function handleChange(e){
+      console.log('error',errors)
+      e.preventDefault()
+      setErrors(validatePassword({
+        ...input,
+        [e.target.name]:e.target.value
+      })
+    )
+      setInput({
+        ...input,
+        [e.target.name] : e.target.value
+      })
+    }
+
+    function handlePassword(e){
+      console.log('error',errors)
         e.preventDefault()
+        setErrors(validatePassword({
+            ...input,
+            [e.target.name]:e.target.value
+          })
+        )
         setInput({
             ...input,
             [e.target.name] : e.target.value
@@ -44,13 +69,15 @@ function Profile() {
         formBasicLastName: "",
         formBasicMail: "",
         formBasicPassword: "",
+        formBasicConfirmPassword:"",
         formBasicUserName: "",
       })
   }
 
   return (
+  
     <div className="fixed-top">
-      <Navbar />
+       <DashNavBar/>
       <form method="PUT" onSubmit={(e) => handleSubmit(e)}>
         <div className="row d-flex flex-column align-items-center">
           <div className="col-md-1">
@@ -150,21 +177,41 @@ function Profile() {
                     placeholder="********"
                     value={input.formBasicPassword}
                     onChange={(e) => {
-                      handleChange(e);
+                      handlePassword(e);
                     }}
                   />
+                  <label className="labels profiTxt">Confirm password</label>
+                  <input
+                    id="formBasicConfirmPassword"
+                    name="formBasicConfirmPassword"
+                    type="password"
+                    className="form-control"
+                    placeholder="********"
+                    value={input.formBasicConfirmPassword}
+                    onChange={(e) => {
+                      handlePassword(e);
+                    }}
+                  />
+                  {errors && <p className="formErrores">{errors.confirmPassword}</p>}
                 </div>
               </div>
               <div className="mt-5 text-center">
+                {errors.hasOwnProperty("confirmPassword")?
+                (<button className="btn btn-profile" type="submit" disabled>
+                Save Profile
+              </button>):
                 <button className="btn btn-profile" type="submit">
                   Save Profile
-                </button>
+                </button>}
               </div>
             </div>
           </div>
         </div>
       </form>
-    </div>
+        </div>
+    
+   
+   
   );
 }
 
