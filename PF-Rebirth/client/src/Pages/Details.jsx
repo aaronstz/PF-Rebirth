@@ -100,9 +100,12 @@ function Details() {
             <span className="petlocation">{location}</span>
             {
               user && (user.isAdmin === true)?
-              <Link to={"/users"}>
-              <span className="petlocation">User: {userMail}</span> 
-              </Link> : null
+              <div className="mail">
+              <Link to={"/users"} className="mail">
+              <span>User: {userMail}</span>
+              </Link>
+              </div>
+               : null
             }
             <br />
             <div className="story-dtl">
