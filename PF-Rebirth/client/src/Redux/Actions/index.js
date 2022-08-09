@@ -26,7 +26,9 @@ import {
   GET_USERNAME,
   MAKE_ADMIN,
   POST_SUPPORT_FORM,
-  GET_NAMES
+  GET_NAMES,
+  CREA_UPDATE_NOTIFICATION,
+  VISTO_NOTIFICATION
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
@@ -57,6 +59,51 @@ export function saveName(name){
     }
   }
 }
+
+export function CreaUpdateNotification(email){
+  return async function(dispatch){
+    try {
+      const { data } = await axios.post(`${SERVER}/notification`,email)
+      return dispatch({
+        type : CREA_UPDATE_NOTIFICATION
+      })
+    } catch (error) {
+      
+    }
+  }
+
+}
+
+export function VistoNotification(email){
+  return async function(dispatch){
+    try {
+      const { data } = await axios.patch(`${SERVER}/notification`,email)
+      return dispatch({
+        type : VISTO_NOTIFICATION,
+        payload:data.data
+      })
+    } catch (error) {
+      
+    }
+  }
+}
+
+export function GetNotification(email){
+ 
+  return async function(dispatch){
+    try {
+      const { data } = await axios(`${SERVER}/notification/email`)
+      return dispatch({
+        type : NOTIFICATION,
+        payload:data.data
+      })
+    } catch (error) {
+      
+    }
+  }
+}
+
+
 
 export function pruebasDeFiltrado(name){
   return async function(dispatch){
