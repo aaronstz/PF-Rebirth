@@ -36,6 +36,8 @@ function Navbar({filters, setFilters}) {
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
 
+  console.log(data)
+
   function handleReturnToHome(e) {
     navigate("/home")
     localStorage.setItem("type", JSON.stringify(""))
@@ -87,24 +89,17 @@ function Navbar({filters, setFilters}) {
             <span>New Pet</span>
           </NavLink>
         </div>
+        
         <div className="item">
-          { data && (data.isAdmin === true) ?
-          <NavLink
-          to={data !== null ? "/users" : "/login"}
-          className="link-navbar"
-        >
-          <span>Users</span>
-        </NavLink> :
+
           <div>
-          <img src={vector2} alt="vector2" className="icons" />
-          <NavLink
-          to={data !== null ? "/favorites" : "/login"}
-          className="link-navbar"
-          >
-            <span>My favorites</span>
-          </NavLink>
-          </div>
-          }
+                <img src={vector2} alt="vector2" className="icons" />
+                <NavLink
+                to="/favorites"
+                className="link-navbar">
+                <span>My favorites</span>
+                </NavLink>
+                </div>
         </div>
         <div className="item">
           <DarkMode />
