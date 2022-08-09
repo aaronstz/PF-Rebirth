@@ -263,18 +263,19 @@ function AddNew() {
                           <select
                             name="location"
                             className="form-controlAdd"
+                            value={input.location}
                             onChange={(e) => {
                               handleChange(e);
                             }}
                           >
                             <option defaultValue>Choose...</option>
-                            {provincias?.map((p) => {
-                              return (
+                            {provincias?.map((p) =>(  
+                              // return (
                                 <option key={Math.random()} value={p}>
                                   {p}
                                 </option>
-                              );
-                            })}
+                              // );
+                            ))}
                           </select>
                           <div className="addinvalid-fb">
                             {errors && errors.location ? errors.location : null}
