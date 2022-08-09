@@ -4,20 +4,23 @@ import { gapi } from 'gapi-script';
 import React, { useEffect } from 'react';
 import './BtnLogin.css';
 import { useNavigate } from 'react-router-dom';
-import { postUserGoogle } from '../../Redux/Actions/index.js';
-import { useDispatch } from 'react-redux';
+import { loginUser } from '../../Redux/Actions/index.js';
+import { useDispatch, useSelector } from 'react-redux';
 const { REACT_APP_CLIENT_ID } = process.env;
 
 export default function BtnLogin() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const activeUser = useSelector(state => state.activeUser)
+    const sessionActive = window.localStorage.getItem("user")
+
+    useEffect(() => {
+      if(activeUser || sessionActive) navigate("/home")
+    }, [activeUser, navigate, sessionActive])
 
     const onSuccess = ({profileObj, tokenObj}) => {
-      dispatch(postUserGoogle(profileObj))
-      localStorage.setItem("user", JSON.stringify(profileObj))
-      localStorage.setItem("token", JSON.stringify(tokenObj))
-      navigate("/home")
+      dispatch(loginUser(profileObj))
     }
 
     const failureLogin = (response) => {

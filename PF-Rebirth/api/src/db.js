@@ -2,21 +2,23 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
+
 const { DB_USER, DB_PASSWORD, DB_HOST, DATABASE, DATABASE_URL } = process.env;
 
+
 const sequelize = new Sequelize(
-  // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DATABASE}`,
-  process.env.DATABASE_URL,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DATABASE}`,
+  // process.env.DATABASE_URL,
   {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
     timestamps: false,
-    dialectOptions: {
-      ssl: {
-        required: true,
-        rejectUnauthorized: false,
-      },
-    },
+    // dialectOptions: {
+    //   ssl: {
+    //     required: true,
+    //     rejectUnauthorized: false,
+    //   },
+    // },
   }
 );
 const basename = path.basename(__filename);
@@ -45,7 +47,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Pets, Chat, Adoption, SuccessStories, User } = sequelize.models;
+const { Pets, Message, Adoption, SuccessStories, User } = sequelize.models;
 
 //    1:1  --->>> hasOne a belongsTo
 //    1:n  --->>> hasMany a benlongsTo
@@ -69,8 +71,8 @@ SuccessStories.belongsTo(User); // el dueño puede tener distintos casos de exit
 
 //---------------------------//
 
-Adoption.hasOne(Chat); //un usuario puede tener distintos chat y un chat pertenece a un usuario
-Chat.belongsTo(Adoption); // el dueño puede tener distintos chat y un chat pertenece a el dueño
+Adoption.hasMany(Message); //un usuario puede tener distintos chat y un chat pertenece a un usuario
+Message.belongsTo(Adoption, { foreignKey: "adoptionId" }); // el dueño puede tener distintos chat y un chat pertenece a el dueño
 
 // siendo adoptante
 //  user --> muchas --> pets

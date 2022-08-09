@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "nodemon": "nodemon -L",
-    "start": "node index.js",
+    "start": "nodemon -L",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
@@ -21,6 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-paginate": "^1.0.2",
     "ioredis": "^4.19.2",
     "jsonwebtoken": "^8.5.1",
     "mercadopago": "^1.5.14",

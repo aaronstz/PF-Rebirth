@@ -9,13 +9,13 @@ const sendEmailConfirmation = (userInformation) => {
     port: 465,
     secure: true,
     auth: {
-      user: "rebirhtPets@gmail.com",
-      pass: "vxhhgglvicwtjnax",
+      user: "rebirthpetspf@gmail.com",
+      pass: "pwxdidflyzumqaop", 
     },
   });
 
   let mailOption = {
-    from: " 'Rebirth.App 🐾' <rebirhtPets@gmail.com>",
+    from: " 'Rebirth.App 🐾' <rebirthpetspf@gmail.com>",
     to: email,
     subject: "Rebirth.App 🐾",
     text: "Gracias por registrarte en Rebirth!",
@@ -23,10 +23,11 @@ const sendEmailConfirmation = (userInformation) => {
 
   transporter.sendMail(mailOption, (error, info) => {
     if (error) {
-      res.status(500).send(error.message);
+      // console.log(error.message)
+      return error.message;
     } else {
-      console.log("mail sent successfully", body);
-      res.status(200).send(body);
+      // console.log(body.mail)
+      return body.mail
     }
   });
 };

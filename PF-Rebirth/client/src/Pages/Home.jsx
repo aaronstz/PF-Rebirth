@@ -8,122 +8,237 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
+import { getLocation, getFavs, paginateData } from "../Redux/Actions/index.js";
 
-import {
-  filterByLocation,
-  filterBySex,
-  filterBySize,
-  fullFilterAge,
-  fullFilterLocation,
-  fullFilterSex,
-  fullFilterSize,
-  getPetFilters,
-  getPetNames,
-  orderByAge,
-} from "../Redux/Actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useFetchPets } from "../Tools/customHooks.js";
+// import swal from "sweetalert";
+import { eliminaDuplicados } from "../Tools/functions";
 
 function Home() {
-  const petType = useLocation().search?.replace("?type=", "");
-
   const dispatch = useDispatch();
-  const pets = useSelector((store) => store.filteredPets);
-  // const loading = useSelector(store => store.loading)
+  let user = null;
+  if (localStorage.user) {
+    const userJson = localStorage.getItem("user");
+    user = JSON.parse(userJson);
+  }
 
-  //Paginado//
-  const [refresh] = useState(1);
-  // const [page, setPage] = useState(1);
-  // const [cantPets] = useState(6);
-  // const lastPet = page * cantPets;
-  // const firstPet = lastPet - cantPets;
-  // const petsPage = pets?.slice(firstPet, lastPet);
-  // // const cantPages = Math.ceil(pets.length / cantPets);
+  if (user) {
+    var mail = user.mail;
+  }
 
-  // const paginado = (pageNum) => {
-  //   setPage(pageNum);
-  // };
+  const initialFilters = {
+    name: "",
+    location: [],
+    type: [],
+    gender: [],
+    size: [],
+  };
+  let afiltrar = localStorage.getItem("filters");
+  let filtros = !afiltrar ? initialFilters : JSON.parse(afiltrar);
+  const [filters, setFilters] = useState(filtros);
 
-  // logica de la paginacion, filtro por pagina y loading
-  const [currentPage, setCurrentPage] = useState(1); //lo seteo en 1 porque siempre arranco por la primer pagina
-  const petsPerPage = 6; //cantidad de pets que debe haber por pagina
-  const indexOfLastPet = currentPage * petsPerPage; // 1 * 6 = 6
-  const indexOfFirstPet = indexOfLastPet - petsPerPage; // 6 - 6 = 0
-  const currentPet = pets.slice(indexOfFirstPet, indexOfLastPet); //para dividir la cantidad de pets por pagina
-  const pagination = (pageNumber) => setCurrentPage(pageNumber);
+  let typeStorage = JSON.parse(localStorage.getItem("type")); // dog or cat
+  if (typeStorage && filters.type[0] !== typeStorage) {
+    setFilters({
+      ...filters,
+      type: [typeStorage],
+    });
+  }
+
+  let petType = !typeStorage ? [] : [typeStorage];
+  let queryType = !petType ? "" : petType;
+
+  //STATES TO USE THE APP
+  //LOCAL STATES
+  //GLOBAL STATE THAT CONTROLS THE RENDER OF THE HOME PAGE
+  const { data: pets, isLoading } = useFetchPets(filters);
+  const megaPets = useSelector((state) => state.prueba);
+  //STATE THAT CONTROL THE PAGINATE OF THE DATA
+  const totalPages = pets && pets.data.totalPages;
+  const currentPage = pets && pets.data.currentPage;
+  const [searchName, setSearchName] = useState("");
+  const [currentPageNumber, setCurrentPageNumber] = useState(
+    Number(currentPage)
+  );
 
   useEffect(() => {
-    dispatch(getPetFilters(petType));
-  }, [dispatch, petType]);
+    dispatch(paginateData(pets));
+  }, [dispatch, pets]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    setCurrentPageNumber(0);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("filters", JSON.stringify(filters));
+  }, [filters]);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getFavs(mail));
+    }
+  }, [dispatch, mail, user]);
+
+  useEffect(() => {
+    setCurrentPageNumber(currentPage);
   }, [currentPage]);
 
+  useEffect(() => {
+    dispatch(getLocation(queryType));
+  }, [dispatch, queryType]);
+
   function handleFilterBySex(e) {
-    dispatch(filterBySex(e));
-    dispatch(fullFilterSex(e));
-    setCurrentPage(1);
+    let gender = e === "All" ? [] : [e];
+    setFilters({
+      ...filters,
+      name: "",
+      gender: gender,
+      page: 0,
+    });
   }
+
   function handleFilterBySize(e) {
-    dispatch(filterBySize(e));
-    dispatch(fullFilterSize(e));
-    setCurrentPage(1);
+    let size = e === "Any" ? [] : [...filters.size, e];
+    let newSize = eliminaDuplicados(size);
+    setFilters({
+      ...filters,
+      name: "",
+      size: newSize,
+      page: 0,
+    });
   }
+
   function handleFilterByLocation(e) {
-    dispatch(filterByLocation(e));
-    dispatch(fullFilterLocation(e));
-    setCurrentPage(1);
+    let location = e === "All" ? [] : [...filters.location, e];
+    let newLocation = eliminaDuplicados(location);
+    setFilters({
+      ...filters,
+      name: "",
+      location: newLocation,
+      page: 0,
+    });
   }
+
   function handleOrderByAge(e) {
-    dispatch(orderByAge(e));
-    dispatch(fullFilterAge(e));
-    setCurrentPage(1);
+    setFilters({
+      ...filters,
+      name: "",
+      age: e,
+      page: 0,
+    });
   }
-  function handleSearchName(search) {
-    dispatch(getPetNames(petType, search));
-    setCurrentPage(1);
-    
+
+  function handleChange(e) {
+    e.preventDefault();
+    let pag = 0;
+    if (e.target.value === "") {
+      let savedPage = JSON.parse(localStorage.getItem("page"));
+      pag = Number(savedPage);
+    }
+    setFilters({
+      ...filters,
+      name: e.target.value,
+      page: pag,
+    });
   }
+
+  function handleSearchName(e) {
+    e.preventDefault();
+    setFilters({
+      ...filters,
+      name: searchName,
+    });
+    setSearchName("");
+  }
+
+  function handlePage(e) {
+    if (e.target.id === "nextPage") {
+      let pag = currentPageNumber + 1;
+      setFilters({
+        ...filters,
+        page: pag,
+      });
+      setCurrentPageNumber(pag);
+      localStorage.setItem("page", JSON.stringify(pag));
+    } else if (e.target.id === "previousPage") {
+      let pag = currentPageNumber - 1;
+      setFilters({
+        ...filters,
+        page: pag,
+      });
+      setCurrentPageNumber(pag);
+      localStorage.setItem("page", JSON.stringify(pag));
+    }
+  }
+
+  function handleDeleteFilters(e){
+    e.preventDefault();
+    setFilters({
+      name: "",
+      location: [],
+      type: [],
+      gender: [],
+      size: [],
+    })
+    console.log('e :>> ', e);
+  }
+
+  let page = currentPageNumber;
+  let nextPage = page + 1;
+  let previousPage = page - 1;
+  if (page > 1) previousPage = page - 1;
 
   return (
     <div>
-      <Navbar />
+      <Navbar filters={filters} setFilters={setFilters} />
       <Container>
-        <Header type={petType} />
+        <Header filters={filters} setFilters={setFilters} />
         <FiltersBar
+          filters={filters}
+          setFilters={setFilters}
+          handleChange={handleChange}
           handleFilterBySex={handleFilterBySex}
           handleFilterBySize={handleFilterBySize}
           handleFilterByLocation={handleFilterByLocation}
           handleOrderByAge={handleOrderByAge}
           handleSearchName={handleSearchName}
+          searchName={searchName}
+          handleDeleteFilters={handleDeleteFilters}
         />
+
         <div className="boxWrap">
-          {refresh &&
-            currentPet.map((p, i) => {
-              return (
-                <Cards
-                  key={Math.random()}
-                  image={p.image}
-                  name={p.name}
-                  breed={p.race}
-                  age={p.age}
-                  gender={p.gender}
-                  size={p.size}
-                  description={p.description}
-                  id={p.id}
-                  location={p.location}
-                />
-              );
-            })}
+          {isLoading
+            ? null
+            : megaPets.pets?.map((p, i) => {
+                return (
+                  <Cards
+                    className="apperCards"
+                    key={Math.random()}
+                    image={p.image}
+                    name={p.name}
+                    breed={p.race}
+                    age={p.age}
+                    gender={p.gender}
+                    size={p.size}
+                    description={p.description}
+                    id={p.id}
+                    location={p.location}
+                    userMail={p.userMail}
+                    views={p.views}
+                    type={p.type}
+                  />
+                );
+              })}
         </div>
       </Container>
       <Paginations
-        currentPage={currentPage}
-        petsPerPage={petsPerPage}
-        pets={pets.length}
-        pagination={pagination}
+        numberPage={currentPageNumber}
+        totalPages={totalPages}
+        previousPage={previousPage}
+        nextPage={nextPage}
+        handlePage={handlePage}
       />
       <Testimonials />
       <Footer />

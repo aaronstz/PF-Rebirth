@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./FilterBar.css";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import {  getLocation,} from "../../Redux/Actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
+import Button from "react-bootstrap/esm/Button";
 
 function FiltersBar({
+  filters,
+  setFilters,
   handleFilterBySex,
   handleFilterBySize,
   handleFilterByLocation,
   handleOrderByAge,
   handleSearchName,
+  handleChange,
+  handleDeleteFilters
 }) {
-  const dispatch = useDispatch();
-  let [searchName, setSearchName] = useState("");
-  let locations = useSelector((state) => state.location);
-
-  useEffect(() => {
-    dispatch(getLocation());
-  }, [dispatch]);
+  const locations = useSelector((state) => state.location);
 
   return (
     <React.Fragment>
@@ -39,7 +35,10 @@ function FiltersBar({
           <Dropdown.Item eventKey={"All"}>All</Dropdown.Item>
           {locations &&
             locations.map((location) => (
-              <Dropdown.Item eventKey={location}  key={Math.random()}> {location}</Dropdown.Item>
+              <Dropdown.Item eventKey={location} key={Math.random()}>
+                {" "}
+                {location}
+              </Dropdown.Item>
             ))}
         </DropdownButton>
 
@@ -52,28 +51,21 @@ function FiltersBar({
           title="AGE"
           className="ms-2"
         >
-          <Dropdown.Item eventKey="young">young</Dropdown.Item>
-          <Dropdown.Item eventKey="old">old</Dropdown.Item>
+          <Dropdown.Item eventKey="ASC">young</Dropdown.Item>
+          <Dropdown.Item eventKey="DESC">old</Dropdown.Item>
         </DropdownButton>
 
-        <InputGroup className="ms-2 w-50">
-          <Form.Control
-            placeholder="Search by name"
-            aria-label="Search by name"
-            aria-describedby="basic-addon2"
-            onChange={(e) => setSearchName(e.target.value)}
-            value={searchName}
-          />
-          <Button
-            className="btn-pink"
-            onClick={(e) => {
-              handleSearchName(searchName);
-              setSearchName("")
-            }}
-          >
-            Search
-          </Button>
-        </InputGroup>
+        <Form className="ms-2 w-10" onSubmit={handleSearchName}>
+          <Form.Group className="mb-3 cajaDeTexto" controlId="formBasicName">
+            <Form.Control
+              type="text"
+              placeholder="Search by name"
+              className="formInputStyle"
+              autoComplete="off"
+              onChange={handleChange}
+            />
+          </Form.Group>
+        </Form>
 
         <DropdownButton
           onSelect={(e) => {
@@ -81,7 +73,7 @@ function FiltersBar({
           }}
           id="dropdown-button-light"
           variant="light"
-          title="SEX"
+          title="GENDER"
           className="ms-2"
         >
           <Dropdown.Item eventKey="All">All</Dropdown.Item>
@@ -102,8 +94,14 @@ function FiltersBar({
           <Dropdown.Item eventKey="medium">Medium</Dropdown.Item>
           <Dropdown.Item eventKey="big">Big</Dropdown.Item>
         </DropdownButton>
+
+        <div>
+          <Button className="btn-pink" onClick={handleDeleteFilters}>
+            Borrar filtros
+          </Button>
+        </div>
       </div>
-      <FilterbarSelect />
+      <FilterbarSelect filters={filters} setFilters={setFilters}/>
     </React.Fragment>
   );
 }

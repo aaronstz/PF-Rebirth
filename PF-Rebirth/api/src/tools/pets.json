@@ -12,7 +12,7 @@
     "race": "golden",
     "owner": "Maru Gramajo",
     "location": "Buenos Aires",
-    "userMail": null
+    "userMail": "test@gmail.com"
   },
   {
     "id": "08b73e6e-7d81-454a-a73f-c0b71f74ea1c",
@@ -27,7 +27,7 @@
     "race": "Shih Tzu",
     "owner": "Lucas Diaz",
     "location": "Santiago del Estero",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "b6561d2e-ca7f-49c6-9b6c-08294e389bcf",
@@ -42,7 +42,7 @@
     "race": "caniche",
     "owner": "Enzo Sanchez",
     "location": "Chaco",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "80a357ff-dc3f-4565-8ba4-c1d599062e28",
@@ -57,7 +57,7 @@
     "race": "caniche",
     "owner": "Aaron Gerez",
     "location": "Catamarca",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "9c54b377-e850-471e-bfb6-2ebb88bbc0e0",
@@ -71,8 +71,8 @@
     "type": "dog",
     "race": "dachshund",
     "owner": "Lenny Snaiderman",
-    "location": "la rioja",
-    "userMail": null
+    "location": "La Rioja",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "1e9b004c-d5e1-4236-9999-ec3f5655e6ac",
@@ -87,7 +87,7 @@
     "race": "dachshund",
     "owner": "William Diaz",
     "location": "Buenos Aires",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "2a6e2a84-ccb3-464e-a42b-6292acda2f25",
@@ -102,7 +102,7 @@
     "race": "labrador",
     "owner": "Carlos Candioti",
     "location": "Cordoba",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "79c1a706-3fcc-4fca-b5d1-f1a30b61b692",
@@ -117,7 +117,7 @@
     "race": "mixta",
     "owner": "Tobias Tymkiw",
     "location": "Buenos Aires",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "adaf53af-dfa0-43bf-9af9-2cc37fccbbe3",
@@ -132,22 +132,7 @@
     "race": "mixta",
     "owner": "Maria Becerra",
     "location": "Santiago del Estero",
-    "userMail": null
-  },
-  {
-    "id": "838ef145-2c15-4786-ab7e-255747a12aba",
-    "name": "Koy",
-    "image": "https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2022/01/heroes-por-adopcion-cdmx.jpeg?fit=959%2C959&ssl=1",
-    "age": 1,
-    "description": "Koy was abandoned and is now looking for its new home. She is very playful.",
-    "active": "true",
-    "gender": "male",
-    "size": "small",
-    "type": "dog",
-    "race": "mixta",
-    "owner": "Maria Ledesma",
-    "location": "Buenos Aires",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "4eb7ecd5-2f5f-4d91-933c-b1b77f51978a",
@@ -162,7 +147,7 @@
     "race": "abyssinian",
     "owner": "Marianella Rodriguez",
     "location": "Chaco",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "fec25412-3961-4f57-b9f1-4853c408356f",
@@ -177,7 +162,7 @@
     "race": "aegean",
     "owner": "Eugenio Alvarez",
     "location": "Santa Cruz",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "346af41b-6542-41f9-bec8-5ded88b593f2",
@@ -192,7 +177,7 @@
     "race": "american bobtail",
     "owner": "Alberto Fernandez",
     "location": "Santa Fe",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "66dcfc88-d7cb-44d7-907c-1b31e566396a",
@@ -207,7 +192,7 @@
     "race": "american curl",
     "owner": "Patricia Coronel",
     "location": "Salta",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "f9607e62-ee7f-4243-972d-9e6744e7de3b",
@@ -222,7 +207,7 @@
     "race": "american shorthair",
     "owner": "Rocio Diaz",
     "location": "Salta",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "66cb866b-0d05-49e6-8d7e-af79babb32c8",
@@ -237,7 +222,7 @@
     "race": "american wirehair",
     "owner": "Pedro Gaona",
     "location": "Buenos Aires",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "8026161b-80f6-4f9b-9819-24d2a24fdb17",
@@ -252,7 +237,7 @@
     "race": "arabian mau",
     "owner": "Yanina Sanchez",
     "location": "Santiago del Estero",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "c85ae00f-cd21-485e-8620-b219c6b72296",
@@ -267,7 +252,7 @@
     "race": "australian mist",
     "owner": "Marcela Acuña",
     "location": "Cordoba",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "652e00a7-af75-4f49-9732-6c49c8a33ed9",
@@ -282,7 +267,7 @@
     "race": "balinese",
     "owner": "Gabriel Roldan",
     "location": "Salta",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "a5c47c04-f718-4e38-aa79-0da53db1ba03",
@@ -297,7 +282,7 @@
     "race": "bambino",
     "owner": "Nicolas Nasif",
     "location": "Chaco",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "c680de36-e901-40c0-9984-e50068d27498",
@@ -312,7 +297,7 @@
     "race": "bengal",
     "owner": "Paula Bianchi",
     "location": "Tucuman",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "e65aedff-5d52-4342-9daa-869091a0affc",
@@ -327,7 +312,7 @@
     "race": "birman",
     "owner": "Milagros Almada",
     "location": "Tucuman",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "4b8853b1-fea9-4823-bfbe-0eb511e6c285",
@@ -342,7 +327,7 @@
     "race": "bombay",
     "owner": "Enzo Perez",
     "location": "Buenos Aires",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "fd518c93-e24e-4244-9ef9-f332b5829db2",
@@ -357,7 +342,7 @@
     "race": "british longhair",
     "owner": "Carla Sayago",
     "location": "Neuquen",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "0bf33494-bf7e-4dca-9442-dadd533efc94",
@@ -372,7 +357,7 @@
     "race": "british shorthair",
     "owner": "Belen Coronel",
     "location": "Misiones",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "ea753da8-072b-4efd-80b9-8de026ad75f7",
@@ -387,7 +372,7 @@
     "race": "burmese",
     "owner": "Daniel Paz",
     "location": "Salta",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "f062fee2-4136-45d6-aef8-46047818a4dc",
@@ -402,7 +387,7 @@
     "race": "burmilla",
     "owner": "Mario Gomez",
     "location": "Salta",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "ba80dbb0-ffa2-4b70-9303-d82a8edc7e68",
@@ -417,7 +402,7 @@
     "race": "california spangled",
     "owner": "Elizabeth del Valle",
     "location": "Cordoba",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "c6886108-5193-4bd6-be33-d10df634ef35",
@@ -431,8 +416,8 @@
     "type": "cat",
     "race": "chantilly-tiffany",
     "owner": "Agustina Maguna",
-    "location": "Tierra del fuego",
-    "userMail": null
+    "location": "Tierra del Fuego",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "d70f80a6-03f0-4348-8e9a-c2b071db173e",
@@ -447,7 +432,7 @@
     "race": "chartreux",
     "owner": "Augusta Gramajo",
     "location": "Santiago del Estero",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "54a3b54c-d7e5-4694-b572-63be99d2470c",
@@ -459,9 +444,9 @@
     "gender": "male",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "catamarca",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Catamarca",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "4a1963a3-6559-4637-b616-6bc21c1fa27f",
@@ -473,9 +458,9 @@
     "gender": "male",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "neuquen",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Neuquen",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "3c0a23b2-f36a-4be9-a6af-c353acace5de",
@@ -487,9 +472,9 @@
     "gender": "male",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "cordoba",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Cordoba",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "ca7ae29c-b2c9-4aaa-8932-f45b48987be1",
@@ -501,23 +486,23 @@
     "gender": "male",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "cordoba",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Cordoba",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "d873a833-39ed-480f-b637-e3c9588d08fb",
     "name": "Chancho",
     "age": 9,
     "description": "He is a very affectionate dog, he likes to go to the park and play with balls. Find a home, help him!",
-    "image": "https://t2.ea.ltmcdn.com/es/posts/1/9/7/como_saber_de_que_tamano_sera_un_perro_mestizo_22791_orig.jpg",
+    "image": "https://t2.ea.ltmcdn.com/es/posts/1/9/7/como_saber_de_que_tamano_sera_un_perro_mixed breed_22791_orig.jpg",
     "size": "medium",
     "gender": "male",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "tucuman",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Tucuman",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "1342b375-9632-4d24-8ebb-e658f2b9ef43",
@@ -529,23 +514,23 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "cordoba",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Cordoba",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "55f83d87-425f-4b9d-b98d-c1d788f1f425",
-    "name": "Morita",
+    "name": "Morito",
     "age": 1,
     "description": "she is a very affectionate dog, he likes to go to the park and play with balls. Find a home, help him!",
-    "image": "https://www.hola.com/imagenes/mascotas/20200128159175/razas-de-perro-mestizo/0-775-243/chiweenie-e.jpg",
+    "image": "https://www.hola.com/imagenes/mascotas/20200128159175/razas-de-perro-mixed breed/0-775-243/chiweenie-e.jpg",
     "size": "small",
-    "gender": "female",
+    "gender": "male",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "cordoba",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Cordoba",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "872c9dd1-5042-431c-981d-1ce9868b0fb6",
@@ -557,9 +542,9 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "cordoba",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Cordoba",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "53aed2d4-6e1a-406f-8d55-1e0da2c0edd1",
@@ -571,9 +556,9 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
+    "race": "mixed breed",
     "location": "Santiago del Estero",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "d91009dc-63e8-4553-bd8d-004b6fe150b9",
@@ -585,9 +570,9 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "tucuman",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Tucuman",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "f1cfc50c-7ed7-4d3c-8231-b5ca0720609e",
@@ -599,9 +584,9 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
+    "race": "mixed breed",
     "location": "Corrientes",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "e7a54133-ff0e-4b26-a195-6f89fe878c21",
@@ -613,9 +598,9 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
+    "race": "mixed breed",
     "location": "Chaco",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "4493340f-ea85-40d0-a65f-b3ef246faa11",
@@ -627,9 +612,9 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
+    "race": "mixed breed",
     "location": "Chubut",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "2142747b-4745-4253-a75f-b9555523b3a2",
@@ -641,9 +626,9 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
+    "race": "mixed breed",
     "location": "Chubut",
-    "userMail": null
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "3e8b1321-390d-4bd0-b366-7f57723d760e",
@@ -655,9 +640,9 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "la rioja",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "La Rioja",
+    "userMail": "petsrebirth@gmail.com"
   },
   {
     "id": "a3da5bd4-4764-431e-9705-da09a6c3801b",
@@ -669,8 +654,8 @@
     "gender": "female",
     "active": true,
     "type": "dog",
-    "race": "mestizo",
-    "location": "Rio negro",
-    "userMail": null
+    "race": "mixed breed",
+    "location": "Rio Negro",
+    "userMail": "petsrebirth@gmail.com"
   }
 ]

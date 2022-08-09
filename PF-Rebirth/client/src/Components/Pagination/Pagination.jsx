@@ -1,24 +1,40 @@
 import React from "react";
 import "./Pagination.css";
+import arrowRightLight from "../../Assets/arrowRightLight.png";
+import arrowLeftLight from "../../Assets/arrowLeftLight.png";
 
-const Paginations = ({ petsPerPage, pets, pagination, currentPage }) => {
-  const numberPgs = [];
-
-  for (let i = 1; i <= Math.ceil(pets / petsPerPage); i++) {
-    numberPgs.push(i);
-  }
-
+const Paginations = ({
+  numberPage,
+  totalPages,
+  previousPage,
+  handlePage,
+}) => {
   return (
-    <div>
-      <div className="pagination">
-        {numberPgs.map((e) => (
-          <ul key={e} className="pages">
-            <li key={e} className={currentPage === e ? "liactive" : ""}>
-              <span onClick={() => pagination(e)}>{e}</span>
-            </li>
-          </ul>
-        ))}
-      </div>
+    <div className="pagination">
+      {previousPage < 0 ? (
+        <div className="pagesNone" id="previousPage"></div>
+      ) : (
+        <div onClick={(e) => handlePage(e)} className="pages">
+          <img
+            src={arrowLeftLight}
+            alt="Prev"
+            className="arrowPages"
+            id="previousPage"
+          />
+        </div>
+      )}
+      {numberPage + 1 === totalPages ? (
+        <div className="pagesNone" />
+      ) : (
+        <div onClick={(e) => handlePage(e)} className="pages">
+          <img
+            src={arrowRightLight}
+            alt="Next"
+            className="arrowPages"
+            id="nextPage"
+          />
+        </div>
+      )}
     </div>
   );
 };

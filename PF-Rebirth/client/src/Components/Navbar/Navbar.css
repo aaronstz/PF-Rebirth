@@ -18,6 +18,11 @@
     width: 50%;
 }
 
+.nav-btn-none {
+    border: none;
+    background: transparent;
+}
+
 .item {
     width: fit-content;
     display: flex;
@@ -47,6 +52,8 @@
     text-align: right;
     text-decoration: none;
     color: var(--text-color);
+    border: none;
+    background: transparent;
 }
 
 .link-navbar:hover {
@@ -65,7 +72,8 @@
 
 .googleImg>img {
     position: relative;
-    left: 10px;
+    left: 0px;
     border-radius: 50%;
     max-width: 35px;
+    height: 35px;
 }

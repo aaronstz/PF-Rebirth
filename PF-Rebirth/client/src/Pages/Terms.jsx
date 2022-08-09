@@ -20,25 +20,32 @@ function Terms() {
                 <h2>Terms {"&"} conditions</h2>
               </div>
               <div className="terms-text">
-                <h3>1. term one</h3>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel
-                nesciunt molestias sed quam repellendus. Vero possimus ipsam
-                quidem ad ratione sint ipsa dignissimos accusantium quo? Nihil
-                harum consectetur eaque tenetur? Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Eum, perspiciatis. Adipisci illum
-                blanditiis provident vel eos illo itaque nemo quas perspiciatis
-                sit aspernatur corrupti necessitatibus dolorem debitis, facilis
-                saepe omnis!
+                <h3>1. Security and protection of your personal data</h3>
+                The security of personal data is a priority for REBIRTH. This
+                website strives to offer the highest level of security for which
+                advanced technology is used. We adhere to the requirements of
+                the National Law on Protection of Personal Data, No. 25,326 and
+                its complementary regulations.
                 <br />
-                <h3>2. term two</h3>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel
-                voluptate quam amet dolores sint temporibus nisi, excepturi,
-                animi eos repellat hic architecto reprehenderit id accusantium
-                blanditiis? Sunt est aut veritatis. Lorem, ipsum dolor sit amet
-                consectetur adipisicing elit. Vel nesciunt molestias sed quam
-                repellendus. Vero possimus ipsam quidem ad ratione sint ipsa
-                dignissimos accusantium quo? Nihil harum consectetur eaque
-                tenetur?
+                <h3>2. Your privacy </h3>
+                REBIRTH respects your privacy. All information you provide to us
+                will be treated with the utmost care and security, and will only
+                be used within the limits set forth in this document.
+                <h3>3. How information is gathered </h3>
+                REBIRTH only collects your personal data when you provide it
+                directly and with your express and informed consent.
+                <h3>4. Who has access to the information? </h3>
+                REBIRTH is always committed to presenting new solutions that
+                improve the value of its products and services. The information
+                collected here is not shared with anyone, while non-identifying
+                and statistical information may be used for internal analysis to
+                improve our services.
+                <h3>5. Security and protection of your personal data </h3>
+                The security of personal data is a priority for REBIRTH. This
+                website strives to offer the highest level of security for which
+                advanced technology is used. We adhere to the requirements of
+                the National Law on Protection of Personal Data, No. 25,326 and
+                its complementary regulations.
               </div>
             </div>
           </Col>

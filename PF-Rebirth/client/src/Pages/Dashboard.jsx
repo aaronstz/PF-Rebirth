@@ -1,19 +1,25 @@
 import React from "react";
 import DashNavBar from "../Dashboard/Components/Dash-NavBar/Dash-NavBar";
-//import MyAdoption from "../Dashboard/Components/MyAdoptions/Components/MyAdoption/MyAdoption";
-import DashFavorites from "../Dashboard/Components/MyFavorites/DashFavorites";
+import DashUsers from "../Dashboard/Components/Users/Users";
+// import FormAdoption from "../Dashboard/Components/MyAdoptions/Components/FormAdoption/FormAdoption";
+//import Feedback from "../Dashboard/Components/MyAdoptions/Components/Feedback/Feedback";
+// import MyAdoption from "../Dashboard/Components/MyAdoptions/Components/MyAdoption/MyAdoption";
+// import DashFavorites from "../Dashboard/Components/MyFavorites/DashFavorites";
 import "./Dashboard.css";
 
-function Navbar() {
+function Dashboard() {
   return (
     <>
       <DashNavBar />
       <div className="DashcontainerMain">
+        {/* <FormAdoption /> */}
+        <DashUsers />
         {/* <MyAdoption /> */}
-        <DashFavorites />
+        {/* <DashFavorites /> */}
+        {/* <Feedback /> */}
       </div>
     </>
   );
 }
 
-export default Navbar;
+export default Dashboard;

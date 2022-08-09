@@ -1,11 +1,17 @@
 const { Router } = require("express");
 const { Pets } = require("../db");
 const router = Router();
+const {Op} = require("sequelize")
 
 router.get("/location", async (req, res, next) => {
   try {
-  const allPets = await Pets.findAll()
+  const {type} = req.query
+  let allPets;
+  type? 
+    allPets = await Pets.findAll({where : {type : type}}) :
+  allPets = await Pets.findAll()  
   const allLocation= new Set()
+
   allPets.map(p => allLocation.add(p.location))
   let result = Array.from(allLocation); 
 
@@ -18,6 +24,7 @@ router.get("/location", async (req, res, next) => {
       next(error);
     }
 });
+
 
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
@@ -33,11 +40,22 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.patch("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const petId = await Pets.findByPk(id);
+    await petId.update({views:petId.views + 1})
+    res.status(200).send('ok')
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/", async (req, res, next) => {
   try {
   const { type } = req.query;
   const { name } = req.query;
-  const allPets = await Pets.findAll();
+  const allPets = await Pets.findAll({order:[["createdAt", "ASC"]]});
   let result = allPets; 
   if (type) {
     result = await allPets.filter((p) =>
@@ -59,6 +77,21 @@ router.get("/", async (req, res, next) => {
       next(error);
     }
 });
+
+
+
+router.get("/", async (req, res, next) => {
+  try {
+    const { type, name } = req.query;
+    const allPets = await Pets.findAll();
+
+    
+
+  } catch (error) {
+      next(error);
+  }
+});
+
 
 
 
@@ -94,7 +127,7 @@ router.delete("/:id", async (req, res, next) => {
       res.status(404).send(`pet not found`);
     } else {
       await Pets.destroy({ where: { id: id } });
-      res.status(200).send("the pet was removed");
+      res.status(200).send(id);
     }
   } catch (error) {
     next(error);

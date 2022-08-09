@@ -9,7 +9,7 @@ const getUserInfo = async (req) => {
     const generatePass = generatePassword(9);
 
     return {
-      userName: body.name,
+      userName: body.name.replace(" ", "_"),
       name: body.givenName,
       lastName: body.familyName,
       mail: body.email,

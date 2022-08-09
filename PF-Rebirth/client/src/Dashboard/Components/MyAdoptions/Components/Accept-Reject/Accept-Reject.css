@@ -1,75 +1,32 @@
-.mainDashCont {
+.mainDashContACC {
+  font-family: "Red Hat Display";
+  font-size: 25px ;
   display: flex;
-  flex-wrap: wrap;
-}
-
-
-
-.AdoptContainer {
-      display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  width: 100%;
-  min-width: 200px;
-  height: 75%;
+  width: 25rem;
+  height: auto;
+  color: rgb(231, 231, 231);
+  word-wrap: break-word;
+  text-align: center;
+  background-color: rgb(110, 107, 109);
+  backdrop-filter: blur(1rem);
+  box-shadow: 0px 5px 5px 0px var(--shadow);
+  border-radius: 1.6rem;
+  margin: 10px 1% 10px 1%;
+  transition: ease 0.2s, left 0.2s;
+  border: 1px solid var(--border);
   overflow: hidden;
-  padding: 50px;
- 
- 
 }
 
-.AdoptcardLeftPhoto {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 20%;
-  height: auto;
-}
-
-.AdoptcardLeft {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: medium;
-  width: 50%;
-  height: auto;
-  color: var(--text-color);
-  border-right: 1px solid var(--greylight);
-}
-
-.AdoptcardCenter {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: medium;
-  width: 20%;
-  height: auto;
-  padding-right: 2%;
-  color: var(--text-color);
-  border-right: 1px solid var(--greylight);
-}
-
-.AdoptcardRight {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: medium;
-  width: 30%;
-  height: auto;
-  padding-left: 2%;
-  padding-right: 2%;
-  color: var(--text-color);
-}
-
-.imgFav img {
-  transition: all 0.3s;
-  display: block;
-  border-radius: 20px;
-  width: 400px;
-  justify-self: center;
+.mainDashContACC img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 300px;
+  max-height: 300px;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  object-fit: cover;
 }
 
 .btnRowAdopt {
@@ -77,8 +34,10 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;  
+  width: 100%;
   margin: auto;
+  color: rgb(231, 231, 231);;
+  padding-bottom: 25px ;
   padding-right: 25px;
 }
 
@@ -88,8 +47,8 @@
   padding-top: 0px;
   margin-left: 15px;
   text-transform: uppercase;
-  font-family: 'Mochiy Pop One';
-  background: var(--backgroundBttn2);
+  font-family: "Mochiy Pop One";
+  background: var(--greylight);
   border: 1px solid var(--border);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
@@ -98,7 +57,7 @@
 }
 
 .MAdoptbutton:hover {
-  background: var(--greylight);
+  background: var(--pink);
   border: 1px solid var(--border);
 }
 
@@ -118,13 +77,43 @@
   padding-top: 0px;
   margin-left: 15px;
   text-transform: uppercase;
-  font-family: 'Mochiy Pop One';
-  background: var(--backgroundBttn3);
+  font-family: "Mochiy Pop One";
+  background: var(--greylight);
   border: 1px solid var(--border);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
+}
+
+.MAdoCanbutton {
+  width: 200px;
+  height: 40px;
+  padding-top: 0px;
+  margin-left: 15px;
+  text-transform: uppercase;
+  font-family: "Mochiy Pop One";
+  background: var(--backgroundBttn2);
+  border: 1px solid var(--border);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.MAdoCanbutton:hover {
+  background: var(--pink);
+  border: 1px solid var(--border);
+}
+
+.MAdoCanbutton:focus {
+  background: var(--greylight);
+  border: 1px solid var(--border);
+}
+
+.MAdoCanbutton:active {
+  background: var(--greylight);
+  border: 1px solid var(--border);
 }
 
 .MAdoCancbutton:hover {
@@ -142,28 +131,39 @@
   border: 1px solid var(--border);
 }
 
-@media screen and (max-width: 1000px){
+.avatar-adopter {
+  height: 100px;
+  width: 100px;
+}
+
+@media screen and (max-width: 1200px) {
   .AdoptContainer {
-    display: none;
-flex-direction: column;
-justify-content: space-evenly;
-align-self: center;
-width: 100%;
-min-width: 400px;
-height: 75%;
-overflow: hidden;
-padding: 50px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    min-width: 400px;
+    height: 75%;
+    overflow: hidden;
+    padding: 50px;
+    margin:auto;
+  }
+  .mainDashContACC {
+    width: 100%;
+    min-width: 400px;
+  }
+  .btnRowAdopt {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    height: 25%;
+    margin: auto;
+    padding-right: 25px;
+  }
 }
-.btnRowAdopt {
-  padding-top: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 70%;  
-  margin: auto;
-  padding-right: 25px;
-}
 
-};
-  

@@ -1,67 +1,140 @@
-import React, { useEffect } from "react";
-import exButton from '../../Assets/Filterbar/xbutton.svg'
+import React from "react";
+import exButton from "../../Assets/Filterbar/xbutton.svg";
 import "./FilterBarSelectedButton.css";
-import {
-  filterByLocation,
-  filterBySex,
-  filterBySize,
-  fullFilterAge,
-  fullFilterLocation,
-  fullFilterSex,
-  fullFilterSize,
-  orderByAge,
-} from "../../Redux/Actions";
-import { useDispatch, useSelector } from "react-redux";
 
-export default function FilterbarSelect(){
+export default function FilterbarSelect({ filters, setFilters }) {
 
-    const dispatch = useDispatch();
-  let filterTabLocation=useSelector(state=> state.filterLocation)
-  let filterTabAge=useSelector(state=> state.filterAge)
-  let filterTabSex=useSelector(state=> state.filterSex)
-  let filterTabSize=useSelector(state=> state.filterSize)
-  useEffect(() => {
-  // dispatch(fullFilterAge("age"));
-  }, [dispatch]);
+  const { name, location, gender, size } = filters;
 
-  function handleOrderByAge(e) {
-    dispatch(orderByAge(e));
-    dispatch(fullFilterAge(e))
-  }
+  // console.log('filters :>> ', filters)
 
-  function handleFilterBySex(e) {
-    dispatch(filterBySex(e));
-    dispatch(fullFilterSex(e))
+  function handleFilterByGender(e) {
+    e.preventDefault();
+    let newGender = gender.filter((g) => g !== e.target.id);
+    setFilters({
+      ...filters,
+      gender: newGender,
+    });
   }
   function handleFilterBySize(e) {
-    dispatch(filterBySize(e));
-    dispatch(fullFilterSize(e))
+    e.preventDefault();
+    let newSizes = size.filter((a) => a !== e.target.id);
+    setFilters({
+      ...filters,
+      size: newSizes,
+    });
   }
   function handleFilterByLocation(e) {
-    dispatch(filterByLocation(e));
-    dispatch(fullFilterLocation(e))
+    e.preventDefault();
+    let newLocations = location.filter((l) => l !== e.target.id);
+    setFilters({
+      ...filters,
+      location: newLocations,
+    });
   }
 
-return(
-    <div className="filters-tabs"> 
-        {filterTabLocation==="All"? "":  <div className="filter-tabs-item" >
-            {filterTabLocation}
-           <img className="exbutton" onClick={e=>{handleFilterByLocation("All")}} src={exButton} alt="exbutton"/>
-    </div>}
-        {filterTabAge==="age"? "":  <div className="filter-tabs-item" >
-            {filterTabAge}
-           <img className="exbutton" onClick={e=>{handleOrderByAge("age")}} src={exButton} alt="exbutton"/>
-    </div>} 
-    {filterTabSex==="All"? "":  <div className="filter-tabs-item" >
-            {filterTabSex}
-           <img className="exbutton" onClick={e=>{handleFilterBySex("All")}} src={exButton} alt="exbutton"/>
-    </div>}
-    {filterTabSize==="Any"? "":  <div className="filter-tabs-item" >
-            {filterTabSize}
-            <img className="exbutton" onClick={e=>{handleFilterBySize("Any")}} src={exButton} alt="exbutton"/>
-    </div>}  
-   
-    </div>
-)
+  function handleFilterByName(e) {
+    e.preventDefault();
+    setFilters({
+      ...filters,
+      name : ""
+    })
+    
+  }
 
+  return (
+    <div className="filters-tabs">
+
+      {name.length < 1 ? null : (
+        <div>
+          <div
+            className="filter-tabs-item"
+            onClick={(e) => {
+              handleFilterByName(e);
+            }}
+          >
+            <span>{name}</span>
+            <img
+              className="exbutton"
+              src={exButton}
+              alt="exbutton"
+              id={name}
+            />
+          </div>
+        </div>
+      )}
+
+      {location && location.length === 0 ? null : (
+        <div>
+          {location?.map((l) => {
+            return (
+              <div
+                key={Math.random()}
+                className="filter-tabs-item"
+                onClick={(e) => {
+                  handleFilterByLocation(e);
+                }}
+              >
+                <span>{l}</span>
+                <img
+                  className="exbutton"
+                  src={exButton}
+                  alt="exbutton"
+                  id={l}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {size && size.length === 0 ? null : (
+        <div>
+          {size?.map((s) => {
+            return (
+              <div
+                key={Math.random()}
+                className="filter-tabs-item"
+                onClick={(e) => {
+                  handleFilterBySize(e);
+                }}
+              >
+                <span>{s}</span>
+                <img
+                  className="exbutton"
+                  src={exButton}
+                  alt="exbutton"
+                  id={s}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {gender && gender.length === 0 ? null : (
+        <div>
+          {gender?.map((g) => {
+            return (
+              <div
+                key={Math.random()}
+                className="filter-tabs-item"
+                onClick={(e) => {
+                  handleFilterByGender(e);
+                }}
+              >
+                <span>{g}</span>
+                <img
+                  className="exbutton"
+                  src={exButton}
+                  alt="exbutton"
+                  id={g}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 }

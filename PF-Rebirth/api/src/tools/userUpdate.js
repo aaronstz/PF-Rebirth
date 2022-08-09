@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const { User } = require("../db");
 
+
 const updateUser = async (req, res, next) => {
   const { mail } = req.params;
   const {
@@ -22,7 +23,17 @@ const updateUser = async (req, res, next) => {
     if (formBasicPassword)await user.update({ password: await bcrypt.hash(formBasicPassword, 10) });
     if (formBasicImage) await user.update({ image: formBasicImage });
     if (formBasicMail)await User.update({ mail: formBasicMail }, { where: { mail: mail } });
-    res.send("User modified");
+    const updatedUser = await User.findOne({
+      where: { mail: mail },
+    });
+    console.log(updatedUser['dataValues'])
+    res.json({
+    mail: updatedUser.mail,
+    userName:updatedUser.userName,
+    name:updatedUser.name,
+    lastName:updatedUser.lastName,
+    image:updatedUser.image
+  });
   } catch (error) {
     next(error);
   }

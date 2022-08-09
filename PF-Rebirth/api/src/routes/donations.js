@@ -11,10 +11,9 @@ const {
   });
 
 router.post("/", async (req, res) =>{
-  console.log('req.body', req.body)
+
     var {donacion} =req.body;
-    console.log('donacion', donacion)
- 
+    
     let preference = {  
         items: [
           {

@@ -1,10 +1,15 @@
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .lcard {
   position: relative;
   font-family: 'Red Hat Display';
   display: flex;
   flex-direction: column;
   width: 25rem;
-  height: auto;
+  height: 38rem;
   color: var(--text-color-sec);
   word-wrap: break-word;
   text-align: center;
@@ -16,6 +21,7 @@
   transition: ease 0.2s, left 0.2s;
   border: 1px solid var(--border);
   overflow: hidden;
+  animation: fade-in 0.5s ease;
 }
 
 .lcard img {
@@ -29,9 +35,8 @@
   object-fit: cover;
 }
 
-
-
-.btnFav {
+.btnFavHome {
+  border: none;
   position: absolute;
   left: 81.63%;
   top: 2%;
@@ -42,7 +47,8 @@
   z-index: 1;
 }
 
-.btnFav:hover {
+.btnFavHome:hover {
+  border: none;
   position: absolute;
   left: 81.63%;
   top: 2%;
@@ -50,6 +56,28 @@
   height: 43px;
   cursor: pointer;
   background: url(../../Assets/botonFAV_active.png);
+}
+.btnFavEliminarHome {
+  z-index: 100;
+  border: none;
+  position: absolute;
+  left: 81.63%;
+  top: 2%;
+  width: 45px;
+  height: 43px;
+  cursor: pointer;
+  background: url(../../Assets/botonFAV_active.png);
+}
+.btnEliminarPets {
+  z-index: 100;
+  border: none;
+  position: absolute;
+  left: 90%;
+  top: 2%;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  background: url(../../Assets/ico_trash-can.png);
 }
 
 .lcard .txtCont {
@@ -171,7 +199,15 @@
   padding-right: 30px;
 }
 
-.lcard .size .icoSize {
+.lcard .size .icoSize  img {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 359px;
+  top: 375px;
+  color: var(--white);
+}
+/* .lcard .size .icoSize {
   position: absolute;
   border-left: solid 1px var(--white);
   border-top: solid 1px var(--white);
@@ -180,7 +216,7 @@
   left: 360px;
   top: 380px;
   background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 26 26' width='22' height='22' xmlns='http://www.w3.org/2000/svg'><g><path d='M12.6583 10.3326L5.04419 13.0319V24.0435C5.04419 24.2574 5.12979 24.4626 5.28216 24.6138C5.43454 24.7651 5.6412 24.85 5.85669 24.85H9.10669C9.32218 24.85 9.52884 24.7651 9.68121 24.6138C9.83359 24.4626 9.91919 24.2574 9.91919 24.0435V18.3978H18.0442V24.0435C18.0442 24.2574 18.1298 24.4626 18.2822 24.6138C18.4345 24.7651 18.6412 24.85 18.8567 24.85H22.1067C22.3222 24.85 22.5288 24.7651 22.6812 24.6138C22.8336 24.4626 22.9192 24.2574 22.9192 24.0435V13.2608C24.8062 12.5929 26.1692 10.8195 26.1692 8.71953C26.1692 8.29172 25.998 7.88144 25.6932 7.57893C25.3885 7.27643 24.9752 7.10648 24.5442 7.10648C24.1132 7.10648 23.6999 7.27643 23.3951 7.57893C23.0904 7.88144 22.9192 8.29172 22.9192 8.71953C22.9184 9.14709 22.7469 9.55691 22.4423 9.85925C22.1378 10.1616 21.7249 10.3318 21.2942 10.3326H12.6583ZM0.169189 4.6869V6.29995C0.169189 7.15557 0.5116 7.97614 1.12109 8.58115C1.73059 9.18616 2.55724 9.52606 3.41919 9.52606H5.04419V11.3196L11.5442 9.01542V1.4608C11.5442 0.742486 10.6697 0.382574 10.1574 0.890686L8.77204 2.26732H6.04864C5.49462 2.26732 4.84259 2.66655 4.59528 3.15904L4.23169 3.88038H0.981689C0.766201 3.88038 0.559538 3.96535 0.407165 4.1166C0.254791 4.26785 0.169189 4.473 0.169189 4.6869ZM5.85669 4.6869C5.85669 4.52739 5.90434 4.37145 5.99362 4.23882C6.0829 4.10619 6.20979 4.00281 6.35826 3.94177C6.50672 3.88072 6.67009 3.86475 6.8277 3.89587C6.98531 3.92699 7.13008 4.00381 7.24371 4.1166C7.35734 4.2294 7.43473 4.37311 7.46608 4.52956C7.49743 4.68601 7.48134 4.84817 7.41984 4.99555C7.35835 5.14292 7.25421 5.26888 7.12059 5.3575C6.98698 5.44613 6.82989 5.49343 6.66919 5.49343C6.4537 5.49343 6.24704 5.40845 6.09466 5.2572C5.94229 5.10595 5.85669 4.90081 5.85669 4.6869Z' fill='white'/></g></svg>") no-repeat;
-}
+} */
 
 .lcard .weigth {
   font-size: 1rem;
