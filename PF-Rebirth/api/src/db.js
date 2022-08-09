@@ -47,7 +47,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Pets, Message, Adoption, SuccessStories, User } = sequelize.models;
+const { Pets, Message, Adoption, SuccessStories, User,Notification } = sequelize.models;
 
 //    1:1  --->>> hasOne a belongsTo
 //    1:n  --->>> hasMany a benlongsTo
@@ -73,6 +73,9 @@ SuccessStories.belongsTo(User); // el dueño puede tener distintos casos de exit
 
 Adoption.hasMany(Message); //un usuario puede tener distintos chat y un chat pertenece a un usuario
 Message.belongsTo(Adoption, { foreignKey: "adoptionId" }); // el dueño puede tener distintos chat y un chat pertenece a el dueño
+
+User.hasOne(Notification);//un usuario puede tener una notificacion
+Notification.belongsTo(User); // la notificacion pertenece a un usuario
 
 // siendo adoptante
 //  user --> muchas --> pets
