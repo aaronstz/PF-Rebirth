@@ -9,7 +9,7 @@ import DarkMode from "../../Components/Switch/SwitchMode";
 import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser, resetDetails } from "../../Redux/Actions";
+import { logoutUser } from "../../Redux/Actions";
 
 function Navbar({filters, setFilters}) {
   const activeUser = useSelector((state) => state.activeUser);
@@ -44,7 +44,6 @@ function Navbar({filters, setFilters}) {
       type : [],
       page : 0
     })
-    // navigate("/home")
   }
 
   const logOut = async (e) => {
@@ -68,10 +67,6 @@ function Navbar({filters, setFilters}) {
       }
     });
   };
-
-  function clear(){
-    dispatch(resetDetails())
-  }
 
   return (
     <div className="containerNavbar">

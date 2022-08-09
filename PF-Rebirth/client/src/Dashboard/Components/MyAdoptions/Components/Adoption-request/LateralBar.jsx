@@ -16,6 +16,8 @@ export default function LateralBar() {
   const user = JSON.parse(infoStorage);
   if(infoStorage) mail = user.mail;
 
+  console.log(mail)
+
   useEffect(() => {
     dispatch(getChat(mail));
   }, [dispatch]);
@@ -35,7 +37,8 @@ export default function LateralBar() {
           >
             <div>
               <div className="avatar-pet-lateral-bar">
-                <div className="avatar-lateral-bar"><img
+                <div className="avatar-lateral-bar">
+                  <img
                   
                   src={
                     adChat.adopter.mail === mail

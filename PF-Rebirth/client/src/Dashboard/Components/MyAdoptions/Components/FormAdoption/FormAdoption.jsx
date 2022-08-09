@@ -21,8 +21,7 @@ if(infoStorage) mailAdoptante= user.mail
 let navigate=useNavigate()
 
  useEffect(()=>{
-dispatch(getDetails(id))
-
+  dispatch(getDetails(id))
  },[id]) 
 
  useEffect(()=>{

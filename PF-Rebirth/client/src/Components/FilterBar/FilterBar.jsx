@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./FilterBar.css";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import {
-  getLocation,
-  getPetNames,
-  paginateData,
-  pruebasDeFiltrado,
-  saveName,
-} from "../../Redux/Actions";
 import { useSelector } from "react-redux";
 import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton";
+import Button from "react-bootstrap/esm/Button";
 
 function FiltersBar({
   filters,
-  searchName,
+  setFilters,
   handleFilterBySex,
   handleFilterBySize,
   handleFilterByLocation,
   handleOrderByAge,
   handleSearchName,
   handleChange,
-  valueName
+  handleDeleteFilters
 }) {
   const locations = useSelector((state) => state.location);
 
@@ -63,8 +55,8 @@ function FiltersBar({
           <Dropdown.Item eventKey="DESC">old</Dropdown.Item>
         </DropdownButton>
 
-        <Form className="ms-2 w-50" onSubmit={handleSearchName}>
-          <Form.Group className="mb-3" controlId="formBasicName">
+        <Form className="ms-2 w-10" onSubmit={handleSearchName}>
+          <Form.Group className="mb-3 cajaDeTexto" controlId="formBasicName">
             <Form.Control
               type="text"
               placeholder="Search by name"
@@ -102,8 +94,14 @@ function FiltersBar({
           <Dropdown.Item eventKey="medium">Medium</Dropdown.Item>
           <Dropdown.Item eventKey="big">Big</Dropdown.Item>
         </DropdownButton>
+
+        <div>
+          <Button className="btn-pink" onClick={handleDeleteFilters}>
+            Borrar filtros
+          </Button>
+        </div>
       </div>
-      <FilterbarSelect filters={filters}/>
+      <FilterbarSelect filters={filters} setFilters={setFilters}/>
     </React.Fragment>
   );
 }

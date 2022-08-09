@@ -68,11 +68,17 @@ const initialState = {
   savedName: "",
   userDeleted: [],
   userBanned: [],
-  admins: []
+  admins: [],
+  favoritesSaved : [],
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case "SAVE_FAVORITES":
+      return {
+        ...state,
+        favoritesSaved : action.payload
+      }
     case "SAVE_NAME":
       return {
         ...state,

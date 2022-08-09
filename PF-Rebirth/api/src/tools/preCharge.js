@@ -18,7 +18,8 @@ const getPets = async () => {
             size: p.size,
             type: p.type,
             race: p.race,
-            location : p.location
+            location : p.location,
+            userMail : p.userMail
             // owner: p.owner,
           },
         });

@@ -85,3 +85,19 @@ export const validateErrors = (objUser) => {
 
   return errors
 }
+
+export const eliminaDuplicados = (arr) => {
+ 
+  const unicos = [];
+ 
+  for(var i = 0; i < arr.length; i++) {
+ 
+    const elemento = arr[i];
+  
+    if (!unicos.includes(arr[i])) {
+      unicos.push(elemento);
+    }
+  }
+  
+  return unicos;
+}

@@ -9,5 +9,16 @@
     "image": "https://cdn.dribbble.com/users/535615/screenshots/16722250/media/d5b128412e557169035f910394d79906.png?compress=1&resize=400x300&vertical=top",
     "isAdmin": true,
     "favorites": ["1342b375-9632-4d24-8ebb-e658f2b9ef43"]
+    },
+    {
+        "mail": "test@gmail.com",
+        "userName": "test",
+        "name": "Rebirth",
+        "lastName": "Pets",
+        "active": true,
+        "password": "$2b$10$0KWnr0wrbVwAqN8n3UAZ8OKyyfG7KBeg1XT7CVCtrSXtOmAJA9C7G",
+        "image": "https://cdn.dribbble.com/users/535615/screenshots/16722250/media/d5b128412e557169035f910394d79906.png?compress=1&resize=400x300&vertical=top",
+        "isAdmin": false,
+        "favorites": ["1342b375-9632-4d24-8ebb-e658f2b9ef43"]
     }
 ]

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./DashFavorites.css";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFavs, getAllPets, getFavs } from "../../../Redux/Actions";
-
-import { useUserFavoritesPets, useFavoritesPetsDetails } from '../../../Tools/customHooks.js';
+import { deleteFavs, getAllPets, getFavs, saveFavorites } from "../../../Redux/Actions";
+import { useMutation } from "@tanstack/react-query";
+import { useUserFavoritesPets, useFavoritesPetsDetails, useUpdateFavs } from '../../../Tools/customHooks.js';
 import { Link } from "react-router-dom";
 import DashNavBar from "../Dash-NavBar/Dash-NavBar";
 import Footer from "../../../Components/Footer/Footer";
+import Navbar from "../../../Components/Navbar/Navbar";
 
 
 export default function DashFavorites(){
@@ -18,20 +20,38 @@ export default function DashFavorites(){
   const mail = user.mail
 
   const [ filters, setFilters ] = useState({ mail : mail})
+  // console.log('filters :>> ', filters);
   const { data, isLoading }  = useUserFavoritesPets(filters)
   
-  const filterFavs = data&&data.data;
+  let filterFavs = data&&data.data;
+  let arrayDetails  = useFavoritesPetsDetails({ id: filterFavs&&filterFavs})
+  
+  // console.log('arrayDetails&&arrayDetails.data.length :>> ', arrayDetails&&arrayDetails.data.length);
+  let favoritos  = arrayDetails.data;
 
-  console.log('filterFavs.length :>> ', filterFavs&&filterFavs);
+  const mutation = useMutation(newTodo => {
+    return axios.put(`http://localhost:3001/user/deleteFavs/${mail}`, favoritos&&favoritos[0].data.id)
+  })
+  // let update = useUpdateFavs(mail, favoritos&&favoritos[0].data.id)
+
+  console.log('favoritos :>> ', mutation);
+
+  // console.log('arrayDetails :>> ', favoritos&&favoritos[0].data.id);
+
 
   function handleDeleteFav(id){
+    console.log('mail :>> ', mail);
+    console.log('id :>> ', id);
     dispatch(deleteFavs(mail, id))
+    setFilters({
+      ...filters,
+      mail : mail
+    })
   }
-
-  // console.log('favs:>>' + favorites)
 
   return (
     <>
+      <Navbar/>
       <div className="mainDashCont">
         {filterFavs&&filterFavs.length === 0 ? 
         (
@@ -55,36 +75,36 @@ export default function DashFavorites(){
               <h3>MY FAVORITE PETS</h3>
             </div>
             <div className="infoPets">
-              {filterFavs?.map((e) => {
+              {favoritos&&favoritos?.map(({data}) => {
                 return (
                   <div key={Math.random()} className="favContainer">
                     <div className="favcardLeftPhoto">
-                      <Link to={"/home/" + e.id}>
+                      <Link to={"/home/" + data.id}>
                         <div className="imgFavor">
-                          {e.image && (
-                            <img src={e.image} alt="Pet" className="img" />
+                          {data.image && (
+                            <img src={data.image} alt="Pet" className="img" />
                           )}
                         </div>
                       </Link>
                       <div>
                         <button
                           className="a-btnFavElim"
-                          onClick={() => handleDeleteFav(e.id)}
+                          onClick={() => handleDeleteFav(data.id)}
                         />
                       </div>
                     </div>
                     <div className="favcardLeft">
-                      <span>{e.name}</span>
-                      <span>{e.breed}</span>
-                      <span>{e.age}&nbsp;years</span>
-                      <span>{e.location}</span>
+                      <span>{data.name}</span>
+                      <span>{data.breed}</span>
+                      <span>{data.age}&nbsp;years</span>
+                      <span>{data.location}</span>
                     </div>
                     <div className="favcardCenter">
-                      <span>{e.gender}</span>
-                      <span>{e.size}</span>
+                      <span>{data.gender}</span>
+                      <span>{data.size}</span>
                     </div>
                     <div className="favcardRight">
-                      <span>{e.description}</span>
+                      <span>{data.description}</span>
                     </div>
                   </div>
                 );

@@ -2,10 +2,16 @@
     margin-left:5px;
     width: 15px;
     height: 15px;
+    cursor: pointer;
 }
 .filters-tabs{
   min-height: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
+
 .filter-tabs-item{
     background-color: #ffffff99;
     display:inline;

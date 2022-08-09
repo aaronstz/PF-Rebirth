@@ -8,81 +8,72 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
-import {
-  getLocation,
-  getFavs,
-  paginateData,
-} from "../Redux/Actions/index.js";
+import { getLocation, getFavs, paginateData } from "../Redux/Actions/index.js";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useFetchPets } from '../Tools/customHooks.js';
-import swal from "sweetalert";
+import { useFetchPets } from "../Tools/customHooks.js";
+// import swal from "sweetalert";
+import { eliminaDuplicados } from "../Tools/functions";
 
 function Home() {
-
+  const dispatch = useDispatch();
   let user = null;
-  if  (localStorage.user)  {
+  if (localStorage.user) {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
-  
+
   if (user) {
     var mail = user.mail;
   }
-  
-  const dispatch = useDispatch();
-  const { pathname, search } = useLocation();
-  const navigate = useNavigate();
-  
-  let afiltrar = localStorage.getItem("filters")
-  let filtros = !afiltrar ? {name: "", location : [], type : [], gender : [], size : []} : JSON.parse(afiltrar);
-  const [ filters, setFilters ] = useState(filtros);
+
+  const initialFilters = {
+    name: "",
+    location: [],
+    type: [],
+    gender: [],
+    size: [],
+  };
+  let afiltrar = localStorage.getItem("filters");
+  let filtros = !afiltrar ? initialFilters : JSON.parse(afiltrar);
+  const [filters, setFilters] = useState(filtros);
 
   let typeStorage = JSON.parse(localStorage.getItem("type")); // dog or cat
-  if(typeStorage && filters.type[0] !== typeStorage){
+  if (typeStorage && filters.type[0] !== typeStorage) {
     setFilters({
       ...filters,
-      type : [typeStorage]
-    })
+      type: [typeStorage],
+    });
   }
-  
-  let petType = !typeStorage ? [] : [typeStorage] 
 
-  let number = search.split("&")[0];
-  let numberPage = Number(number.split("=")[1]);
+  let petType = !typeStorage ? [] : [typeStorage];
+  let queryType = !petType ? "" : petType;
 
-  let queryType = !petType ? "" : petType
-
-  if (isNaN(numberPage)) numberPage = 1;
-  
   //STATES TO USE THE APP
-  // const { totalPages, currentPage } = useSelector((state) => state.prueba); //para dividir la cantidad de pets por pagina
   //LOCAL STATES
-
-  console.log('filters :>> ', filters);
   //GLOBAL STATE THAT CONTROLS THE RENDER OF THE HOME PAGE
-  const { data : pets, isLoading } = useFetchPets(filters)
-  const megaPets = useSelector(state => state.prueba)
+  const { data: pets, isLoading } = useFetchPets(filters);
+  const megaPets = useSelector((state) => state.prueba);
   //STATE THAT CONTROL THE PAGINATE OF THE DATA
-  const totalPages = pets&&pets.data.totalPages;
-  const currentPage = pets&&pets.data.currentPage;
-  const [ searchName, setSearchName] = useState("");
-  const [ currentPageNumber, setCurrentPageNumber] = useState(Number(currentPage));
+  const totalPages = pets && pets.data.totalPages;
+  const currentPage = pets && pets.data.currentPage;
+  const [searchName, setSearchName] = useState("");
+  const [currentPageNumber, setCurrentPageNumber] = useState(
+    Number(currentPage)
+  );
 
   useEffect(() => {
-    dispatch(paginateData(pets))
-  }, [dispatch, pets])
-  
-  useEffect(() => {
-    setCurrentPageNumber(0)
-  }, [])
+    dispatch(paginateData(pets));
+  }, [dispatch, pets]);
 
-  //POSIBLEMENTE QUEDE DEPRECATED
   useEffect(() => {
-    localStorage.setItem("filters", JSON.stringify(filters))
-  },[filters])
+    setCurrentPageNumber(0);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("filters", JSON.stringify(filters));
+  }, [filters]);
 
   useEffect(() => {
     if (user) {
@@ -94,72 +85,72 @@ function Home() {
     setCurrentPageNumber(currentPage);
   }, [currentPage]);
 
-  //POSIBLEMENTE QUEDE DEPRECATED
   useEffect(() => {
     dispatch(getLocation(queryType));
   }, [dispatch, queryType]);
 
-
   function handleFilterBySex(e) {
-    let gender = e === "All" ? [] : [e]
+    let gender = e === "All" ? [] : [e];
     setFilters({
       ...filters,
-      name : "",
-      gender : gender,
-      page : 0
-    })
+      name: "",
+      gender: gender,
+      page: 0,
+    });
   }
 
   function handleFilterBySize(e) {
-    let size = e === "Any" ? [] : [e]
+    let size = e === "Any" ? [] : [...filters.size, e];
+    let newSize = eliminaDuplicados(size);
     setFilters({
       ...filters,
-      name : "",
-      size : size,
-      page : 0
-    })
+      name: "",
+      size: newSize,
+      page: 0,
+    });
   }
 
   function handleFilterByLocation(e) {
-    let location = e === "All" ? [] : [e]
+    let location = e === "All" ? [] : [...filters.location, e];
+    let newLocation = eliminaDuplicados(location);
     setFilters({
       ...filters,
-      name : "",
-      location : location,
-      page : 0,
-    })
+      name: "",
+      location: newLocation,
+      page: 0,
+    });
   }
 
   function handleOrderByAge(e) {
     setFilters({
       ...filters,
-      name : "",
-      age : e,
-      page : 0,
-    })
+      name: "",
+      age: e,
+      page: 0,
+    });
   }
 
-  function handleChange(e){
+  function handleChange(e) {
     e.preventDefault();
-    let pag = 0
-    if(e.target.value===""){
+    let pag = 0;
+    if (e.target.value === "") {
       let savedPage = JSON.parse(localStorage.getItem("page"));
-      pag = Number(savedPage)
+      pag = Number(savedPage);
     }
     setFilters({
       ...filters,
-      name : e.target.value,
-      page : pag
-    })
+      name: e.target.value,
+      page: pag,
+    });
   }
 
-  function handleSearchName(e){
+  function handleSearchName(e) {
     e.preventDefault();
     setFilters({
       ...filters,
-      name : searchName
-    })
-    setSearchName("")
+      name: searchName,
+    });
+    setSearchName("");
   }
 
   function handlePage(e) {
@@ -167,36 +158,46 @@ function Home() {
       let pag = currentPageNumber + 1;
       setFilters({
         ...filters,
-        page : pag
-      })
+        page: pag,
+      });
       setCurrentPageNumber(pag);
-      localStorage.setItem("page", JSON.stringify(pag))
+      localStorage.setItem("page", JSON.stringify(pag));
     } else if (e.target.id === "previousPage") {
       let pag = currentPageNumber - 1;
       setFilters({
         ...filters,
-        page : pag
-      })
+        page: pag,
+      });
       setCurrentPageNumber(pag);
-      localStorage.setItem("page", JSON.stringify(pag))
+      localStorage.setItem("page", JSON.stringify(pag));
     }
   }
 
+  function handleDeleteFilters(e){
+    e.preventDefault();
+    setFilters({
+      name: "",
+      location: [],
+      type: [],
+      gender: [],
+      size: [],
+    })
+    console.log('e :>> ', e);
+  }
+
   let page = currentPageNumber;
-  let nextPage = page+1;
-  let previousPage = page-1;
+  let nextPage = page + 1;
+  let previousPage = page - 1;
   if (page > 1) previousPage = page - 1;
 
   return (
     <div>
-      <Navbar filters={filters} setFilters={setFilters}/>
+      <Navbar filters={filters} setFilters={setFilters} />
       <Container>
-        <Header
-          filters={filters}
-          setFilters={setFilters}
-        />
+        <Header filters={filters} setFilters={setFilters} />
         <FiltersBar
           filters={filters}
+          setFilters={setFilters}
           handleChange={handleChange}
           handleFilterBySex={handleFilterBySex}
           handleFilterBySize={handleFilterBySize}
@@ -204,40 +205,38 @@ function Home() {
           handleOrderByAge={handleOrderByAge}
           handleSearchName={handleSearchName}
           searchName={searchName}
+          handleDeleteFilters={handleDeleteFilters}
         />
-        
-        <div className="boxWrap">
-          {
-            isLoading ? null :
-            megaPets.pets?.map((p, i) => {
-              return (
-                <Cards
-                  className="apperCards"
-                  key={Math.random()}
-                  image={p.image}
-                  name={p.name}
-                  breed={p.race}
-                  age={p.age}
-                  gender={p.gender}
-                  size={p.size}
-                  description={p.description}
-                  id={p.id}
-                  location={p.location}
-                  userMail={p.userMail}
-                  views = {p.views}
-                  type = {p.type}
-                />
-              );
-            })}
-        </div>
 
+        <div className="boxWrap">
+          {isLoading
+            ? null
+            : megaPets.pets?.map((p, i) => {
+                return (
+                  <Cards
+                    className="apperCards"
+                    key={Math.random()}
+                    image={p.image}
+                    name={p.name}
+                    breed={p.race}
+                    age={p.age}
+                    gender={p.gender}
+                    size={p.size}
+                    description={p.description}
+                    id={p.id}
+                    location={p.location}
+                    userMail={p.userMail}
+                    views={p.views}
+                    type={p.type}
+                  />
+                );
+              })}
+        </div>
       </Container>
       <Paginations
         numberPage={currentPageNumber}
         totalPages={totalPages}
-        pathname={pathname}
         previousPage={previousPage}
-        currentPageNumber={currentPageNumber+1}
         nextPage={nextPage}
         handlePage={handlePage}
       />

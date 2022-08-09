@@ -1,13 +1,10 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
 import CarouselFade from "../Carousel/Carousel";
 import { NavLink } from "react-router-dom";
 import headerImageTeam from "../../Assets/Header-images/botCat.png";
 import headerDogTeam from '../../Assets/Header-images/btonDog.png';
 import headerImageDonation from "../../Assets/Header-images/btnDonate.png";
 import "./Header.css";
-import { resetDetails, resetPets } from '../../Redux/Actions/index'
-
 
 function Header({ filters, setFilters }) {
 
@@ -16,13 +13,11 @@ function Header({ filters, setFilters }) {
   let type;
 
   function handleChangeView(e){
-    console.log('e :>> ', e);
     e.preventDefault(e);
     if(!tipo){
       type = "cat"
       localStorage.setItem("type", JSON.stringify(type))
     }else if(e.target.id === "dogTeam"){
-      console.log('ENTREEEE A DOG :>> ');
       type = "dog"
       localStorage.setItem("type", JSON.stringify(type))
     }else if(e.target.id === "catTeam"){
@@ -34,7 +29,6 @@ function Header({ filters, setFilters }) {
       page : 0,
       type : [type]
     })
-
   }
   
   return (
@@ -54,7 +48,6 @@ function Header({ filters, setFilters }) {
                   <button type="submit" onClick={(e)=>handleChangeView(e)} className="btn-headerTeam">
                     <img src={headerImageTeam} alt="botonTeam"  id="catTeam"/>
                   </button>
-
               }
           </div>
           <div className="header-donations">

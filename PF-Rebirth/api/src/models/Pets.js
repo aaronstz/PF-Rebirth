@@ -68,5 +68,6 @@ module.exports = (sequelize) => {
       defaultValue: null,
     },
     views: { type: DataTypes.INTEGER, defaultValue: 0 },
+    userMail : { type : DataTypes.STRING, defaultValue : null}
   });
 };

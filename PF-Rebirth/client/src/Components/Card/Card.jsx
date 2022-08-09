@@ -64,7 +64,8 @@ function handleDelete(){
     <div className="lcard">
       {        
              user && user.isAdmin === true ? <button className="btnEliminarPets" onClick={handleDelete}></button> :    
-             user && (mail === userMail)? null :   
+             user && (mail === userMail)? null : 
+             !user ? null :  
              favFilter && favFilter.length !==0 ?
              <> <button className="btnFavEliminarHome" onClick={handleDeleteFavHome}/> </> : 
              <> <button className="btnFavHome" onClick={handleFavoriteHome}/> </> 
