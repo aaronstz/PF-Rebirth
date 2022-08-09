@@ -74,7 +74,7 @@ const AcceptReject = () => {
             );
           } else {
             return (
-              <div className="mainDashCont">
+              <div className="mainDashContACC">
                 <div className="AdoptContainer">
                   <div>
                     <div class="imgFav">
@@ -105,7 +105,7 @@ const AcceptReject = () => {
                         SwalertCancel(datos.pet.name, handleClick, datos.id)
                       }
                     >
-                      <span>Cancel Adoption</span>
+                      <span>Cancel</span>
                     </button>
                   </div>
                 </div>
