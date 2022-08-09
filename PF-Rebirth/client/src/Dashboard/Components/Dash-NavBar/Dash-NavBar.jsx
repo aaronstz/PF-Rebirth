@@ -68,6 +68,7 @@ const DashNavBar = () => {
           </NavLink>
         </div>
       </div>
+      </div></div>
     </>
   );
 };

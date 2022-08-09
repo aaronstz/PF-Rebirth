@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       },
     },
     gender: {
-      type: DataTypes.ENUM("man", "woman","undefined"),
+      type: DataTypes.ENUM("male", "female","not"),
       allowNull: false,
     },
     address: {
@@ -28,6 +28,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     otherpets: { type: DataTypes.TEXT, allowNull: true },
+    
     state: {
       type: DataTypes.ENUM("fulfilled", "rejected", "pending"),
       defaultValue: "pending",

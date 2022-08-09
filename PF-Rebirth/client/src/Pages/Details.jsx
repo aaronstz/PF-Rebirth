@@ -134,9 +134,12 @@ function Details() {
               }
                 { user && (user.isAdmin === true)? null :
                 ( mail === userMail) ? null :
+                <Link to={user!== null ? `/adoption/${id}` : `/login`} >
                 <button className="b-btn">
+                
                   <span>Adopt me!</span>
                 </button>
+                </Link>
               }
           </div>
 
