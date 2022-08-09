@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react"; // warning->{useEffect, useRef,} 
 import "./DashFavorites.css";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteFavs, getAllPets, getFavs, saveFavorites } from "../../../Redux/Actions";
-import { useMutation } from "@tanstack/react-query";
-import { useUserFavoritesPets, useFavoritesPetsDetails, useUpdateFavs } from '../../../Tools/customHooks.js';
+// import axios from "axios";
+import { useDispatch } from "react-redux"; // warning-> useSelector
+import { deleteFavs } from "../../../Redux/Actions"; //warning->, getAllPets, getFavs, saveFavorites
+// import { useMutation } from "@tanstack/react-query";
+import { useUserFavoritesPets, useFavoritesPetsDetails } from '../../../Tools/customHooks.js'; //warning->, useUpdateFavs
 import { Link } from "react-router-dom";
-import DashNavBar from "../Dash-NavBar/Dash-NavBar";
+// import DashNavBar from "../Dash-NavBar/Dash-NavBar"; warning
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 
@@ -29,12 +29,12 @@ export default function DashFavorites(){
   // console.log('arrayDetails&&arrayDetails.data.length :>> ', arrayDetails&&arrayDetails.data.length);
   let favoritos  = arrayDetails.data;
 
-  const mutation = useMutation(newTodo => {
-    return axios.put(`http://localhost:3001/user/deleteFavs/${mail}`, favoritos&&favoritos[0].data.id)
-  })
+  // const mutation = useMutation(newTodo => {
+  //   return axios.put(`http://localhost:3001/user/deleteFavs/${mail}`, favoritos&&favoritos[0].data.id)
+  // })
   // let update = useUpdateFavs(mail, favoritos&&favoritos[0].data.id)
 
-  console.log('favoritos :>> ', mutation);
+  // console.log('favoritos :>> ', mutation);
 
   // console.log('arrayDetails :>> ', favoritos&&favoritos[0].data.id);
 

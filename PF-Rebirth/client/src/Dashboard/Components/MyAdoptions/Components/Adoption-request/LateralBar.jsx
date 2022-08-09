@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import avatar from "../../../../../Assets/Messageboard/avatar.png";
-import mascota from "../../../../../Assets/Messageboard/pet.png";
+// import avatar from "../../../../../Assets/Messageboard/avatar.png"; warning
+// import mascota from "../../../../../Assets/Messageboard/pet.png"; warning
 import { getChat, saveAdoptionId } from "../../../../../Redux/Actions";
 import "./LateralBar.css";
 import { getMessage } from "../../../../../Redux/Actions";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom"; warning
 
 export default function LateralBar() {
   let mail=""
@@ -16,11 +16,11 @@ export default function LateralBar() {
   const user = JSON.parse(infoStorage);
   if(infoStorage) mail = user.mail;
 
-  console.log(mail)
+  // console.log(mail)
 
   useEffect(() => {
     dispatch(getChat(mail));
-  }, [dispatch]);
+  }, [dispatch, mail]);
 
   function handleClick(adoptionId) {
     dispatch(getMessage(adoptionId));
@@ -60,7 +60,7 @@ export default function LateralBar() {
               </div>
             </div>
             <div className="name-adoption-text-lb">
-              {console.log(adChat)}
+              {/* {console.log(adChat)}  */}
               <div className="name-lateral-bar">
                 {" "}
                 {adChat.userMail === mail

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react'; //warning->useEffect,
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from '../../../Components/Navbar/Navbar';
+// import Navbar from '../../../Components/Navbar/Navbar';
 import { Widget } from "@uploadcare/react-widget";
 import { updateUser } from "../../../Redux/Actions/index";
 import { validatePassword } from "../../../Tools/functions";
 import "./Profile.css";
 import DashNavBar from '../Dash-NavBar/Dash-NavBar';
-import Footer from '../../../Components/Footer/Footer';
+// import Footer from '../../../Components/Footer/Footer';
 
 function Profile() {
   const dispatch = useDispatch();
