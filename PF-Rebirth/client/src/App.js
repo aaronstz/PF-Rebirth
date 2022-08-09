@@ -24,6 +24,7 @@ import AdoptionRequest from "./Dashboard/Components/MyAdoptions/Components/Adopt
 import DashUsers from "./Dashboard/Components/Users/Users.jsx";
 import UsersBanned from "./Components/UserBanned/UserBanned.jsx";
 import Admins from "./Components/Admins/Admins";
+import FormAdoption from "./Dashboard/Components/MyAdoptions/Components/FormAdoption/FormAdoption";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
-
+        <Route path="/adoption/:id" element={<FormAdoption/>}/>
         <Route path="/create" element={<AddNew />} />
         <Route path="/donations" element={<DonationsPets />} />
         <Route path="/donations/:id" element={<DonationsPets />} />
