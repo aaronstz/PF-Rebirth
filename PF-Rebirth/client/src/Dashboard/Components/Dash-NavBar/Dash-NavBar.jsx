@@ -70,7 +70,7 @@ const DashNavBar = () => {
         </div>
       </div>
       </div>
-      </div>
+      
     </>
 
   );

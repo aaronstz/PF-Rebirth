@@ -3,9 +3,11 @@ import "./FormAdoption.css";
 import background from "../../../../../Assets/loginMain2.png";
 import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
 import Footer from "../../../../../Components/Footer/Footer";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getDetails, postAdoption} from '../../../../../Redux/Actions/index'
+import swal from "sweetalert";
+
 
 const FormAdoption = () => {
   let {id}=useParams();
@@ -16,7 +18,7 @@ let mailAdoptante=""
 const infoStorage = localStorage.getItem("user");
 const user = JSON.parse(infoStorage)
 if(infoStorage) mailAdoptante= user.mail
-
+let navigate=useNavigate()
 
  useEffect(()=>{
 dispatch(getDetails(id))
@@ -28,6 +30,8 @@ dispatch(getDetails(id))
  setInput({...input,userMail:mailAdoptante,petId:id,ownerMail:userMail})
 
  },[])
+
+
  
   const [input, setInput] = useState({
     age: 0,
@@ -37,12 +41,11 @@ dispatch(getDetails(id))
     others:""
   });
   const [adoptError,setAdoptError]=useState({
-    comments: "",
-    age: "",
-    gender: "",
-    address: "",
-    others:""
-  })
+    age: " ",
+    gender: " ",
+    address: " ",
+    phone:" "
+     })
 
 function handleChange(e){
   let field=e.target.name
@@ -53,11 +56,11 @@ setInput({
 })
 switch(field){
 case "gender":
-  if (data!=="I prefer not to say" || data!=="Male" || data!=="Female") setAdoptError({...adoptError, gender:""})
+  if (data==="not" || data==="male" || data==="female") setAdoptError({...adoptError, gender:""})
  else setAdoptError({...adoptError, gender:"Select a valid option"})
   break
 case "age":
-  if (isNaN(data))setAdoptError({...adoptError, age:"Error, not a number"})
+  if (typeof(parseInt(data))!=="number")setAdoptError({...adoptError, age:"Error, not a number"})
   else setAdoptError({...adoptError, age:""})
   break
 case "address":
@@ -66,12 +69,9 @@ case "address":
   
   break
 case "phone":
-  if (data==="") setAdoptError({...adoptError, address:"Field required"})
-  else setAdoptError({...adoptError, address:""})
+  if (data==="") setAdoptError({...adoptError, phone:"Field required"})
+  else setAdoptError({...adoptError, phone:""})
 
-break
-case "comments":
-  
   break
 default:
   
@@ -81,9 +81,16 @@ break
 }
 function handleSubmit(e){
 e.preventDefault()
-
+let error=true;
+for (const key in adoptError) {
+  if( adoptError[key]!=="") error=false    
+  } 
+if (error){
 dispatch(postAdoption(input))
-
+navigate("/request")
+}else{
+  swal("Missing fields","Complete all the required fields ","warning")
+}
 }
 
   return (
@@ -137,7 +144,7 @@ dispatch(postAdoption(input))
               className="form-controlSm"
               name="phone"
               value={input.phone}
-              required
+              
                onChange={(e) => {
                  handleChange(e);
                }}
@@ -154,7 +161,7 @@ dispatch(postAdoption(input))
               className="form-controlSm"
               name="address"
               value={input.address}
-              required
+              
                onChange={(e) => {
                  handleChange(e);
                }}
@@ -171,7 +178,7 @@ dispatch(postAdoption(input))
               className="form-controlSm"
               name="others"
               value={input.others}
-              required
+           
                onChange={(e) => {
                  handleChange(e);
                }}
@@ -188,7 +195,7 @@ dispatch(postAdoption(input))
               className="form-controlSm"
               name="comments"
               value={input.comments}
-              required
+              
                onChange={(e) => {
                  handleChange(e);
                }}
