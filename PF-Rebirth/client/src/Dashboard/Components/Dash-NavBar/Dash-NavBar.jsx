@@ -17,8 +17,8 @@ import swal from "sweetalert";
 
 import "./Dash-NavBar.css";
 
-
 const DashNavBar = () => {
+
   const navigate = useNavigate();
   let theme = localStorage.getItem("theme");
   const dispatch = useDispatch();
@@ -47,6 +47,7 @@ const DashNavBar = () => {
   };
 
 
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const DashNavBar = () => {
   }, []);
 
   let data = user ? JSON.parse(user) : null;
-  console.log(data)
+  console.log(data);
   return (
     <>
       <div className="DashcontainerNavbar">
@@ -69,7 +70,10 @@ const DashNavBar = () => {
           </a>
           </div>
           <div className="Dashitem">
-            <NavLink to={data !== null ? "/request" : "/login"} className="Dashlink-navbar">
+            <NavLink
+              to={data !== null ? "/request" : "/login"}
+              className="Dashlink-navbar"
+            >
               <img src={vector4} alt="vector3" className="Dashicons" />
               <span>MessageBoard</span>
             </NavLink>
@@ -90,7 +94,9 @@ const DashNavBar = () => {
                 <img src={vector3} alt="vector3" className="Dashicons" />
                 <span>New Pet</span>
               </NavLink>
+            </div>
           </div>
+
           <div className="Dashitem">
             <NavLink to={data !== null ? "/favorites" : "/login"} className="Dashlink-navbar">
               <img src={vector2} alt="vector2" className="Dashicons" />
@@ -105,11 +111,8 @@ const DashNavBar = () => {
             <img src={data&& data.image} alt="avatar" className="dash-pic"/>
           </NavLink>
         </div>
-        </div>
-      </div>
       </div>
     </>
-
   );
 };
 
