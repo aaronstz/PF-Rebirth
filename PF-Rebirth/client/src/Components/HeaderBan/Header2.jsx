@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import botBanner from "../../Assets/Header-images/botBanner.png";
 import headerImageDonation from "../../Assets/Header-images/btnDonate.png";
 import "./Header2.css";
+import "../Header/Header.css";
 // import { resetDetails, resetPets } from "../../Redux/Actions/index";
 
 function Header2({ type, setPage, current }) {
@@ -32,7 +33,11 @@ function Header2({ type, setPage, current }) {
           </div>
           <div className="header-donations">
             <NavLink to={user ? "/donations" : "/login"}>
-              <img src={headerImageDonation} alt="botonTeam" />
+              <img
+                className="marginImageRight"
+                src={headerImageDonation}
+                alt="botonTeam"
+              />
             </NavLink>
           </div>
         </div>
