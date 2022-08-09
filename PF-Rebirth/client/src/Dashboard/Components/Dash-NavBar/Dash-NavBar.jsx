@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../../Assets/Navbar/logo.png";
-import avatar from "../../../Assets/Navbar/UserAvatar-signed.png";
+// import avatar from "../../../Assets/Navbar/UserAvatar-signed.png"; warning
 import vector from "../../../Assets/Navbar/Vector.png";
 import vector2 from "../../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../../Assets/Navbar/Vector-3.png";
 import vector4 from "../../../Assets/Navbar/icoRequest.png";
-import vector5 from "../../../Assets/Navbar/ico-historial.png";
+// import vector5 from "../../../Assets/Navbar/ico-historial.png"; warning
 import DarkMode from "../../../Components/Switch/SwitchMode";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux"; // warning-> useSelector
 import { logoutUser } from "../../../Redux/Actions/index";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 import "./Dash-NavBar.css";
+
 
 const DashNavBar = () => {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ const DashNavBar = () => {
     });
   };
 
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -50,7 +52,11 @@ const DashNavBar = () => {
   }, []);
 
   let data = user ? JSON.parse(user) : null;
-  console.log(data);
+
+
+  // console.log(data)
+
+
   return (
     <>
       <div className="DashcontainerNavbar">
@@ -65,10 +71,7 @@ const DashNavBar = () => {
             </a>
           </div>
           <div className="Dashitem">
-            <NavLink
-              to={data !== null ? "/request" : "/login"}
-              className="Dashlink-navbar"
-            >
+            <NavLink to={data !== null ? "/request" : "/login"} className="Dashlink-navbar">
               <img src={vector4} alt="vector3" className="Dashicons" />
               <span>MessageBoard</span>
             </NavLink>
@@ -79,42 +82,24 @@ const DashNavBar = () => {
                 <img src={vector} alt="vector3" className="Dashicons" />
                 <span>Users</span>
               </NavLink>
-            ) : (
-              <NavLink to="/login"></NavLink>
-            )}
 
-            <div className="DashiconsContainer">
-              <div className="Dashitem">
-                <NavLink to={"/create"} className="Dashlink-navbar">
-                  <img src={vector3} alt="vector3" className="Dashicons" />
-                  <span>New Pet</span>
-                </NavLink>
-              </div>
-            </div>
+          </div>
+          <div className="Dashitem">
+            <NavLink to={data !== null ? "/favorites" : "/login"} className="Dashlink-navbar">
+              <img src={vector2} alt="vector2" className="Dashicons" />
+              <span>My favorites</span>
+            </NavLink> 
+          </div>
+          <div className="Dashitem">
+            <DarkMode />
 
-            <div className="Dashitem">
-              <NavLink
-                to={data !== null ? "/favorites" : "/login"}
-                className="Dashlink-navbar"
-              >
-                <img src={vector2} alt="vector2" className="Dashicons" />
-                <span>My favorites</span>
-              </NavLink>
-            </div>
-            <div className="Dashitem">
-              <DarkMode />
-            </div>
-            <NavLink
-              to={data !== null ? "/profile" : "/login"}
-              className="Dashlink-navbar"
-            >
-              <span className="DashuserName">{data && data.name}</span>
-              <img src={data && data.image} alt="avatar" className="dash-pic" />
-            </NavLink>
           </div>
         </div>
+        </div>
+      </div>
       </div>
     </>
+
   );
 };
 

@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react"; //warning-> { useEffect }
 import MessageBoard from "../MessageBoard/MessageBoard";
 import Menu from "../../../../../Assets/Messageboard/menu.svg";
 import LateralBar from "./LateralBar";
 import "../../../../../Pages/Dashboard.css";
 import "./AdoptionRequest.css";
 import AcceptReject from "../Accept-Reject/Accept-Reject";
-import { useDispatch, useSelector } from "react-redux";
-import { getChat, getMessage } from "../../../../../Redux/Actions";
+// import { useDispatch, useSelector } from "react-redux"; warning
+// import { getChat, getMessage } from "../../../../../Redux/Actions"; warning
 import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
 import Footer from "../../../../../Components/Footer/Footer";
 import { useNavigate } from "react-router-dom";

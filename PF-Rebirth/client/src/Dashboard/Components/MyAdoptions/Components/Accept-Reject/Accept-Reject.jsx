@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react"; // warning-> { useEffect, useState }
 import "./Accept-Reject.css";
 import { useDispatch, useSelector } from "react-redux";
-import image from "../../../../../Assets/fotoPet1.png";
+// import image from "../../../../../Assets/fotoPet1.png"; warning
 import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,6 @@ const AcceptReject = () => {
 
   function handleClick(adoptionId) {
     dispatch(deleteAdoption(adoptionId));
-    console.log(adoptionId);
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
 

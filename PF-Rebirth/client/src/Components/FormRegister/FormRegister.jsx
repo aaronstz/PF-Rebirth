@@ -5,16 +5,16 @@ import logo from "../../Assets/loginMain2.png";
 import "./FormRegister.css";
 import {} from "../../Redux/Actions/index.js";
 import { validateErrors } from "../../Tools/functions";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { postUser } from "../../Redux/Actions/index.js";
 import { useDispatch } from "react-redux";
-import ReCAPTCHA from "react-google-recaptcha";
-const { REACT_APP_SITE_KEY } = process.env;
+// import ReCAPTCHA from "react-google-recaptcha";
+// const { REACT_APP_SITE_KEY } = process.env;
 
 export default function FormRegister() {
   const [errores, setErrores] = useState({ name: "" });
   const [newUser, setNewUser] = useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -41,9 +41,11 @@ export default function FormRegister() {
     dispatch(postUser(newUser));
   };
 
-  const onChange = (e) => {
-    console.log();
-  };
+
+  // const onChange = (e) => {
+  //   console.log();
+  // };
+
 
   return (
     <div className="formContainer">

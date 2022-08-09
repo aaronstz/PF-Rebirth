@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react"; //warning-> { useState }
 import Chat from "./Chat";
 import "./MessageBoard.css";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getChat, getMessage } from "../../../../../Redux/Actions";
+import { getChat } from "../../../../../Redux/Actions"; //warning-> getMessage
 
 export default function MessageBoard() {
 
@@ -24,7 +24,7 @@ useEffect(()=>{
  
     setTimeout(()=>{ document.getElementsByClassName("container-lateral-bar").length && document.getElementsByClassName("container-lateral-bar")[0].click()},300)
   return ()=>clearInterval(chatUpdate)
-},[dispatch])
+},[dispatch, chat, mail])
   return (
     <React.Fragment>
           <div className="msg-container">

@@ -173,7 +173,7 @@ function Home() {
     }
   }
 
-  function handleDeleteFilters(e){
+  function handleDeleteFilters(e) {
     e.preventDefault();
     setFilters({
       name: "",
@@ -181,8 +181,7 @@ function Home() {
       type: [],
       gender: [],
       size: [],
-    })
-    console.log('e :>> ', e);
+    });
   }
 
   let page = currentPageNumber;
@@ -234,6 +233,7 @@ function Home() {
         </div>
       </Container>
       <Paginations
+        pets={megaPets.pets}
         numberPage={currentPageNumber}
         totalPages={totalPages}
         previousPage={previousPage}
