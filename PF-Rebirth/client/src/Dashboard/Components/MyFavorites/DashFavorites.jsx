@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 // import DashNavBar from "../Dash-NavBar/Dash-NavBar"; warning
 import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
+import NotFound from '../../../Components/NotFound/NotFound'
 
 export default function DashFavorites() {
   const infoUser = localStorage.getItem("user");
@@ -44,26 +45,29 @@ export default function DashFavorites() {
     window.history.go();
   }
 
+  console.log(!favoritos)
+
   return (
     <>
       <Navbar />
       <div className="mainDashCont">
-        {filterFavs && filterFavs.length === 0 ? (
+        {!favoritos ? (
           <div className="noFavsTitle">
+            <NotFound/>
             <h3>
               You can add favorites to your favorites list by clicking on the
               heart icon
             </h3>
-            <div class="favContainer">
+            <div>
               <Link to={"/home"}>
-                <span class="btn btn-secondary">Go see some pets!</span>
+                <span className="btn btn-secondary">Go see some pets!</span>
               </Link>
             </div>
           </div>
         ) : isLoading === true ? (
           <div class="spinner">
             <div class="spinner-grow" role="status">
-              <span class="visually-hidden">Loading...</span>
+              <span className="visually-hidden">Loading...</span>
             </div>
           </div>
         ) : (
@@ -111,7 +115,7 @@ export default function DashFavorites() {
           </>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

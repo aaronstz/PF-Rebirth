@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import DashNavBar from "../../Dashboard/Components/Dash-NavBar/Dash-NavBar";
 import { getUsers, makeAdmin } from "../../Redux/Actions";
 import UserDetail from "../UserDetail/UserDetail";
-
+import NotFound from '../../Components/NotFound/NotFound'
+import './Admins.css'
 
 export default function Admins() {
     // const {mail} = useParams()
@@ -27,17 +28,27 @@ export default function Admins() {
     <div>
         <DashNavBar/>
         <div>
-        { 
-            admins && admins.map((u) =>
-                <UserDetail
-                    handleDeleteAdmin={handleDeleteAdmin}
-                    name={u.name}
-                    lastName={u.lastName}
-                    mail={u.mail}
-                    image={u.image}
-                    userName={u.userName}
-                />)
-        }
+          {
+            !admins.length ? (
+                <div className="notFound-admin">
+                <NotFound/>
+                </div>
+            )
+            :<>
+              { 
+              admins && admins.map((u) =>
+                  <UserDetail
+                      handleDeleteAdmin={handleDeleteAdmin}
+                      name={u.name}
+                      lastName={u.lastName}
+                      mail={u.mail}
+                      image={u.image}
+                      userName={u.userName}
+                  />)
+              }
+            </>
+          }
+        
         </div> 
     </div>
   );

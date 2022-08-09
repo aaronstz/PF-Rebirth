@@ -31,7 +31,7 @@ function Details() {
   // const pets = useSelector((store) => store.pets); warning
 
 
-  const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
+  // const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
 
 
   useEffect(() => {

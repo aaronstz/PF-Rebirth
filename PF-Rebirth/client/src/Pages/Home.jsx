@@ -209,29 +209,38 @@ function Home() {
 
         <div className="boxWrap">
           {
-            isLoading
-            ? null
-            : megaPets.pets?.map((p, i) => {
-                return (
-                  <Cards
-                    className="apperCards"
-                    key={Math.random()}
-                    image={p.image}
-                    name={p.name}
-                    breed={p.race}
-                    age={p.age}
-                    gender={p.gender}
-                    size={p.size}
-                    description={p.description}
-                    id={p.id}
-                    location={p.location}
-                    userMail={p.userMail}
-                    views={p.views}
-                    type={p.type}
-                  />
-                  );
-                })
-              }
+            megaPets.pets && !megaPets.pets.length ? (
+              <div className="notFound-img">
+            <NotFound/> 
+            </div>):
+            <>
+            {
+              isLoading
+              ? null
+              : megaPets.pets?.map((p, i) => {
+                  return (
+                    <Cards
+                      className="apperCards"
+                      key={Math.random()}
+                      image={p.image}
+                      name={p.name}
+                      breed={p.race}
+                      age={p.age}
+                      gender={p.gender}
+                      size={p.size}
+                      description={p.description}
+                      id={p.id}
+                      location={p.location}
+                      userMail={p.userMail}
+                      views={p.views}
+                      type={p.type}
+                    />
+                    );
+                  })
+                }
+                </>
+          }
+          
               
         </div>
       </Container>

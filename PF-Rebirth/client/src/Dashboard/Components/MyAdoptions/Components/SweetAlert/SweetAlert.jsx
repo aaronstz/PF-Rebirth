@@ -13,7 +13,7 @@ import './SweetAlert.css'
     buttonsStyling: false
   })
   swalWithBootstrapButtons.fire({
-    title: 'Are you sure you want adopt '+dogName+'?',
+    title: 'Are you sure you want to give '+dogName+'?',
     text: "",
     icon: 'question',
     showCancelButton: true,
@@ -24,7 +24,7 @@ import './SweetAlert.css'
     if (result.isConfirmed) {
       swalWithBootstrapButtons.fire(
         'Adopted',
-        'Take care of '+dogName,
+        `Yay! ${dogName} has found a forever home`,
         'success'
       ).then(()=>{navigate("/feedback")})
     } else if (
@@ -33,7 +33,7 @@ import './SweetAlert.css'
     ) {
       swalWithBootstrapButtons.fire(
         'No this time',
-        'Dont worry,'+dogName+' gonna find a good home',
+        'Dont worry,'+dogName+' is going to find a good home',
         'error'
       )
     }
