@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useParams, NavLink } from "react-router-dom";
+import { Link, useParams } from "react-router-dom"; // warnings-> useLocation  NavLink
 import {
   addFavs,
   deleteFavs,
   getDetails,
-  resetDetails,
   getUserId,
-  postMercadoPago,
-} from "../Redux/Actions/index";
+} from "../Redux/Actions/index"; // warning -> resetDetails, postMercadoPago
 import { useSelector, useDispatch } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Navbar from "../Components/Navbar/Navbar";
@@ -20,25 +18,25 @@ import dogIco from "../Assets/dog_ico_big.png";
 import catIco from "../Assets/ico-cat-gris.png";
 
 function Details() {
-
   window.scroll({
-    top : 0,
-  })
+    top: 0,
+  });
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [favFilters, setFavFilters] = useState([]);
+  const [, setFavFilters] = useState([]);
   const favoritos = useSelector((state) => state.favorite);
   let favFilter =
-    favoritos.length > 0 ? favoritos.filter((f) => f == id) : null;
+    favoritos.length > 0 ? favoritos.filter((f) => f === id) : null;
 
-  const pets = useSelector((store) => store.pets);
+  // const pets = useSelector((store) => store.pets); warning
 
-  const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
-  console.log("id :>> ", id);
+
+  // const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
+
 
   useEffect(() => {
     setFavFilters(favFilter);
-  }, []);
+  }, [favFilter]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -62,25 +60,22 @@ function Details() {
     const userJson = localStorage.getItem("user");
     user = JSON.parse(userJson);
   }
-  if(user){
-    var mail = user.mail
+  if (user) {
+    var mail = user.mail;
   }
-
-  console.log('user', user)
 
   useEffect(() => {
     dispatch(getDetails(id));
     if (user) {
       dispatch(getUserId(mail));
     }
-  }, [dispatch, id]);
+  }, [dispatch, id, mail, user]);
 
-  
-  function handleFavorite(){
-    dispatch(addFavs(mail, id))
+  function handleFavorite() {
+    dispatch(addFavs(mail, id));
   }
-  function handleDeleteFav(){
-      dispatch(deleteFavs(mail, id))
+  function handleDeleteFav() {
+    dispatch(deleteFavs(mail, id));
   }
 
   return (
@@ -98,12 +93,13 @@ function Details() {
             <h4 className="breed">{race}</h4>
             <h5 className="age">{age}&nbsp;years</h5>
             <span className="petlocation">{location}</span>
-            {
-              user && (user.isAdmin === true)?
-              <Link to={"/users"}>
-              <span className="petlocation">User: {userMail}</span> 
-              </Link> : null
-            }
+            {user && user.isAdmin === true ? (
+              <div className="mail">
+                <Link to={"/users"} className="mail">
+                  <span>User: {userMail}</span>
+                </Link>
+              </div>
+            ) : null}
             <br />
             <div className="story-dtl">
               <h5 className="txt-dscp">{description}</h5>
@@ -125,38 +121,34 @@ function Details() {
 
             <div className="txt-description">
               <span>{size}</span>
-              {type=== "cat" ? (
+              {type === "cat" ? (
                 <img src={catIco} alt="type" />
               ) : (
                 <img src={dogIco} alt="type" />
               )}
             </div>
 
-
-                { user && (user.isAdmin === true)? null :
-                 ( mail === userMail) ? null :
-              <Link to={user!== null ? `/donations/${id}` : `/login`} >
-                <button className="a-btn" >
+            {user && user.isAdmin === true ? null : mail === userMail ? null : (
+              <Link to={user !== null ? `/donations/${id}` : `/login`}>
+                <button className="a-btn">
                   <span>Donate</span>
                 </button>
               </Link>
-              }
-                { user && (user.isAdmin === true)? null :
-                ( mail === userMail) ? null :
-                <Link to={user!== null ? `/adoption/${id}` : `/login`} >
+            )}
+            {user && user.isAdmin === true ? null : mail === userMail ? null : (
+              <Link to={user !== null ? `/adoption/${id}` : `/login`}>
                 <button className="b-btn">
-                
                   <span>Adopt me!</span>
                 </button>
-                </Link>
-              }
+              </Link>
+            )}
           </div>
 
           <div className="dtl-cardRight">
             <div className="img-dtl">
               <div>
-                {user && (user.isAdmin === true)? null :
-                user && mail === userMail ? null : favFilter &&
+                {user && user.isAdmin === true ? null : user &&
+                  mail === userMail ? null : favFilter &&
                   favFilter.length !== 0 ? (
                   <>
                     <button

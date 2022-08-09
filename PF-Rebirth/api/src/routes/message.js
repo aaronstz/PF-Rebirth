@@ -56,7 +56,6 @@ router.get("/chats", async (req, res, next) => {
       ],
     });
 
-    console.log(allChats);
     if (allChats) {
       return res.status(200).send(allChats);
     } else {
@@ -85,7 +84,6 @@ router.put("/visto", async (req, res, next) => {
     const {mail,adoptionId} = req.body;
       const updateMessage = await Message.update({nuevo:false},{where:{[Op.and]:[{createdAt:{[Op.lt]:new Date()}},{userMail:mail},{adoptionId:adoptionId}]}})
     if (updateMessage) {
-      console.log(updateMessage)
       return res.json(updateMessage);
     } else {
       return res.status(400).json({ message: "Aun no hay mensajes" });

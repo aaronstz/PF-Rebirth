@@ -13,10 +13,10 @@ import swal from "sweetalert";
 
 function Cards({image,name,breed,type,age,gender,size,description,id,location,views,active,userMail}){
   const dispatch = useDispatch()
-  const [ favFilters , setFavFilters] = useState([])
+  const [  , setFavFilters] = useState([]) //warning->elimine favFilters
   const favoritos = useSelector(state => state.favorite)
   let favFilter = favoritos.length > 0 ? favoritos.filter((f) => f === id) : null
-
+  
   let user = null;
   if(localStorage.user){
     const userJson = localStorage.getItem("user");
@@ -29,7 +29,7 @@ function Cards({image,name,breed,type,age,gender,size,description,id,location,vi
 
   useEffect(() => {
     setFavFilters(favFilter)
-  },[] );
+  },[] ); //warning-> eliminar favFilter si no funciona
 
   function handleFavoriteHome(e){
     dispatch(addFavs(mail, id))

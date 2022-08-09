@@ -16,11 +16,10 @@ function Navbar({filters, setFilters}) {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const pets = useSelector((store) => store.pets);
+  // const pets = useSelector((store) => store.pets);
 
-  const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
+  // const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
 
-  // console.log('Type pets :>> ', pets);
   if (activeUser) {
     window.localStorage.setItem("user", JSON.stringify(activeUser.userToken));
     window.localStorage.setItem("token", JSON.stringify(activeUser.token));
@@ -35,6 +34,10 @@ function Navbar({filters, setFilters}) {
   let imageUrl = data ? data.image : null;
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
+
+
+  // console.log(data)
+
 
   function handleReturnToHome(e) {
     navigate("/home")
@@ -87,24 +90,17 @@ function Navbar({filters, setFilters}) {
             <span>New Pet</span>
           </NavLink>
         </div>
+        
         <div className="item">
-          { data && (data.isAdmin === true) ?
-          <NavLink
-          to={data !== null ? "/users" : "/login"}
-          className="link-navbar"
-        >
-          <span>Users</span>
-        </NavLink> :
+
           <div>
-          <img src={vector2} alt="vector2" className="icons" />
-          <NavLink
-          to={data !== null ? "/favorites" : "/login"}
-          className="link-navbar"
-          >
-            <span>My favorites</span>
-          </NavLink>
-          </div>
-          }
+                <img src={vector2} alt="vector2" className="icons" />
+                <NavLink
+                to="/favorites"
+                className="link-navbar">
+                <span>My favorites</span>
+                </NavLink>
+                </div>
         </div>
         <div className="item">
           <DarkMode />

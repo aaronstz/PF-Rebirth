@@ -6,42 +6,27 @@ import { deleteAdoption, deletePost, getAllPets, getChat, getDetails, getPets } 
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 import { useNavigate } from "react-router-dom";
 import Swalert from "../SweetAlert/SweetAlert";
-
+ 
 const AcceptReject = () => {
   const dispatch = useDispatch();
   let mail=""
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
-  const [petid, setpetid] = useState("")
-  // const allPets= useSelector(s => s.pets) 
-  // console.log('allPets :>> ', allPets);
-  // const ids = allPets.map(e => e.id)
-  // console.log('ids', ids)
-  
-  // const {id} = useSelector((state) => state.detail);
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
   if(infoStorage) mail = user.mail;
-  console.log('adoptionId', adoptionId)
-  
-  // useEffect(() =>{
-  //   dispatch(getDetails())
-  // }, [dispatch])
-  
-  
-  // const petsIds = adoptChat.filter((e) => e.petId)
-  // console.log('adoptChat>>>', adoptChat)
-
 
   function handleClick(adoptionId, e) {
     dispatch(deleteAdoption(adoptionId));
-    console.log(adoptionId);
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
   
-  const idPet = adoptChat.filter((adChat) => adChat.id === adoptionId).map((datos) => datos.petId)
-  console.log('idPet', idPet)
-  
+  const idPet = adoptChat.filter(
+    (adChat) => 
+    adChat.id === adoptionId)
+    .map((datos) => 
+    datos.petId
+    )
   function handleDeletePost() {
     dispatch((deletePost(idPet)));
   }
@@ -95,7 +80,7 @@ const AcceptReject = () => {
                   >
                     <span>Reject</span>
                   </button>
-                  <button onClick={() =>  Swalert(datos.pet.name, handleDeletePost(),navigate)} class="MAdoptbutton">
+                  <button onClick={() =>  Swalert(datos.pet.name, handleDeletePost(), navigate)} class="MAdoptbutton">
                     <span>Accept</span>
                   </button>
                 </div>

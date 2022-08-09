@@ -26,7 +26,6 @@ const updateUser = async (req, res, next) => {
     const updatedUser = await User.findOne({
       where: { mail: mail },
     });
-    console.log(updatedUser['dataValues'])
     res.json({
     mail: updatedUser.mail,
     userName:updatedUser.userName,
