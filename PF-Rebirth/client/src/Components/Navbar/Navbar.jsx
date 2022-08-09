@@ -20,7 +20,6 @@ function Navbar({filters, setFilters}) {
 
   // const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
 
-  // console.log('Type pets :>> ', pets);
   if (activeUser) {
     window.localStorage.setItem("user", JSON.stringify(activeUser.userToken));
     window.localStorage.setItem("token", JSON.stringify(activeUser.token));
@@ -36,7 +35,9 @@ function Navbar({filters, setFilters}) {
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
 
+
   // console.log(data)
+
 
   function handleReturnToHome(e) {
     navigate("/home")

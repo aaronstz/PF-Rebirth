@@ -11,10 +11,6 @@ export default function Admins() {
   const dispatch = useDispatch()
   const users = useSelector(s => s.user)
   const admins = users.filter((a) => a.isAdmin === true && a.userName !== "RebirthApp")
-  
-console.log('admins', admins)
-  console.log('user', users)
-
 
     useEffect(() =>{
         dispatch(getUsers())

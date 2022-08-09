@@ -41,9 +41,11 @@ export default function FormRegister() {
     dispatch(postUser(newUser));
   };
 
+
   // const onChange = (e) => {
   //   console.log();
   // };
+
 
   return (
     <div className="formContainer">
