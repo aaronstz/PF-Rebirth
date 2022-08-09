@@ -22,6 +22,9 @@ function validate(input) {
   if (!validateName.test(input.name)) {
     errors.name = "Name cannot contain numbers or special characters";
   }
+  if (!input.image) {
+    errors.image = "Image is required";
+  }
   if (!input.size) {
     errors.size = "Please select one of the following options";
   }
@@ -261,18 +264,19 @@ function AddNew() {
                           <select
                             name="location"
                             className="form-controlAdd"
+                            value={input.location}
                             onChange={(e) => {
                               handleChange(e);
                             }}
                           >
                             <option defaultValue>Choose...</option>
-                            {provincias?.map((p) => {
-                              return (
+                            {provincias?.map((p) =>(  
+                              // return (
                                 <option key={Math.random()} value={p}>
                                   {p}
                                 </option>
-                              );
-                            })}
+                              // );
+                            ))}
                           </select>
                           <div className="addinvalid-fb">
                             {errors && errors.location ? errors.location : null}
@@ -327,3 +331,28 @@ function AddNew() {
 }
 
 export default AddNew;
+
+
+// <div className="addform">
+//                           <label htmlFor="location">Location*</label>
+//                           <select
+//                             name="location"
+//                             className="form-control"
+//                             id="exampleFormControlSelect1"
+//                             onChange={(e) => {
+//                               handleChange(e);
+//                             }}
+//                           >
+//                             <option defaultValue>Choose...</option>
+//                             {provincias?.map((p) => {
+//                               return (
+//                                 <option key={Math.random()} value={p}>
+//                                   {p}
+//                                 </option>
+//                               );
+//                             })}
+//                           </select>
+//                           <div className="addinvalid-fb">
+//                             {errors && errors.location ? errors.location : null}
+//                           </div>
+//                         </div>
