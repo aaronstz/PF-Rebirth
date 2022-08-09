@@ -1,6 +1,8 @@
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../../Components/Navbar/Navbar";
+
 import { Widget } from "@uploadcare/react-widget";
 import { updateUser } from "../../../Redux/Actions/index";
 import { validatePassword } from "../../../Tools/functions";

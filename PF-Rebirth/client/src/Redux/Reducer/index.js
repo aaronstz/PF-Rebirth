@@ -27,7 +27,7 @@ import {
   FAVORITES,
   DELETE_FAVORITES,
   GET_FAVORITES,
-  GET_ALL_PETS,
+  // GET_ALL_PETS, -> warning
   UPDATE_PROFILE,
   RESET_DETAILS,
   RESET_PETS,
@@ -37,7 +37,7 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
-  DELETE_ADOPTION,
+  // DELETE_ADOPTION, -> warning
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -52,6 +52,7 @@ const initialState = {
   user: [],
   userDetail: [],
   typePet: [],
+
   location: [],
   message: [],
   adoptionChat: [],
