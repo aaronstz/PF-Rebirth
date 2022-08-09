@@ -44,11 +44,13 @@ export default function DashFavorites() {
     window.history.go();
   }
 
+  console.log('favoritos.data :>> ', !favoritos);
+
   return (
     <>
       <Navbar />
       <div className="mainDashCont">
-        {filterFavs && filterFavs.length === 0 ? (
+        {!favoritos ? (
           <div className="noFavsTitle">
             <h3>
               You can add favorites to your favorites list by clicking on the
@@ -110,8 +112,7 @@ export default function DashFavorites() {
             </div>
           </>
         )}
-      </div>
-      <Footer />
+      </div>¿
     </>
   );
 }
