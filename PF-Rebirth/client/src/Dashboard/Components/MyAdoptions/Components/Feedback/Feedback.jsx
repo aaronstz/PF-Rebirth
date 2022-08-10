@@ -1,28 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Feedback.css";
+import { Widget } from "@uploadcare/react-widget";
 import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
 import { successStory } from "../../../../../Redux/Actions";
+import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 function Feedback() {
+
+  let user = null;
+  if (localStorage.user) {
+    const userJson = localStorage.getItem("user");
+    user = JSON.parse(userJson);
+  }
+
+  if (user) {
+    var mail = user.mail;
+  }
+
+  let {pet}=useParams()
+  const [input,setInput]=useState({text:"",stars:0,image:""})
+
+
+
+function handleText(e){
+  setInput({...input,text:e.target.value})
+}
+
+function handleStars(e){
+  setInput({...input,stars:e.target.value})
+  
+}
+
+function handleImage(file) {
+  setInput({
+    ...input,
+    image: `https://ucarecdn.com/${file.uuid}/`,
+  });
+}
+
+function HandleSuccessStory(e){
+e.preventDefault()
+
+if(input.text==="" || input.stars===0 || input.image===""){
+swal("complete the fields","choose a image and rate the page","warning")
+
+}else{
+  successStory( pet,input.image,input.stars,input.text,mail)
+  swal("Thank you","","success")
+}
+  
+        
+}
+
+console.log(input.image)
   const longitud = "-64.26617114519884";
   const latitud = "-27.792642976806206";
   return (
     <>
       <DashNavBar />
       <form
-        onSubmit={successStory(
-          "Pepe",
-          "",
-          5,
-          "Lorem ipsum dolor",
-          "carlos@gmail.com"
-        )}
-      >
+        onSubmit={(e)=>HandleSuccessStory(e)}>
         <div className="DashcontainerMain">
           <div className="wrapperFeed">
             <div className="wrapperLeftFeed">
               <h2 className="mb-3">Next steps</h2>
-              <h5 className="mb-3">Congratulations USERNAME!</h5>
+              <h5 className="mb-3">Congratulations {user.name}!</h5>
               <br />
               <h5 className="">Pickup address</h5>
               <p>
@@ -35,8 +78,9 @@ function Feedback() {
               <div className="">
                 <p>SKIP</p>
                 <div className="">
-                  <label htmlFor="textarea">Comments</label>
-                  <textarea
+                  <label htmlFor="textarea" >Comments</label>
+                  <textarea 
+                  onChange={(e)=>handleText(e)} value={input.text}
                     className="form-control"
                     rows="5"
                     required
@@ -60,21 +104,31 @@ function Feedback() {
               <div className="RowStarsRate">
                 <p>Rate your experience</p>
                 <div class="wrapperStars">
-                  <input type="checkbox" id="st1" value="1" />
+                  <input type="radio" name="stars" onChange={(e)=>handleStars(e)}  id="st1" value="5" />
                   <label for="st1"></label>
-                  <input type="checkbox" id="st2" value="2" />
+                  <input type="radio" name="stars" onChange={(e)=>handleStars(e)} id="st2" value="4" />
                   <label for="st2"></label>
-                  <input type="checkbox" id="st3" value="3" />
+                  <input type="radio" name="stars" onChange={(e)=>handleStars(e)} id="st3" value="3" />
                   <label for="st3"></label>
-                  <input type="checkbox" id="st4" value="4" />
+                  <input type="radio" name="stars" onChange={(e)=>handleStars(e)} id="st4" value="2" />
                   <label for="st4"></label>
-                  <input type="checkbox" id="st5" value="5" />
+                  <input type="radio" name="stars" onChange={(e)=>handleStars(e)} id="st5" value="1" />
                   <label for="st5"></label>
                 </div>
               </div>
               <div className="RowUploadPic">
+                {input.image &&<img src={input.image} alt={"select another image"}/>}
                 <p>Upload a picture of your new family</p>
-                <button className="btn btnUploadFeed">Upload</button>
+                               
+                <Widget
+                  publicKey="e7afc989eff083e04496"
+                  value={input.formBasicImage}
+                  onFileSelect={(e) => {
+                    e.done((file) => {
+                      handleImage(file);
+                    });
+                  }}
+                />
               </div>
             </div>
             <div className="RowFeedCenter">

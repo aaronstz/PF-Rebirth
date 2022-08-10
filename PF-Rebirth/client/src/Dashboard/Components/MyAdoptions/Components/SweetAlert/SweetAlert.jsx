@@ -26,7 +26,7 @@ import './SweetAlert.css'
         'Adopted',
         `Yay! ${dogName} has found a forever home`,
         'success'
-      ).then(()=>{navigate("/feedback")})
+      ).then(()=>{navigate(dogName)})
     } else if (
       /* Read more about handling dismissals below */
       result.dismiss === Swal.DismissReason.cancel
