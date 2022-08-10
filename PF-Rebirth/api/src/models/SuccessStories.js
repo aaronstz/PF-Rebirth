@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
         },
       },
       testimonio: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       show: {
