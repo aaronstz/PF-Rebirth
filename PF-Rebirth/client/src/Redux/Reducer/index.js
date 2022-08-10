@@ -40,6 +40,7 @@ import {
   DELETE_ADOPTION,
   CREA_UPDATE_NOTIFICATION,
   NOTIFICATION,
+  VISTO_NOTIFICATION,
 } from "../Actions/actionTypes";
 
 const initialState = {

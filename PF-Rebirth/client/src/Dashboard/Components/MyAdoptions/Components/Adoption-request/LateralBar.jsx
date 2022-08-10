@@ -16,7 +16,7 @@ export default function LateralBar() {
   const user = JSON.parse(infoStorage);
   if(infoStorage) mail = user.mail;
 
-  console.log(mail)
+  
 
   useEffect(() => {
     dispatch(getChat(mail));

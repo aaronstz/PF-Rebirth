@@ -28,7 +28,8 @@ import {
   POST_SUPPORT_FORM,
   GET_NAMES,
   CREA_UPDATE_NOTIFICATION,
-  VISTO_NOTIFICATION
+  VISTO_NOTIFICATION,
+  NOTIFICATION
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";

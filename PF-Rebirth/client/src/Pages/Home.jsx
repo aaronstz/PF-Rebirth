@@ -8,7 +8,7 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
-import { getLocation, getFavs, paginateData } from "../Redux/Actions/index.js";
+import { getLocation, getFavs, paginateData, getChat } from "../Redux/Actions/index.js";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -18,6 +18,9 @@ import { eliminaDuplicados } from "../Tools/functions";
 
 function Home() {
   const dispatch = useDispatch();
+
+
+
   let user = null;
   if (localStorage.user) {
     const userJson = localStorage.getItem("user");
@@ -28,6 +31,8 @@ function Home() {
     var mail = user.mail;
   }
 
+
+  
   const initialFilters = {
     name: "",
     location: [],
