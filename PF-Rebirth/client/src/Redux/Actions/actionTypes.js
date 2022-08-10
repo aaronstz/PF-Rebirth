@@ -50,4 +50,6 @@ export const DELETE_POST = "DELETE_POST";
 export const SAVE_ID = "SAVE_ID";
 export const ADOTION_HISTORY_ADMIN = "ADOTION_HISTORY_ADMIN";
 export const SUCCESS_STORY = "SUCCESS_STORY";
+export const FUL_ADOPTION = "FUL_ADOPTION";
 export const GET_TESTIMONIALS = 'GET_TESTIMONIALS';
+

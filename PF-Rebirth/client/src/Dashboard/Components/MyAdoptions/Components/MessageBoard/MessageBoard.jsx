@@ -10,7 +10,7 @@ export default function MessageBoard() {
 
 let mail=""
 const allMessages=useSelector((state)=>state.message)
-
+const adoptChat=useSelector((state)=>state.adoptionChat)
 const dispatch= useDispatch();
 const infoStorage = localStorage.getItem("user");
     const user = JSON.parse(infoStorage)
@@ -25,7 +25,7 @@ useEffect(()=>{
     dispatch(getChat(mail))
   let chatUpdate= chat && setInterval(() => {
     dispatch(getChat(mail))
-  }, 10000); 
+  }, 2000); 
  
     setTimeout(()=>{ document.getElementsByClassName("container-lateral-bar").length && document.getElementsByClassName("container-lateral-bar")[0].click()},500)
   return ()=>clearInterval(chatUpdate)
