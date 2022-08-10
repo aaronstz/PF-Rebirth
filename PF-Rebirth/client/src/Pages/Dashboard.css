@@ -1,6 +1,7 @@
 .DashcontainerMain {
   position: absolute;
   display: flex;
+  justify-content: center;
   padding-left: 2%;
   padding-right: 2%;
   margin-left: 10%;
