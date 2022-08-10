@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../../Assets/Navbar/logo.png";
-// import avatar from "../../../Assets/Navbar/UserAvatar-signed.png"; warning
+import avatar from "../../../Assets/Navbar/UserAvatar-signed.png";
 import vector from "../../../Assets/Navbar/Vector.png";
 import vector2 from "../../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../../Assets/Navbar/Vector-3.png";
 import vector4 from "../../../Assets/Navbar/icoRequest.png";
-// import vector5 from "../../../Assets/Navbar/ico-historial.png"; warning
+import vector5 from "../../../Assets/Navbar/ico-historial.png"; 
 import DarkMode from "../../../Components/Switch/SwitchMode";
 
 import { useDispatch } from "react-redux"; // warning-> useSelector
@@ -63,12 +63,12 @@ const DashNavBar = () => {
         <NavLink to={"/home"} className="Dashlink-navbar">
           <img src={logo} alt="logo" className="Dashlogo" />
         </NavLink>
-
-        <div className="DashiconsContainer">
-          <div className="Dashitem">
-            <a href="/home" onClick={(e) => logOut(e)} className="link-navbar">
-              LOG OUT
-            </a>
+<div className="DashiconsContainer">
+        <div className="Dashitem">
+            <NavLink to={data !== null ? "/historial" : "/login"} className="Dashlink-navbar">
+              <img src={vector5} alt="vector3" className="Dashicons" />
+              <span>Historial</span>
+            </NavLink>
           </div>
           <div className="Dashitem">
             <NavLink to={data !== null ? "/request" : "/login"} className="Dashlink-navbar">
@@ -77,12 +77,17 @@ const DashNavBar = () => {
             </NavLink>
           </div>
           <div className="Dashitem">
-            {data !== null && data.isAdmin ? (
-              <NavLink to="/users" className="Dashlink-navbar">
-                <img src={vector} alt="vector3" className="Dashicons" />
-                <span>Users</span>
-              </NavLink>
+            <NavLink to={data !== null ? "/create" : "/login"} className="Dashlink-navbar">
 
+              <img src={vector3} alt="vector3" className="Dashicons" />
+              <span>USERS</span>
+            </NavLink> 
+        <div className="DashiconsContainer">
+          <div className="Dashitem">
+              <NavLink to={"/login"} className="Dashlink-navbar">
+                <img src={vector3} alt="vector3" className="Dashicons" />
+                <span>New Pet</span>
+              </NavLink>
           </div>
           <div className="Dashitem">
             <NavLink to={data !== null ? "/favorites" : "/login"} className="Dashlink-navbar">
@@ -92,13 +97,15 @@ const DashNavBar = () => {
           </div>
           <div className="Dashitem">
             <DarkMode />
-
           </div>
+          <NavLink to={data !== null ? "/profile" : "/login"} className="Dashlink-navbar">
+            <span className="DashuserName">{data && data.name}</span>
+            <img src={data&& data.image} alt="avatar" />
+          </NavLink>
         </div>
         </div>
       </div>
       </div>
-      
     </>
 
   );

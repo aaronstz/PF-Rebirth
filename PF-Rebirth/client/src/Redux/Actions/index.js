@@ -25,15 +25,13 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
-<<<<<<< HEAD
+
   POST_SUPPORT_FORM,
   GET_NAMES, 
   DELETE_POST,
-  SAVE_ID
-=======
+  SAVE_ID,
+
   // POST_SUPPORT_FORM, -> warning
-  GET_NAMES
->>>>>>> d31e5e0403fbf6015061a1bf3aa2394bfc8c3403
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";

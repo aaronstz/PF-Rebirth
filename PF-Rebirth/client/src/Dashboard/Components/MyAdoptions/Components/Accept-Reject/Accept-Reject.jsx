@@ -29,6 +29,7 @@ const AcceptReject = () => {
     )
   function handleDeletePost() {
     dispatch((deletePost(idPet)));
+    window.open("/feedback", "_self")
   }
 
 
@@ -80,7 +81,7 @@ const AcceptReject = () => {
                   >
                     <span>Reject</span>
                   </button>
-                  <button onClick={() =>  Swalert(datos.pet.name, handleDeletePost(), navigate)} class="MAdoptbutton">
+                  <button onClick={() =>  Swalert(datos.pet.name,handleDeletePost)} class="MAdoptbutton">
                     <span>Accept</span>
                   </button>
                 </div>
