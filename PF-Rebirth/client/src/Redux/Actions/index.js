@@ -33,6 +33,7 @@ import {
   NOTIFICATION,
   DELETE_POST,
   SAVE_ID,
+  ADOTION_HISTORY_ADMIN
 
   // POST_SUPPORT_FORM, -> warning
 } from "./actionTypes";
@@ -686,7 +687,6 @@ export function makeAdmin(mail) {
     try {
       const json = await axios.put(`${REACT_APP_SERVER}/user/adm/${mail}`);
       console.log('json', json)
-
       return dispatch({
         type: MAKE_ADMIN,
         payload: json.data,
@@ -718,6 +718,20 @@ export function postAdoption(payload) {
     } catch (error) {
       console.log(`Error creando ${error}`);
       await swal("Oops!", "Error creating the Adoption request", "error");
+    }
+  };
+}
+
+export function adoptinHistoryAdmin() {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get(`${REACT_APP_SERVER}/pets/inactivo`);
+      return dispatch({
+        type: ADOTION_HISTORY_ADMIN,
+        payload: json.data,
+      });
+    } catch (error) {
+     console.log(error)
     }
   };
 }

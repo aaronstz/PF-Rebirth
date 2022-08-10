@@ -90,6 +90,7 @@ function Profile() {
                 <Widget
                   publicKey="e7afc989eff083e04496"
                   value={input.formBasicImage}
+                  previewStep="true"
                   onFileSelect={(e) => {
                     e.done((file) => {
                       handleImage(file);

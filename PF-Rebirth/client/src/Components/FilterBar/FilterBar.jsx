@@ -107,7 +107,7 @@ function FiltersBar({
           </div>
           <div className="col-md-auto">
             <Button className="btn-pink" onClick={handleDeleteFilters}>
-              Borrar filtros
+              Clear
             </Button>
           </div>
           <div className="col col-lg-2">

@@ -34,6 +34,7 @@ import {
 
   DELETE_POST,
   SAVE_ID,
+  ADOTION_HISTORY_ADMIN
   // DELETE_ADOPTION, -> warning
 
 } from "../Actions/actionTypes";
@@ -64,6 +65,7 @@ const initialState = {
   userBanned: [],
   admins: [],
   favoritesSaved : [],
+  historyAdmin: [],
 
   notification:false,
 
@@ -78,6 +80,12 @@ function rootReducer(state = initialState, action) {
     case CREA_UPDATE_NOTIFICATION:
       return {
         ...state
+      }
+
+    case ADOTION_HISTORY_ADMIN:
+      return {
+        ...state,
+        historyAdmin: action.payload
       }
 
     case VISTO_NOTIFICATION:

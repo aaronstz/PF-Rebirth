@@ -23,6 +23,11 @@ export default function UsersBanned() {
   return (
     <div>
         <DashNavBar/>
+        <div className="mainDashUserBanned">
+        <div className="userTituloBanned">
+          <h3>USERS BANNED</h3>
+        </div>
+
         <div>
             {!users.length ?(
                 <div className="notFound-banned">
@@ -43,6 +48,7 @@ export default function UsersBanned() {
             </>}
         
         </div> 
+    </div>
     </div>
   );
 }
