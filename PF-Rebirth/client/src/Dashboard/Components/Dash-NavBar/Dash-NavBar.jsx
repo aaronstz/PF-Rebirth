@@ -48,6 +48,7 @@ const DashNavBar = () => {
   }, []);
 
   let data = user ? JSON.parse(user) : null;
+  console.log('data :>> ', data);
 
   return (
     <>
@@ -59,13 +60,15 @@ const DashNavBar = () => {
         <div className="Dashitem">
           <div className="DashiconsContainer">
             <div className="Dashitem">
-              <NavLink
+              { data && (data.isAdmin === true)? 
+                <NavLink
                 to={data !== null ? "/history" : "/login"}
                 className="Dashlink-navbar"
               >
                 <img src={vector5} alt="vector3" className="Dashicons" />
                 <span>History</span>
-              </NavLink>
+              </NavLink> : null
+              }
             </div>
             <div className="Dashitem">
               <NavLink
