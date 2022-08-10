@@ -321,11 +321,6 @@ function AddNew() {
                 </div>
               </div>
             </div>
-            <div className="addwrapper-right">
-              <div className="addimageContainer">
-                <img src={background} alt="pet" className="addImage" />
-              </div>
-            </div>
             <div className="addfooter">
               Copyright &copy; 2022 &mdash; Team 13
             </div>
