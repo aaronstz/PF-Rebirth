@@ -1,6 +1,9 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
+
+const { REACT_APP_SERVER } = process.env;
+
 export const useFetchPets = (filters) => {
   return useQuery(["pets", filters], async () => await fetchingData(filters), {
     refetchOnWindowFocus: false,
@@ -29,7 +32,7 @@ export const useFavoritesPetsDetails = (filters) => {
 
 export const useUpdateFavs = (mail, id) => {
   return useMutation(async () => {
-    return await axios.put(`http://localhost:3001/user/deleteFavs/${mail}`, id);
+    return await axios.put(`${REACT_APP_SERVER}/user/deleteFavs/${mail}`, id);
   })
 }
 
@@ -57,7 +60,7 @@ async function fetchingData({
     const locationFilter = !location.length ? "" : passArrayByUrl(location);
 
     const dataTest = await axios.get(
-      `http://localhost:3001/?page=${page}&name=${nameFilter}&type=${typeFilter}&age=${ageFilter}&gender=${genderFilter}&size=${sizeFilter}&location=${locationFilter}`
+      `${REACT_APP_SERVER}/?page=${page}&name=${nameFilter}&type=${typeFilter}&age=${ageFilter}&gender=${genderFilter}&size=${sizeFilter}&location=${locationFilter}`
     );
 
     return dataTest;
@@ -81,7 +84,7 @@ function passArrayByUrl(filterArray) {
 async function fetchingFavorites({ mail }) {
   try {
     const dataFavorites = await axios.get(
-      `http://localhost:3001/user/Favs/${mail}`
+      `${REACT_APP_SERVER}/user/Favs/${mail}`
     );
     return dataFavorites;
   } catch (error) {
@@ -91,7 +94,7 @@ async function fetchingFavorites({ mail }) {
 
 async function favoritesPetsDetails({ id }) {
   let dataFavorites =
-    id && id.map((id) => axios.get(`http://localhost:3001/pets/${id}`));
+    id && id.map((id) => axios.get(`${REACT_APP_SERVER}/pets/${id}`));
   const arrayDetails = await Promise.all(dataFavorites);
   return arrayDetails;
 }
