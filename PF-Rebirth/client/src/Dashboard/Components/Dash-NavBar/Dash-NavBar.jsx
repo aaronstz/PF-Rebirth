@@ -59,6 +59,15 @@ const DashNavBar = () => {
           <div className="DashiconsContainer">
             <div className="Dashitem">
               <NavLink
+                to={data !== null ? "/history" : "/login"}
+                className="Dashlink-navbar"
+              >
+                {/* <img src={vector4} alt="vector3" className="Dashicons" /> */}
+                <span>History</span>
+              </NavLink>
+            </div>
+            <div className="Dashitem">
+              <NavLink
                 to={data !== null ? "/request" : "/login"}
                 className="Dashlink-navbar"
               >

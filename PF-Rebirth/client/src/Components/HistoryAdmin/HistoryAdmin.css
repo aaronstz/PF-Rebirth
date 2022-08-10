@@ -1,0 +1,131 @@
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  .admcardLeftPhoto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+    height: auto;
+  }
+  
+  
+  .spinnerAdm{
+    display:flex;
+    position: relative;
+    justify-content: center;
+    left:50%;
+    top:300px;
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  
+  .infoAd {
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+  }
+  
+  .infoAdm {
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+  }
+  
+  .mainDashContAdm {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 150px;
+    height: fit-content;
+  }
+  
+  .noAdmTitle {
+    color: var(--text-color);
+    /* margin: 10.5rem 0 0rem 0; */
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+  }
+  
+  .conTituloAdm {
+    color: var(--text-color);
+    margin: 2.5rem 0 0rem 0;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+  }
+  
+  .admContainer {
+    position: relative;
+    top: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: max-content;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  .admcardLeftPhoto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+    height: auto;
+  }
+  
+  .admcardLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: medium;
+    width: 20%;
+    height: auto;
+    color: var(--text-color);
+    border-right: 1px solid var(--greylight);
+  }
+  
+  .admcardCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: medium;
+    width: 20%;
+    height: auto;
+    padding-right: 2%;
+    color: var(--text-color);
+    border-right: 1px solid var(--greylight);
+  }
+  
+  .admcardRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: medium;
+    width: 30%;
+    height: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: var(--text-color);
+  }
+  
+  .imgFavorAdm img {
+    transition: all 0.3s;
+    display: block;
+    border-radius: 20px;
+    width: 100%;
+    height: max-content;
+  }
+  
+  
