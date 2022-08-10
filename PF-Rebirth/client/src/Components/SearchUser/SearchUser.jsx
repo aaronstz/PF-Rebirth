@@ -50,7 +50,7 @@ export default function SearchUser() {
             Search
           </button>
         </div>
-        <div class="break"></div>
+        <div className="break"></div>
         <button
           className="mt-2 mx-3 btn-pink btn btn-primary2"
           type="submit"
