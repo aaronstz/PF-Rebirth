@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import "./FormAdoption.css";
 import background from "../../../../../Assets/loginMain2.png";

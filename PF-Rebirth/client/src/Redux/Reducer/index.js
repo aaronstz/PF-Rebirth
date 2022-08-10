@@ -26,10 +26,15 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
+
   DELETE_ADOPTION,
   CREA_UPDATE_NOTIFICATION,
   NOTIFICATION,
   VISTO_NOTIFICATION,
+
+  DELETE_POST,
+  SAVE_ID,
+  // DELETE_ADOPTION, -> warning
 
 } from "../Actions/actionTypes";
 
@@ -45,7 +50,6 @@ const initialState = {
   user: [],
   userDetail: [],
   typePet: [],
-
   location: [],
   message: [],
   adoptionChat: [],
@@ -60,7 +64,11 @@ const initialState = {
   userBanned: [],
   admins: [],
   favoritesSaved : [],
+
   notification:false,
+
+  saveId : "",
+
 
 };
 
@@ -100,11 +108,20 @@ function rootReducer(state = initialState, action) {
         ...state,
         prueba: action.payload,
       };
-
+    case DELETE_POST: 
+    return{
+      ...state
+    };
     case DELETE_PET:
       return {
         ...state,
       };
+      case SAVE_ID:{
+        return{
+          ...state,
+          saveId : action.payload
+        }
+      }
     case "PRUEBA":
       return {
         ...state,

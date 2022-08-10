@@ -31,6 +31,7 @@ export default function LateralBar() {
   return (
     <>
       {adoptChat.map((adChat) => {
+        console.log(adoptChat);
         return (
           <div
             onClick={() => handleClick(adChat.id)}

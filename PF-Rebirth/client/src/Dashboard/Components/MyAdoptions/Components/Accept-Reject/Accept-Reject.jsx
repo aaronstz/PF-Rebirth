@@ -1,40 +1,49 @@
-import React from "react"; // warning-> { useEffect, useState }
+import React from "react";
 import "./Accept-Reject.css";
 import { useDispatch, useSelector } from "react-redux";
-// import image from "../../../../../Assets/fotoPet1.png"; warning
-import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
+import { deleteAdoption, deletePost,getChat} from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
-import { useNavigate } from "react-router-dom";
 import Swalert from "../SweetAlert/SweetAlert";
-
+ 
 const AcceptReject = () => {
+
+  const dispatch = useDispatch();
   let mail=""
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
-  if(infoStorage) mail = user.mail;
+  if (infoStorage) mail = user.mail;
 
-  function handleClick(adoptionId) {
+  function handleClick(adoptionId, e) {
     dispatch(deleteAdoption(adoptionId));
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
-
-  let navigate= useNavigate()
-
-  const dispatch = useDispatch();
+  
+  const idPet = adoptChat.filter(
+    (adChat) => 
+    adChat.id === adoptionId)
+    .map((datos) => 
+    datos.petId
+    )
+  function handleDeletePost() {
+    dispatch((deletePost(idPet)));
+    window.open("/feedback", "_self")
+  }
 
   return (
     <>
       {adoptChat
         .filter((adChat) => adChat.id === adoptionId)
         .map((datos) => {
+          console.log(adoptChat);
           if (datos.owner.mail === mail) {
+        
             return (
               <div className="mainDashContACC">
-                
+                <div className="AdoptContainer">
                   <div>
-                    <div class="imgFav">
+                    <div className="imgFav">
                       <img
                         src={datos.adopter.image}
                         alt="Adopter"
@@ -42,7 +51,6 @@ const AcceptReject = () => {
                       />
                     </div>
                   </div>
-                  <div className="AdoptContainer">  
                   <div>
                     <span>
                       Name: {datos.adopter.name} {datos.adopter.lastName}
@@ -63,7 +71,7 @@ const AcceptReject = () => {
                 </div>
                 <div className="btnRowAdopt">
                   <button
-                    class="MAdoCancbutton"
+                    className="MAdoCancbutton"
                     onClick={() =>
                       SwalertCancel(datos.pet.name, handleClick, datos.id)
                     }
@@ -71,7 +79,7 @@ const AcceptReject = () => {
                   >
                     <span>Reject</span>
                   </button>
-                  <button  onClick={()=> Swalert(datos.pet.name,navigate)  } class="MAdoptbutton">
+                  <button onClick={() =>  Swalert(datos.pet.name,handleDeletePost)} class="MAdoptbutton">
                     <span>Accept</span>
                   </button>
                 </div>
@@ -80,13 +88,12 @@ const AcceptReject = () => {
           } else {
             return (
               <div className="mainDashContACC">
-               
+                <div className="AdoptContainer">
                   <div>
                     <div class="imgFav">
                       <img src={datos.pet.image} alt="Pet" class="img" />
                     </div>
                   </div>
-                <div className="AdoptContainer">
                   <div className="datos">
                     <span>Name: {datos.pet.name}</span>
                     <br />
@@ -104,18 +111,17 @@ const AcceptReject = () => {
                   <div className="description">
                     <span>Description: {datos.pet.description}</span>
                   </div>
-                </div>
                   <div className="btnRowAdopt">
                     <button
-                      class="MAdoCanbutton"
+                      className="MAdoCanbutton"
                       onClick={() =>
                         SwalertCancel(datos.pet.name, handleClick, datos.id)
                       }
                     >
                       <span>Cancel</span>
                     </button>
+                  </div>
                 </div>
-                
               </div>
             );
           }

@@ -25,6 +25,21 @@ router.get("/location", async (req, res, next) => {
     }
 });
 
+router.put("/delete/:id" , async (req, res, next) =>{
+  const {id} = req.params
+  const petsA = await Pets.findByPk(id)
+  if(petsA.dataValues.active === true){
+    await Pets.update({active : false},{
+      where: {id : id}
+    })
+    return res.status(200).send("adoptado")
+  }if(petsA.dataValues.active === false){
+    await Pets.update({active : true},{
+      where: {id : id}
+    })
+    return res.status(200).send("desadoptado")
+  }
+})
 
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;

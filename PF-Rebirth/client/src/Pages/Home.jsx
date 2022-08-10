@@ -253,6 +253,7 @@ useEffect(()=>{
                       userMail={p.userMail}
                       views={p.views}
                       type={p.type}
+                      active={p.active}
                     />
                     );
                   })
@@ -260,7 +261,7 @@ useEffect(()=>{
                 </>
           }
           
-              
+          
         </div>
       </Container>
       <Paginations

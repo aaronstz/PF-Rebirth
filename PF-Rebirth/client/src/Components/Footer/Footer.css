@@ -2,7 +2,6 @@
 -------------------------------------------------- */
 html {
   position: relative;
-
 }
 
 .body {
@@ -16,12 +15,9 @@ html {
 
 /* Taller footer on small screens */
 @media (max-width: 567em) {
-
   .footer {
     height: 500px;
-
   }
-
 }
 
 /* Sticky footer style and color
@@ -31,7 +27,6 @@ footer {
   background-color: var(--backgroundFooter);
   color: var(--text-color);
 }
-
 
 .row {
   display: flex;
@@ -44,7 +39,6 @@ footer {
   margin-left: 40px;
 }
 
-
 .body {
   height: 50%;
   /* width: 100%; */
@@ -54,15 +48,12 @@ footer {
   justify-content: center;
   margin-top: 80px;
   bottom: 0;
-
 }
-
 
 footer a {
   color: var(--text-color);
   text-decoration: none;
   height: 0rem;
-
 }
 
 footer a:hover,
@@ -70,7 +61,6 @@ footer a:focus {
   color: #aaa;
   text-decoration: none;
   border-bottom: 1px solid var(--text-color);
-
 }
 
 .upperContainer {
@@ -80,7 +70,7 @@ footer a:focus {
 }
 
 .downContainer {
-  width: 100%
+  width: 100%;
 }
 
 .containerFooter {
@@ -99,10 +89,7 @@ footer .form-control {
   resize: none;
   color: #d1d2d2;
   padding: 0.7em 1em;
-
 }
-
-
 
 .row-lists {
   transform: translateY(-170px) translateX(350px);
@@ -110,23 +97,18 @@ footer .form-control {
   width: 35rem;
 }
 
-
-
 .col-6 {
   display: inline-block;
   position: relative;
   justify-content: center;
   margin-top: 20px;
-
 }
-
 
 .newsletter {
   display: inline-block;
   margin-top: 0px;
   transform: translateY(-195px) translateX(35rem);
 }
-
 
 .paragraph {
   font-weight: normal;
@@ -135,30 +117,29 @@ footer .form-control {
 
 .sub-title {
   margin-top: 5px;
-
 }
 
 .list-unstyled {
   margin: 10px;
   font-size: large;
   font-weight: bold;
-
 }
 
 .nav-heading {
   margin: 10px;
   font-size: large;
   margin-top: -35px;
-
 }
 
 .nav-item {
   list-style: none;
   margin-top: 10px;
-
 }
-
-
+.nav-item2 {
+  list-style: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
 
 .socials {
   max-width: 140px;
@@ -170,21 +151,16 @@ footer .form-control {
   border-top: 1px solid var(--text-color);
   margin-left: 50px;
   margin-right: 50px;
-
 }
 
 .rights {
   margin-left: 50px;
   font-size: small;
-
 }
-
-
 
 .footer-bottom {
   display: flex;
   justify-content: flex-end;
-
 }
 
 .li-bottom {
@@ -194,12 +170,10 @@ footer .form-control {
 .a-bottom {
   position: relative;
   margin: 0 4rem auto 0;
-
 }
 
 .footer-link a:hover,
 .footer-link a:focus {
   text-decoration: none;
   border-bottom: 0px;
-
 }
