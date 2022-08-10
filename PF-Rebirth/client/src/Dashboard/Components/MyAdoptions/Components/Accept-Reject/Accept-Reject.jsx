@@ -28,7 +28,7 @@ const AcceptReject = () => {
     datos.petId
     )
   function handleDeletePost(petId) {
-     window.open("/feedback?pet="+petId, "_self")
+    // window.open("/feedback?pet="+petId, "_self")
   }
 
   return (
@@ -84,9 +84,9 @@ const AcceptReject = () => {
                   </button>
                 </div>
           }
-          {datos.state="fulfilled" &&
+          {datos.state==="fulfilled" &&
           <div className="btnRowAdopt">
-            <NavLink to={"./feedback?pet="+datos.pet.name}>
+            <NavLink to={"/feedback?pet="+datos.pet.name}>
              <button  class="MAdoptbutton">
             <span>Feedback</span>
           </button>
@@ -135,7 +135,7 @@ const AcceptReject = () => {
                     </button>
                   </div>
           }
-           {datos.state="fulfilled" &&
+           {datos.state==="fulfilled" &&
           <div className="btnRowAdopt">
             <NavLink to={"/feedback?pet"+datos.pet.name}>
              <button  class="MAdoptbutton">

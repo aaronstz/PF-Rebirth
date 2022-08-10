@@ -4,11 +4,12 @@
   justify-content: center;
   padding-left: 2%;
   padding-right: 2%;
+  padding-bottom: 2%;
   margin-left: 10%;
   margin-right: 10%;
   width: 80%;
   margin-top: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   background: rgb(255, 138, 229);
   background: radial-gradient(circle at bottom left, rgba(255, 138, 229, 0.5) 0%, var(--background) 25%);
   min-height: 80vh;

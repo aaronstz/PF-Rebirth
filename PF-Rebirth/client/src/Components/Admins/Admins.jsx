@@ -27,6 +27,10 @@ export default function Admins() {
   return (
     <div>
         <DashNavBar/>
+        <div className="mainDashAdmin">
+        <div className="adminTitulo">
+          <h3>ADMINS</h3>
+        </div>
         <div>
           {
             !admins.length ? (
@@ -50,6 +54,7 @@ export default function Admins() {
           }
         
         </div> 
+    </div>
     </div>
   );
 }

@@ -30,8 +30,9 @@ export default function LateralBar() {
 
   return (
     <>
-      {adoptChat.map((adChat) => {
-      
+
+      {adoptChat&&adoptChat?.map((adChat) => {
+
         return (
           <div
             onClick={() => handleClick(adChat.id)}
@@ -46,7 +47,7 @@ export default function LateralBar() {
                         ? adChat.owner.image
                         : adChat.adopter.image
                     }
-                    alt=""
+                    alt="null"
                   />
                 </div>
                 <div className="pet-lateral-bar">

@@ -34,11 +34,29 @@ import {
   DELETE_POST,
   SAVE_ID,
   FUL_ADOPTION,
+  ADOTION_HISTORY_ADMIN
+
 
   // POST_SUPPORT_FORM, -> warning
 } from "./actionTypes";
 
-const SERVER = "http://localhost:3001";
+const { REACT_APP_SERVER }  = process.env;
+
+export function getTestimonials(){
+  return async function(dispatch){
+    try {
+      const data = await axios(`${SERVER}/successstories`)
+      return dispatch({
+        type:'GET_TESTIMONIALS',
+        payload: data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+
 
 export function saveFavorites(arrayFavorites) {
   return async function (dispatch) {
@@ -67,8 +85,8 @@ export function saveName(name) {
 export function CreaUpdateNotification(mail) {
   return async function (dispatch) {
     try {
-      let userMail = { userMail: mail };
-      const { data } = await axios.post(`${SERVER}/notification`, userMail);
+      let userMail={userMail:mail}
+      const { data } = await axios.post(`${REACT_APP_SERVER}/notification`,userMail)
       return dispatch({
         type: CREA_UPDATE_NOTIFICATION,
       });
@@ -79,7 +97,8 @@ export function CreaUpdateNotification(mail) {
 export function VistoNotification(email) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.patch(`${SERVER}/notification/${email}`);
+      const { data } = await axios.patch(`${REACT_APP_SERVER}/notification/${email}`)
+
       return dispatch({
         type: VISTO_NOTIFICATION,
         payload: data.data,
@@ -91,7 +110,8 @@ export function VistoNotification(email) {
 export function GetNotification(email) {
   return async function (dispatch) {
     try {
-      const { data } = await axios(`${SERVER}/notification/${email}`);
+      const { data } = await axios(`${REACT_APP_SERVER}/notification/${email}`)
+
       return dispatch({
         type: NOTIFICATION,
         payload: data,
@@ -103,7 +123,8 @@ export function GetNotification(email) {
 export function pruebasDeFiltrado(name) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${SERVER}/by_name?name=${name}`);
+      const { data } = await axios.get(`${REACT_APP_SERVER}/by_name?name=${name}`)
+
       return dispatch({
         type: "PRUEBA",
         payload: data.data,
@@ -112,12 +133,12 @@ export function pruebasDeFiltrado(name) {
   };
 }
 
-export function switchHomeView(type) {
-  return async function (dispatch) {
-    const { data } = !type
-      ? await axios.get(`${SERVER}/by_type`)
-      : await axios.get(`${SERVER}/by_type?type=${type}`);
-    const pets = data.data;
+export function switchHomeView(type){
+  return async function(dispatch){
+    const { data } = !type ?
+        await axios.get(`${REACT_APP_SERVER}/by_type`) :
+        await axios.get(`${REACT_APP_SERVER}/by_type?type=${type}`)
+    const pets = data.data
     try {
       return dispatch({
         type: "SWITCH_VIEW",
@@ -145,7 +166,7 @@ export function paginateData(json) {
 export function loginUser(credentials) {
   return async function (dispatch) {
     try {
-      const json = await axios.post(`${SERVER}/login`, credentials);
+      const json = await axios.post(`${REACT_APP_SERVER}/login`, credentials);
       const dataUser = json.data;
       if (json.status === 201) {
         await swal(
@@ -171,7 +192,7 @@ export function loginUser(credentials) {
 export function getMessage(adoptionId) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/message?chat=${adoptionId}`);
+      const json = await axios(`${REACT_APP_SERVER}/message?chat=${adoptionId}`);
       return dispatch({
         type: GET_MESSAGE,
         payload: json.data,
@@ -188,7 +209,7 @@ export function getMessage(adoptionId) {
 export function getChat(user) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/message/chats?user=${user}`);
+      const json = await axios(`${REACT_APP_SERVER}/message/chats?user=${user}`);
       return dispatch({
         type: GET_CHAT,
         payload: json.data,
@@ -213,7 +234,7 @@ export async function successAdoption(id) {
 export function putVisto(mail, adoptionId) {
   return async function (dispatch) {
     try {
-      await axios.put(`${SERVER}/message/visto`, {
+        await axios.put(`${REACT_APP_SERVER}/message/visto`, {
         mail: mail,
         adoptionId: adoptionId,
       });
@@ -224,7 +245,7 @@ export function putVisto(mail, adoptionId) {
 export function postMessage(payload) {
   return async function (dispatch) {
     try {
-      const json = await axios.post(`${SERVER}/message`, payload);
+      const json = await axios.post(`${REACT_APP_SERVER}/message`, payload);
       return dispatch({
         type: POST_MESSAGE,
         payload: json.data,
@@ -256,7 +277,7 @@ export function logoutUser() {
 export function getOwnerAdoption(id) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/adoption/owner`);
+      const json = await axios(`${REACT_APP_SERVER}/adoption/owner`);
       return dispatch({
         type: GET_OWNER_ADOPTION,
         payload: json.data,
@@ -271,7 +292,7 @@ export function getOwnerAdoption(id) {
 export function getAdopterAdoption(id) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/user`);
+      const json = await axios(`${REACT_APP_SERVER}/user`);
       return dispatch({
         type: GET_USER_ADOPTION,
         payload: json.data,
@@ -286,7 +307,7 @@ export function getAdopterAdoption(id) {
 export function getUsers() {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/user`);
+      const json = await axios(`${REACT_APP_SERVER}/user`);
       return dispatch({
         type: "GET_USER",
         payload: json.data,
@@ -301,7 +322,7 @@ export function getUsers() {
 export function getUserName(userName) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/user?userName=${userName}`);
+      const json = await axios(`${REACT_APP_SERVER}/user?userName=${userName}`);
       return dispatch({
         type: GET_USERNAME,
         payload: json.data,
@@ -316,8 +337,10 @@ export function getUserName(userName) {
 export function updateUser(email, payload) {
   return async function (dispatch) {
     try {
-      const json = await axios.put(`${SERVER}/user/${email}`, payload);
-      localStorage.setItem("user", JSON.stringify(json.data));
+
+      const json = await axios.put(`${REACT_APP_SERVER}/user/${email}`, payload);
+      localStorage.setItem('user',JSON.stringify(json.data))
+
       if (json.status === 200) swal("OK", "User info updated", "success");
 
       return dispatch({
@@ -333,7 +356,7 @@ export function updateUser(email, payload) {
 export function deleteUser(mail) {
   return async function (dispatch) {
     try {
-      const json = await axios.delete(`${SERVER}/user/${mail}`);
+      const json = await axios.delete(`${REACT_APP_SERVER}/user/${mail}`);
       return dispatch({
         type: DELETE_USER,
         payload: json.data,
@@ -348,7 +371,7 @@ export function deleteUser(mail) {
 export function postMercadoPago(donacion) {
   return async function (dispatch) {
     try {
-      let data = await axios.post("http://localhost:3001/donations", donacion);
+      let data = await axios.post(`${REACT_APP_SERVER}/donations`, donacion);
       return dispatch({ type: "MERCADO_PAGO", data });
     } catch (error) {
       console.log("error", error);
@@ -359,7 +382,7 @@ export function postMercadoPago(donacion) {
 export function getUserId(id) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/user/${id}`);
+      const json = await axios(`${REACT_APP_SERVER}/user/${id}`);
       return dispatch({
         type: "GET_USER_ID",
         payload: json.data,
@@ -373,7 +396,7 @@ export function getUserId(id) {
 export function postUser(payload) {
   return async function (dispatch) {
     try {
-      const { status } = await axios.post(`${SERVER}/user`, payload);
+      const { status } = await axios.post(`${REACT_APP_SERVER}/user`, payload);
       if (status === 201) {
         swal("WooHooo!", "User created successfully", "success").then(() =>
           window.history.back()
@@ -391,7 +414,7 @@ export function postUser(payload) {
 export function deleteAdoption(id) {
   return async function dispatch() {
     try {
-      await axios.patch(`${SERVER}/adoption/${id}`);
+      await axios.patch(`${REACT_APP_SERVER}/adoption/${id}`);
       return dispatch({
         type: "DELETE_ADOPTION",
       });
@@ -404,7 +427,7 @@ export function deleteAdoption(id) {
 export function getPets() {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/pets`);
+      const json = await axios(`${REACT_APP_SERVER}/pets`);
       return dispatch({
         type: "GET_PETS",
         payload: json.data,
@@ -418,8 +441,8 @@ export function getPets() {
 export function deletePost(id) {
   return async function (dispatch) {
     try {
-      const json = await axios.put(`${SERVER}/pets/delete/${id}`);
-      console.log("json", json);
+      const json = await axios.put(`${REACT_APP_SERVER}/pets/delete/${id}`);
+
       return dispatch({
         type: DELETE_POST,
         payload: json.data,
@@ -440,7 +463,7 @@ export function getPetFilters(type) {
   type = type || "";
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/pets?type=${type}`);
+      const json = await axios(`${REACT_APP_SERVER}/pets?type=${type}`);
       return dispatch({
         type: "GET_PETS",
         payload: json.data,
@@ -455,9 +478,10 @@ export function getPetFilters(type) {
 export function getPetNames(searchName) {
   return async function (dispatch) {
     try {
-      console.log("pathSearchName :>> ", searchName);
-      const { data } = await axios.get(`${SERVER}/?name=${searchName}`);
-      console.log("data :>> ", data);
+      console.log('pathSearchName :>> ', searchName);
+      const { data } = await axios.get(`${REACT_APP_SERVER}/?name=${searchName}`)
+      console.log('data :>> ', data);
+
       return dispatch({
         type: GET_NAMES,
         payload: data,
@@ -471,7 +495,7 @@ export function getPetNames(searchName) {
 export function postPet(payload) {
   return async function (dispatch) {
     try {
-      await axios.post(`${SERVER}/pets`, payload);
+      await axios.post(`${REACT_APP_SERVER}/pets`, payload);
     } catch (error) {
       console.log(error);
     }
@@ -481,7 +505,7 @@ export function postPet(payload) {
 export function getDetails(id) {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/pets/${id}`);
+      const json = await axios(`${REACT_APP_SERVER}/pets/${id}`);
       return dispatch({
         type: "GET_DETAILS",
         payload: json.data,
@@ -496,8 +520,9 @@ export function getDetails(id) {
 export function deletePet(id) {
   return async function (dispatch) {
     try {
-      const json = await axios.delete(`${SERVER}/pets/${id}`);
-      console.log("json", json);
+      const json = await axios.delete(`${REACT_APP_SERVER}/pets/${id}`);
+      console.log('json', json)
+
       return dispatch({
         type: DELETE_PET,
         payload: json.data,
@@ -512,9 +537,10 @@ export function deletePet(id) {
 export function getLocation(type) {
   return async function (dispatch) {
     try {
-      const { data } = !type
-        ? await axios(`${SERVER}/locations`)
-        : await axios(`${SERVER}/locations?type=${type}`);
+      const { data } =  !type ?
+                        await axios(`${REACT_APP_SERVER}/locations`) :
+                        await axios(`${REACT_APP_SERVER}/locations?type=${type}`);
+
       return dispatch({
         type: "GET_LOCATION",
         payload: data.result,
@@ -596,7 +622,7 @@ export function addFavs(mail, id) {
   return async function (dispatch) {
     try {
       let favs = { favorites: [id] };
-      const json = await axios.put(`${SERVER}/user/addFavs/${mail}`, favs);
+      const json = await axios.put(`${REACT_APP_SERVER}/user/addFavs/${mail}`, favs);
       return dispatch({
         type: FAVORITES,
         payload: json.data,
@@ -611,8 +637,8 @@ export function deleteFavs(mail, id) {
   return async function (dispatch) {
     try {
       let favs = { id: id };
-      const json = await axios.put(`${SERVER}/user/deleteFavs/${mail}`, favs);
-      console.log("json :>> ", json);
+      const json = await axios.put(`${REACT_APP_SERVER}/user/deleteFavs/${mail}`, favs);
+
       return dispatch({
         type: DELETE_FAVORITES,
         payload: json.data,
@@ -634,7 +660,7 @@ export function saveId(id) {
 export function getFavs(mail) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`${SERVER}/user/Favs/${mail}`);
+      const json = await axios.get(`${REACT_APP_SERVER}/user/Favs/${mail}`);
       return dispatch({
         type: GET_FAVORITES,
         payload: json.data,
@@ -648,7 +674,7 @@ export function getFavs(mail) {
 export function getAllPets() {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/pets`);
+      const json = await axios(`${REACT_APP_SERVER}/pets`);
       return dispatch({
         type: GET_ALL_PETS,
         payload: json.data,
@@ -662,7 +688,7 @@ export function getAllPets() {
 export function getUsersBanned() {
   return async function (dispatch) {
     try {
-      const json = await axios(`${SERVER}/user/banned`);
+      const json = await axios(`${REACT_APP_SERVER}/user/banned`);
       return dispatch({
         type: USERS_BANNED,
         payload: json.data,
@@ -676,7 +702,7 @@ export function getUsersBanned() {
 export function UserRestore(mail) {
   return async function (dispatch) {
     try {
-      const json = await axios.patch(`${SERVER}/user/restore/${mail}`);
+      const json = await axios.patch(`${REACT_APP_SERVER}/user/restore/${mail}`);
       return dispatch({
         type: USER_RESTORE,
         payload: json.data,
@@ -690,8 +716,8 @@ export function UserRestore(mail) {
 export function makeAdmin(mail) {
   return async function (dispatch) {
     try {
-      const json = await axios.put(`${SERVER}/user/adm/${mail}`);
-      console.log("json", json);
+      const json = await axios.put(`${REACT_APP_SERVER}/user/adm/${mail}`);
+      console.log('json', json)
       return dispatch({
         type: MAKE_ADMIN,
         payload: json.data,
@@ -705,7 +731,7 @@ export function makeAdmin(mail) {
 export function postSupportForm(payload) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(`${SERVER}/nodeMailer`, payload);
+      const json = await axios.post(`${REACT_APP_SERVER}/nodeMailer`, payload);
       if (json.status === 200) swal("OK", "Mail sent successfully", "success");
     } catch (error) {
       console.log(`Error enviando correo ${error}`);
@@ -717,7 +743,7 @@ export function postSupportForm(payload) {
 export function postAdoption(payload) {
   return async (dispatch) => {
     try {
-      const json = await axios.post(`${SERVER}/adoption`, payload);
+      const json = await axios.post(`${REACT_APP_SERVER}/adoption`, payload);
       if (json.status === 201)
         await swal("OK", "Adoption request created", "success");
     } catch (error) {
@@ -727,27 +753,37 @@ export function postAdoption(payload) {
   };
 }
 
+export function adoptinHistoryAdmin() {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get(`${REACT_APP_SERVER}/pets/inactivo`);
+      return dispatch({
+        type: ADOTION_HISTORY_ADMIN,
+        payload: json.data,
+      });
+    } catch (error) {
+     console.log(error)
+    }
+  };
+}
+
 export function updatePetsViews(id) {
   return async () => {
     try {
-      await axios.patch(`${SERVER}/pets/${id}`);
+      await axios.patch(`${REACT_APP_SERVER}/pets/${id}`);
     } catch (error) {
       console.log(error);
     }
   };
 }
 
-export function successStory(
-  nameOfPet,
-  imageOfPet,
-  rating,
-  testimonio,
-  userId
-) {
+export function successStory(payload) {
+  console.log(payload)
   return async (dispatch) => {
     try {
-      let payload = { nameOfPet, imageOfPet, rating, testimonio, userId };
-      const json = await axios.post(`${SERVER}/successStories`, payload);
+
+      const json = await axios.post(`${REACT_APP_SERVER}/successstories`, payload);
+
       if (json.status === 201) await swal("Thank You", "", "success");
     } catch (error) {
       console.log(`Error creando ${error}`);
@@ -759,7 +795,7 @@ export function successStory(
 export function getSuccessStory() {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`${SERVER}/successStories`);
+      const json = await axios.get(`${REACT_APP_SERVER}/successStories`);
       return dispatch({
         type: SUCCESS_STORY,
         payload: json.data,

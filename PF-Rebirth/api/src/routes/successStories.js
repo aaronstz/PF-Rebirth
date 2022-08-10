@@ -4,7 +4,7 @@ const router = Router();
 
 router.post("/", async (req, res, next) => {
   const { nameOfPet, imageOfPet, rating, testimonio, userId } = req.body;
-  console.log(userId)
+  console.log(req.body)
   try {
     await SuccessStories.create({
       nameOfPet:nameOfPet,

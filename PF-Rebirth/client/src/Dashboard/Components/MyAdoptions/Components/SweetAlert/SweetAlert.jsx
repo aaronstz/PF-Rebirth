@@ -29,7 +29,7 @@ import { successAdoption } from "../../../../../Redux/Actions";
         'success'
       ).then(()=>{
         successAdoption(id)
-        navigate(dogName)})
+       })
     } else if (
       /* Read more about handling dismissals below */
       result.dismiss === Swal.DismissReason.cancel

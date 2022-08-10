@@ -4,6 +4,7 @@ import vector from "../../../Assets/Navbar/Vector.png";
 import vector2 from "../../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../../Assets/Navbar/Vector-3.png";
 import vector4 from "../../../Assets/Navbar/icoRequest.png";
+import vector5 from "../../../Assets/Navbar/ico-historial.png";
 import DarkMode from "../../../Components/Switch/SwitchMode";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../../Redux/Actions/index";
@@ -47,6 +48,7 @@ const DashNavBar = () => {
   }, []);
 
   let data = user ? JSON.parse(user) : null;
+  console.log('data :>> ', data);
 
   return (
     <>
@@ -57,6 +59,17 @@ const DashNavBar = () => {
 
         <div className="Dashitem">
           <div className="DashiconsContainer">
+            <div className="Dashitem">
+              { data && (data.isAdmin === true)? 
+                <NavLink
+                to={data !== null ? "/history" : "/login"}
+                className="Dashlink-navbar"
+              >
+                <img src={vector5} alt="vector3" className="Dashicons" />
+                <span>History</span>
+              </NavLink> : null
+              }
+            </div>
             <div className="Dashitem">
               <NavLink
                 to={data !== null ? "/request" : "/login"}

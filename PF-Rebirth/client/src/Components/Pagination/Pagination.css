@@ -4,7 +4,7 @@
 }
 
 .pagination {
-  display: inline-block;
+  display: flex;
   justify-content: center;
   height: fit-content;
   flex-wrap: wrap;
@@ -23,7 +23,6 @@
   text-decoration: none;
   background: transparent;
   border: none;
-  
 }
 
 .pagesNone{
@@ -130,7 +129,6 @@
   }
 
   @media only screen and (max-width: 480px) {
-
     .pagination .pages {
       display: flex;
       flex-direction: row;

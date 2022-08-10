@@ -22,11 +22,15 @@ const { conn } = require("./src/db.js");
 const { getPets } = require("./src/tools/preCharge.js");
 const { getAdmin } = require("./src/tools/preChargeAdmin.js");
 
-conn.sync({ force: false }).then(async () => {
+const { getTestimonials } = require("./src/tools/preChargeTestimonials.js");
 
+const { PORT } = process.env;
+
+conn.sync({ force: true }).then(async () => {
+  await getTestimonials();
   await getAdmin();
   await getPets();
-  server.listen(3001, () => {
+  server.listen(PORT, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });
