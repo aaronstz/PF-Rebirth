@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./Card.css";
 import { Link } from "react-router-dom";
 import female from "../../Assets/female-ico-w.png";

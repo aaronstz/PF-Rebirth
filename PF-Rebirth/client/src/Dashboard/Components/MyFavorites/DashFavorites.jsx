@@ -1,22 +1,15 @@
 import React, { useState } from "react"; // warning->{useEffect, useRef,} 
 import "./DashFavorites.css";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   deleteFavs,
-  getAllPets,
-  getFavs,
-  saveFavorites,
 } from "../../../Redux/Actions";
-import { useMutation } from "@tanstack/react-query";
 import {
   useUserFavoritesPets,
   useFavoritesPetsDetails,
-  useUpdateFavs,
 } from "../../../Tools/customHooks.js";
 import { Link } from "react-router-dom";
 // import DashNavBar from "../Dash-NavBar/Dash-NavBar"; warning
-import Footer from "../../../Components/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Navbar";
 import NotFound from '../../../Components/NotFound/NotFound'
 
@@ -63,8 +56,8 @@ export default function DashFavorites() {
             </div>
           </div>
         ) : isLoading === true ? (
-          <div class="spinner">
-            <div class="spinner-grow" role="status">
+          <div className="spinner">
+            <div className="spinner-grow" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
           </div>

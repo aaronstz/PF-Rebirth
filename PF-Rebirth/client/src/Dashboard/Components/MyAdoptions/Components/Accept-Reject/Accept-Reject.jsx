@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Accept-Reject.css";
 import { useDispatch, useSelector } from "react-redux";
-import image from "../../../../../Assets/fotoPet1.png";
-import { deleteAdoption, deletePost, getAllPets, getChat, getDetails, getPets } from "../../../../../Redux/Actions";
+import { deleteAdoption, deletePost,getChat} from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
-import { useNavigate } from "react-router-dom";
 import Swalert from "../SweetAlert/SweetAlert";
  
 const AcceptReject = () => {
@@ -33,10 +31,6 @@ const AcceptReject = () => {
     window.open("/feedback", "_self")
   }
 
-
-  let navigate = useNavigate();
-
-
   return (
     <>
       {adoptChat
@@ -49,7 +43,7 @@ const AcceptReject = () => {
               <div className="mainDashContACC">
                 <div className="AdoptContainer">
                   <div>
-                    <div class="imgFav">
+                    <div className="imgFav">
                       <img
                         src={datos.adopter.image}
                         alt="Adopter"
@@ -77,7 +71,7 @@ const AcceptReject = () => {
                 </div>
                 <div className="btnRowAdopt">
                   <button
-                    class="MAdoCancbutton"
+                    className="MAdoCancbutton"
                     onClick={() =>
                       SwalertCancel(datos.pet.name, handleClick, datos.id)
                     }
@@ -119,7 +113,7 @@ const AcceptReject = () => {
                   </div>
                   <div className="btnRowAdopt">
                     <button
-                      class="MAdoCanbutton"
+                      className="MAdoCanbutton"
                       onClick={() =>
                         SwalertCancel(datos.pet.name, handleClick, datos.id)
                       }

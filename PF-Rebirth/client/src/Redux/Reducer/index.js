@@ -26,7 +26,7 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
-  DELETE_ADOPTION,
+  // DELETE_ADOPTION,
   DELETE_POST,
   SAVE_ID,
   // DELETE_ADOPTION, -> warning
@@ -59,7 +59,6 @@ const initialState = {
   admins: [],
   favoritesSaved : [],
   saveId : "",
-  favoritesSaved: [],
 
 };
 

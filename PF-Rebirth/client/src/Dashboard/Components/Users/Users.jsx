@@ -49,6 +49,7 @@ export default function DashUsers() {
           {users &&
           users.map((u) => (
             <UserDetail
+              key={Math.random()}
               handleAdmin={handleAdmin}
               handleDeleteUser={handleDeleteUser}
               name={u.name}
