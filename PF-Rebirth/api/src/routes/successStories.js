@@ -4,14 +4,14 @@ const router = Router();
 
 router.post("/", async (req, res, next) => {
   const { nameOfPet, imageOfPet, rating, testimonio, userId } = req.body;
+  console.log(userId)
   try {
     await SuccessStories.create({
-      nameOfPet,
-      imageOfPet,
-      rating,
-      testimonio,
-
-      userId,
+      nameOfPet:nameOfPet,
+      imageOfPet:imageOfPet,
+      rating:rating,
+      testimonio:testimonio,
+      userMail:userId,
     });
     res.status(200).send(`the testimony was created successfully`);
   } catch (error) {
