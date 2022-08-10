@@ -32,8 +32,8 @@ exports.findAll = (req, res) => {
 exports.filterPets = (req, res) => {
 
   const { page=0, sizePage , name, type, age, location, gender, race, size } = req.query;
-  const { limit, offset} = getPagination(page, sizePage);
-  
+  const { limit, offset } = getPagination(page, sizePage);
+
   //ENUM QUERIES
   var typeSearch = type ? { type: { [Op.eq] : { [Op.any]: `${type}` }} } : null;
   var sizeSearch = size ? { size: { [Op.eq] : { [Op.any]: `${size}` }} } : null;
@@ -41,8 +41,7 @@ exports.filterPets = (req, res) => {
 
   //NORMAL QUERIES
   var nameSearch = name ? { name: { [Op.substring]: `${name}` } } : null;
-  var ageSearch = age ? [['age',`${age}`]] : null;
-  // var ageSearch = age ? { age: { [Op.eq] : { [Op.any]: `${age}` }} } : null;
+  var ageSearch =  age ? ['age',`${age}`] : ['age' , 'ASC'];
   var locationSearch = location ? { location: { [Op.iLike] : { [Op.any]: `${location}` }} } : null;
   var raceSearch = race ? { race: { [Op.like]: `${race}` } } : null;
 
@@ -57,7 +56,7 @@ exports.filterPets = (req, res) => {
       ]
   }
 
-  Pets.findAndCountAll({ where: condition, limit, offset, order : ageSearch })
+  Pets.findAndCountAll({ where: condition, limit, offset, order : [ageSearch] })
     .then(data => {
       const response = getPagingData(data, page, limit);
       res.send(response);

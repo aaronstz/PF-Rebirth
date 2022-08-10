@@ -136,6 +136,15 @@ function Home() {
     });
   }
 
+  function handleOrderByTime(e) {
+    setFilters({
+      ...filters,
+      name: "",
+      time: e,
+      page: 0,
+    });
+  }
+
   function handleChange(e) {
     e.preventDefault();
     let pag = 0;
@@ -211,6 +220,7 @@ function Home() {
           handleSearchName={handleSearchName}
           searchName={searchName}
           handleDeleteFilters={handleDeleteFilters}
+          handleOrderByTime={handleOrderByTime}
         />
 
         <div className="boxWrap">

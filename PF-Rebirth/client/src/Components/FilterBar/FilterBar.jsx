@@ -16,7 +16,8 @@ function FiltersBar({
   handleOrderByAge,
   handleSearchName,
   handleChange,
-  handleDeleteFilters
+  handleDeleteFilters,
+  handleOrderByTime
 }) {
   const locations = useSelector((state) => state.location);
 
