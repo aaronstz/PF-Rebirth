@@ -18,9 +18,6 @@ import dogIco from "../Assets/dog_ico_big.png";
 import catIco from "../Assets/ico-cat-gris.png";
 
 function Details() {
-  window.scroll({
-    top: 0,
-  });
   const { id } = useParams();
   const dispatch = useDispatch();
   const [, setFavFilters] = useState([]);
@@ -30,16 +27,10 @@ function Details() {
 
   // const pets = useSelector((store) => store.pets); warning
 
-
   // const types = pets.map((p) => (p.type === "dog" ? "dog" : "cat"));
-
 
   useEffect(() => {
     setFavFilters(favFilter);
-  }, [favFilter]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
   }, []);
 
   const {
@@ -69,7 +60,7 @@ function Details() {
     if (user) {
       dispatch(getUserId(mail));
     }
-  }, [dispatch, id, mail, user]);
+  }, []);
 
   function handleFavorite() {
     dispatch(addFavs(mail, id));

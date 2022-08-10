@@ -45,8 +45,6 @@ export default function DashFavorites() {
     window.history.go();
   }
 
-  console.log(!favoritos)
-
   return (
     <>
       <Navbar />
@@ -115,7 +113,6 @@ export default function DashFavorites() {
           </>
         )}
       </div>
-      {/* <Footer /> */}
     </>
   );
 }
