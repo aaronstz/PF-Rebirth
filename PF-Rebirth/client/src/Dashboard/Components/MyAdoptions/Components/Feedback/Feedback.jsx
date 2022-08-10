@@ -81,7 +81,7 @@ function Feedback() {
               <div className="form-group mt-2">
                 <button
                   type="submit"
-                  className="btn btn-primary btn-block mb-5"
+                  className="btn btn-primary btn-block mb-4"
                 >
                   SEND
                 </button>
