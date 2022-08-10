@@ -25,6 +25,19 @@ router.get("/location", async (req, res, next) => {
     }
 });
 
+router.get("/inactivo" , async (req, res, next) => {
+  try {
+    const petsInac = await Pets.findAll({ where:{
+      active: {
+        [Op.ne]: true
+        }}
+    })
+    return res.status(200).send(petsInac)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.put("/delete/:id" , async (req, res, next) =>{
   const {id} = req.params
   const petsA = await Pets.findByPk(id)

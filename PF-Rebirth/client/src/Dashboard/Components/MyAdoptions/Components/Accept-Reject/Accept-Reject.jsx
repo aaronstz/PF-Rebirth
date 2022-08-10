@@ -26,9 +26,8 @@ const AcceptReject = () => {
     .map((datos) => 
     datos.petId
     )
-  function handleDeletePost() {
-    dispatch((deletePost(idPet)));
-    window.open("/feedback", "_self")
+  function handleDeletePost(petId) {
+     window.open("/feedback?pet="+petId, "_self")
   }
 
   return (
@@ -36,7 +35,7 @@ const AcceptReject = () => {
       {adoptChat
         .filter((adChat) => adChat.id === adoptionId)
         .map((datos) => {
-          console.log(adoptChat);
+         
           if (datos.owner.mail === mail) {
         
             return (
@@ -79,7 +78,7 @@ const AcceptReject = () => {
                   >
                     <span>Reject</span>
                   </button>
-                  <button onClick={() =>  Swalert(datos.pet.name,handleDeletePost)} class="MAdoptbutton">
+                  <button onClick={() =>{Swalert(datos.pet.name,handleDeletePost)}} class="MAdoptbutton">
                     <span>Accept</span>
                   </button>
                 </div>

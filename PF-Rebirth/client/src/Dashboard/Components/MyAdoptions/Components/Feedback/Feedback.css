@@ -47,10 +47,10 @@
 .RowFeedCenter {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 30%;
   height: 1rem;
-  margin-left: 20%;
-  margin-bottom: 3rem;
+  margin-left: 30%;
+  margin-bottom: 1rem;
   bottom: 4rem;
   position: relative;
 }
