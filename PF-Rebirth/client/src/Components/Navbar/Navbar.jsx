@@ -5,13 +5,15 @@ import logo from "../../Assets/Navbar/logo.png";
 import vector from "../../Assets/Navbar/Vector.png";
 import vector2 from "../../Assets/Navbar/Vector-2.png";
 import vector3 from "../../Assets/Navbar/Vector-3.png";
+import vector41 from "../../Assets/Navbar/icoRequest.png"
+import vector42 from "../../Assets/Navbar/icoRequest2.png"
 import DarkMode from "../../Components/Switch/SwitchMode";
 import { NavLink, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../Redux/Actions";
 
-function Navbar({ filters, setFilters, notificacion }) {
+function Navbar({ filters, setFilters, notificacion,newNotification }) {
   const activeUser = useSelector((state) => state.activeUser);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ function Navbar({ filters, setFilters, notificacion }) {
   let imageUrl = data ? data.image : null;
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
-
+  let requestNotification= newNotification? vector42 :vector41;
   function handleReturnToHome(e) {
     navigate("/home");
     localStorage.setItem("type", JSON.stringify(""));
@@ -80,7 +82,7 @@ function Navbar({ filters, setFilters, notificacion }) {
       <div className="iconsContainer">
         {!data ? null : (
           <div className="item">
-            <NavLink to="/request" className="link-navbar">Requests: {notificacion}</NavLink>
+            <NavLink to="/request" className="link-navbar"><img src={requestNotification} alt="vector3" className="icons" />Requests: {notificacion}</NavLink>
           </div>
         )}
         <div className="item">

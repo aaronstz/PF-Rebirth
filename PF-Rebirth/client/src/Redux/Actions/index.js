@@ -26,12 +26,16 @@ import {
   GET_USERNAME,
   MAKE_ADMIN,
 
-  // POST_SUPPORT_FORM,
-  GET_NAMES, 
+  POST_SUPPORT_FORM,
+  GET_NAMES,
+  CREA_UPDATE_NOTIFICATION,
+  VISTO_NOTIFICATION,
+  NOTIFICATION,
   DELETE_POST,
   SAVE_ID,
 
   // POST_SUPPORT_FORM, -> warning
+
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
@@ -61,6 +65,52 @@ export function saveName(name){
     }
   }
 }
+
+export function CreaUpdateNotification(mail){
+  return async function(dispatch){
+    try {
+      let userMail={userMail:mail}
+      const { data } = await axios.post(`${SERVER}/notification`,userMail)
+      return dispatch({
+        type : CREA_UPDATE_NOTIFICATION
+      })
+    } catch (error) {
+      
+    }
+  }
+
+}
+
+export function VistoNotification(email){
+  return async function(dispatch){
+    try {
+      const { data } = await axios.patch(`${SERVER}/notification/${email}`)
+      return dispatch({
+        type : VISTO_NOTIFICATION,
+        payload:data.data
+      })
+    } catch (error) {
+      
+    }
+  }
+}
+
+export function GetNotification(email){
+ 
+  return async function(dispatch){
+    try {
+      const { data } = await axios(`${SERVER}/notification/${email}`)
+      return dispatch({
+        type : NOTIFICATION,
+        payload:data
+      })
+    } catch (error) {
+      
+    }
+  }
+}
+
+
 
 export function pruebasDeFiltrado(name){
   return async function(dispatch){
@@ -164,8 +214,7 @@ export function getChat(user) {
 export function putVisto(mail, adoptionId) {
   return async function (dispatch) {
     try {
-      console.log(mail, adoptionId);
-      await axios.put(`${SERVER}/message/visto`, {
+        await axios.put(`${SERVER}/message/visto`, {
         mail: mail,
         adoptionId: adoptionId,
       });

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Chat.css";
 import sendButton from "../../../../../Assets/Messageboard/send.svg";
 import {
+  CreaUpdateNotification,
   getMessage,
   postMessage,
   putVisto,
@@ -10,14 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 // import { PUT_VISTO } from "../../../../../Redux/Actions/actionTypes"; warning
 
 
-export default function Chat({ allMessages }) {
+export default function Chat({ allMessages,otherMail }) {
 let mail=""
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
   if(infoStorage) mail = user.mail;
-  let setEmail = new Set(allMessages.map((message) => message.userMail));
-  let arrayMail = Array.from(setEmail);
-  let mailVisto = arrayMail[0] === mail ? arrayMail[1] : arrayMail[0];
+  let mailVisto =otherMail;
+  
   const dispatch = useDispatch();
   let [inputChat, setInputChat] = useState("");
   let adoptionId = useSelector((state) => state.adoptionId);
@@ -39,6 +39,7 @@ let mail=""
     let finalScroll = document.getElementById("scroll");
     finalScroll.scrollTop = finalScroll.scrollHeight;
     if (mailVisto) dispatch(putVisto(mailVisto, adoptionId));
+    if (mailVisto)dispatch(CreaUpdateNotification(mailVisto));
   }
   function handleOnChange(e) {
     setInputChat(e.target.value);
