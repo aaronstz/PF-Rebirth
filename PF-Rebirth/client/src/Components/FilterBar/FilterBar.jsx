@@ -22,9 +22,9 @@ function FiltersBar({
 
   return (
     <React.Fragment>
-      <div class="container">
-        <div class="row justify-content-md-center">
-          <div class="col col-lg-2">
+      <div className="container">
+        <div className="row justify-content-md-center">
+          <div className="col col-lg-2">
             <DropdownButton
               onSelect={(e) => {
                 handleFilterByLocation(e);
@@ -44,7 +44,7 @@ function FiltersBar({
                 ))}
             </DropdownButton>
           </div>
-          <div class="col col-lg-2">
+          <div className="col col-lg-2">
             <DropdownButton
               onSelect={(e) => {
                 handleOrderByAge(e);
@@ -58,7 +58,7 @@ function FiltersBar({
               <Dropdown.Item eventKey="DESC">Old</Dropdown.Item>
             </DropdownButton>
           </div>
-          <div class="col-md-auto">
+          <div className="col-md-auto">
             <Form className="ms-2 w-10" onSubmit={handleSearchName}>
               <Form.Group
                 className="mb-3 cajaDeTexto"
@@ -74,7 +74,7 @@ function FiltersBar({
               </Form.Group>
             </Form>
           </div>
-          <div class="col col-lg-2">
+          <div className="col col-lg-2">
             <DropdownButton
               onSelect={(e) => {
                 handleFilterBySex(e);
@@ -89,7 +89,7 @@ function FiltersBar({
               <Dropdown.Item eventKey="female">Female</Dropdown.Item>
             </DropdownButton>
           </div>
-          <div class="col col-lg-2">
+          <div className="col col-lg-2">
             <DropdownButton
               onSelect={(e) => {
                 handleFilterBySize(e);
