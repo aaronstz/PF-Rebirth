@@ -63,7 +63,7 @@ const DashNavBar = () => {
                 to={data !== null ? "/history" : "/login"}
                 className="Dashlink-navbar"
               >
-                <img src={vector5} alt="vector5" className="Dashicons" />
+                <img src={vector5} alt="vector3" className="Dashicons" />
                 <span>History</span>
               </NavLink>
             </div>
