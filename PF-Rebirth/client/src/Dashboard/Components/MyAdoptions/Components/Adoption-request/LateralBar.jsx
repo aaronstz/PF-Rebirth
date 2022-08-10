@@ -21,9 +21,6 @@ export default function LateralBar() {
 
   useEffect(() => {
     dispatch(getChat(mail));
-    let interval= setInterval(()=>{dispatch(getChat(mail))},2000)
-
-    return()=>clearInterval(interval)
   }, [dispatch, mail]);
 
 
