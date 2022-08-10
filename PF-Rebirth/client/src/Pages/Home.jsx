@@ -240,6 +240,7 @@ function Home() {
                       userMail={p.userMail}
                       views={p.views}
                       type={p.type}
+                      active={p.active}
                     />
                     );
                   })
@@ -247,7 +248,7 @@ function Home() {
                 </>
           }
           
-              
+          
         </div>
       </Container>
       <Paginations

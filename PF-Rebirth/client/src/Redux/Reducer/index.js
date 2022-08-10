@@ -26,6 +26,10 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
+  DELETE_ADOPTION,
+  DELETE_POST,
+  SAVE_ID,
+  // DELETE_ADOPTION, -> warning
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -40,7 +44,6 @@ const initialState = {
   user: [],
   userDetail: [],
   typePet: [],
-
   location: [],
   message: [],
   adoptionChat: [],
@@ -54,7 +57,10 @@ const initialState = {
   userDeleted: [],
   userBanned: [],
   admins: [],
+  favoritesSaved : [],
+  saveId : "",
   favoritesSaved: [],
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -74,11 +80,20 @@ function rootReducer(state = initialState, action) {
         ...state,
         prueba: action.payload,
       };
-
+    case DELETE_POST: 
+    return{
+      ...state
+    };
     case DELETE_PET:
       return {
         ...state,
       };
+      case SAVE_ID:{
+        return{
+          ...state,
+          saveId : action.payload
+        }
+      }
     case "PRUEBA":
       return {
         ...state,
