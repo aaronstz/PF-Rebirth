@@ -41,6 +41,10 @@
     justify-content: center;
 }
 
+.logo-ld img {
+    width: 60%;
+}
+
 .title-ld {
     display: flex;
     justify-content: center;
@@ -61,7 +65,7 @@
     display: flex;
     justify-content: center;
     margin-top: 3rem;
-    margin-bottom: 10rem;
+    margin-bottom: 8rem;
     color: #B4A8B9;
     font-family: 'Red Hat Display';
 }

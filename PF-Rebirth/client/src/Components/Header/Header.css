@@ -55,7 +55,6 @@
 
     .header-donations {
         margin-bottom: 6px;
-        width: 100%;
     }
 
     .marginImage {
@@ -84,6 +83,7 @@
     .header-donations {
         display: flex;
         justify-content: center;
+        width: 100%;
     }
 
 }

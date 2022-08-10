@@ -11,6 +11,7 @@ const page = require("./page.js");
 const locations = require('./page.js');
 // const adminRoute = require("./admin.js");
 const cors = require("cors");
+const notification = require("./notification");
 
 const router = Router();
 router.use(cors());
@@ -29,5 +30,6 @@ router.use("/adoption", adoption);
 router.use("/successStories", successStoriesRoute);
 router.use("/donations", donationsRoute);
 // router.use("/admin", adminRoute);
+router.use("/notification", notification);
 
 module.exports = router;

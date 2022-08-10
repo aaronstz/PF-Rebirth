@@ -10,19 +10,24 @@ export default function MessageBoard() {
 
 let mail=""
 const allMessages=useSelector((state)=>state.message)
+
 const dispatch= useDispatch();
 const infoStorage = localStorage.getItem("user");
     const user = JSON.parse(infoStorage)
     if(infoStorage) mail= user.mail
     
+    let otherMail="";
+    
+    if (allMessages.length>0) otherMail = allMessages[0].adoption.ownerMail=== mail? allMessages[0].adoption.userMail: allMessages[0].adoption.ownerMail  
  let chat= document.getElementsByClassName("container-lateral-bar").length 
 useEffect(()=>{
-   
+  chat && 
+    dispatch(getChat(mail))
   let chatUpdate= chat && setInterval(() => {
     dispatch(getChat(mail))
   }, 10000); 
  
-    setTimeout(()=>{ document.getElementsByClassName("container-lateral-bar").length && document.getElementsByClassName("container-lateral-bar")[0].click()},300)
+    setTimeout(()=>{ document.getElementsByClassName("container-lateral-bar").length && document.getElementsByClassName("container-lateral-bar")[0].click()},500)
   return ()=>clearInterval(chatUpdate)
 },[dispatch, chat, mail])
   return (
@@ -30,7 +35,7 @@ useEffect(()=>{
           <div className="msg-container">
         <div className="chat-title"> Message Board<img src="" alt="" /></div>
         <div className="chat-container">
-          <Chat allMessages={allMessages}
+          <Chat allMessages={allMessages} otherMail={otherMail}
           />
         </div>
       </div>

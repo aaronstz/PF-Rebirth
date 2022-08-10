@@ -18,6 +18,7 @@ export default function LateralBar() {
   if(infoStorage) mail = user.mail;
 
 
+
   useEffect(() => {
     dispatch(getChat(mail));
   }, [dispatch, mail]);

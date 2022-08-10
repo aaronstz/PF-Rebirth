@@ -10,12 +10,18 @@ import AcceptReject from "../Accept-Reject/Accept-Reject";
 import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
 import Footer from "../../../../../Components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { VistoNotification } from "../../../../../Redux/Actions";
 
 export default function AdoptionRequest() {
-
+  let mail;
+const dispatch=useDispatch();
   const navigate = useNavigate();
-  const user = window.localStorage.getItem("user");
-  if(!user) navigate("/login")
+  const infoStorage= window.localStorage.getItem("user");
+  const user = JSON.parse(infoStorage);
+  if(infoStorage) mail = user.mail;
+  if(!infoStorage) navigate("/login")
+  else dispatch(VistoNotification(mail))
 
   function SideBar() {
     let Sidebar = document.getElementById("sidebar");

@@ -63,6 +63,7 @@
   font-weight: bold;
   text-decoration: none;
 }
+
 .dtl-cardLeft .breed {
   font-size: 1.5rem;
   color: var(--text-color);
@@ -231,7 +232,6 @@
   height: 40px;
   text-transform: uppercase;
   margin-top: 2rem;
-  margin-left: .8rem;
   font-size: 18px;
   font-family: 'Mochiy Pop One';
   color: var(--text-color-pag);
@@ -271,4 +271,20 @@
 .b-btn:active {
   background: var(--text-color);
   border: 1px solid var(--border);
+}
+
+@media only screen and (max-width: 1200px) {
+  .dtl-card {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .dtl-cardLeft,
+  .dtl-cardCenter,
+  .title {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 4%;
+  }
 }

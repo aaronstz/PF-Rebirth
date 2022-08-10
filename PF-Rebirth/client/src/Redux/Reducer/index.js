@@ -26,10 +26,16 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
-  // DELETE_ADOPTION,
+
+  DELETE_ADOPTION,
+  CREA_UPDATE_NOTIFICATION,
+  NOTIFICATION,
+  VISTO_NOTIFICATION,
+
   DELETE_POST,
   SAVE_ID,
   // DELETE_ADOPTION, -> warning
+
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -58,12 +64,35 @@ const initialState = {
   userBanned: [],
   admins: [],
   favoritesSaved : [],
+
+  notification:false,
+
   saveId : "",
+
 
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+
+    case CREA_UPDATE_NOTIFICATION:
+      return {
+        ...state
+      }
+
+    case VISTO_NOTIFICATION:
+      return {
+        ...state,
+        notification:action.payload
+     }
+    
+    case NOTIFICATION:
+      console.log(action)
+      return {
+        ...state,
+        notification:action.payload
+      }
+
     case "SAVE_FAVORITES":
       return {
         ...state,
