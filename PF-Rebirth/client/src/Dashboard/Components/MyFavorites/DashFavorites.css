@@ -8,12 +8,12 @@
   }
 }
 
-.spinner{
-  display:flex;
+.spinner {
+  display: flex;
   position: relative;
   justify-content: center;
-  left:50%;
-  top:300px;
+  left: 50%;
+  top: 300px;
   width: 3rem;
   height: 3rem;
 }
@@ -31,6 +31,7 @@
 
 .mainDashCont {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 150px;
   height: fit-content;

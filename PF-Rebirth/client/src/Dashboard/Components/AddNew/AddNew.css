@@ -22,7 +22,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: 60%;
   margin-top: 2rem;
   padding: 5px;
   color: var(--greylight);
@@ -33,14 +33,14 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width: 35%;
+  width: 20%;
   align-content: center;
   align-items: center;
   justify-content: center;
 }
 
 .addImage {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   margin-top: 3.7%;
   margin-left: 10%;
@@ -184,12 +184,10 @@
 
 .addfooter {
   color: var(--greylight);
-  text-align: center;
+  justify-content: center;
   display: flex;
   position: relative;
-  text-align: center;
   width: 60%;
-  left: 20%;
 }
 
 .addbtn {
@@ -234,7 +232,7 @@ h6:after {
 
 @media screen and (max-width: 1627px) {
   .addimageContainer {
-    display: none;
+    display: block;
   }
 }
 
