@@ -9,6 +9,7 @@ router.get("/:mail", async (req, res, next) => {
         where: { userMail: mail },
       });
       if (notification) {
+        
       res.status(200).send(notification.nuevo);
     } else {
       res.status(200).send(false);
@@ -21,8 +22,8 @@ router.get("/:mail", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const { userMail } = req.body;
-    const notification = await Notification.findOne({
-      where: { userMail },
+        const notification = await Notification.findOne({
+      where: { userMail:userMail },
     });
     if (notification) {
       notification.nuevo = true;
@@ -40,9 +41,9 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.patch("/", async (req, res, next) => {
+router.patch("/:userMail", async (req, res, next) => {
   try {
-    const { userMail } = req.body;
+    const { userMail } = req.params;
     const noti = await Notification.findOne({ where: { userMail: userMail } });
     if (noti){
     noti.nuevo = false;

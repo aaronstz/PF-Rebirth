@@ -26,13 +26,11 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
-<<<<<<< HEAD
   DELETE_ADOPTION,
   CREA_UPDATE_NOTIFICATION,
   NOTIFICATION,
   VISTO_NOTIFICATION,
-=======
->>>>>>> 538afe2783d927a7f85b8c13a447873d0d52d6a0
+
 } from "../Actions/actionTypes";
 
 const initialState = {
@@ -81,6 +79,7 @@ function rootReducer(state = initialState, action) {
      }
     
     case NOTIFICATION:
+      console.log(action)
       return {
         ...state,
         notification:action.payload

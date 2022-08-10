@@ -12,10 +12,10 @@ router.get("/", async (req, res, next) => {
       where: {
         adoptionId: chat,
       },
-      //   include: {
-      //     model: Adoption,
-      //     attributes: ["ownerMail", "userMail"],
-      //   },
+        include: {
+          model: Adoption,
+          attributes: ["ownerMail", "userMail"],
+        },
     });
     if (allMessage) {
       return res.json(allMessage);
