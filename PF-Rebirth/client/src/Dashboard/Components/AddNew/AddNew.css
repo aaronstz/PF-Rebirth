@@ -184,12 +184,10 @@
 
 .addfooter {
   color: var(--greylight);
-  text-align: center;
+  justify-content: center;
   display: flex;
   position: relative;
-  text-align: center;
   width: 60%;
-  left: 20%;
 }
 
 .addbtn {
