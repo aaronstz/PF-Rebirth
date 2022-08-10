@@ -21,7 +21,12 @@ export default function LateralBar() {
 
   useEffect(() => {
     dispatch(getChat(mail));
+    let interval= setInterval(()=>{dispatch(getChat(mail))},2000)
+
+    return()=>clearInterval(interval)
   }, [dispatch, mail]);
+
+
 
   function handleClick(adoptionId) {
     dispatch(getMessage(adoptionId));
@@ -31,7 +36,7 @@ export default function LateralBar() {
   return (
     <>
 
-      {adoptChat&&adoptChat?.map((adChat) => {
+      {adoptChat && adoptChat.map((adChat) => {
 
         return (
           <div

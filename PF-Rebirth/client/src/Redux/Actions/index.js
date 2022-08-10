@@ -45,7 +45,7 @@ const { REACT_APP_SERVER }  = process.env;
 export function getTestimonials(){
   return async function(dispatch){
     try {
-      const data = await axios(`${SERVER}/successstories`)
+      const data = await axios(`${REACT_APP_SERVER}/successstories`)
       return dispatch({
         type:'GET_TESTIMONIALS',
         payload: data
@@ -223,7 +223,7 @@ export function getChat(user) {
 
 export async function successAdoption(id) {
      try {
-      await axios.patch(`${SERVER}/adoption/success/${id}`);
+      await axios.patch(`${REACT_APP_SERVER}/adoption/success/${id}`);
      
     } catch (error) {
       console.log(error);
