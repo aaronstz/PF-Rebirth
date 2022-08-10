@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./Card.css";
 import { Link } from "react-router-dom";
 import female from "../../Assets/female-ico-w.png";
@@ -11,7 +12,7 @@ import swal from "sweetalert";
 
 
 
-function Cards({image,name,breed,type,age,gender,size,description,id,location,views,userMail}){
+function Cards({image,name,breed,type,age,gender,size,description,id,location,views,active,userMail}){
   const dispatch = useDispatch()
   const [  , setFavFilters] = useState([]) //warning->elimine favFilters
   const favoritos = useSelector(state => state.favorite)
@@ -61,7 +62,16 @@ function handleDelete(){
 }
 
   return (
+   <>
+   
+
+   
+    {
+      active === false ? null : 
+  
     <div className="lcard">
+     
+      
       {        
              user && user.isAdmin === true ? <button className="btnEliminarPets" onClick={handleDelete}></button> :    
              user && (mail === userMail)? null : 
@@ -70,6 +80,7 @@ function handleDelete(){
              <> <button className="btnFavEliminarHome" onClick={handleDeleteFavHome}/> </> : 
              <> <button className="btnFavHome" onClick={handleFavoriteHome}/> </> 
        }
+      
       <img src={image} alt="foto" />
       <div className="txtCont">
         <div className="txtLeft">
@@ -115,8 +126,10 @@ function handleDelete(){
           <span>More info</span>
         </div>
       </Link>
-    </div>
-  );
+  </div> }
+  </>
+
+);
 }
 
 export default Cards;

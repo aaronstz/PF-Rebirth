@@ -15,7 +15,7 @@ const MyAdoption = () => {
         <div className="AdoptaRow">
           <div className="AdoptacardLeftPhoto">
             <div class="imgAdopt">
-              <img src={image} alt="Pet" class="img" />
+              <img src={image} alt="Pet" className="img" />
             </div>
           </div>
           <div className="AdoptacardLeft">
@@ -40,7 +40,7 @@ const MyAdoption = () => {
         <div className="AdoptaRow">
           <div className="AdoptacardLeftPhoto">
             <div class="imgAdopt">
-              <img src={image} alt="Pet" class="img" />
+              <img src={image} alt="Pet" className="img" />
             </div>
           </div>
           <div className="AdoptacardLeft">

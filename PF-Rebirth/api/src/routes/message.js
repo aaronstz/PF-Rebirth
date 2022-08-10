@@ -50,7 +50,7 @@ router.get("/chats", async (req, res, next) => {
         },
         {
           model:Pets,
-          attributes:["name","image","description","size","race","age","location","gender"]
+          attributes:["name","image","description","size","race","age","location","gender", "id"]
         }
 
       ],

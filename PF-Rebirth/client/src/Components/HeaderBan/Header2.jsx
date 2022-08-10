@@ -27,7 +27,7 @@ function Header2({ type, setPage, current }) {
         </div>
         <div className="header-buttons">
           <div className="header-team">
-            <button class="btn-headerTeam">
+            <button className="btn-headerTeam">
               <img className="marginImage2" src={botBanner} alt="botonTeam" />
             </button>
           </div>

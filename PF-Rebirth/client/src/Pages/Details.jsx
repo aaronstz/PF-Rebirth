@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"; // warnings-> useLocation  NavLink
 import {
@@ -60,6 +61,7 @@ function Details() {
     if (user) {
       dispatch(getUserId(mail));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleFavorite() {

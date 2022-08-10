@@ -67,7 +67,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="nav-item">
-                <a href=" " className="nav-link pl-0">
+                <a href=" " className="nav-item2">
                   <img src={socials} alt="Socials" className="socials" />
                 </a>
               </li>
