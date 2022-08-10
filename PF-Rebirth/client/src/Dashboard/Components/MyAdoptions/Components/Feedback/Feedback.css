@@ -28,6 +28,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: left;
+  margin-bottom: 3rem;
 }
 
 .RowStarsRate {
@@ -41,7 +42,11 @@
   display: flex;
   flex-direction: column;
   height: 1rem;
-  margin-top: 1rem;
+}
+
+.RowUploadPic img {
+  max-height: 100px;
+  width: auto;
 }
 
 .RowFeedCenter {
