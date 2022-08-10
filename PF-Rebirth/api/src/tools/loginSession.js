@@ -21,7 +21,7 @@ async function infoToPost(request){
     try {
         sendEmailConfirmation(userInformation);
     } catch (error) {
-        console.log(error)
+        res.send(error)
     }
 }
 

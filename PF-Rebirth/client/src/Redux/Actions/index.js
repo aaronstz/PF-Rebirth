@@ -13,7 +13,7 @@ import {
   LOGOUT_USER,
   NO_FILTER_PETS,
   POST_MESSAGE,
-  PUT_VISTO,
+  // PUT_VISTO, -> warning
   SAVE_ADOPTION_ID,
   FAVORITES,
   DELETE_FAVORITES,
@@ -25,18 +25,22 @@ import {
   USER_RESTORE,
   GET_USERNAME,
   MAKE_ADMIN,
+
   POST_SUPPORT_FORM,
   GET_NAMES,
   CREA_UPDATE_NOTIFICATION,
   VISTO_NOTIFICATION,
-  NOTIFICATION
+  NOTIFICATION,
+
+  // POST_SUPPORT_FORM, -> warning
+  GET_NAMES
+
 } from "./actionTypes";
 
 const SERVER = "http://localhost:3001";
 
 export function saveFavorites(arrayFavorites){
   return async function(dispatch){
-    console.log('arrayFavorites :>> ', arrayFavorites);
     try {
       return dispatch({
         type : "SAVE_FAVORITES",
@@ -109,7 +113,6 @@ export function GetNotification(email){
 export function pruebasDeFiltrado(name){
   return async function(dispatch){
     try {
-      console.log('Name :>> ', name);
       const { data } = await axios.get(`${SERVER}/by_name?name=${name}`)
       return dispatch({
         type : "PRUEBA",
@@ -126,7 +129,6 @@ export function switchHomeView(type){
     const { data } = !type ?
         await axios.get(`${SERVER}/by_type`) :
         await axios.get(`${SERVER}/by_type?type=${type}`)
-    console.log('data :>> ', data);
     const pets = data.data
     try {
       return dispatch({
@@ -134,7 +136,7 @@ export function switchHomeView(type){
         payload : pets
       })
     } catch (error) {
-      console.log('error :>> ', error);
+      return error 
     }
   }
 }
@@ -211,7 +213,7 @@ export function putVisto(mail, adoptionId) {
   return async function (dispatch) {
     try {
       console.log(mail, adoptionId);
-      const json = await axios.put(`${SERVER}/message/visto`, {
+      await axios.put(`${SERVER}/message/visto`, {
         mail: mail,
         adoptionId: adoptionId,
       });
@@ -394,7 +396,7 @@ export function postUser(payload) {
 export function deleteAdoption(id) {
   return async function dispatch() {
     try {
-      const json = await axios.patch(`${SERVER}/adoption/${id}`);
+      await axios.patch(`${SERVER}/adoption/${id}`);
       return dispatch({
         type: "DELETE_ADOPTION",
       });
@@ -621,7 +623,7 @@ export function getFavs(mail){
         payload: json.data,
       });
     } catch (error) {
-      // await console.log(error)
+      console.log(error)
     }
   };
 }

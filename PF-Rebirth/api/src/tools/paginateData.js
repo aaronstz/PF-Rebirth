@@ -9,7 +9,6 @@ const getPagination = (page, size) => {
 
 const getPagingData = (data, page, limit) => {
     const { count: totalItems, rows: pets } = data;
-    console.log('pets :>> ', pets);
     const currentPage = page ? +page : 0;
     const totalPages = Math.ceil(totalItems / limit);
     return { totalItems, pets, totalPages, currentPage };

@@ -6,8 +6,6 @@ export default function FilterbarSelect({ filters, setFilters }) {
 
   const { name, location, gender, size } = filters;
 
-  // console.log('filters :>> ', filters)
-
   function handleFilterByGender(e) {
     e.preventDefault();
     let newGender = gender.filter((g) => g !== e.target.id);

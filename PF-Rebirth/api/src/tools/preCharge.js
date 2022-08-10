@@ -28,7 +28,7 @@ const getPets = async () => {
     }
     catch (error) {
   } 
-    console.log("Error" + error);
+    res.send(error)
   }
 
 module.exports = {
