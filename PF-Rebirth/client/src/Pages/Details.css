@@ -54,6 +54,15 @@
   text-transform: capitalize;
 }
 
+.dtl-cardLeft .mail {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-align: left;
+  margin-bottom: 10pt;
+  vertical-align: text-bottom;
+  font-weight: bold;
+  text-decoration: none;
+}
 .dtl-cardLeft .breed {
   font-size: 1.5rem;
   color: var(--text-color);

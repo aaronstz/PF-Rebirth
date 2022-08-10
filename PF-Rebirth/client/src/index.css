@@ -71,6 +71,12 @@ body.dark {
   --shadow: var(--grey3);
 }
 
+.notFound-img{
+  width:100%;
+  height:100%;
+  margin-top:5rem;
+}
+
 .boxWrap {
   position: relative;
   display: flex;
@@ -78,7 +84,7 @@ body.dark {
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  height: 75rem;
+  height: fit-content;
   margin-bottom: 5%;
   animation: fade-in 1.5s forwards;
 }

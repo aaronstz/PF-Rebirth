@@ -39,7 +39,7 @@ router.put("/addFavs/:mail", async(req, res) =>{
     })
    return res.status(200).send(favUpdate)
   } catch (error) {
-    console.log(error)
+    res.send(error)
   }
 })
 
@@ -59,7 +59,7 @@ router.put("/deleteFavs/:mail", async(req, res) =>{
     })
    return res.status(200).send(favUpdate)
   } catch (error) {
-    console.log(error)
+    res.send(error)
   }
 })
 

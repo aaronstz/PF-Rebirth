@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react"; // warning-> { useEffect, useState }
 import "./Accept-Reject.css";
 import { useDispatch, useSelector } from "react-redux";
-import image from "../../../../../Assets/fotoPet1.png";
+// import image from "../../../../../Assets/fotoPet1.png"; warning
 import { deleteAdoption, getChat } from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,6 @@ const AcceptReject = () => {
 
   function handleClick(adoptionId) {
     dispatch(deleteAdoption(adoptionId));
-    console.log(adoptionId);
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
 
@@ -34,7 +33,7 @@ const AcceptReject = () => {
           if (datos.owner.mail === mail) {
             return (
               <div className="mainDashContACC">
-                <div className="AdoptContainer">
+                
                   <div>
                     <div class="imgFav">
                       <img
@@ -44,6 +43,7 @@ const AcceptReject = () => {
                       />
                     </div>
                   </div>
+                  <div className="AdoptContainer">  
                   <div>
                     <span>
                       Name: {datos.adopter.name} {datos.adopter.lastName}
@@ -58,7 +58,11 @@ const AcceptReject = () => {
                     <span>Other pets: {datos.otherpets}</span>
                     <br />
                     <span>Phone: {datos.phone}</span>
-                    <span>idPet : {datos.petId}</span>
+
+
+                    <br />
+                    <span>Comments:{datos.comments}</span>
+
                   </div>
                 </div>
                 <div className="btnRowAdopt">
@@ -83,12 +87,13 @@ const AcceptReject = () => {
           } else {
             return (
               <div className="mainDashContACC">
-                <div className="AdoptContainer">
+               
                   <div>
                     <div class="imgFav">
                       <img src={datos.pet.image} alt="Pet" class="img" />
                     </div>
                   </div>
+                <div className="AdoptContainer">
                   <div className="datos">
                     <span>Name: {datos.pet.name}</span>
                     <br />
@@ -106,6 +111,7 @@ const AcceptReject = () => {
                   <div className="description">
                     <span>Description: {datos.pet.description}</span>
                   </div>
+                </div>
                   <div className="btnRowAdopt">
                     <button
                       class="MAdoCanbutton"
@@ -115,8 +121,8 @@ const AcceptReject = () => {
                     >
                       <span>Cancel</span>
                     </button>
-                  </div>
                 </div>
+                
               </div>
             );
           }

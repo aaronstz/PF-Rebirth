@@ -10,19 +10,13 @@
     overflow: hidden;
 }
 
-.containerLand img {
-    width: 66%;
-}
-
-
 .wrapperLeftLand {
-    width: 49%;
+    width: fit-content;
     display: flex;
-    flex-direction: column;
-    border:none;
-    background:transparent;
-    text-align: right;
-    margin-right: 1%;
+    border: none;
+    background: transparent;
+    justify-content: right;
+    padding-left: 10px;
 }
 
 .wrapperLeftLand img {
@@ -30,13 +24,12 @@
 }
 
 .wrapperRightLand {
-    width: 49%;
+    width: fit-content;
     display: flex;
-    flex-direction: column;
-    border:none;
-    background:transparent;
-    text-align: left;
-    margin-left: 1%;
+    border: none;
+    background: transparent;
+    justify-content: left;
+    padding-left: 10px;
 }
 
 .wrapperRightLand img {
@@ -73,52 +66,53 @@
     font-family: 'Red Hat Display';
 }
 
-@media only screen and (max-width: 992px) {
-    .containerLand {
-        display: block;
-        flex-direction: column;
-        flex-wrap: wrap;
-        margin-top: 12rem;
-    }
-
-    .containerLand img {
-        width: 33%;
-    }
-
-    .wrapperLeftLand img {
-        width: 66%;
-    }
-
-    .wrapperLeftRight img {
-        width: 66%;
-    }
-
-    .wrapperLeftLand {
-        width: 100%;
-        display: block;
-        text-align: center;
-    }
-
-    .wrapperRightLand {
-        width: 100%;
-        display: block;
-        text-align: center;
-    }
+.centerBtonImg {
+    text-align: center;
 }
 
-@media only screen and (max-width: 1068px) {
+
+@media only screen and (max-width: 1100px) {
     .wrapperLeftLand img {
-        width: 40%;
+        width: 100%;
     }
 
     .wrapperRightLand img {
-        width: 40%;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .wrapperLeftLand {
+        width: fit-content;
+        display: flex;
+        border: none;
+        background: transparent;
+        justify-content: center;
+    }
+
+    .wrapperLeftLand img {
+        width: 60%;
+
+    }
+
+    .wrapperRightLand {
+        width: fit-content;
+        display: flex;
+        border: none;
+        background: transparent;
+        justify-content: center;
+    }
+
+    .wrapperRightLand img {
+        width: 60%;
+
     }
 }
 
 @media only screen and (max-width: 540px) {
     .wrapperLeftLand img {
         width: 33%;
+
     }
 
     .wrapperRightLand img {

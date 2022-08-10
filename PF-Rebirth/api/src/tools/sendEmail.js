@@ -23,10 +23,8 @@ const sendEmailConfirmation = (userInformation) => {
 
   transporter.sendMail(mailOption, (error, info) => {
     if (error) {
-      // console.log(error.message)
       return error.message;
     } else {
-      // console.log(body.mail)
       return body.mail
     }
   });

@@ -15,7 +15,9 @@ export default function MercadoPago() {
   let { id } = useParams();
 
   function handleChange(e){
-    if(/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/.test(Number(e.target.value))){
+    // if(/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/.test(Number(e.target.value))){ warning->eliminé dos barras
+
+    if(/^[+]?([0-9]+(?:[.][0-9]*)?|.[0-9]+)$/.test(Number(e.target.value))){
       setDonacion({
         ...donacion,
         [e.target.name] : Number(e.target.value)
