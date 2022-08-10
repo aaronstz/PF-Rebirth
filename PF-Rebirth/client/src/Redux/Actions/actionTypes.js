@@ -49,3 +49,4 @@ export const NOTIFICATION = "NOTIFICATION";
 export const DELETE_POST = "DELETE_POST";
 export const SAVE_ID = "SAVE_ID";
 export const SUCCESS_STORY = "SUCCESS_STORY";
+export const FUL_ADOPTION = "FUL_ADOPTION";
