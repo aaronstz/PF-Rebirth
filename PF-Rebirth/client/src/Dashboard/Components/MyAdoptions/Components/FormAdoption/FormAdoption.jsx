@@ -3,14 +3,12 @@ import React, { useEffect, useState } from "react";
 import "./FormAdoption.css";
 import background from "../../../../../Assets/loginMain2.png";
 import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
-import Footer from "../../../../../Components/Footer/Footer";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails, postAdoption } from "../../../../../Redux/Actions/index";
 import swal from "sweetalert";
 
 const FormAdoption = () => {
-
   let { id } = useParams();
   let dispatch = useDispatch();
   const { userMail } = useSelector((state) => state.detail);
@@ -46,7 +44,6 @@ const FormAdoption = () => {
     address: " ",
     phone: " ",
   });
-
 
   function handleChange(e) {
     let field = e.target.name;
@@ -98,125 +95,128 @@ const FormAdoption = () => {
   return (
     <>
       <DashNavBar />
-      <div className="fado-container">
-        <div className="fado-wrapper">
-          <div className="fado-wrapperLeft">
-            <h2>Adoption form</h2>
-            <form method="post" onSubmit={(e) => handleSubmit(e)}>
-              <div className="form-groupAdop">
-                <label htmlFor="gender">Gender:</label>
-                <select
-                  name="gender"
-                  className="form-controlSm"
-                  onChange={(e) => handleChange(e)}
-                  value={input.gender}
-                >
-                  <option selected>Choose...</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="not">I prefer not to say</option>
-                </select>
-                <div className="addinvalid-fa">
-                  {adoptError && adoptError.gender ? adoptError.gender : null}
+      <div className="DashcontainerMain">
+        <div className="fado-container">
+          <div className="fado-wrapper">
+            <div className="fado-wrapperLeft">
+              <h2>Adoption form</h2>
+              <form method="post" onSubmit={(e) => handleSubmit(e)}>
+                <div className="form-groupAdop">
+                  <label htmlFor="gender">Gender:</label>
+                  <select
+                    name="gender"
+                    className="form-controlSm"
+                    onChange={(e) => handleChange(e)}
+                    value={input.gender}
+                  >
+                    <option selected>Choose...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="not">I prefer not to say</option>
+                  </select>
+                  <div className="addinvalid-fa">
+                    {adoptError && adoptError.gender ? adoptError.gender : null}
+                  </div>
                 </div>
-              </div>
-              <div className="form-groupAdop">
-                <label htmlFor="">* Age:</label>
-                <input
-                  id=""
-                  type="number"
-                  className="form-controlSm"
-                  name="age"
-                  value={input.age}
-                  required
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <div className="addinvalid-fa">
-                  {adoptError && adoptError.age ? adoptError.age : null}
+                <div className="form-groupAdop">
+                  <label htmlFor="">* Age:</label>
+                  <input
+                    id=""
+                    type="number"
+                    className="form-controlSm"
+                    name="age"
+                    value={input.age}
+                    required
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <div className="addinvalid-fa">
+                    {adoptError && adoptError.age ? adoptError.age : null}
+                  </div>
                 </div>
-              </div>
-              <div className="form-groupAdop">
-                <label htmlFor="">Phone:</label>
-                <input
-                  id=""
-                  type="text"
-                  className="form-controlSm"
-                  name="phone"
-                  value={input.phone}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <div className="addinvalid-fa">
-                  {adoptError && adoptError.phone ? adoptError.phone : null}
+                <div className="form-groupAdop">
+                  <label htmlFor="">Phone:</label>
+                  <input
+                    id=""
+                    type="text"
+                    className="form-controlSm"
+                    name="phone"
+                    value={input.phone}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <div className="addinvalid-fa">
+                    {adoptError && adoptError.phone ? adoptError.phone : null}
+                  </div>
                 </div>
-              </div>
-              <div className="form-groupAdop">
-                <label htmlFor="">Address:</label>
-                <input
-                  id=""
-                  type="text"
-                  className="form-controlSm"
-                  name="address"
-                  value={input.address}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <div className="addinvalid-fa">
-                  {adoptError && adoptError.address ? adoptError.address : null}
+                <div className="form-groupAdop">
+                  <label htmlFor="">Address:</label>
+                  <input
+                    id=""
+                    type="text"
+                    className="form-controlSm"
+                    name="address"
+                    value={input.address}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <div className="addinvalid-fa">
+                    {adoptError && adoptError.address
+                      ? adoptError.address
+                      : null}
+                  </div>
                 </div>
-              </div>
-              <div className="form-groupAdop">
-                <label htmlFor="">Other pets:</label>
-                <input
-                  id=""
-                  type="text"
-                  className="form-controlSm"
-                  name="others"
-                  value={input.others}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <div className="addinvalid-fa">
-                  {/* {errors && errors.race ? errors.race : null} */}
+                <div className="form-groupAdop">
+                  <label htmlFor="">Other pets:</label>
+                  <input
+                    id=""
+                    type="text"
+                    className="form-controlSm"
+                    name="others"
+                    value={input.others}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <div className="addinvalid-fa">
+                    {/* {errors && errors.race ? errors.race : null} */}
+                  </div>
                 </div>
-              </div>
-              <div className="form-groupAdop">
-                <label htmlFor="">Comments:</label>
-                <textarea
-                  id=""
-                  type="text"
-                  className="form-controlSm"
-                  name="comments"
-                  value={input.comments}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-                <div className="addinvalid-fa">
-                  {/* {errors && errors.race ? errors.race : null} */}
+                <div className="form-groupAdop">
+                  <label htmlFor="">Comments:</label>
+                  <textarea
+                    id=""
+                    type="text"
+                    className="form-controlSm"
+                    name="comments"
+                    value={input.comments}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  <div className="addinvalid-fa">
+                    {/* {errors && errors.race ? errors.race : null} */}
+                  </div>
                 </div>
-              </div>
-              <div className="addform-submit">
-                <button type="submit" className="btn btn-primary addbtnAdop">
-                  CREATE
-                </button>
-              </div>
-            </form>
-          </div>
+                <div className="addform-submit">
+                  <button type="submit" className="btn btn-primary addbtnAdop">
+                    CREATE
+                  </button>
+                </div>
+              </form>
+            </div>
 
-          <div className="fado-wrapperRight">
-            <div className="addimageContainer">
-              <img src={background} alt="pet" className="addImage" />
+            <div className="fado-wrapperRight">
+              <div className="addimageContainer">
+                <img src={background} alt="pet" className="addImage" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
