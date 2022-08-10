@@ -1,6 +1,11 @@
 @keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .lcard {
@@ -57,6 +62,7 @@
   cursor: pointer;
   background: url(../../Assets/botonFAV_active.png);
 }
+
 .btnFavEliminarHome {
   z-index: 100;
   border: none;
@@ -68,6 +74,7 @@
   cursor: pointer;
   background: url(../../Assets/botonFAV_active.png);
 }
+
 .btnEliminarPets {
   z-index: 100;
   border: none;
@@ -199,7 +206,7 @@
   padding-right: 30px;
 }
 
-.lcard .size .icoSize  img {
+.lcard .size .icoSize img {
   position: absolute;
   width: 25px;
   height: 25px;
@@ -207,6 +214,7 @@
   top: 375px;
   color: var(--white);
 }
+
 /* .lcard .size .icoSize {
   position: absolute;
   border-left: solid 1px var(--white);
@@ -252,6 +260,8 @@
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
+  position: absolute;
+  bottom: 3px;
 }
 
 .lbutton:hover {
