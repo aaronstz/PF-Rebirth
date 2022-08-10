@@ -15,6 +15,11 @@ export default function LateralBar() {
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
 
+
+
+  console.log(mail);
+
+
   if(infoStorage) mail = user.mail;
 
 
@@ -30,6 +35,7 @@ export default function LateralBar() {
   return (
     <>
       {adoptChat.map((adChat) => {
+        console.log(adoptChat);
         return (
           <div
             onClick={() => handleClick(adChat.id)}

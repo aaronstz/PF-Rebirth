@@ -8,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 import Swalert from "../SweetAlert/SweetAlert";
  
 const AcceptReject = () => {
+
   const dispatch = useDispatch();
   let mail=""
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
-  if(infoStorage) mail = user.mail;
+  if (infoStorage) mail = user.mail;
 
   function handleClick(adoptionId, e) {
     dispatch(deleteAdoption(adoptionId));
@@ -33,7 +34,7 @@ const AcceptReject = () => {
   }
 
 
-  let navigate= useNavigate()
+  let navigate = useNavigate();
 
 
   return (
@@ -41,6 +42,7 @@ const AcceptReject = () => {
       {adoptChat
         .filter((adChat) => adChat.id === adoptionId)
         .map((datos) => {
+          console.log(adoptChat);
           if (datos.owner.mail === mail) {
         
             return (
@@ -69,6 +71,8 @@ const AcceptReject = () => {
                     <span>Other pets: {datos.otherpets}</span>
                     <br />
                     <span>Phone: {datos.phone}</span>
+                    <br />
+                    <span>Comments:{datos.comments}</span>
                   </div>
                 </div>
                 <div className="btnRowAdopt">
