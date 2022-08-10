@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux'
 import "./Feedback.css";
 import { Widget } from "@uploadcare/react-widget";
 import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
@@ -18,34 +19,36 @@ function Feedback() {
   }
 
   let { pet } = useParams();
-  const [input, setInput] = useState({ text: "", stars: 0, image: "" });
+  const dispatch = useDispatch()
+  const [input, setInput] = useState({ testimonio: "", rating: 0, imageOfPet: "", nameOfPet: user.name });
 
   function handleText(e) {
-    setInput({ ...input, text: e.target.value });
+    setInput({ ...input, testimonio: e.target.value });
   }
 
   function handleStars(e) {
-    setInput({ ...input, stars: e.target.value });
+    setInput({ ...input, rating: e.target.value });
   }
 
   function handleImage(file) {
     setInput({
       ...input,
-      image: `https://ucarecdn.com/${file.uuid}/`,
+      imageOfPet: `https://ucarecdn.com/${file.uuid}/`,
     });
   }
 
+  
   function HandleSuccessStory(e) {
     e.preventDefault();
-
+    
     if (input.text === "" || input.stars === 0 || input.image === "") {
       swal(
         "complete the fields",
         "choose a image and rate the page",
         "warning"
-      );
-    } else {
-      successStory(pet, input.image, input.stars, input.text, mail);
+        );
+      } else {
+        dispatch(successStory(input));
       swal("Thank you", "", "success");
     }
   }
@@ -144,8 +147,8 @@ function Feedback() {
                 </div>
               </div>
               <div className="RowUploadPic">
-                {input.image && (
-                  <img src={input.image} alt={"select another one"} />
+                {input.imageOfPet && (
+                  <img src={input.imageOfPet} alt={"select another one"} />
                 )}
                 <span>Upload a picture of your new family</span>
                 <div className="mx-auto">

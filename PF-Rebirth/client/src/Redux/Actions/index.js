@@ -40,6 +40,22 @@ import {
 
 const { REACT_APP_SERVER }  = process.env;
 
+export function getTestimonials(){
+  return async function(dispatch){
+    try {
+      const data = await axios(`${SERVER}/successstories`)
+      return dispatch({
+        type:'GET_TESTIMONIALS',
+        payload: data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+
+
 export function saveFavorites(arrayFavorites) {
   return async function (dispatch) {
     try {
@@ -746,17 +762,13 @@ export function updatePetsViews(id) {
   };
 }
 
-export function successStory(
-  nameOfPet,
-  imageOfPet,
-  rating,
-  testimonio,
-  userId
-) {
+export function successStory(payload) {
+  console.log(payload)
   return async (dispatch) => {
     try {
-      let payload = { nameOfPet, imageOfPet, rating, testimonio, userId };
-      const json = await axios.post(`${REACT_APP_SERVER}/successStories`, payload);
+
+      const json = await axios.post(`${REACT_APP_SERVER}/successstories`, payload);
+
       if (json.status === 201) await swal("Thank You", "", "success");
     } catch (error) {
       console.log(`Error creando ${error}`);

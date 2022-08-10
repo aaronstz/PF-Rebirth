@@ -7,8 +7,9 @@
     
 }
 .carousel2 .testimonial-profile{
-    width: 100px;
-    border-radius: 50%;
+    width: 20%;
+    max-height:6.5rem;
+    border-radius: 40%;
     border: 2px solid var(--greylight);
    }
 
