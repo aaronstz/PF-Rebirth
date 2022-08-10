@@ -11,7 +11,7 @@ import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../Redux/Actions";
 
-function Navbar({filters, setFilters}) {
+function Navbar({ filters, setFilters, notificacion }) {
   const activeUser = useSelector((state) => state.activeUser);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -35,18 +35,15 @@ function Navbar({filters, setFilters}) {
   let imgProfileSrc = imageUrl ? imageUrl : vector;
   let classProfileImage = imageUrl ? "googleImg" : "profile";
 
-
-  // console.log(data)
-
-
   function handleReturnToHome(e) {
-    navigate("/home")
-    localStorage.setItem("type", JSON.stringify(""))
-    setFilters&&setFilters({
-      ...filters,
-      type : [],
-      page : 0
-    })
+    navigate("/home");
+    localStorage.setItem("type", JSON.stringify(""));
+    setFilters &&
+      setFilters({
+        ...filters,
+        type: [],
+        page: 0,
+      });
   }
 
   const logOut = async (e) => {
@@ -78,9 +75,14 @@ function Navbar({filters, setFilters}) {
         // to={types.length ? "/home?type=" + types[0] : "/home"}
         className="link-navbar"
       >
-        <img src={logo} alt="logo" className="logo" id="home"/>
+        <img src={logo} alt="logo" className="logo" id="home" />
       </button>
       <div className="iconsContainer">
+        {!data ? null : (
+          <div className="item">
+            <NavLink to="/request" className="link-navbar">Requests: {notificacion}</NavLink>
+          </div>
+        )}
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
           <NavLink
@@ -90,18 +92,17 @@ function Navbar({filters, setFilters}) {
             <span>New Pet</span>
           </NavLink>
         </div>
-        
-        <div className="item">
-
-          <div>
-                <img src={vector2} alt="vector2" className="icons" />
-                <NavLink
-                to="/favorites"
-                className="link-navbar">
+        {data && data.isAdmin ? null : (
+          <div className="item">
+            <div>
+              <img src={vector2} alt="vector2" className="icons" />
+              <NavLink to="/favorites" className="link-navbar">
                 <span>My favorites</span>
-                </NavLink>
-                </div>
-        </div>
+              </NavLink>
+            </div>
+          </div>
+        )}
+
         <div className="item">
           <DarkMode />
         </div>
