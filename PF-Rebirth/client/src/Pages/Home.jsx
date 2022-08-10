@@ -8,7 +8,7 @@ import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import Testimonials from "../Components/Testimonials/Testimonials.jsx";
 import "../index.css";
-import { getLocation, getFavs, paginateData } from "../Redux/Actions/index.js";
+import { getLocation, getFavs, paginateData, getChat } from "../Redux/Actions/index.js";
 import NotFound from '../Components/NotFound/NotFound'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -53,6 +53,7 @@ function Home() {
   //STATES TO USE THE APP
   //LOCAL STATES
   //GLOBAL STATE THAT CONTROLS THE RENDER OF THE HOME PAGE
+  const aNotif = useSelector(state => state.adoptionChat)
   const { data: pets, isLoading } = useFetchPets(filters);
   const megaPets = useSelector((state) => state.prueba);
   //STATE THAT CONTROL THE PAGINATE OF THE DATA
@@ -62,6 +63,11 @@ function Home() {
   const [currentPageNumber, setCurrentPageNumber] = useState(
     Number(currentPage)
   );
+
+  useEffect(() => {
+    dispatch(getChat(mail));
+  }, [dispatch, mail]);
+
 
   useEffect(() => {
     dispatch(paginateData(pets));
@@ -191,7 +197,7 @@ function Home() {
 
   return (
     <div>
-      <Navbar filters={filters} setFilters={setFilters} />
+      <Navbar filters={filters} setFilters={setFilters} notificacion={aNotif.length}/>
       <Container>
         <Header filters={filters} setFilters={setFilters} />
         <FiltersBar
