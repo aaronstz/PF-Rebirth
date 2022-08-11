@@ -4,7 +4,7 @@ import "./Feedback.css";
 import { Widget } from "@uploadcare/react-widget";
 import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
 import { successStory } from "../../../../../Redux/Actions";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import swal from "sweetalert";
 
 function Feedback() {
@@ -40,6 +40,12 @@ function Feedback() {
       ...input,
       imageOfPet: `https://ucarecdn.com/${file.uuid}/`,
     });
+  }
+  const navigate = useNavigate()
+  function onClickSend(){
+    setTimeout(function(){
+      navigate("/home")
+  }, 3000);
   }
 
   function HandleSuccessStory(e) {
@@ -174,6 +180,7 @@ function Feedback() {
                 <button
                   type="submit"
                   className="btn btn-primary btn-block mb-4"
+                  onClick={onClickSend}
                 >
                   SEND
                 </button>
