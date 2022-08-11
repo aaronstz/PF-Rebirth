@@ -30,11 +30,12 @@
   margin: 0 10px;
 }
 
-.dash-pic{
+.dash-pic {
   position: relative;
   border-radius: 50%;
   width: 35px;
-  max-height: 35px;
+  height: auto;
+  background: fill;
 }
 
 
