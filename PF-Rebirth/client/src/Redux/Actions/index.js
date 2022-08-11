@@ -199,7 +199,7 @@ export function getMessage(adoptionId) {
       });
     } catch (error) {
       console.log(error);
-      alert("No user found");
+    
     }
   };
 }
@@ -216,7 +216,7 @@ export function getChat(user) {
       });
     } catch (error) {
       console.log(error);
-      alert("No user found");
+      
     }
   };
 }
@@ -252,7 +252,7 @@ export function postMessage(payload) {
       });
     } catch (error) {
       console.log(error);
-      alert("No user found");
+      
     }
   };
 }
@@ -284,7 +284,7 @@ export function getOwnerAdoption(id) {
       });
     } catch (error) {
       console.log(error);
-      alert("No user found");
+      
     }
   };
 }
@@ -299,7 +299,7 @@ export function getAdopterAdoption(id) {
       });
     } catch (error) {
       console.log(error);
-      alert("No user found");
+      
     }
   };
 }
@@ -478,9 +478,9 @@ export function getPetFilters(type) {
 export function getPetNames(searchName) {
   return async function (dispatch) {
     try {
-      console.log('pathSearchName :>> ', searchName);
+      
       const { data } = await axios.get(`${REACT_APP_SERVER}/?name=${searchName}`)
-      console.log('data :>> ', data);
+      
 
       return dispatch({
         type: GET_NAMES,
@@ -512,7 +512,7 @@ export function getDetails(id) {
       });
     } catch (error) {
       console.log(error);
-      alert("No pet found");
+      
     }
   };
 }
@@ -547,7 +547,7 @@ export function getLocation(type) {
       });
     } catch (error) {
       console.log(error);
-      alert("No location found");
+     
     }
   };
 }
@@ -717,8 +717,7 @@ export function makeAdmin(mail) {
   return async function (dispatch) {
     try {
       const json = await axios.put(`${REACT_APP_SERVER}/user/adm/${mail}`);
-      console.log('json', json)
-      return dispatch({
+        return dispatch({
         type: MAKE_ADMIN,
         payload: json.data,
       });
@@ -778,7 +777,7 @@ export function updatePetsViews(id) {
 }
 
 export function successStory(payload) {
-  console.log(payload)
+  
   return async (dispatch) => {
     try {
 

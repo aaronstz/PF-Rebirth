@@ -10,7 +10,7 @@ export default function Testimonials() {
   const testimonials = useSelector(state => state.testimonials)
   const dispatch = useDispatch();
 
-  console.log(testimonials.data)
+  
 
   useEffect(() => {
     dispatch(getTestimonials());

@@ -112,7 +112,7 @@ function FiltersBar({
               Clear
             </Button>
           </div>
-          <div className="col col-lg-2">
+          <div className="row mt-3 mb-3">
             <FilterbarSelect filters={filters} setFilters={setFilters} />
           </div>
         </div>

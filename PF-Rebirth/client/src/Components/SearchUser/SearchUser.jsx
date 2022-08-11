@@ -52,20 +52,20 @@ export default function SearchUser() {
         </div>
         <div className="break"></div>
         <button
-          className="mt-2 mx-3 btn-pink btn btn-primary2"
+          className="mt-2 mx-1 btn-pink btn btn-primary2"
           type="submit"
           onClick={handleSubmit}
         >
           All Users
         </button>
         <Link to={"/users/banned"}>
-          <button className="mt-2 mx-3 btn-pink btn btn-primary2">
+          <button className="mt-2 mx-1 btn-pink btn btn-primary2">
             Banned
           </button>
         </Link>
         {user && user.userName === rebirthApp ? (
           <Link to={"/admin"}>
-            <button className="mt-2 mx-3 btn-pink btn btn-primary">
+            <button className="mt-2 mx-1 btn-pink btn btn-primary">
               Go to Admins
             </button>
           </Link>
