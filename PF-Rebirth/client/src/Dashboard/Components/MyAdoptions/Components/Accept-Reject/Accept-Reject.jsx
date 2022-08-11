@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteAdoption, deletePost,getChat} from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 import Swalert from "../SweetAlert/SweetAlert";
+import { NavLink } from "react-router-dom";
  
 const AcceptReject = () => {
 
@@ -28,7 +29,7 @@ const AcceptReject = () => {
   )
   
   function handleDeletePost(petId) {
-     window.open("/feedback?pet="+petId, "_self")
+    // window.open("/feedback?pet="+petId, "_self")
   }
 
   return (
@@ -36,8 +37,7 @@ const AcceptReject = () => {
       {adoptChat
         .filter((adChat) => adChat.id === adoptionId)
         .map((datos) => {
-         
-          if (datos.owner.mail === mail) {
+            if (datos.owner.mail === mail) {
         
             return (
               <div className="mainDashContACC">
@@ -69,6 +69,7 @@ const AcceptReject = () => {
                     <span>Comments:{datos.comments}</span>
                   </div>
                 </div>
+                {datos.state==="pending" &&
                 <div className="btnRowAdopt">
                   <button
                     className="MAdoCancbutton"
@@ -79,10 +80,21 @@ const AcceptReject = () => {
                   >
                     <span>Reject</span>
                   </button>
-                  <button onClick={() =>{Swalert(datos.pet.name,handleDeletePost)}} class="MAdoptbutton">
+                  <button onClick={() =>{Swalert(datos.pet.name,handleDeletePost,adoptionId)}} class="MAdoptbutton">
                     <span>Accept</span>
                   </button>
                 </div>
+          }
+          {datos.state==="fulfilled" &&
+          <div className="btnRowAdopt">
+            <NavLink to={"/feedback?pet="+datos.pet.name}>
+             <button  class="MAdoptbutton">
+            <span>Feedback</span>
+          </button>
+          </NavLink>
+        </div>
+          
+          }
               </div>
             );
           } else {
@@ -111,6 +123,8 @@ const AcceptReject = () => {
                   <div className="description">
                     <span>Description: {datos.pet.description}</span>
                   </div>
+
+                  {datos.state==="pending" &&
                   <div className="btnRowAdopt">
                     <button
                       className="MAdoCanbutton"
@@ -121,6 +135,17 @@ const AcceptReject = () => {
                       <span>Cancel</span>
                     </button>
                   </div>
+          }
+           {datos.state==="fulfilled" &&
+          <div className="btnRowAdopt">
+            <NavLink to={"/feedback?pet"+datos.pet.name}>
+             <button  class="MAdoptbutton">
+            <span>Feedback</span>
+          </button>
+          </NavLink>
+        </div>
+          
+          }
                 </div>
               </div>
             );

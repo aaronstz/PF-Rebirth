@@ -33,7 +33,9 @@ import {
   NOTIFICATION,
   DELETE_POST,
   SAVE_ID,
+  FUL_ADOPTION,
   ADOTION_HISTORY_ADMIN
+
 
   // POST_SUPPORT_FORM, -> warning
 } from "./actionTypes";
@@ -201,6 +203,9 @@ export function getMessage(adoptionId) {
     }
   };
 }
+
+
+
 export function getChat(user) {
   return async function (dispatch) {
     try {
@@ -215,6 +220,16 @@ export function getChat(user) {
     }
   };
 }
+
+export async function successAdoption(id) {
+     try {
+      await axios.patch(`${REACT_APP_SERVER}/adoption/success/${id}`);
+     
+    } catch (error) {
+      console.log(error);
+    }
+ }
+
 
 export function putVisto(mail, adoptionId) {
   return async function (dispatch) {

@@ -1,67 +1,87 @@
-.adoption-request{
+.adoption-request {
     display: flex;
     flex-direction: row;
-    padding:0px;
-    margin: 0px;
-    width: 100%;
-}
-.lateralbar{
-  min-width: 400px;
-  max-width: 400px;
-}
-.message-accept-reject{
-    width: 100%;
-     display: flex;
-    flex-direction: row;
-     padding-left: 25px;
-     justify-content: center;
-  }
-.messageboard{
-  width: 70%;
-  margin: auto;
-      
-}
-.menu-div{
-    display: flex;
-    
-    justify-content: flex-start;
-}
-.accept-reject{
-    width: 30%;
-}
-.hidden-sidebar{
-position: absolute;
-left:-400px;
-}
-.messageboard{
+    position: relative;
+    left: -75px;
     padding: 0px;
     margin: 0px;
-}
-@media screen and (max-width:1200px){
-.message-accept-reject{
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin:0px;
-    padding: 0px;
+    width: 100%;
 }
 
-.messageboard{
+.lateralbar {
+    min-width: 25%;
+    max-width: 25%;
+    position: relative;
+    top: 40px;
+}
+
+.message-accept-reject {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.messageboard {
     width: 100%;
     margin: auto;
-  }
- .accept-reject{
-    width: 400px;
+
 }
+
+.testRowCont {
+    width: 100%;
+    display: flex;
+    justify-content: left;
 }
-@media screen and (max-width: 500px){
-    .hidden-sidebar2{
+
+.menu-div {
+    position: relative;
+    top: 1px;
+    right: 25px;
+}
+
+.accept-reject {
+    width: 30%;
+}
+
+.hidden-sidebar {
+    position: absolute;
+    left: -500px;
+}
+
+.messageboard {
+    padding: 0px;
+    margin: 0px;
+}
+
+@media screen and (max-width:1200px) {
+    .message-accept-reject {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .messageboard {
+        width: 100%;
+        margin: auto;
+    }
+
+    .accept-reject {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .hidden-sidebar2 {
         position: absolute;
         background-color: #000000cf;
-        min-width: 500px;
-        max-width:500px;
+        min-width: 600px;
+        max-width: max-content;
         z-index: 10;
         height: 100%;
     }
-  
-}    
+
+}

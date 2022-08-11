@@ -9,7 +9,7 @@ import { getChat } from "../../../../../Redux/Actions"; //warning-> getMessage
 export default function MessageBoard() {
   let mail = "";
   const allMessages = useSelector((state) => state.message);
-
+  const adoptChat = useSelector((state) => state.adoptionChat);
   const dispatch = useDispatch();
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
@@ -22,7 +22,6 @@ export default function MessageBoard() {
       allMessages[0].adoption.ownerMail === mail
         ? allMessages[0].adoption.userMail
         : allMessages[0].adoption.ownerMail;
-        
   let chat = document.getElementsByClassName("container-lateral-bar").length;
   useEffect(() => {
     chat && dispatch(getChat(mail));
@@ -30,13 +29,15 @@ export default function MessageBoard() {
       chat &&
       setInterval(() => {
         dispatch(getChat(mail));
-      }, 10000);
+      }, 2000);
+
     setTimeout(() => {
       document.getElementsByClassName("container-lateral-bar").length &&
         document.getElementsByClassName("container-lateral-bar")[0].click();
     }, 500);
     return () => clearInterval(chatUpdate);
   }, [dispatch, chat, mail]);
+
   return (
     <React.Fragment>
       <div className="msg-container">

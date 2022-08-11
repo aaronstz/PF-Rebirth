@@ -21,6 +21,8 @@ export default function LateralBar() {
     dispatch(getChat(mail));
   }, [dispatch, mail]);
 
+
+
   function handleClick(adoptionId) {
     dispatch(getMessage(adoptionId));
     dispatch(saveAdoptionId(adoptionId));
@@ -28,8 +30,9 @@ export default function LateralBar() {
 
   return (
     <>
-      {adoptChat&&adoptChat?.map((adChat) => {
-        console.log(adChat)
+
+      {adoptChat && adoptChat.map((adChat) => {
+
         return (
           <div
             onClick={() => handleClick(adChat.id)}
