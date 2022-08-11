@@ -8,7 +8,7 @@ import {
 } from "../../../Redux/Actions/index.js";
 import UserDetail from "../../../Components/UserDetail/UserDetail";
 import SearchUser from "../../../Components/SearchUser/SearchUser";
-import NotFound from '../../../Components/NotFound/NotFound'
+import NotFound from "../../../Components/NotFound/NotFound";
 import DashNavBar from "../Dash-NavBar/Dash-NavBar";
 export default function DashUsers() {
   const dispatch = useDispatch();
@@ -32,37 +32,37 @@ export default function DashUsers() {
 
   return (
     <>
-      <DashNavBar/>
-      <div className="mainDashUser">
-        <div className="userTitulo">
-          <h3>USERS</h3>
-        </div>
+      <DashNavBar />
+      <div className="DashcontainerMain">
+        <div className="mainDashUser">
+          <div className="userTitulo">
+            <h3>USERS</h3>
+          </div>
 
-        <SearchUser />
-        {
-          !users.length ? (
+          <SearchUser />
+          {!users.length ? (
             <div className="notFound-user">
-            <NotFound/>
+              <NotFound />
             </div>
-          ):
-          <>
-          {users &&
-          users.map((u) => (
-            <UserDetail
-              key={Math.random()}
-              handleAdmin={handleAdmin}
-              handleDeleteUser={handleDeleteUser}
-              name={u.name}
-              lastName={u.lastName}
-              mail={u.mail}
-              image={u.image}
-              userName={u.userName}
-              isAdmin={u.isAdmin}
-            />
-          ))}
-          </>
-        }
-        
+          ) : (
+            <>
+              {users &&
+                users.map((u) => (
+                  <UserDetail
+                    key={Math.random()}
+                    handleAdmin={handleAdmin}
+                    handleDeleteUser={handleDeleteUser}
+                    name={u.name}
+                    lastName={u.lastName}
+                    mail={u.mail}
+                    image={u.image}
+                    userName={u.userName}
+                    isAdmin={u.isAdmin}
+                  />
+                ))}
+            </>
+          )}
+        </div>
       </div>
     </>
   );
