@@ -198,8 +198,7 @@ export function getMessage(adoptionId) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
-      alert("No user found");
+      return error;
     }
   };
 }
@@ -216,7 +215,6 @@ export function getChat(user) {
       });
     } catch (error) {
       console.log(error);
-      alert("No user found");
     }
   };
 }

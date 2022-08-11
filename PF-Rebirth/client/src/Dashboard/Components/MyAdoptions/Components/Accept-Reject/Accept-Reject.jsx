@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 const AcceptReject = () => {
 
   const dispatch = useDispatch();
-  let mail=""
+  let mail="";
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
   const infoStorage = localStorage.getItem("user");
@@ -28,8 +28,9 @@ const AcceptReject = () => {
     datos.petId
   )
   
-  function handleDeletePost(petId) {
-    // window.open("/feedback?pet="+petId, "_self")
+  function handleDeletePost() {
+    console.log(idPet)
+    dispatch((deletePost(idPet)));
   }
 
   return (
