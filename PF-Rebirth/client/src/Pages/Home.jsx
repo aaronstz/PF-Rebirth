@@ -73,7 +73,11 @@ function Home() {
   const [currentPageNumber, setCurrentPageNumber] = useState(
     Number(currentPage)
   );
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> a0ac8235da9185b1e047013914a89d18cf8a511e
   useEffect(() => {
     dispatch(getChat(mail));
   }, [dispatch, mail]);
@@ -178,8 +182,12 @@ function Home() {
     setFilters({
       ...filters,
       name: searchName,
+<<<<<<< HEAD
       page : pag
 
+=======
+      page: pag
+>>>>>>> a0ac8235da9185b1e047013914a89d18cf8a511e
     });
     setSearchName("");
   }

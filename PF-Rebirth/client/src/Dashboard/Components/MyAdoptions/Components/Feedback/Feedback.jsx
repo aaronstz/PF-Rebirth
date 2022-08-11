@@ -63,7 +63,7 @@ function Feedback() {
     }
   }
 
-  console.log(input.image);
+ 
   const longitud = "-64.26617114519884";
   const latitud = "-27.792642976806206";
   return (

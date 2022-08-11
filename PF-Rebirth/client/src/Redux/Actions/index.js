@@ -51,7 +51,7 @@ export function getTestimonials(){
         payload: data
       })
     } catch (error) {
-      console.log(error)
+      return error
     }
   }
 }
@@ -158,7 +158,7 @@ export function paginateData(json) {
         payload: json.data,
       });
     } catch (error) {
-      // console.log(error)
+      // return error
     }
   };
 }
@@ -214,7 +214,7 @@ export function getChat(user) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return error
     }
   };
 }
@@ -224,7 +224,7 @@ export async function successAdoption(id) {
       await axios.patch(`${REACT_APP_SERVER}/adoption/success/${id}`);
      
     } catch (error) {
-      console.log(error);
+      return error;
     }
  }
 
@@ -249,8 +249,8 @@ export function postMessage(payload) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
-      alert("No user found");
+      return error;
+      
     }
   };
 }
@@ -281,8 +281,8 @@ export function getOwnerAdoption(id) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
-      alert("No user found");
+      return error;
+      
     }
   };
 }
@@ -296,8 +296,8 @@ export function getAdopterAdoption(id) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
-      alert("No user found");
+      return error;
+      
     }
   };
 }
@@ -360,8 +360,7 @@ export function deleteUser(mail) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
-      alert("Could not delete user");
+      return error;
     }
   };
 }
@@ -417,7 +416,7 @@ export function deleteAdoption(id) {
         type: "DELETE_ADOPTION",
       });
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
@@ -476,16 +475,16 @@ export function getPetFilters(type) {
 export function getPetNames(searchName) {
   return async function (dispatch) {
     try {
-      console.log('pathSearchName :>> ', searchName);
+      
       const { data } = await axios.get(`${REACT_APP_SERVER}/?name=${searchName}`)
-      console.log('data :>> ', data);
+      
 
       return dispatch({
         type: GET_NAMES,
         payload: data,
       });
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
@@ -495,7 +494,7 @@ export function postPet(payload) {
     try {
       await axios.post(`${REACT_APP_SERVER}/pets`, payload);
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
@@ -509,8 +508,8 @@ export function getDetails(id) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
-      alert("No pet found");
+      return error;
+      
     }
   };
 }
@@ -526,8 +525,7 @@ export function deletePet(id) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
-      alert("Could not delete pet");
+      return error;
     }
   };
 }
@@ -544,8 +542,8 @@ export function getLocation(type) {
         payload: data.result,
       });
     } catch (error) {
-      console.log(error);
-      alert("No location found");
+      return error;
+     
     }
   };
 }
@@ -626,7 +624,7 @@ export function addFavs(mail, id) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
@@ -642,7 +640,7 @@ export function deleteFavs(mail, id) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
@@ -664,7 +662,7 @@ export function getFavs(mail) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
@@ -715,13 +713,12 @@ export function makeAdmin(mail) {
   return async function (dispatch) {
     try {
       const json = await axios.put(`${REACT_APP_SERVER}/user/adm/${mail}`);
-      console.log('json', json)
-      return dispatch({
+        return dispatch({
         type: MAKE_ADMIN,
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
@@ -760,7 +757,7 @@ export function adoptinHistoryAdmin() {
         payload: json.data,
       });
     } catch (error) {
-     console.log(error)
+     return error
     }
   };
 }
@@ -770,13 +767,13 @@ export function updatePetsViews(id) {
     try {
       await axios.patch(`${REACT_APP_SERVER}/pets/${id}`);
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
 
 export function successStory(payload) {
-  console.log(payload)
+  
   return async (dispatch) => {
     try {
 
@@ -799,7 +796,7 @@ export function getSuccessStory() {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }

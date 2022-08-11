@@ -93,12 +93,12 @@ function Navbar({ filters, setFilters, notificacion,newNotification }) {
           <div className="item">
             <div>
               <img src={vector2} alt="vector2" className="icons" />
-              <NavLink to="/favorites" className="link-navbar">
+              <NavLink to={data !== null ? "/favorites" : "/login"} className="link-navbar">
                 <span>My favorites</span>
               </NavLink>
             </div>
           </div>
-        )}
+        )} 
 
         <div className="item">
           <DarkMode />

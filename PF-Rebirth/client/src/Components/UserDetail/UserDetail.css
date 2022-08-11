@@ -104,7 +104,7 @@
 
 .BtnCloseUser {
   position: relative;
-  left: 64px;
+  left: 50px;
   top: 1%;
   width: 25px;
   height: 21px;
@@ -126,21 +126,23 @@
 
 .BtnAddAdmin {
   position: relative;
-  left: 150px;
+  left: 50px;
   top: 1%;
-  width: 23px;
-  height: 20px;
+  width: 25px;
+  height: 21px;
   cursor: pointer;
   background: url(../../Assets/ico_add_admin.png) center no-repeat;
-  background-color: rgb(239, 231, 231);
+  background-color: rgb(255, 255, 255);
   border-radius: 5px;
   z-index: 5;
 }
+
 .BtnAddAdmin,
 .BtnAddAdmin:focus {
   outline: none;
   border: 1px solid transparent;
 }
+
 .BtnAddAdmin:active {
   outline: none;
   border: 1px solid grey;
@@ -159,6 +161,7 @@
   border-radius: 5px;
   z-index: 5;
 }
+
 .BtnDelAdmin,
 .BtnDelAdmin:focus {
   outline: none;
@@ -169,6 +172,7 @@
   outline: none;
   border: 1px solid grey;
 }
+
 .BtnRestore {
   position: relative;
   left: 33px;
@@ -181,6 +185,7 @@
   border-radius: 5px;
   z-index: 5;
 }
+
 .BtnRestore,
 .BtnRestore:focus {
   outline: none;
