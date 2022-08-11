@@ -6,7 +6,7 @@
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 5%;
+    margin-top: 1rem;
     overflow: hidden;
 }
 
@@ -48,7 +48,7 @@
 .title-ld {
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 1rem;
     color: #B4A8B9;
     font-family: 'Red Hat Display';
 }
@@ -65,7 +65,7 @@
     display: flex;
     justify-content: center;
     margin-top: 3rem;
-    margin-bottom: 8rem;
+    margin-bottom: 3rem;
     color: #B4A8B9;
     font-family: 'Red Hat Display';
 }

@@ -8,6 +8,7 @@ import FilterbarSelect from "../FilterBarSelectedButton/FilterBarSelectedButton"
 import Button from "react-bootstrap/esm/Button";
 
 function FiltersBar({
+  name,
   filters,
   setFilters,
   handleFilterBySex,
@@ -69,6 +70,7 @@ function FiltersBar({
                   placeholder="Search by name"
                   className="formInputStyle"
                   autoComplete="off"
+                  value={name}
                   onChange={handleChange}
                 />
               </Form.Group>
