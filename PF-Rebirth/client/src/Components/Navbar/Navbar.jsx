@@ -103,7 +103,7 @@ function Navbar({ filters, setFilters, notificacion,newNotification }) {
               </NavLink>
             </div>
           </div>
-        )}
+        )} 
 
         <div className="item">
           <DarkMode />
