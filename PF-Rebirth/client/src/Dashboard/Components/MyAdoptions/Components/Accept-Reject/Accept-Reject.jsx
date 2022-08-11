@@ -1,15 +1,22 @@
 import React from "react";
 import "./Accept-Reject.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAdoption, deletePost,getChat} from "../../../../../Redux/Actions";
+import {
+  deleteAdoption,
+  deletePost,
+  getChat,
+} from "../../../../../Redux/Actions";
 import SwalertCancel from "../SweetAlert/SweetAlertCancel";
 import Swalert from "../SweetAlert/SweetAlert";
 import { NavLink } from "react-router-dom";
- 
-const AcceptReject = () => {
 
+const AcceptReject = () => {
   const dispatch = useDispatch();
+<<<<<<< HEAD
   let mail="";
+=======
+  let mail = "";
+>>>>>>> 18495136f464f964f6a0112bb37eaec3870c325d
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
   const infoStorage = localStorage.getItem("user");
@@ -20,17 +27,13 @@ const AcceptReject = () => {
     dispatch(deleteAdoption(adoptionId));
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
-  
-  const idPet = adoptChat.filter(
-    (adChat) => 
-    adChat.id === adoptionId)
-    .map((datos) => 
-    datos.petId
-  )
-  
-  function handleDeletePost() {
-    console.log(idPet)
-    dispatch((deletePost(idPet)));
+
+  const idPet = adoptChat
+    .filter((adChat) => adChat.id === adoptionId)
+    .map((datos) => datos.petId);
+  function handleDeletePost(petId) {
+    dispatch(deletePost(petId));
+    // window.open("/feedback?pet="+petId, "_self")
   }
 
   return (
@@ -38,8 +41,7 @@ const AcceptReject = () => {
       {adoptChat
         .filter((adChat) => adChat.id === adoptionId)
         .map((datos) => {
-            if (datos.owner.mail === mail) {
-        
+          if (datos.owner.mail === mail) {
             return (
               <div className="mainDashContACC">
                 <div className="AdoptContainer">
@@ -70,32 +72,40 @@ const AcceptReject = () => {
                     <span>Comments:{datos.comments}</span>
                   </div>
                 </div>
-                {datos.state==="pending" &&
-                <div className="btnRowAdopt">
-                  <button
-                    className="MAdoCancbutton"
-                    onClick={() =>
-                      SwalertCancel(datos.pet.name, handleClick, datos.id)
-                    }
-                    // onClick={() => handleClick(datos.id)}
-                  >
-                    <span>Reject</span>
-                  </button>
-                  <button onClick={() =>{Swalert(datos.pet.name,handleDeletePost,adoptionId)}} class="MAdoptbutton">
-                    <span>Accept</span>
-                  </button>
-                </div>
-          }
-          {datos.state==="fulfilled" &&
-          <div className="btnRowAdopt">
-            <NavLink to={"/feedback?pet="+datos.pet.name}>
-             <button  class="MAdoptbutton">
-            <span>Feedback</span>
-          </button>
-          </NavLink>
-        </div>
-          
-          }
+                {datos.state === "pending" && (
+                  <div className="btnRowAdopt">
+                    <button
+                      className="MAdoCancbutton"
+                      onClick={() =>
+                        SwalertCancel(datos.pet.name, handleClick, datos.id)
+                      }
+                      // onClick={() => handleClick(datos.id)}
+                    >
+                      <span>Reject</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        Swalert(
+                          datos.pet.name,
+                          handleDeletePost(datos.pet.id),
+                          adoptionId
+                        );
+                      }}
+                      class="MAdoptbutton"
+                    >
+                      <span>Accept</span>
+                    </button>
+                  </div>
+                )}
+                {datos.state === "fulfilled" && (
+                  <div className="btnRowAdopt">
+                    <NavLink to={"/feedback?pet=" + datos.pet.name}>
+                      <button class="MAdoptbutton">
+                        <span>Feedback</span>
+                      </button>
+                    </NavLink>
+                  </div>
+                )}
               </div>
             );
           } else {
@@ -125,28 +135,27 @@ const AcceptReject = () => {
                     <span>Description: {datos.pet.description}</span>
                   </div>
 
-                  {datos.state==="pending" &&
-                  <div className="btnRowAdopt">
-                    <button
-                      className="MAdoCanbutton"
-                      onClick={() =>
-                        SwalertCancel(datos.pet.name, handleClick, datos.id)
-                      }
-                    >
-                      <span>Cancel</span>
-                    </button>
-                  </div>
-          }
-           {datos.state==="fulfilled" &&
-          <div className="btnRowAdopt">
-            <NavLink to={"/feedback?pet"+datos.pet.name}>
-             <button  class="MAdoptbutton">
-            <span>Feedback</span>
-          </button>
-          </NavLink>
-        </div>
-          
-          }
+                  {datos.state === "pending" && (
+                    <div className="btnRowAdopt">
+                      <button
+                        className="MAdoCanbutton"
+                        onClick={() =>
+                          SwalertCancel(datos.pet.name, handleClick, datos.id)
+                        }
+                      >
+                        <span>Cancel</span>
+                      </button>
+                    </div>
+                  )}
+                  {datos.state === "fulfilled" && (
+                    <div className="btnRowAdopt">
+                      <NavLink to={"/feedback?pet" + datos.pet.name}>
+                        <button class="MAdoptbutton">
+                          <span>Feedback</span>
+                        </button>
+                      </NavLink>
+                    </div>
+                  )}
                 </div>
               </div>
             );
