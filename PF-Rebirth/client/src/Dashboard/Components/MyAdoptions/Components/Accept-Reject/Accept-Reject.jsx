@@ -25,7 +25,8 @@ const AcceptReject = () => {
     adChat.id === adoptionId)
     .map((datos) => 
     datos.petId
-    )
+  )
+  
   function handleDeletePost(petId) {
      window.open("/feedback?pet="+petId, "_self")
   }
