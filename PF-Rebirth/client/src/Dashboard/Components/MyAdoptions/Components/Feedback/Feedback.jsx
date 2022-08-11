@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 import "./Feedback.css";
 import { Widget } from "@uploadcare/react-widget";
 import DashNavBar from "../../../Dash-NavBar/Dash-NavBar";
 import { successStory } from "../../../../../Redux/Actions";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import swal from "sweetalert";
 
 function Feedback() {
@@ -19,8 +19,13 @@ function Feedback() {
   }
 
   let { pet } = useParams();
-  const dispatch = useDispatch()
-  const [input, setInput] = useState({ testimonio: "", rating: 0, imageOfPet: "", nameOfPet: user.name });
+  const dispatch = useDispatch();
+  const [input, setInput] = useState({
+    testimonio: "",
+    rating: 0,
+    imageOfPet: "",
+    nameOfPet: user.name,
+  });
 
   function handleText(e) {
     setInput({ ...input, testimonio: e.target.value });
@@ -36,19 +41,24 @@ function Feedback() {
       imageOfPet: `https://ucarecdn.com/${file.uuid}/`,
     });
   }
+  const navigate = useNavigate()
+  function onClickSend(){
+    setTimeout(function(){
+      navigate("/home")
+  }, 3000);
+  }
 
-  
   function HandleSuccessStory(e) {
     e.preventDefault();
-    
+
     if (input.text === "" || input.stars === 0 || input.image === "") {
       swal(
         "complete the fields",
         "choose a image and rate the page",
         "warning"
-        );
-      } else {
-        dispatch(successStory(input));
+      );
+    } else {
+      dispatch(successStory(input));
       swal("Thank you", "", "success");
     }
   }
@@ -66,11 +76,12 @@ function Feedback() {
               <h2 className="mb-3">Next steps</h2>
               <h5 className="mb-3">Congratulations {user.name}!</h5>
               <br />
-              <h5 className="">Pickup address</h5>
+              <h5 className="">Your experience is very important!</h5>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem
+                Thank you very much for giving this pet a new opportunity! From
+                REBIRTH we thank you for having used our App and we hope to see
+                you again soon! Then you can leave us a review about your
+                adoption process.
               </p>
               <br />
               <h5 className="mt-2">Give us your feedback</h5>
@@ -169,6 +180,7 @@ function Feedback() {
                 <button
                   type="submit"
                   className="btn btn-primary btn-block mb-4"
+                  onClick={onClickSend}
                 >
                   SEND
                 </button>
