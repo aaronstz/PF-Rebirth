@@ -103,8 +103,7 @@ function rootReducer(state = initialState, action) {
      }
     
     case NOTIFICATION:
-      console.log(action)
-      return {
+           return {
         ...state,
         notification:action.payload
       }
