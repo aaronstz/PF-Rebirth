@@ -24,9 +24,8 @@ const AcceptReject = () => {
     setTimeout(() => dispatch(getChat(mail)), 200);
   }
 
-  const idPet = adoptChat
-    .filter((adChat) => adChat.id === adoptionId)
-    .map((datos) => datos.petId);
+  const idPet = adoptChat.filter((adChat) => adChat.id === adoptionId).map((datos) => datos.petId);
+
   function handleDeletePost(petId) {
     dispatch(deletePost(petId));
     // window.open("/feedback?pet="+petId, "_self")
