@@ -116,7 +116,6 @@ function Home() {
     let gender = e === "All" ? [] : [e];
     setFilters({
       ...filters,
-      name: "",
       gender: gender,
       page: 0,
     });
@@ -127,7 +126,6 @@ function Home() {
     let newSize = eliminaDuplicados(size);
     setFilters({
       ...filters,
-      name: "",
       size: newSize,
       page: 0,
     });
@@ -138,7 +136,6 @@ function Home() {
     let newLocation = eliminaDuplicados(location);
     setFilters({
       ...filters,
-      name: "",
       location: newLocation,
       page: 0,
     });
@@ -147,7 +144,6 @@ function Home() {
   function handleOrderByAge(e) {
     setFilters({
       ...filters,
-      name: "",
       age: e,
       page: 0,
     });
@@ -156,7 +152,6 @@ function Home() {
   function handleOrderByTime(e) {
     setFilters({
       ...filters,
-      name: "",
       time: e,
       page: 0,
     });
@@ -178,9 +173,15 @@ function Home() {
 
   function handleSearchName(e) {
     e.preventDefault();
+    let pag = 0;
+    if (e.target.value === "") {
+      let savedPage = JSON.parse(localStorage.getItem("page"));
+      pag = Number(savedPage);
+    }
     setFilters({
       ...filters,
       name: searchName,
+      page: pag
     });
     setSearchName("");
   }
@@ -232,6 +233,7 @@ function Home() {
       <Container>
         <Header filters={filters} setFilters={setFilters} />
         <FiltersBar
+          name={filters.name}
           filters={filters}
           setFilters={setFilters}
           handleChange={handleChange}
