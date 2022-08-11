@@ -73,7 +73,7 @@ function Home() {
   const [currentPageNumber, setCurrentPageNumber] = useState(
     Number(currentPage)
   );
- 
+
   useEffect(() => {
     dispatch(getChat(mail));
   }, [dispatch, mail]);
@@ -165,6 +165,7 @@ function Home() {
       name: e.target.value,
       page: pag,
     });
+    setSearchName("")
   }
 
   function handleSearchName(e) {
@@ -200,6 +201,10 @@ function Home() {
       setCurrentPageNumber(pag);
       localStorage.setItem("page", JSON.stringify(pag));
     }
+    window.scroll({
+      top: 500,
+      behavior: "smooth"
+    })
   }
 
   function handleDeleteFilters(e) {

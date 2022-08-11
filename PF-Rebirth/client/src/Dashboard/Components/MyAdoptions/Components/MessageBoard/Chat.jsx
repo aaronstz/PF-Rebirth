@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Chat.css";
 import sendButton from "../../../../../Assets/Messageboard/send.svg";
 import {
@@ -10,22 +10,30 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 // import { PUT_VISTO } from "../../../../../Redux/Actions/actionTypes"; warning
 
-
-export default function Chat({ allMessages,otherMail }) {
-let mail=""
+export default function Chat({ allMessages, otherMail }) {
+  let mail = "";
   const infoStorage = localStorage.getItem("user");
   const user = JSON.parse(infoStorage);
-  if(infoStorage) mail = user.mail;
-  let mailVisto =otherMail;
-  
+  if (infoStorage) mail = user.mail;
+  let mailVisto = otherMail;
+
   const dispatch = useDispatch();
   let [inputChat, setInputChat] = useState("");
   let adoptionId = useSelector((state) => state.adoptionId);
+
   setTimeout(() => {
     let finalScroll = document.getElementById("scroll");
     finalScroll.scrollTop = finalScroll.scrollHeight;
   }, 200);
+
+  console.log('adoptionId :>> ', adoptionId);
+
+  useEffect(() => {
+    dispatch(getMessage(adoptionId))
+  }, [dispatch, adoptionId])
+  
   function handleClick() {
+
     inputChat.length > 0 &&
       dispatch(
         postMessage({
@@ -39,8 +47,10 @@ let mail=""
     let finalScroll = document.getElementById("scroll");
     finalScroll.scrollTop = finalScroll.scrollHeight;
     if (mailVisto) dispatch(putVisto(mailVisto, adoptionId));
-    if (mailVisto)dispatch(CreaUpdateNotification(mailVisto));
+    if (mailVisto) dispatch(CreaUpdateNotification(mailVisto));
+
   }
+
   function handleOnChange(e) {
     setInputChat(e.target.value);
   }
@@ -71,7 +81,7 @@ let mail=""
           onChange={(e) => handleOnChange(e)}
         />
         <button onClick={() => handleClick()} className="chat-button">
-          <img src={sendButton} alt ="send"></img>{" "}
+          <img src={sendButton} alt="send"></img>{" "}
         </button>
       </div>
     </React.Fragment>

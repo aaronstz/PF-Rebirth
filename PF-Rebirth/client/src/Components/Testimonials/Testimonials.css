@@ -10,7 +10,7 @@
 .carousel2 .testimonial-profile {
     width: 20%;
     max-height: 6.5rem;
-    border-radius: 40%;
+    border-radius: 25px;
     border: 2px solid var(--greylight);
 }
 

@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 
 const AcceptReject = () => {
   const dispatch = useDispatch();
-  let mail = "";
+  let mail="";
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
   const infoStorage = localStorage.getItem("user");
@@ -82,8 +82,9 @@ const AcceptReject = () => {
                       onClick={() => {
                         Swalert(
                           datos.pet.name,
-                          handleDeletePost(datos.pet.id),
-                          adoptionId
+                          handleDeletePost,
+                          adoptionId,
+                          datos.pet.id,
                         );
                       }}
                       class="MAdoptbutton"

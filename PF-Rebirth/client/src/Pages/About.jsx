@@ -14,7 +14,31 @@ import tobi from "../Assets/tobi.png";
 import maru from "../Assets/maru.png";
 import carlos from "../Assets/carlos.png";
 import lucas from "../Assets/lucas.png";
+import './About.css';
+import logoLinkedIn from "../Assets/logoLinkedIn.svg";
+
+
 function About() {
+  function handleLinkedIn(e) {
+    if (e.target.id === "enzo") {
+      window.open("https://www.linkedin.com/in/enzo-sanchez-473a68232/");
+    } else if (e.target.id === "lenny") {
+      window.open("https://www.linkedin.com/in/lenny-snaiderman/");
+    } else if (e.target.id === "lucas") {
+      window.open("https://www.linkedin.com/in/lucas-d%C3%ADaz-520bbb23a/");
+    } else if (e.target.id === "aaron") {
+      window.open("https://www.linkedin.com/in/aaronstz/");
+    } else if (e.target.id === "carlos") {
+      window.open("https://www.linkedin.com/in/carlos-candioti-14a990219/");
+    } else if (e.target.id === "maru") {
+      window.open("https://www.linkedin.com/in/marielgramajo/");
+    } else if (e.target.id === "william") {
+      window.open("https://www.linkedin.com/in/willdz/");
+    } else if (e.target.id === "tobi") {
+      window.open("https://www.linkedin.com/in/tobias-tymkiw/")
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -46,13 +70,7 @@ function About() {
                     <h5 className="card-title">Enzo Sanchez</h5>
                     <p className="card-text">FULL STACK WEB DEVELOPER</p>
                     <p className="card-text">
-                      <a
-                        href="https://www.linkedin.com/in/enzo-sanchez-473a68232/"
-                        // target="_blank" -> warning
-                        className="text-muted"
-                      >
-                        Linkedin
-                      </a>
+                      <img alt="logo" src={logoLinkedIn} id="enzo" onClick={(e) => handleLinkedIn(e)} className="link-linkedIn"/>
                     </p>
                   </div>
                 </div>
@@ -62,13 +80,9 @@ function About() {
                     <h5 className="card-title">Lenny Snaiderman</h5>
                     <p className="card-text">FULL STACK WEB DEVELOPER</p>
                     <p>
-                      <a
-                        href="https://www.linkedin.com/in/lenny-snaiderman/"
-                        // target="_blank" -> warning
-                        className="text-muted"
-                      >
-                        Linkedin
-                      </a>
+                    <p className="card-text">
+                      <img alt="logo" src={logoLinkedIn} id="lenny" onClick={(e) => handleLinkedIn(e)} className="link-linkedIn"/>
+                    </p>
                     </p>
                   </div>
                 </div>
@@ -79,13 +93,9 @@ function About() {
                     <p className="card-text">FULL STACK WEB DEVELOPER</p>
 
                     <p className="card-text">
-                      <a
-                        href="https://www.linkedin.com/in/aaronstz/"
-                        // target="_blank" -> warning
-                        className="text-muted"
-                      >
-                        Linkedin
-                      </a>
+                    <p className="card-text">
+                      <img alt="logo" src={logoLinkedIn} id="aaron" onClick={(e) => handleLinkedIn(e)} className="link-linkedIn"/>
+                    </p>
                     </p>
                   </div>
                 </div>
@@ -99,13 +109,9 @@ function About() {
                     <h5 className="card-title">William Diaz Orozco</h5>
                     <p className="card-text">FULL STACK WEB DEVELOPER</p>
                     <p className="card-text">
-                      <a
-                        href="https://www.linkedin.com/in/willdz/"
-                        // target="_blank" -> warning
-                        className="text-muted"
-                      >
-                        Linkedin
-                      </a>
+                    <p className="card-text">
+                      <img alt="logo" src={logoLinkedIn} id="william" onClick={(e) => handleLinkedIn(e)} className="link-linkedIn"/>
+                    </p>
                     </p>
                   </div>
                 </div>
@@ -117,13 +123,9 @@ function About() {
                     <h5 className="card-title">Lucas Diaz</h5>
                     <p className="card-text">FULL STACK WEB DEVELOPER</p>
                     <p className="card-text">
-                      <a
-                        href="https://www.linkedin.com/in/lucas-d%C3%ADaz-520bbb23a/"
-                        // target="_blank" -> warning
-                        className="text-muted"
-                      >
-                        Linkedin
-                      </a>
+                    <p className="card-text">
+                      <img alt="logo" src={logoLinkedIn} id="lucas" onClick={(e) => handleLinkedIn(e)} className="link-linkedIn"/>
+                    </p>
                     </p>
                   </div>
                 </div>
@@ -133,13 +135,9 @@ function About() {
                     <h5 className="card-title">Tobias Tymkiw</h5>
                     <p className="card-text">FULL STACK WEB DEVELOPER</p>
                     <p className="card-text">
-                      <a
-                        href="https://www.linkedin.com/in/tobias-tymkiw/"
-                        // target="_blank" -> warning
-                        className="text-muted"
-                      >
-                        Linkedin
-                      </a>
+                    <p className="card-text">
+                      <img alt="logo" src={logoLinkedIn} id="tobi" onClick={(e) => handleLinkedIn(e)} className="link-linkedIn"/>
+                    </p>
                     </p>
                   </div>
                 </div>
@@ -149,13 +147,9 @@ function About() {
                     <h5 className="card-title">Mariel Gramajo</h5>
                     <p className="card-text">FULL STACK WEB DEVELOPER</p>
                     <p className="card-text">
-                      <a
-                        href="https://www.linkedin.com/in/marielgramajo/"
-                        // target="_blank" -> warning
-                        className="text-muted"
-                      >
-                        Linkedin
-                      </a>
+                    <p className="card-text">
+                      <img alt="logo" src={logoLinkedIn} id="maru" onClick={(e) => handleLinkedIn(e)} className="link-linkedIn"/>
+                    </p>
                     </p>
                   </div>
                 </div>
@@ -165,13 +159,7 @@ function About() {
                     <h5 className="card-title">Carlos Candioti</h5>
                     <p className="card-text">FULL STACK WEB DEVELOPER</p>
                     <p className="card-text">
-                      <a
-                        href="https://www.linkedin.com/in/carlos-candioti-14a990219/"
-                        // target="_blank" -> warning
-                        className="text-muted"
-                      >
-                        Linkedin
-                      </a>
+                    <img alt="logo" src={logoLinkedIn} id="carlos" onClick={(e) => handleLinkedIn(e)} className="link-linkedIn"/>
                     </p>
                   </div>
                 </div>
