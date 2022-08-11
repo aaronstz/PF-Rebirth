@@ -20,6 +20,8 @@ conn.sync({ force: false }).then(async () => {
   await getTestimonials();
   await getAdmin();
   await getPets();
+
+
   server.listen(PORT || 3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
