@@ -105,10 +105,6 @@ function Home() {
   }, [currentPage]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
-
-  useEffect(() => {
     dispatch(getLocation(queryType));
   }, [dispatch, queryType]);
 
