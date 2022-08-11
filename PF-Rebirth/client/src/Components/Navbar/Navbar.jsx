@@ -80,6 +80,11 @@ function Navbar({ filters, setFilters, notificacion,newNotification }) {
         <img src={logo} alt="logo" className="logo" id="home" />
       </button>
       <div className="iconsContainer">
+      {!data ? null : (
+          <div className="item">
+            <NavLink to="/request" className="link-navbar"><img src={requestNotification} alt="vector3" className="icons" />Requests: {notificacion}</NavLink>
+          </div>
+        )}
         <div className="item">
           <img src={vector3} alt="vector3" className="icons" />
           <NavLink

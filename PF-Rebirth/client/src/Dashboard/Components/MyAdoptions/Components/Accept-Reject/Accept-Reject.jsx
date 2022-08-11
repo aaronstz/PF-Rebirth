@@ -82,8 +82,9 @@ const AcceptReject = () => {
                       onClick={() => {
                         Swalert(
                           datos.pet.name,
-                          handleDeletePost(datos.pet.id),
-                          adoptionId
+                          handleDeletePost,
+                          adoptionId,
+                          datos.pet.id,
                         );
                       }}
                       class="MAdoptbutton"

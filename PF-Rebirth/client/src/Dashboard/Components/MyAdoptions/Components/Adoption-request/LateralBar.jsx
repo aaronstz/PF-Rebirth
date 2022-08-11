@@ -63,7 +63,7 @@ export default function LateralBar() {
                   : adChat.adopter.name}
               </div>
               <div className="adoption-lateral-bar">
-                {adChat.id}
+                {adChat.id.slice(0,5)}
                 <br />
               </div>
             </div>

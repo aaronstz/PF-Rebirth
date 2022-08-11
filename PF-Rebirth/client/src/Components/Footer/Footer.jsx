@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="upperContainer">
         <div className="containerFooter mt-5">
           <div>
-            <NavLink to={"/home"} className={"footer-link"}>
+            <NavLink to={"/home"} className="img-link-footer">
               <img src={logo} alt="Rebirth"></img>
             </NavLink>
             <div className="sub-title">

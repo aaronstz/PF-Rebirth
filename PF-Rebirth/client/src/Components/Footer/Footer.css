@@ -28,6 +28,13 @@ footer {
   color: var(--text-color);
 }
 
+.img-link-footer{
+  text-decoration: none;
+  list-style: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .row {
   display: flex;
   flex: none;
@@ -51,6 +58,7 @@ footer {
 }
 
 footer a {
+
   color: var(--text-color);
   text-decoration: none;
   height: 0rem;

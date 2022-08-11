@@ -4,7 +4,7 @@ import "sweetalert2/dist/sweetalert2.css";
 import './SweetAlert.css'
 import { successAdoption } from "../../../../../Redux/Actions";
 
- export default function Swalert(dogName,navigate,id){
+ export default function Swalert(dogName, deletePost ,id, petId ){
 
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -29,6 +29,7 @@ import { successAdoption } from "../../../../../Redux/Actions";
         'success'
       ).then(()=>{
         successAdoption(id)
+        deletePost(petId)
        })
     } else if (
       /* Read more about handling dismissals below */

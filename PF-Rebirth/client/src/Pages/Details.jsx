@@ -71,6 +71,11 @@ function Details() {
     dispatch(deleteFavs(mail, id));
   }
 
+  window.scroll({
+    top : 400,
+    behavior : "smooth"
+  })
+
   return (
     <div>
       <Navbar />

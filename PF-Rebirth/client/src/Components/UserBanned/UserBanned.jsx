@@ -23,32 +23,34 @@ export default function UsersBanned() {
   return (
     <div>
         <DashNavBar/>
-        <div className="mainDashUserBanned">
-        <div className="userTituloBanned">
-          <h3>USERS BANNED</h3>
-        </div>
+        <div className="DashcontainerMain">
+            <div className="mainDashUserBanned">
+            <div className="userTituloBanned">
+            <h3>USERS BANNED</h3>
+            </div>
 
-        <div>
-            {!users.length ?(
-                <div className="notFound-banned">
-                    <NotFound/>
-                    </div>
-            ):<>
-            { 
-            users && users.map((u) =>
-                <UserDetail
-                    handleRestoreUser={handleRestoreUser}
-                    name={u.name}
-                    lastName={u.lastName}
-                    mail={u.mail}
-                    image={u.image}
-                    userName={u.userName}
-                />)
-        }
-            </>}
-        
-        </div> 
-    </div>
+            <div>
+                {!users.length ?(
+                    <div className="notFound-banned">
+                        <NotFound/>
+                        </div>
+                ):<>
+                { 
+                users && users.map((u) =>
+                    <UserDetail
+                        handleRestoreUser={handleRestoreUser}
+                        name={u.name}
+                        lastName={u.lastName}
+                        mail={u.mail}
+                        image={u.image}
+                        userName={u.userName}
+                    />)
+            }
+                </>}
+            
+            </div> 
+            </div>
+        </div>
     </div>
   );
 }
