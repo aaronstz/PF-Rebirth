@@ -73,7 +73,7 @@ function Home() {
   const [currentPageNumber, setCurrentPageNumber] = useState(
     Number(currentPage)
   );
-  console.log(newNotification);
+ 
   useEffect(() => {
     dispatch(getChat(mail));
   }, [dispatch, mail]);
