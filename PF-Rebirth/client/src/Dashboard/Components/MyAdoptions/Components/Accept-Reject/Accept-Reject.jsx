@@ -12,11 +12,7 @@ import { NavLink } from "react-router-dom";
 
 const AcceptReject = () => {
   const dispatch = useDispatch();
-<<<<<<< HEAD
   let mail="";
-=======
-  let mail = "";
->>>>>>> 18495136f464f964f6a0112bb37eaec3870c325d
   const adoptChat = useSelector((state) => state.adoptionChat);
   const adoptionId = useSelector((state) => state.adoptionId);
   const infoStorage = localStorage.getItem("user");
